@@ -70,6 +70,7 @@ TASKS = [
     RUSSE,
     RWSD,
     TERRA,
+    LIDIRUS,
 ]
 TASK_TITLES = {
     DANETQA: 'DaNetQA',
@@ -83,9 +84,17 @@ TASK_TITLES = {
     TERRA: 'TERRa',
 }
 
-RUBERT = 'rubert'
+HUMAN = 'human'
+TFIDF = 'tfidf'
+
+RUBERT = 'rubert'  # 700MB
 RUBERT_CONVERSATIONAL = 'rubert-conversational'
 BERT_MULTILINGUAL = 'bert-multilingual'
+
+RUGPT3_LARGE = 'gpt3-large'  # 3GB
+RUGPT3_MEDIUM = 'gpt3-medium'  # 1.7GB
+RUGPT3_SMALL = 'gpt3-small'  # 500MB
+
 EXPS = [
     RUBERT,
     RUBERT_CONVERSATIONAL,
@@ -95,6 +104,10 @@ EXP_HUB_NAMES = {
     RUBERT_CONVERSATIONAL: 'DeepPavlov/rubert-base-cased-conversational',
     RUBERT: 'DeepPavlov/rubert-base-cased',
     BERT_MULTILINGUAL: 'bert-base-multilingual-cased',
+
+    RUGPT3_LARGE: 'sberbank-ai/rugpt3large_based_on_gpt2',
+    RUGPT3_MEDIUM: 'sberbank-ai/rugpt3medium_based_on_gpt2',
+    RUGPT3_SMALL: 'sberbank-ai/rugpt3small_based_on_gpt2',
 }
 
 DATA_DIR = expanduser('~/data')
