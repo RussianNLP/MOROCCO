@@ -99,12 +99,16 @@ RUGPT3_LARGE = 'gpt3-large'  # 3GB
 RUGPT3_MEDIUM = 'gpt3-medium'  # 1.7GB
 RUGPT3_SMALL = 'gpt3-small'  # 500MB
 
-EXPS = [
+MODELS = [
     RUBERT,
     RUBERT_CONVERSATIONAL,
-    BERT_MULTILINGUAL
+    BERT_MULTILINGUAL,
+
+    RUGPT3_LARGE,
+    RUGPT3_MEDIUM,
+    RUGPT3_SMALL,
 ]
-EXP_HUB_NAMES = {
+MODEL_HUB_NAMES = {
     RUBERT_CONVERSATIONAL: 'DeepPavlov/rubert-base-cased-conversational',
     RUBERT: 'DeepPavlov/rubert-base-cased',
     BERT_MULTILINGUAL: 'bert-base-multilingual-cased',
@@ -278,12 +282,12 @@ def s3_sync(source, target):
 ######
 
 
-def train_jiant(exp, task, exps_dir, data_dir, config=JIANT_CONF, seed=1):
+def train_jiant(model, task, exps_dir, data_dir, config=JIANT_CONF, seed=1):
     target_tasks = task
     if task == TERRA:
         target_tasks = f'"{TERRA},{LIDIRUS}"'
 
-    input_module = EXP_HUB_NAMES[exp]
+    input_module = MODEL_HUB_NAMES[model]
 
     task_specs = {
         DANETQA: 'batch_size = 4, val_interval = 1000',
@@ -305,7 +309,7 @@ def train_jiant(exp, task, exps_dir, data_dir, config=JIANT_CONF, seed=1):
         jiant_main([
             '--config_file', config,
             '--overrides',
-            f'input_module = {input_module}, exp_name = {exp}, '
+            f'input_module = {input_module}, exp_name = {model}, '
             f'random_seed = {seed}, cuda = 0, run_name = {task}, '
             f'pretrain_tasks = {task}, target_tasks = {target_tasks}, do_pretrain = 1, '
             'do_target_task_training = 0, do_full_eval = 1, '
