@@ -707,5 +707,63 @@ def main(args):
         print(line)
 
 
+#######
+#
+#   LEADERBOARD
+#
+#######
+
+
+LEADERBOARD_LINES = '''
+Rank	Name	Team	Link	Score	LiDiRus	RCB	PARus	MuSeRC	TERRa	RUSSE	RWSD	DaNetQA	RuCoS
+1	HUMAN BENCHMARK	AGI NLP		0.811	0.626	0.68 / 0.702	0.982	0.806 / 0.42	0.92	0.805	0.84	0.915	0.93 / 0.89
+2	RuBERT plain	DeepPavlov		0.521	0.191	0.367 / 0.463	0.574	0.711 / 0.324	0.642	0.726	0.669	0.639	0.32 / 0.314
+3	RuGPT3Large	sberdevices		0.505	0.231	0.417 / 0.484	0.584	0.729 / 0.333	0.654	0.647	0.636	0.604	0.21 / 0.202
+4	RuBERT conversational	DeepPavlov		0.5	0.178	0.452 / 0.484	0.508	0.687 / 0.278	0.64	0.729	0.669	0.606	0.22 / 0.218
+5	Multilingual Bert	DeepPavlov		0.495	0.189	0.367 / 0.445	0.528	0.639 / 0.239	0.617	0.69	0.669	0.624	0.29 / 0.29
+6	RuGPT3Medium	sberdevices		0.468	0.01	0.372 / 0.461	0.598	0.706 / 0.308	0.505	0.642	0.669	0.634	0.23 / 0.224
+7	RuGPT3Small	sberdevices		0.438	-0.013	0.356 / 0.473	0.562	0.653 / 0.221	0.488	0.57	0.669	0.61	0.21 / 0.204
+8	Baseline TF-IDF1.1	AGI NLP		0.434	0.06	0.301 / 0.441	0.486	0.587 / 0.242	0.471	0.57	0.662	0.621	0.26 / 0.252
+'''.strip().splitlines()
+
+LEADERBOARD_RENAMES = {
+    'HUMAN BENCHMARK': HUMAN,
+    'RuBERT plain': RUBERT,
+    'RuGPT3Large': RUGPT3_LARGE,
+    'RuBERT conversational': RUBERT_CONVERSATIONAL,
+    'Multilingual Bert': BERT_MULTILINGUAL,
+    'RuGPT3Medium': RUGPT3_MEDIUM,
+    'RuGPT3Small': RUGPT3_SMALL,
+    'Baseline TF-IDF1.1': TFIDF,
+
+    'LiDiRus': LIDIRUS,
+    'RCB': RCB,
+    'PARus': PARUS,
+    'MuSeRC': MUSERC,
+    'TERRa': TERRA,
+    'RUSSE': RUSSE,
+    'RWSD': RWSD,
+    'DaNetQA': DANETQA,
+    'RuCoS': RUCOS,
+}
+
+
+def parse_leaderboard_score(value, sep=' / '):
+    if sep in value:
+        # 0.301 / 0.441
+        # yep, drop second
+        value, _ = value.split(sep)
+    return float(value)
+
+
+def parse_leaderboard(records, name_offset=1, scores_offset=5):
+    header = next(records)
+    tasks = [LEADERBOARD_RENAMES[_] for _ in header[scores_offset:]]
+    for record in records:
+        exp = LEADERBOARD_RENAMES[record[name_offset]]
+        scores = [parse_leaderboard_score(_) for _ in record[scores_offset:]]
+        yield exp, dict(zip(tasks, scores))
+
+
 if __name__ == '__main__':
     main(sys.argv[1:])
