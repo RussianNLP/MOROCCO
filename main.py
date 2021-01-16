@@ -735,6 +735,23 @@ def eval(name, preds, targets):
         return eval_other(name, preds, targets)
 
 
+TASK_METRICS = {
+    DANETQA: 'accuracy',
+    MUSERC: 'ans_f1',
+    PARUS: 'accuracy',
+    RCB: 'f1',
+    RUCOS: 'f1',
+    RUSSE: 'accuracy',
+    RWSD: 'acc',
+    TERRA: 'accuracy',
+    LIDIRUS: 'all_mcc',
+}
+
+
+def select_score(task, metrics):
+    return metrics[TASK_METRICS[task]]
+
+
 #######
 #
 #   CLI
