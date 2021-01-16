@@ -37,6 +37,7 @@ from collections import (
     Counter,
     defaultdict
 )
+import argparse
 
 import torch
 import pytorch_pretrained_bert
@@ -775,35 +776,6 @@ def select_score(task, metrics):
 
 #######
 #
-#   CLI
-#
-######
-
-
-def main(args):
-    if len(args) != 1:
-        log('Set task name')
-        return
-
-    task, = args
-    if task not in TASKS:
-        log(f'Unkonwn task {task!r}')
-        return
-
-    log('Reading items from stdin')
-    items = list(parse_jl(sys.stdin))
-    log(f'Read {len(items)} items')
-
-    preds = infer_jiant('exp', task, items)
-    
-    log('Writing preds to stdout')
-    lines = format_jl(preds)
-    for line in lines:
-        print(line)
-
-
-#######
-#
 #   LEADERBOARD
 #
 #######
@@ -855,10 +827,78 @@ def parse_leaderboard(records, name_offset=1, scores_offset=5):
     header = next(records)
     tasks = [LEADERBOARD_RENAMES[_] for _ in header[scores_offset:]]
     for record in records:
-        exp = LEADERBOARD_RENAMES[record[name_offset]]
+        model = LEADERBOARD_RENAMES[record[name_offset]]
         scores = [parse_leaderboard_score(_) for _ in record[scores_offset:]]
-        yield exp, dict(zip(tasks, scores))
+        yield model, dict(zip(tasks, scores))
+
+
+#######
+#
+#   CLI
+#
+######
+
+
+def cli_serve(args):
+    log('Reading items from stdin')
+    items = list(parse_jl(sys.stdin))
+    log(f'Read {len(items)} items')
+
+    preds = infer_jiant(
+        args.exp_dir, args.task, items,
+        batch_size=args.batch_size
+    )
+    
+    log('Writing preds to stdout')
+    lines = format_jl(preds)
+    for line in lines:
+        print(line)
+
+
+def cli_train(args):
+    train_jiant(
+        args.model, args.task,
+        args.exps_dir, args.data_dir,
+        seed=args.seed
+    )
+    strip_exp(args.exps_dir, args.model, args.task)
+
+
+def existing_path(path):
+    if not exists(path):
+        raise argparse.ArgumentTypeError(f'{path!r} does not exist')
+    return path
+
+
+def main(args):
+    parser = argparse.ArgumentParser(prog='main.py')
+    parser.set_defaults(function=None)
+    subs = parser.add_subparsers()
+
+    sub = subs.add_parser('serve')
+    sub.set_defaults(function=cli_serve)
+    sub.add_argument('exp_dir', type=existing_path)
+    sub.add_argument('task', choices=TASKS)
+    sub.add_argument('--batch-size', type=int, default=128)
+
+    sub = subs.add_parser('train')
+    sub.set_defaults(function=cli_train)
+    sub.add_argument('model', choices=MODELS)
+    sub.add_argument('task', choices=TASKS)
+    sub.add_argument('exps_dir')
+    sub.add_argument('data_dir', type=existing_path)
+    sub.add_argument('--seed', type=int, default=1)
+
+    args = parser.parse_args(args)
+    if not args.function:
+        parser.print_help()
+        parser.exit()
+    try:
+        args.function(args)
+    except (KeyboardInterrupt, BrokenPipeError):
+        pass
 
 
 if __name__ == '__main__':
     main(sys.argv[1:])
+    
