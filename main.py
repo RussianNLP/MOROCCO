@@ -5,13 +5,17 @@ from datetime import datetime
 from os import (
     environ,
     makedirs,
-    listdir
+    listdir,
+    rmdir,
+    remove,
+    rename
 )
 from os.path import (
     join,
     exists,
     dirname,
-    expanduser
+    expanduser,
+    isdir
 )
 from shutil import (
     copy,
@@ -231,6 +235,13 @@ def maybe_rmdir(path):
        rmtree(path) 
 
 
+def rm_any(path):
+    if isdir(path):
+        rmtree(path)
+    else:
+        remove(path)
+
+
 #####
 #
 #  S3
@@ -309,55 +320,56 @@ def train_jiant(exp, task, exps_dir, data_dir, config=JIANT_CONF, seed=1):
 ######
 
 
-def patch_exp_params(params, exp):
+def patch_exp_params(params, model):
     for key in ['data_dir', 'exp_dir', 'local_log_path', 'project_dir', 'run_dir']:
         params[key] = None
 
     params.pool_type = 'max'  # by default auto, whyyy?
-    params.tokenizer = EXP_HUB_NAMES[exp]  # by default tokenizer=auto, why?
+    params.tokenizer = MODEL_HUB_NAMES[model]  # by default tokenizer=auto, why?
 
 
-def best_model_path(dir):
-    for filename in listdir(dir):
-        if fnmatch(filename, 'model_*.best.th'):
-            return join(dir, filename)
+def is_best_model(filename):
+    return fnmatch(filename, 'model_*.best.th')
 
 
-def copy_exp(exps_dir, target_dir, exp, tasks):
-    source_dir = join(exps_dir, exp)
-    maybe_mkdir(target_dir)
+def strip_exp(exps_dir, model, task):
+    exp_dir = join(exps_dir, model)
+    
+    for subdir in ['preproc', 'tasks']:
+        dir = join(exp_dir, subdir)
+        for item in listdir(dir):
+            # rwsd__test_data
+            # rwsd__train_data
+            # rwsd.DeepPavlov
+            name = re.match('([^_\.]+)', item).group(1)
+            if name == task:
+                rm_any(join(dir, item))
+        
+        if not listdir(dir):
+            rmdir(dir)
 
-    # assert no extra data in cache
-    log(f'Copy transformers cache')
-    maybe_copytree(
-        join(source_dir, 'transformers_cache'),
-        join(target_dir, 'transformers_cache'),
-    )
+    dir = join(exp_dir, task)
+    for item in listdir(dir):
+        # metric_state_pretrain_val_10.th
+        # metric_state_pretrain_val_3.best.th
+        # model_state_pretrain_val_10.th
+        # params.conf
+        # RWSD.jsonl
+        # tensorboard
+        # training_state_pretrain_val_3.best.th
+        if is_best_model(item):
+            rename(
+                join(dir, item),
+                join(dir, 'model.th')
+            )
+        elif item not in ('log.log', 'params.conf'):
+            rm_any(join(dir, item))
 
-    for task in tasks:
-        if task == LIDIRUS:
-            # use terra model
-            continue
-
-        log(f'Copy {task!r} tasks')
-        maybe_mkdir(join(target_dir, task))
-
-        path = join(source_dir, task, 'params.conf')
+    path = join(dir, 'params.conf')
+    with no_loggers([LOGGER]):
         params = params_from_file(path)
-        patch_exp_params(params, exp)
-        write_params(
-            params,
-            join(target_dir, task, 'params.conf')
-        )
-
-        copy(
-            best_model_path(join(source_dir, task)),
-            join(target_dir, task, 'model.th')
-        )
-        copy(
-            join(source_dir, task, 'log.log'),
-            join(target_dir, task, 'log.log')
-        )
+    patch_exp_params(params, model)
+    write_params(params, path)
 
 
 #######
