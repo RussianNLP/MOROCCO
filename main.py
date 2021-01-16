@@ -44,6 +44,8 @@ import pytorch_pretrained_bert
 import transformers
 import allennlp
 
+from tqdm import tqdm as log_progress
+
 from jiant.utils.config import (
     params_from_file,
     write_params
