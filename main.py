@@ -390,7 +390,7 @@ RWSD_ITEM = {'idx': 0, 'target': {'span1_text': 'Члены городского
 def dump_task(data_dir, task, items):
     title = TASK_TITLES[task]
     dir = join(data_dir, title)
-    maybe_makedir(dir)
+    maybe_mkdir(dir)
 
     if task == LIDIRUS:
         path = join(dir, title + '.jsonl')
