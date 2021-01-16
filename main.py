@@ -48,6 +48,7 @@ from jiant.models import build_model
 from jiant.utils.utils import load_model_state
 from jiant.tasks import REGISTRY
 from jiant import evaluate
+from jiant.__main__ import main as jiant_main
 
 
 DANETQA = 'danetqa'
@@ -173,6 +174,48 @@ def parse_jl(lines):
 def format_jl(items):
     for item in items:
         yield json.dumps(item, ensure_ascii=False)
+
+
+#######
+#
+#   TRAIN
+#
+######
+
+
+def train_jiant(exp, task, exps_dir, data_dir, config=JIANT_CONF, seed=1):
+    target_tasks = task
+    if task == TERRA:
+        target_tasks = f'"{TERRA},{LIDIRUS}"'
+
+    input_module = EXP_HUB_NAMES[exp]
+
+    task_specs = {
+        DANETQA: 'batch_size = 4, val_interval = 1000',
+        RCB: 'batch_size = 4, val_interval = 60',
+        PARUS: 'batch_size = 4, val_interval = 100',
+        MUSERC: 'batch_size = 4, val_interval = 1000, val_data_limit = -1',
+        RUCOS: 'batch_size = 8, val_interval = 10000, val_data_limit = -1',
+        TERRA: 'batch_size = 4, val_interval = 625',
+        RUSSE: 'batch_size = 4, val_interval = 1000',
+        RWSD: 'batch_size = 4, val_interval = 139, optimizer = adam'
+    }
+    spec = task_specs[task]
+
+    with env(
+        JIANT_PROJECT_PREFIX=exps_dir,
+        JIANT_DATA_DIR=data_dir,
+        WORD_EMBS_FILE='None'
+    ):
+        jiant_main([
+            '--config_file', config,
+            '--overrides',
+            f'input_module = {input_module}, exp_name = {exp}, '
+            f'random_seed = {seed}, cuda = 0, run_name = {task}, '
+            f'pretrain_tasks = {task}, target_tasks = {target_tasks}, do_pretrain = 1, '
+            'do_target_task_training = 0, do_full_eval = 1, '
+            f'batch_size = 4, val_interval = 100, {spec}'
+        ])
 
 
 ######
