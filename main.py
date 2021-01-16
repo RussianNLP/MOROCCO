@@ -205,6 +205,11 @@ def format_jl(items):
         yield json.dumps(item, ensure_ascii=False)
 
 
+def parse_tsv(lines, sep='\t'):
+    for line in lines:
+        yield line.split(sep)
+
+
 #####
 #
 #  PATH
