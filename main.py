@@ -21,6 +21,7 @@ from shutil import (
 from fnmatch import fnmatch
 import logging
 import json
+import subprocess
 from io import StringIO
 from contextlib import contextmanager
 from importlib import reload
@@ -89,13 +90,23 @@ EXPS = [
     RUBERT,
     RUBERT_CONVERSATIONAL,
     BERT_MULTILINGUAL
-
 ]
 EXP_HUB_NAMES = {
     RUBERT_CONVERSATIONAL: 'DeepPavlov/rubert-base-cased-conversational',
     RUBERT: 'DeepPavlov/rubert-base-cased',
     BERT_MULTILINGUAL: 'bert-base-multilingual-cased',
 }
+
+JIANT_DIR = expanduser('~/jiant-v1-legacy')
+JIANT_CONF = join(JIANT_DIR, 'jiant/config/superglue_bert.conf')
+
+# access to single bucket
+# bucket is capped by size
+S3_KEY_ID = '5lcyb03uDlKWQ9E-5Cie'
+S3_KEY = 'AzMOIwDdIdDGxKU7ZCpVr6_8kx_7x_yzzGHFlIeS'
+S3_BUCKET = 'russian-superglue'
+S3_REGION = 'us-east-1'
+S3_ENDPOINT = 'https://storage.yandexcloud.net'
 
 
 #########
@@ -174,6 +185,35 @@ def parse_jl(lines):
 def format_jl(items):
     for item in items:
         yield json.dumps(item, ensure_ascii=False)
+
+
+#####
+#
+#  S3
+#
+#####
+
+
+def s3_call(args, key_id=S3_KEY_ID, key=S3_KEY,
+            region=S3_REGION, endpoint=S3_ENDPOINT):
+    with env(
+        AWS_ACCESS_KEY_ID=key_id,
+        AWS_SECRET_ACCESS_KEY=key
+    ):
+        command = ['aws', '--region', region, '--endpoint-url', endpoint, 's3']
+        return subprocess.run(
+            command + args,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT
+        )
+
+
+def s3_path(path, bucket=S3_BUCKET):
+    return f's3://{bucket}/{path}'
+
+
+def s3_sync(source, target):
+    return s3_call(['sync', source, target])
 
 
 #######
