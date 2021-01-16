@@ -4,7 +4,6 @@ import sys
 from datetime import datetime
 from os import (
     environ,
-    mkdir,
     makedirs,
     listdir
 )
@@ -18,6 +17,7 @@ from shutil import (
     copy,
     copytree
 )
+from shutil import rmtree
 from fnmatch import fnmatch
 import logging
 import json
@@ -194,6 +194,27 @@ def format_jl(items):
 
 #####
 #
+#  PATH
+#
+#####
+
+
+def maybe_mkdir(dir):
+    makedirs(dir, exist_ok=True)
+
+
+def maybe_copytree(source, target):
+    if not exists(target):
+        copytree(source, target)
+
+
+def maybe_rmdir(path):
+    if exists(path):
+       rmtree(path) 
+
+
+#####
+#
 #  S3
 #
 #####
@@ -286,13 +307,13 @@ def best_model_path(dir):
 
 def copy_exp(exps_dir, target_dir, exp, tasks):
     source_dir = join(exps_dir, exp)
-    makedirs(target_dir)        
+    maybe_mkdir(target_dir)
 
     # assert no extra data in cache
     log(f'Copy transformers cache')
-    copytree(
+    maybe_copytree(
         join(source_dir, 'transformers_cache'),
-        join(target_dir, 'transformers_cache')
+        join(target_dir, 'transformers_cache'),
     )
 
     for task in tasks:
@@ -301,7 +322,7 @@ def copy_exp(exps_dir, target_dir, exp, tasks):
             continue
 
         log(f'Copy {task!r} tasks')
-        mkdir(join(target_dir, task))
+        maybe_mkdir(join(target_dir, task))
 
         path = join(source_dir, task, 'params.conf')
         params = params_from_file(path)
@@ -334,7 +355,7 @@ RWSD_ITEM = {'idx': 0, 'target': {'span1_text': 'Члены городского
 def dump_task(data_dir, task, items):
     title = TASK_TITLES[task]
     dir = join(data_dir, title)
-    makedirs(dir, exist_ok=True)
+    maybe_makedir(dir)
 
     if task == LIDIRUS:
         path = join(dir, title + '.jsonl')
