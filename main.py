@@ -345,7 +345,7 @@ def strip_exp(exps_dir, model, task):
             # rwsd__train_data
             # rwsd.DeepPavlov
             name = re.match('([^_\.]+)', item).group(1)
-            if name == task:
+            if name == task or (task == TERRA and name == LIDIRUS):
                 rm_any(join(dir, item))
         
         if not listdir(dir):
