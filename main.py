@@ -287,7 +287,7 @@ def s3_call(args, key_id=S3_KEY_ID, key=S3_KEY,
         command = ['aws', '--region', region, '--endpoint-url', endpoint, 's3']
         args = list(patch_s3_args(args))
         log(f'Call S3: {args!r}')
-        return subprocess.run(command + args)
+        subprocess.run(command + args)
 
 
 #######
