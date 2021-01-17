@@ -217,6 +217,16 @@ def format_jl(items):
         yield json.dumps(item, ensure_ascii=False)
 
 
+def load_jl(path):
+    lines = load_lines(path)
+    return parse_jl(lines)
+
+
+def dump_jl(items, path):
+    lines = format_jl(items)
+    dump_lines(lines, path)
+
+
 def parse_tsv(lines, sep='\t'):
     for line in lines:
         yield line.split(sep)
@@ -392,13 +402,11 @@ def dump_task(data_dir, task, items):
 
     if task == LIDIRUS:
         path = join(dir, title + '.jsonl')
-        lines = format_jl(items)
-        dump_lines(lines, path)
+        dump_jl(items, path)
         
     else:
         path = join(dir, 'test.jsonl')
-        lines = format_jl(items)
-        dump_lines(lines, path)
+        dump_jl(items, path)
 
         for filename in ['train.jsonl', 'val.jsonl']:
             data = []
@@ -407,16 +415,14 @@ def dump_task(data_dir, task, items):
                 data = [RWSD_ITEM]
 
             path = join(dir, filename)
-            lines = format_jl(data)
-            dump_lines(lines, path)
+            dump_jl(data, path)
 
     return dir
 
 
 def load_preds(dir, task):
     path = join(dir, TASK_TITLES[task] + '.jsonl')
-    lines = load_lines(path)
-    return parse_jl(lines)
+    return load_jl(path)
 
 
 def infer_jiant(exp_dir, task, items, batch_size=4):
