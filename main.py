@@ -99,9 +99,9 @@ RUBERT = 'rubert'  # 700MB
 RUBERT_CONVERSATIONAL = 'rubert-conversational'
 BERT_MULTILINGUAL = 'bert-multilingual'
 
-RUGPT3_LARGE = 'gpt3-large'  # 3GB
-RUGPT3_MEDIUM = 'gpt3-medium'  # 1.7GB
-RUGPT3_SMALL = 'gpt3-small'  # 500MB
+RUGPT3_LARGE = 'rugpt3-large'  # 3GB
+RUGPT3_MEDIUM = 'rugpt3-medium'  # 1.7GB
+RUGPT3_SMALL = 'rugpt3-small'  # 700MB
 
 MODELS = [
     RUBERT,
