@@ -256,6 +256,11 @@ def rm_any(path):
 #####
 
 
+def patch_s3_args(args, bucket=S3_BUCKET):
+    for arg in args:
+        yield re.sub('^//', f's3://{bucket}/', arg)
+
+
 def s3_call(args, key_id=S3_KEY_ID, key=S3_KEY,
             region=S3_REGION, endpoint=S3_ENDPOINT):
     with env(
@@ -263,19 +268,9 @@ def s3_call(args, key_id=S3_KEY_ID, key=S3_KEY,
         AWS_SECRET_ACCESS_KEY=key
     ):
         command = ['aws', '--region', region, '--endpoint-url', endpoint, 's3']
-        return subprocess.run(
-            command + args,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT
-        )
-
-
-def s3_path(path, bucket=S3_BUCKET):
-    return f's3://{bucket}/{path}'
-
-
-def s3_sync(source, target):
-    return s3_call(['sync', source, target])
+        args = list(patch_s3_args(args))
+        log(f'Call S3: {args!r}')
+        return subprocess.run(command + args)
 
 
 #######
@@ -866,6 +861,10 @@ def cli_train(args):
     strip_exp(args.exps_dir, args.model, args.task)
 
 
+def cli_s3(args):
+    s3_call(args.args)
+
+
 def existing_path(path):
     if not exists(path):
         raise argparse.ArgumentTypeError(f'{path!r} does not exist')
@@ -890,6 +889,10 @@ def main(args):
     sub.add_argument('exps_dir')
     sub.add_argument('data_dir', type=existing_path)
     sub.add_argument('--seed', type=int, default=1)
+
+    sub = subs.add_parser('s3')
+    sub.set_defaults(function=cli_s3)
+    sub.add_argument('args', nargs=argparse.REMAINDER)
 
     args = parser.parse_args(args)
     if not args.function:
