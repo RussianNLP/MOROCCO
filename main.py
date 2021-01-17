@@ -130,6 +130,8 @@ PUBLIC = 'public'
 TEST = 'test'
 VAL = 'val'
 
+EXPS_DIR = expanduser('~/exps')
+GRID_PREDS_DIR = expanduser('~/preds')
 
 JIANT_DIR = expanduser('~/jiant-v1-legacy')
 JIANT_CONF = join(JIANT_DIR, 'jiant/config/superglue_bert.conf')
@@ -787,39 +789,73 @@ def select_score(task, metrics):
 
 ######
 #
-#  CONFS
+#  GRID
 #
 ######
 
 
-ExpsConf = namedtuple(
-    'ExpsConf',
+GridConf = namedtuple(
+    'GridConf',
     ['id', 'model', 'seed']
 )
 
 
-EXPS_CONFS = [
-    ExpsConf('01', RUBERT_CONVERSATIONAL, seed=111),
-    ExpsConf('02', RUBERT_CONVERSATIONAL, seed=2),
-    ExpsConf('03', RUBERT_CONVERSATIONAL, seed=3),
+GRID_CONFS = [
+    GridConf('01', RUBERT_CONVERSATIONAL, seed=111),
+    GridConf('02', RUBERT_CONVERSATIONAL, seed=2),
+    GridConf('03', RUBERT_CONVERSATIONAL, seed=3),
 
-    ExpsConf('04', RUBERT, seed=1),
-    ExpsConf('05', RUBERT, seed=2),
-    ExpsConf('06', RUBERT, seed=3),
-    ExpsConf('07', RUBERT, seed=4),
-    ExpsConf('08', RUBERT, seed=5),
-    ExpsConf('09', RUBERT, seed=6),
-    ExpsConf('10', RUBERT, seed=7),
-    ExpsConf('11', RUBERT, seed=8),
+    GridConf('04', RUBERT, seed=1),
+    GridConf('05', RUBERT, seed=2),
+    GridConf('06', RUBERT, seed=3),
+    GridConf('07', RUBERT, seed=4),
+    GridConf('08', RUBERT, seed=5),
+    GridConf('09', RUBERT, seed=6),
+    GridConf('10', RUBERT, seed=7),
+    GridConf('11', RUBERT, seed=8),
 
-    ExpsConf('12', RUBERT_CONVERSATIONAL, seed=4),
-    ExpsConf('13', RUBERT_CONVERSATIONAL, seed=5),
-    ExpsConf('14', RUBERT_CONVERSATIONAL, seed=6),
-    ExpsConf('15', RUBERT_CONVERSATIONAL, seed=7),
-    ExpsConf('16', RUBERT_CONVERSATIONAL, seed=8),
+    GridConf('12', RUBERT_CONVERSATIONAL, seed=4),
+    GridConf('13', RUBERT_CONVERSATIONAL, seed=5),
+    GridConf('14', RUBERT_CONVERSATIONAL, seed=6),
+    GridConf('15', RUBERT_CONVERSATIONAL, seed=7),
+    GridConf('16', RUBERT_CONVERSATIONAL, seed=8),
 
-    ExpsConf('17', RUBERT, seed=9),
+    GridConf('17', RUBERT, seed=9),
 ]
+
+
+def find_grid_exp_dir(exps_dir, conf_id, model, task):
+    dir = join(exps_dir, conf_id)
+    if exists(dir):
+        model_dir = join(dir, model)
+        if exists(model_dir):
+            dir = model_dir
+        if task == LIDIRUS:
+            task = TERRA
+        if exists(join(dir, task)):
+            return dir
+
+
+def grid_exp_finised(exp_dir, task):
+    if task == LIDIRUS:
+        task = TERRA
+    return exists(join(exp_dir, task, 'model.th'))
+
+
+def dump_grid_preds(conf_id, task, items, dir=GRID_PREDS_DIR):
+    dir = join(dir, conf_id)
+    maybe_mkdir(dir)
+    path = join(dir, f'{task}.jl')
+    dump_jl(items, path)
+
+
+def grid_preds_exist(conf_id, task, dir=GRID_PREDS_DIR):
+    return exists(join(dir, conf_id, f'{task}.jl'))
+
+
+def load_grid_preds(conf_id, task, dir=GRID_PREDS_DIR):
+    path = join(dir, conf_id, f'{task}.jl')
+    return load_jl(path)
 
 
 #######
