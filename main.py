@@ -122,8 +122,8 @@ MODEL_HUB_NAMES = {
 }
 
 DATA_DIR = expanduser('~/data')
-PRIVATE_DIR = join(DATA_DIR, 'private')
-PUBLIC_DIR = join(DATA_DIR, 'public')
+PRIVATE_DATA_DIR = join(DATA_DIR, 'private')
+PUBLIC_DATA_DIR = join(DATA_DIR, 'public')
 TEST_WITH_ANSWERS = 'test_with_answers.jsonl'
 
 JIANT_DIR = expanduser('~/jiant-v1-legacy')
@@ -500,7 +500,7 @@ def infer_jiant(exp_dir, task, items, batch_size=4):
 ######
 
 
-def load_task(task, dir=PRIVATE_DIR, filename=TEST_WITH_ANSWERS):
+def load_task(task, dir=PRIVATE_DATA_DIR, filename=TEST_WITH_ANSWERS):
     title = TASK_TITLES[task]
 
     if task == LIDIRUS:
