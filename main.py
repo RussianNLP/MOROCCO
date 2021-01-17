@@ -35,7 +35,8 @@ from tempfile import (
 )
 from collections import (
     Counter,
-    defaultdict
+    defaultdict,
+    namedtuple
 )
 import argparse
 
@@ -769,6 +770,43 @@ TASK_METRICS = {
 
 def select_score(task, metrics):
     return metrics[TASK_METRICS[task]]
+
+
+######
+#
+#  CONFS
+#
+######
+
+
+ExpsConf = namedtuple(
+    'ExpsConf',
+    ['id', 'model', 'seed']
+)
+
+
+EXPS_CONFS = [
+    ExpsConf('01', RUBERT_CONVERSATIONAL, seed=111),
+    ExpsConf('02', RUBERT_CONVERSATIONAL, seed=2),
+    ExpsConf('03', RUBERT_CONVERSATIONAL, seed=3),
+
+    ExpsConf('04', RUBERT, seed=1),
+    ExpsConf('05', RUBERT, seed=2),
+    ExpsConf('06', RUBERT, seed=3),
+    ExpsConf('07', RUBERT, seed=4),
+    ExpsConf('08', RUBERT, seed=5),
+    ExpsConf('09', RUBERT, seed=6),
+    ExpsConf('10', RUBERT, seed=7),
+    ExpsConf('11', RUBERT, seed=8),
+
+    ExpsConf('12', RUBERT_CONVERSATIONAL, seed=4),
+    ExpsConf('13', RUBERT_CONVERSATIONAL, seed=5),
+    ExpsConf('14', RUBERT_CONVERSATIONAL, seed=6),
+    ExpsConf('15', RUBERT_CONVERSATIONAL, seed=7),
+    ExpsConf('16', RUBERT_CONVERSATIONAL, seed=8),
+
+    ExpsConf('17', RUBERT, seed=9),
+]
 
 
 #######
