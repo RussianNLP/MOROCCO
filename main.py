@@ -1028,6 +1028,13 @@ def cli_s3(args):
     s3_call(args.args)
 
 
+def cli_eval(args):
+    preds = list(load_jl(args.preds))
+    targets = list(load_jl(args.targets))
+    metrics = eval(args.task, preds, targets)
+    print(json.dumps(metrics, indent=2))
+
+
 def existing_path(path):
     if not exists(path):
         raise argparse.ArgumentTypeError(f'{path!r} does not exist')
@@ -1056,6 +1063,12 @@ def main(args):
     sub = subs.add_parser('s3')
     sub.set_defaults(function=cli_s3)
     sub.add_argument('args', nargs=argparse.REMAINDER)
+
+    sub = subs.add_parser('eval')
+    sub.set_defaults(function=cli_eval)
+    sub.add_argument('task', choices=TASKS)
+    sub.add_argument('preds', type=existing_path)
+    sub.add_argument('targets', type=existing_path)
 
     args = parser.parse_args(args)
     if not args.function:
