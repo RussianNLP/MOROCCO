@@ -821,6 +821,10 @@ GRID_CONFS = [
     GridConf('16', RUBERT_CONVERSATIONAL, seed=8),
 
     GridConf('17', RUBERT, seed=9),
+
+    GridConf('18', RUGPT3_SMALL, seed=1),
+    GridConf('19', RUGPT3_MEDIUM, seed=1),
+    GridConf('20', BERT_MULTILINGUAL, seed=1),
 ]
 
 
