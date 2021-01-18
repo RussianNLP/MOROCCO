@@ -141,13 +141,26 @@ GRID_PREDS_DIR = expanduser('~/preds')
 JIANT_DIR = expanduser('~/jiant-v1-legacy')
 JIANT_CONF = join(JIANT_DIR, 'jiant/config/superglue_bert.conf')
 
-# access to single bucket
 # bucket is capped by size
 S3_KEY_ID = '5lcyb03uDlKWQ9E-5Cie'
 S3_KEY = 'AzMOIwDdIdDGxKU7ZCpVr6_8kx_7x_yzzGHFlIeS'
 S3_BUCKET = 'russian-superglue'
 S3_REGION = 'us-east-1'
 S3_ENDPOINT = 'https://storage.yandexcloud.net'
+
+# service account keys, access to s3 and containter registry, can push and pull
+# yc iam key create --service-account-name russian-superglue --folder-name russian-superglue -o key.json
+DOCKER_KEY = r'''
+{
+   "id": "aje6lss13v325arf8bbt",
+   "service_account_id": "ajetj9nn233tvqpsa5jp",
+   "created_at": "2021-01-18T12:25:27.732988Z",
+   "key_algorithm": "RSA_2048",
+   "public_key": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAh5UL26TN9CXbEGN8PI4y\nIOPeFiU+ItkExRI0ohmE5O8BBzqsaqjMADPrs46q9hBz/zxcb9J+4YZUErr0Eayl\nLsh5YJG8Tjt4v3JLskwlGV3r00QkSF/WzgnMig9e+MtMMipQxxNY5L/lwQ6zUapr\nUE2fUDoO/Q+AXsh8+K0qAGrZ8XfGal4FaimnOx0eZWV9d79Hjf6blQs+CAoRo39u\nyy3+FIOmmGSSQom0V19KawzrCqHESm+c9HXJDjtDatlkFGJpihncx8aHbaB5yP8e\ntFfT94yy2HJGlDcamy8lwIfF55CepWH9VKi24jPzvlB+laEav8AWMl0F80L2Ei4F\ntwIDAQAB\n-----END PUBLIC KEY-----\n",
+   "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCHlQvbpM30JdsQ\nY3w8jjIg494WJT4i2QTFEjSiGYTk7wEHOqxqqMwAM+uzjqr2EHP/PFxv0n7hhlQS\nuvQRrKUuyHlgkbxOO3i/ckuyTCUZXevTRCRIX9bOCcyKD174y0wyKlDHE1jkv+XB\nDrNRqmtQTZ9QOg79D4BeyHz4rSoAatnxd8ZqXgVqKac7HR5lZX13v0eN/puVCz4I\nChGjf27LLf4Ug6aYZJJCibRXX0prDOsKocRKb5z0dckOO0Nq2WQUYmmKGdzHxodt\noHnI/x60V9P3jLLYckaUNxqbLyXAh8XnkJ6lYf1UqLbiM/O+UH6VoRq/wBYyXQXz\nQvYSLgW3AgMBAAECggEAcOd2U3cfJtQrY69k8sx7BBadh5WF8+EC7tVlTSOxHi/F\njG6Yy8067GRQQFtrFLPI1OBAHcKNdGK3Ok3DF8DMYXQCV5+kzwUJXWvhi12Le19S\nFcFl8XsV1sgkM0fvj4FEN3YzhEQhP4Rp4GXMgBJJgTrSky1189hnzwZnw3H4SxVy\nh0K2hP6f+aI+DFxCx8x8lzSkNoh0ANN/VUfd8FzvxTf/QqOxI8xrI3n8cADHZK1T\n5g1aOj5+xzpLn82XhA/RHeDH3GC5MT6E/w947evjlz2ejLfZZbGkA4q3uNJ9Ps2+\nhfw1N84gMtAfvv9DICyLOa4t6WadoC8/Rq7BNrIG4QKBgQDmfB8wBfUeEOmwCnTG\n0A+IVXquevB+NsIWYm+dZG7/KjYf554+M4hQPyezC+aT4QODrRyr67NPXruV+e0O\nXxNuu/eBRVRWT0NVhuV4VL/msSj/cO8F4U24JYP6RuIaNWrLtrjMBlY3z2hat8BM\nsdwcPD5idVWWmaxWyMqa6XPcZwKBgQCWl2jRkpg6sFCMjSwx6BgbjYplHRvsAXsU\nBr54Dd9Ypdo5eVZmj/FURmPlVnYHLmFE3N1GrfDeNAvCT+ypIqYRzRjL097v8+e2\neXTO2kgrzm8Zhpv+7NF0pqXm1h9RpVu0q3nH4RmgzlPnaCBTINoLvMDjs4UmwPdG\nGN/1GXK6MQKBgQCigBSFCU4+enIoWdbnbT3mQ04Rwj/Y3MaOfaxv7aWMZbhvWh/p\nfu+2lDBrPhK9ZEHUDrNOSwnLBeF/5gvKvCG5SvE/xR+nEo9It6kF48rA3Vsobfk3\nzhe7o0efp2Y2UD8RjaxQvI8BHkxW2YLNEAE+LwNU66ECYypsrXibK8kyNQKBgBeG\nY6uJmRph/NNYInVRaqKzQ9Fz8K63tIB2ZT7f++ofTq331JWFGxAtRuHG1f1dM3jM\ngAzQk3ZC7ytVzQTHEuZpAdylpogZtDL/Wk4OL4QYZaa5LpluaXItrnEXNiFNEbxx\npT6iXZyPXvAhhhs2YJnAzOlFXCGnt3lN3X6ukQuhAoGBALyZ1KyqiGLWyYtw5A9N\n+hPgpT5NP5o0UkfP/9cHx8tgVisgGqhC0e4EhvJVaO2b0VeIh5qHWtmLtFCC+RNH\n5nJ3mD9eZJR3P5zy6y7Wg1hE21nKh4WdhOlp/Wo/MJcsInbAs5VFqklkeW0hmb8E\n7khYecg0qRJkOLLKbWZ2PbM+\n-----END PRIVATE KEY-----\n"
+}
+'''
+DOCKER_REGISTRY = 'cr.yandex/crpdsbu4ons2b57kp60d'
 
 
 #########
@@ -241,6 +254,16 @@ def dump_jl(items, path):
 def parse_tsv(lines, sep='\t'):
     for line in lines:
         yield line.split(sep)
+
+
+def load_text(path):
+    with open(path) as file:
+        return file.read()
+
+
+def dump_text(text, path):
+    with open(path, 'w') as file:
+        file.write(text)
 
 
 #####
@@ -1009,6 +1032,110 @@ def parse_leaderboard(records, name_offset=1, scores_offset=5):
             yield model, task, score
 
 
+def find_leaderboard_score(model, task, leaderboard):
+    for leaderboard_model, leaderboard_task, score in leaderboard:
+        if leaderboard_model == model and leaderboard_task == task:
+            return score
+
+
+######
+#
+#  DOCKER
+#
+######
+
+
+DOCKERFILE = '''
+FROM nvidia/cuda:11.1-cudnn8-devel-ubuntu20.04
+
+RUN apt-get update \\
+  && apt-get install -y wget git
+
+RUN wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \\
+  && bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda \\
+  && rm Miniconda3-latest-Linux-x86_64.sh
+
+ENV PATH=/opt/conda/bin:$PATH
+
+RUN git clone https://github.com/kuk/jiant-v1-legacy.git
+WORKDIR jiant-v1-legacy
+RUN git checkout russian-superglue
+
+RUN conda env create -f environment.yml
+
+# emulate conda activate
+# conda shell.posix activate jiant
+ENV PATH /opt/conda/envs/jiant/bin:$PATH
+ENV CONDA_PREFIX "/opt/conda/envs/jiant"
+ENV CONDA_DEFAULT_ENV "jiant"
+
+# UnicodeDecodeError: 'ascii' codec can't decode byte 0xe2
+ENV LANG C.UTF-8
+RUN pip install --no-dependencies -e .
+
+WORKDIR ~
+COPY transformers_cache exp/transformers_cache
+COPY {task} exp/{task}
+COPY main.py .
+ENTRYPOINT ["python", "main.py", "infer", "exp", "{args_task}"]
+'''
+
+DOCKERIGNORE = '''
+*
+!transformers_cache
+!{task}
+!main.py
+'''
+
+
+def docker_build(exp_dir, task, name):
+    args_task = task
+    if task == LIDIRUS:
+        task = TERRA
+
+    path = join(exp_dir, 'Dockerfile')
+    text = DOCKERFILE.format(
+        task=task,
+        args_task=args_task
+    )
+    dump_text(text, path)
+
+    path = join(exp_dir, '.dockerignore')
+    text = DOCKERIGNORE.format(task=task)
+    dump_text(text, path)
+
+    copy(__file__, exp_dir)
+
+    try:
+        command = ['docker', 'build', '-t', name, '.']
+        log(f'Call docker: {command!r} in {exp_dir!r}')
+        subprocess.run(command, cwd=exp_dir)
+    finally:
+        for filename in ['Dockerfile', '.dockerignore', 'main.py']:
+            remove(join(exp_dir, filename))
+
+
+def docker_login():
+    subprocess.run([
+        'docker', 'login',
+        '--username', 'json_key',
+        '--password', DOCKER_KEY,
+        'cr.yandex'
+    ])
+
+
+def docker_push(image):
+    remote = f'{DOCKER_REGISTRY}/{image}'
+    subprocess.run(['docker', 'tag', image, remote])
+    subprocess.run(['docker', 'push', remote])
+
+
+def docker_pull(image):
+    remote = f'{DOCKER_REGISTRY}/{image}'
+    subprocess.run(['docker', 'pull', remote])
+    subprocess.run(['docker', 'tag', remote, image])
+
+
 #######
 #
 #   CLI
@@ -1043,6 +1170,22 @@ def cli_train(args):
 
 def cli_s3(args):
     s3_call(args.args)
+
+
+def cli_docker_build(args):
+    docker_build(args.exp_dir, args.task, args.name)
+
+
+def cli_docker_login(args):
+    docker_login()
+
+
+def cli_docker_push(args):
+    docker_push(args.image)
+
+
+def cli_docker_pull(args):
+    docker_pull(args.image)
 
 
 def cli_eval(args):
@@ -1080,6 +1223,25 @@ def main(args):
     sub = subs.add_parser('s3')
     sub.set_defaults(function=cli_s3)
     sub.add_argument('args', nargs=argparse.REMAINDER)
+
+    docker = subs.add_parser('docker').add_subparsers()
+
+    sub = docker.add_parser('build')
+    sub.set_defaults(function=cli_docker_build)
+    sub.add_argument('exp_dir', type=existing_path)
+    sub.add_argument('task', choices=TASKS)
+    sub.add_argument('name')
+
+    sub = docker.add_parser('login')
+    sub.set_defaults(function=cli_docker_login)
+
+    sub = docker.add_parser('push')
+    sub.set_defaults(function=cli_docker_push)
+    sub.add_argument('image')
+
+    sub = docker.add_parser('pull')
+    sub.set_defaults(function=cli_docker_pull)
+    sub.add_argument('image')
 
     sub = subs.add_parser('eval')
     sub.set_defaults(function=cli_eval)
