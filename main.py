@@ -933,6 +933,23 @@ def show_grid_scores(leaderboard, conf_task_scores,
     fig.tight_layout()
 
 
+def select_top_conf(task, model, conf_task_scores, confs=GRID_CONFS):
+    id, max_score = None, None
+    id_confs = {_.id: _ for _ in confs}
+    for conf_id, conf_task, score in conf_task_scores:
+        conf = id_confs[conf_id]
+        if conf.model == model and conf_task == task and (max_score is None or max_score < score):
+            id = conf_id
+            max_score = score
+    return id
+
+
+def find_grid_score(id, task, conf_task_scores):
+    for conf_id, conf_task, score in conf_task_scores:
+        if conf_id == id and conf_task == task:
+            return score
+
+
 #######
 #
 #   LEADERBOARD
