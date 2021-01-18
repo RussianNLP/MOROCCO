@@ -1016,7 +1016,7 @@ def parse_leaderboard(records, name_offset=1, scores_offset=5):
 ######
 
 
-def cli_serve(args):
+def cli_infer(args):
     log('Reading items from stdin')
     items = list(parse_jl(sys.stdin))
     log(f'Read {len(items)} items')
@@ -1063,8 +1063,8 @@ def main(args):
     parser.set_defaults(function=None)
     subs = parser.add_subparsers()
 
-    sub = subs.add_parser('serve')
-    sub.set_defaults(function=cli_serve)
+    sub = subs.add_parser('infer')
+    sub.set_defaults(function=cli_infer)
     sub.add_argument('exp_dir', type=existing_path)
     sub.add_argument('task', choices=TASKS)
     sub.add_argument('--batch-size', type=int, default=128)
