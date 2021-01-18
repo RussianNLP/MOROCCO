@@ -38,6 +38,9 @@ from collections import (
     defaultdict,
     namedtuple
 )
+from math import ceil
+from random import random
+from statistics import median
 import argparse
 
 import torch
@@ -46,6 +49,8 @@ import transformers
 import allennlp
 
 from tqdm import tqdm as log_progress
+
+from matplotlib import pyplot as plt
 
 from jiant.utils.config import (
     params_from_file,
@@ -828,6 +833,11 @@ GRID_CONFS = [
 ]
 
 
+#######
+#   EXP
+########
+
+
 def find_grid_exp_dir(exps_dir, conf_id, model, task):
     dir = join(exps_dir, conf_id)
     if exists(dir):
@@ -846,6 +856,11 @@ def grid_exp_finised(exp_dir, task):
     return exists(join(exp_dir, task, 'model.th'))
 
 
+#######
+#   PREDS
+######
+
+
 def dump_grid_preds(conf_id, task, items, dir=GRID_PREDS_DIR):
     dir = join(dir, conf_id)
     maybe_mkdir(dir)
@@ -860,6 +875,62 @@ def grid_preds_exist(conf_id, task, dir=GRID_PREDS_DIR):
 def load_grid_preds(conf_id, task, dir=GRID_PREDS_DIR):
     path = join(dir, conf_id, f'{task}.jl')
     return load_jl(path)
+
+
+#####
+#  SHOW
+#######
+
+
+def show_grid_scores(leaderboard, conf_task_scores,
+                     tasks=TASKS, models=MODELS, confs=GRID_CONFS,
+                     cols=3, width=2.5, height=2.5):
+    rows = ceil(len(tasks) / cols)
+    fig, axes = plt.subplots(rows, cols)
+
+    id_confs = {_.id: _ for _ in confs}
+    task_scores = defaultdict(list)
+    for model, task, score in leaderboard:
+        task_scores[task].append(score)
+
+    for ax, task in zip(axes.flatten(), tasks):
+        xs, ys, colors = [], [], []
+
+        for x, model in enumerate(models):
+            for id, grid_task, score in conf_task_scores:
+                grid_model = id_confs[id].model
+                if grid_model == model and grid_task == task:
+                    jitter = (random() - 0.5) / 4
+                    xs.append(x + jitter)
+                    ys.append(score)
+                    colors.append('blue')
+
+            for leaderboard_model, leaderboard_task, score in leaderboard:
+                if leaderboard_model == model and leaderboard_task == task:
+                    xs.append(x)
+                    ys.append(score)
+                    colors.append('red')
+
+        ax.scatter(xs, ys, color=colors, s=20, alpha=0.5)
+        ax.set_xticks(range(len(models)))
+        ax.set_xticklabels([])
+        ax.set_title(task)
+
+        scores = task_scores[task]
+        score = median(scores)
+        window = 0.1
+        lower, upper = score - window, score + window
+        ticks = [lower, score, upper]
+        ax.set_yticks(ticks)
+        ax.set_yticklabels([f'{_:0.2f}' for _ in ticks])
+        offset = 0.05
+        ax.set_ylim(lower - offset, upper + offset)
+
+    for ax in axes[-1]:
+        ax.set_xticklabels(models, rotation=90)
+
+    fig.set_size_inches(width * cols, height * rows)
+    fig.tight_layout()
 
 
 #######
@@ -917,7 +988,8 @@ def parse_leaderboard(records, name_offset=1, scores_offset=5):
     for record in records:
         model = LEADERBOARD_RENAMES[record[name_offset]]
         scores = [parse_leaderboard_score(_) for _ in record[scores_offset:]]
-        yield model, dict(zip(tasks, scores))
+        for task, score in zip(tasks, scores):
+            yield model, task, score
 
 
 #######
