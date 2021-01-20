@@ -35,8 +35,7 @@ from tempfile import (
 )
 from collections import (
     Counter,
-    defaultdict,
-    namedtuple
+    defaultdict
 )
 from math import ceil
 from random import random
@@ -292,6 +291,80 @@ def rm_any(path):
         rmtree(path)
     else:
         remove(path)
+
+
+####
+#
+#  RECORD
+#
+#####
+
+
+class Record(object):
+    __attributes__ = []
+
+    def __init__(self, *args, **kwargs):
+        for key in self.__attributes__:
+            setattr(self, key, None)
+
+        for key, value in zip(self.__attributes__, args):
+            setattr(self, key, value)
+
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
+    def __eq__(self, other):
+        return (
+            type(self) == type(other)
+            and all(
+                (getattr(self, _) == getattr(other, _))
+                for _ in self.__attributes__
+            )
+        )
+
+    def __ne__(self, other):
+        return not self == other
+
+    def __iter__(self):
+        return (getattr(self, _) for _ in self.__attributes__)
+
+    def __hash__(self):
+        return hash(tuple(self))
+
+    def __repr__(self):
+        name = self.__class__.__name__
+        args = ', '.join(
+            '{key}={value!r}'.format(
+                key=_,
+                value=getattr(self, _)
+            )
+            for _ in self.__attributes__
+        )
+        return '{name}({args})'.format(
+            name=name,
+            args=args
+        )
+
+    def _repr_pretty_(self, printer, cycle):
+        name = self.__class__.__name__
+        if cycle:
+            printer.text('{name}(...)'.format(name=name))
+        else:
+            printer.text('{name}('.format(name=name))
+            keys = self.__attributes__
+            size = len(keys)
+            if size:
+                with printer.indent(4):
+                    printer.break_()
+                    for index, key in enumerate(keys):
+                        printer.text(key + '=')
+                        value = getattr(self, key)
+                        printer.pretty(value)
+                        if index < size - 1:
+                            printer.text(',')
+                            printer.break_()
+                printer.break_()
+            printer.text(')')
 
 
 #####
@@ -822,10 +895,8 @@ def select_score(task, metrics):
 ######
 
 
-GridConf = namedtuple(
-    'GridConf',
-    ['id', 'model', 'seed']
-)
+class GridConf(Record):
+    __attributes__ = ['id', 'model', 'seed']
 
 
 GRID_CONFS = [
