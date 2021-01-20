@@ -927,7 +927,18 @@ GRID_CONFS = [
 
     GridConf('18', RUGPT3_SMALL, seed=1),
     GridConf('19', RUGPT3_MEDIUM, seed=1),
+
     GridConf('20', BERT_MULTILINGUAL, seed=1),
+    GridConf('21', BERT_MULTILINGUAL, seed=2),
+    GridConf('22', BERT_MULTILINGUAL, seed=3),
+
+    GridConf('23', RUGPT3_MEDIUM, seed=2),
+    GridConf('24', RUGPT3_MEDIUM, seed=3),
+
+    GridConf('25', RUGPT3_SMALL, seed=2),
+    GridConf('26', RUGPT3_SMALL, seed=3),
+
+    GridConf('27', RUGPT3_LARGE, seed=1),
 ]
 
 
