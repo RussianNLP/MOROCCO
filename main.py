@@ -2,6 +2,7 @@
 import re
 import sys
 from datetime import datetime
+from time import sleep
 from os import (
     environ,
     makedirs,
@@ -267,6 +268,11 @@ def load_text(path):
 def dump_text(text, path):
     with open(path, 'w') as file:
         file.write(text)
+
+
+def load_bytes(path):
+    with open(path, 'rb') as file:
+        return file.read()
 
 
 #####
@@ -1386,6 +1392,49 @@ def nvidia_stats(pid):
         record = nvidia_gpu_stats(guid)
         _, total_gpu_ram, gpu_usage, gpu_ram_usage = record
         return NvidiaStatsRecord(pid, gpu_ram, total_gpu_ram, gpu_usage, gpu_ram_usage)
+
+
+#####
+#
+#   BENCH
+#
+#####
+
+
+def bench(image, data_dir, task, batch_size=128):
+    title = TASK_TITLES[task]
+    filename = 'val.jsonl'
+    if task == LIDIRUS:
+        filename = title + '.jsonl'
+    path = join(data_dir, title, filename)
+    input = load_bytes(path)
+
+    name = image
+    command = [
+        'docker', 'run',
+        '--gpus', 'all',
+        '--interactive', '--rm',
+        '--name', image,
+        name,
+        '--batch-size', str(batch_size)
+    ]
+    process = subprocess.Popen(
+        command,
+        stdin=subprocess.PIPE,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    process.stdin.write(input)
+    process.stdin.close()
+
+    id = retriable(docker_find_id, name)
+    pid = docker_find_pid(id)
+
+    while process.poll() is None:
+        print(nvidia_stats(pid))
+        sleep(0.5)
+
+
 #######
 #
 #   CLI
@@ -1445,6 +1494,13 @@ def cli_eval(args):
     print(json.dumps(metrics, indent=2))
 
 
+def cli_bench(args):
+    bench(
+        args.image, args.data_dir, args.task,
+        batch_size=args.batch_size
+    )
+
+
 def existing_path(path):
     if not exists(path):
         raise argparse.ArgumentTypeError(f'{path!r} does not exist')
@@ -1498,6 +1554,13 @@ def main(args):
     sub.add_argument('task', choices=TASKS)
     sub.add_argument('preds', type=existing_path)
     sub.add_argument('targets', type=existing_path)
+
+    sub = subs.add_parser('bench')
+    sub.set_defaults(function=cli_bench)
+    sub.add_argument('image')
+    sub.add_argument('data_dir', type=existing_path)
+    sub.add_argument('task', choices=TASKS)
+    sub.add_argument('--batch-size', type=int, default=128)
 
     args = parser.parse_args(args)
     if not args.function:
