@@ -161,6 +161,10 @@ DOCKER_KEY = r'''
 '''
 DOCKER_REGISTRY = 'cr.yandex/crpdsbu4ons2b57kp60d'
 
+KB = 1024
+MB = 1024 * KB
+GB = 1024 * MB
+
 
 #########
 #
@@ -1206,6 +1210,46 @@ def docker_pull(image):
     subprocess.run(['docker', 'pull', remote])
     subprocess.run(['docker', 'tag', remote, image])
 
+
+class DockerStatsRecord(Record):
+    __attributes__ = ['id', 'cpu_usage', 'ram', 'total_ram']
+
+
+MIBS = {
+    'KiB': KB,
+    'MiB': MB,
+    'GiB': GB
+}
+
+
+def parse_docker_stats_ram(value):
+    value, mib = value[:-3], value[-3:]
+    return float(value) * MIBS[mib]
+
+
+def parse_docker_stats(record):
+    # 31e38e67c11     0.00%   162.4MiB / 94.32GiB
+    id, cpu_usage, ram = record
+    cpu_usage = float(cpu_usage.rstrip('%'))
+    ram, total_ram = ram.split(' / ')
+    ram = parse_docker_stats_ram(ram)
+    total_ram = parse_docker_stats_ram(total_ram)
+    return DockerStatsRecord(id, cpu_usage, ram, total_ram)
+
+
+def docker_stats(id):
+    # ~2 sec per call
+    command = [
+        'docker', 'stats', '--no-stream',
+        '--format', '{{.Container}}\t{{.CPUPerc}}\t{{.MemUsage}}',
+    ]
+    output = subprocess.check_output(command, encoding='utf8')
+    lines = output.splitlines()
+    records = parse_tsv(lines)
+    for record in records:
+        record = parse_docker_stats(record)
+        if record.id == id:
+            return record
 
 #######
 #
