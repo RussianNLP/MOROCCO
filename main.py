@@ -1253,6 +1253,98 @@ def docker_stats(id):
 
 #######
 #
+#   NVIDIA
+#
+######
+
+
+class NvidiaGPUStatsRecord(Record):
+    __attributes__ = ['guid', 'total_gpu_ram', 'gpu_usage', 'gpu_ram_usage']
+
+
+class NvidiaProcessStatsRecord(Record):
+    __attributes__ = ['pid', 'guid', 'gpu_ram']
+
+
+class NvidiaStatsRecord(Record):
+    __attributes__ = ['pid', 'gpu_ram', 'total_gpu_ram', 'gpu_usage', 'gpu_ram_usage']
+
+
+def parse_nvidia_gpu_ram(value):
+    # 4443 MiB
+    value, mib = value[:-3], value[-3:]
+    value = value.strip()
+    return float(value) * MIBS[mib]
+
+
+def parse_nvidia_usage(value):
+    # 22 %
+    return float(value[:-2]) / 100
+
+
+def parse_nvidia_gpu_stats(record):
+    # memory.total [MiB], utilization.gpu [%], utilization.memory [%]
+    # GPU-777aa4a9-8dac-a61b-5b5a-118d3e947546, 32510 MiB, 43 %, 22 %
+    guid, total_gpu_ram, gpu_usage, gpu_ram_usage = record
+    total_gpu_ram = parse_nvidia_gpu_ram(total_gpu_ram)
+    gpu_usage = parse_nvidia_usage(gpu_usage)
+    gpu_ram_usage = parse_nvidia_usage(gpu_ram_usage)
+    return NvidiaGPUStatsRecord(guid, total_gpu_ram, gpu_usage, gpu_ram_usage)
+    
+
+def parse_nvidia_process_stats(record):
+    # pid, gpu_uuid, used_gpu_memory [MiB]
+    # 10042, GPU-777aa4a9-8dac-a61b-5b5a-118d3e947546, 4435 MiB
+    pid, guid, gpu_ram = record
+    gpu_ram = parse_nvidia_gpu_ram(gpu_ram)
+    return NvidiaProcessStatsRecord(pid, guid, gpu_ram)
+
+
+def parse_nvidia_output(output):
+    lines = output.splitlines()
+    records = parse_tsv(lines, sep=', ')
+    next(records)
+    return records
+
+
+def nvidia_gpu_stats(guid):
+    # ~0.1 secs per call
+    command = [
+        'nvidia-smi', '--format=csv',
+        '--query-gpu=gpu_uuid,memory.total,utilization.gpu,utilization.memory'
+    ]
+    output = subprocess.check_output(command, encoding='utf8')
+    records = parse_nvidia_output(output)
+    for record in records:
+        record = parse_nvidia_gpu_stats(record)
+        if record.guid == guid:
+            return record
+
+
+def nvidia_process_stats(pid):
+    # ~0.1 secs per call
+    command = [
+        'nvidia-smi', '--format=csv',
+        '--query-compute-apps=pid,gpu_uuid,used_memory'
+    ]
+    output = subprocess.check_output(command, encoding='utf8')
+    records = parse_nvidia_output(output)
+    for record in records:
+        record = parse_nvidia_process_stats(record)
+        if record.pid == pid:
+            
+            return record
+
+
+def nvidia_stats(pid):
+    record = nvidia_process_stats(pid)
+    if record:
+        pid, guid, gpu_ram = record
+        record = nvidia_gpu_stats(guid)
+        _, total_gpu_ram, gpu_usage, gpu_ram_usage = record
+        return NvidiaStatsRecord(pid, gpu_ram, total_gpu_ram, gpu_usage, gpu_ram_usage)
+#######
+#
 #   CLI
 #
 ######
