@@ -1262,6 +1262,38 @@ def docker_stats(id):
         if record.id == id:
             return record
 
+
+def docker_find_id(name):
+    command = [
+        'docker', 'container', 'ls',
+        '--format', '{{.Names}}\t{{.ID}}'
+    ]
+    output = subprocess.check_output(command, encoding='utf8')
+    lines = output.splitlines()
+    records = parse_tsv(lines)
+    for output_name, id in records:
+        if output_name == name:
+            return id
+
+
+def docker_find_pid(id):
+    command = [
+        'docker', 'inspect',
+        '--format', '{{.State.Pid}}',
+        id
+    ]
+    output = subprocess.check_output(command, encoding='utf8')
+    return output.strip()
+
+
+def retriable(function, *args, timeout=0.5, retries=5):
+    for _ in range(retries):
+        value = function(*args)
+        if value is not None:
+            return value
+        sleep(timeout)
+
+
 #######
 #
 #   NVIDIA
