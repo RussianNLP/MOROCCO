@@ -2,7 +2,10 @@
 import re
 import sys
 from datetime import datetime
-from time import sleep
+from time import (
+    time,
+    sleep
+)
 from os import (
     environ,
     makedirs,
@@ -20,10 +23,11 @@ from os.path import (
 )
 from shutil import (
     copy,
-    copytree
+    copytree,
+    rmtree
 )
-from shutil import rmtree
 from fnmatch import fnmatch
+from uuid import uuid1
 import logging
 import json
 import subprocess
@@ -38,18 +42,23 @@ from collections import (
     Counter,
     defaultdict
 )
+from itertools import (
+    cycle,
+    islice
+)
 from math import ceil
 from random import random
 from statistics import median
 import argparse
+
+from tqdm import tqdm as log_progress
 
 import torch
 import pytorch_pretrained_bert
 import transformers
 import allennlp
 
-from tqdm import tqdm as log_progress
-
+import pandas as pd
 from matplotlib import pyplot as plt
 
 from jiant.utils.config import (
@@ -137,6 +146,7 @@ VAL = 'val'
 
 EXPS_DIR = expanduser('~/exps')
 GRID_PREDS_DIR = expanduser('~/preds')
+BENCHES_DIR = expanduser('~/benches')
 
 JIANT_DIR = expanduser('~/jiant-v1-legacy')
 JIANT_CONF = join(JIANT_DIR, 'jiant/config/superglue_bert.conf')
@@ -229,10 +239,14 @@ def load_lines(path):
             yield line.rstrip('\n')
 
 
+def write_lines(lines, file):
+    for line in lines:
+        file.write(line + '\n')
+
+
 def dump_lines(lines, path):
     with open(path, 'w') as file:
-        for line in lines:
-            file.write(line + '\n')
+        write_lines(lines, file)
 
 
 def parse_jl(lines):
@@ -268,11 +282,6 @@ def load_text(path):
 def dump_text(text, path):
     with open(path, 'w') as file:
         file.write(text)
-
-
-def load_bytes(path):
-    with open(path, 'rb') as file:
-        return file.read()
 
 
 #####
@@ -340,6 +349,23 @@ class Record(object):
 
     def __hash__(self):
         return hash(tuple(self))
+
+    @property
+    def as_json(self):
+        data = {}
+        for key in self.__attributes__:
+            value = getattr(self, key)
+            if value is not None:
+                data[key] = value
+        return data
+
+    @classmethod
+    def from_json(cls, data):
+        args = []
+        for key in cls.__attributes__:
+            value = data.get(key)
+            args.append(value)
+        return cls(*args)
 
     def __repr__(self):
         name = self.__class__.__name__
@@ -1228,76 +1254,63 @@ def docker_pull(image):
     subprocess.run(['docker', 'tag', remote, image])
 
 
-class DockerStatsRecord(Record):
-    __attributes__ = ['id', 'cpu_usage', 'ram', 'total_ram']
-
-
-MIBS = {
-    'KiB': KB,
-    'MiB': MB,
-    'GiB': GB
-}
-
-
-def parse_docker_stats_ram(value):
-    value, mib = value[:-3], value[-3:]
-    return float(value) * MIBS[mib]
-
-
-def parse_docker_stats(record):
-    # 31e38e67c11     0.00%   162.4MiB / 94.32GiB
-    id, cpu_usage, ram = record
-    cpu_usage = float(cpu_usage.rstrip('%'))
-    ram, total_ram = ram.split(' / ')
-    ram = parse_docker_stats_ram(ram)
-    total_ram = parse_docker_stats_ram(total_ram)
-    return DockerStatsRecord(id, cpu_usage, ram, total_ram)
-
-
-def docker_stats(id):
-    # ~2 sec per call
-    command = [
-        'docker', 'stats', '--no-stream',
-        '--format', '{{.Container}}\t{{.CPUPerc}}\t{{.MemUsage}}',
-    ]
-    output = subprocess.check_output(command, encoding='utf8')
-    lines = output.splitlines()
-    records = parse_tsv(lines)
-    for record in records:
-        record = parse_docker_stats(record)
-        if record.id == id:
-            return record
-
-
-def docker_find_id(name):
-    command = [
-        'docker', 'container', 'ls',
-        '--format', '{{.Names}}\t{{.ID}}'
-    ]
-    output = subprocess.check_output(command, encoding='utf8')
-    lines = output.splitlines()
-    records = parse_tsv(lines)
-    for output_name, id in records:
-        if output_name == name:
-            return id
-
-
-def docker_find_pid(id):
+def docker_find_pid(name):
     command = [
         'docker', 'inspect',
         '--format', '{{.State.Pid}}',
-        id
+        name
     ]
-    output = subprocess.check_output(command, encoding='utf8')
-    return output.strip()
+    output = subprocess.run(
+        command,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.DEVNULL,
+        encoding='utf8'
+    ).stdout
+    pid = output.strip()
+    if pid:
+        return pid
 
 
-def retriable(function, *args, timeout=0.5, retries=5):
+def retriable(function, *args, timeout=0.2, retries=10):
     for _ in range(retries):
         value = function(*args)
         if value is not None:
             return value
         sleep(timeout)
+
+
+######
+#
+#   PS
+#
+####
+
+
+class PsStatsRecord(Record):
+    __attributes__ = ['pid', 'cpu_usage', 'ram']
+
+
+def ps_stats(pid):
+    command = [
+        'ps', '--no-headers', '-q', str(pid),
+        '-o', '%cpu,rss'
+    ]
+    output = subprocess.run(
+        command,
+        stdout=subprocess.PIPE,
+        encoding='utf8'
+    ).stdout
+
+    # 0.2  18988
+    parts = output.split()
+    if not parts:
+        return
+
+    cpu_usage, ram = parts
+    # 90.1 / 100 -> 0.900999999
+    cpu_usage = round(float(cpu_usage) / 100, 4)
+    ram = int(ram) * KB
+    return PsStatsRecord(pid, cpu_usage, ram)
 
 
 #######
@@ -1315,15 +1328,18 @@ class NvidiaProcessStatsRecord(Record):
     __attributes__ = ['pid', 'guid', 'gpu_ram']
 
 
-class NvidiaStatsRecord(Record):
-    __attributes__ = ['pid', 'gpu_ram', 'total_gpu_ram', 'gpu_usage', 'gpu_ram_usage']
+MIBS = {
+    'KiB': KB,
+    'MiB': MB,
+    'GiB': GB
+}
 
 
 def parse_nvidia_gpu_ram(value):
     # 4443 MiB
     value, mib = value[:-3], value[-3:]
     value = value.strip()
-    return float(value) * MIBS[mib]
+    return int(float(value) * MIBS[mib])
 
 
 def parse_nvidia_usage(value):
@@ -1357,7 +1373,6 @@ def parse_nvidia_output(output):
 
 
 def nvidia_gpu_stats(guid):
-    # ~0.1 secs per call
     command = [
         'nvidia-smi', '--format=csv',
         '--query-gpu=gpu_uuid,memory.total,utilization.gpu,utilization.memory'
@@ -1371,7 +1386,6 @@ def nvidia_gpu_stats(guid):
 
 
 def nvidia_process_stats(pid):
-    # ~0.1 secs per call
     command = [
         'nvidia-smi', '--format=csv',
         '--query-compute-apps=pid,gpu_uuid,used_memory'
@@ -1381,17 +1395,7 @@ def nvidia_process_stats(pid):
     for record in records:
         record = parse_nvidia_process_stats(record)
         if record.pid == pid:
-            
             return record
-
-
-def nvidia_stats(pid):
-    record = nvidia_process_stats(pid)
-    if record:
-        pid, guid, gpu_ram = record
-        record = nvidia_gpu_stats(guid)
-        _, total_gpu_ram, gpu_usage, gpu_ram_usage = record
-        return NvidiaStatsRecord(pid, gpu_ram, total_gpu_ram, gpu_usage, gpu_ram_usage)
 
 
 #####
@@ -1401,38 +1405,141 @@ def nvidia_stats(pid):
 #####
 
 
-def bench(image, data_dir, task, batch_size=128):
+class BenchRecord(Record):
+    __attributes__ = [
+        'timestamp',
+        'cpu_usage', 'ram',
+        'gpu_usage', 'gpu_ram',
+    ]
+
+
+def short_uid(cap=5):
+    return str(uuid1())[:cap]
+
+
+def bench(image, data_dir, task, input_size=10000, batch_size=128, delay=0.3):
     title = TASK_TITLES[task]
     filename = 'val.jsonl'
     if task == LIDIRUS:
         filename = title + '.jsonl'
     path = join(data_dir, title, filename)
-    input = load_bytes(path)
+    lines = load_lines(path)
+    lines = islice(cycle(lines), input_size)
 
-    name = image
+    name = f'{image}_{short_uid()}'
     command = [
         'docker', 'run',
         '--gpus', 'all',
         '--interactive', '--rm',
-        '--name', image,
-        name,
+        '--name', name,
+        image,
         '--batch-size', str(batch_size)
     ]
     process = subprocess.Popen(
         command,
         stdin=subprocess.PIPE,
         stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
+        universal_newlines=True
     )
-    process.stdin.write(input)
+    write_lines(lines, process.stdin)
     process.stdin.close()
 
-    id = retriable(docker_find_id, name)
-    pid = docker_find_pid(id)
+    pid = retriable(docker_find_pid, name)
+    if not pid:
+        raise RuntimeError(f'pid not found, container {name!r}')
 
+    record = BenchRecord()
     while process.poll() is None:
-        print(nvidia_stats(pid))
-        sleep(0.5)
+        stats = nvidia_process_stats(pid)
+        if stats:
+            _, guid, record.gpu_ram = nvidia_process_stats(pid)
+            _, total_gpu_ram, record.gpu_usage, gpu_ram_usage = nvidia_gpu_stats(guid)
+
+        stats = ps_stats(pid)
+        if stats:  # process finished
+            _, record.cpu_usage, record.ram = stats
+
+        record.timestamp = time()
+        yield record
+        sleep(delay)
+
+
+#######
+#  REGISTRY
+#########
+
+
+class BenchRegistryRecord(Record):
+    __attributes__ = ['model', 'task', 'input_size', 'batch_size', 'index']
+
+
+def list_bench_registry(dir=BENCHES_DIR):
+    for model in listdir(dir):
+        for task in listdir(join(dir, model)):
+            for filename in listdir(join(dir, model, task)):
+                match = re.match(r'(\d+)_(\d+)_(\d+)\.jl', filename)
+                if match:
+                    input_size, batch_size, index = map(int, match.groups())
+                    yield BenchRegistryRecord(
+                        model, task,
+                        input_size, batch_size, index
+                    )
+
+
+def bench_path(model, task, input_size, batch_size, index=1, dir=BENCHES_DIR):
+    return join(dir, model, task, f'{input_size}_{batch_size}_{index:02d}.jl')
+
+
+def load_bench(path):
+    lines = load_lines(path)
+    items = parse_jl(lines)
+    for item in items:
+        yield BenchRecord.from_json(item)
+
+
+########
+#  SHOW
+######
+
+
+def show_benches(benches, width=8, height=6):
+    tables = []
+    for bench in benches:
+        table = pd.DataFrame.from_records(bench)
+        table.columns = BenchRecord.__attributes__
+        tables.append(table)
+
+    keys = ['cpu_usage', 'ram', 'gpu_usage', 'gpu_ram']
+    lims = {
+        key: max(table[key].max() for table in tables)
+        for key in keys
+    }
+
+    fig, axes = plt.subplots(len(keys), 1, sharex=True)
+    axes = axes.flatten()
+
+    for key, ax in zip(keys, axes):
+        for table in tables:
+            x = table.timestamp - table.timestamp.min()
+            ax.plot(x, table[key], color='blue', alpha=0.3)
+
+        lim = lims[key]
+        ax.set_yticks([lim])
+        if key in ['ram', 'gpu_ram']:
+            label = '{} mb'.format(int(lim / MB))
+        else:
+            label = '{}%'.format(int(lim * 100))
+        ax.set_yticklabels([label])
+        ax.set_ylabel(key)
+        ax.yaxis.set_label_position('left')
+        ax.yaxis.set_ticks_position('right')
+
+    fig.set_size_inches(width, height)
+    fig.tight_layout()
+
+
+def show_bench(bench, **kwargs):
+    show_benches([bench], **kwargs)
 
 
 #######
@@ -1495,10 +1602,19 @@ def cli_eval(args):
 
 
 def cli_bench(args):
-    bench(
+    log(
+        f'Bench {args.image!r}, input_size={args.input_size}, '
+        f'batch_size={args.batch_size}'
+    )
+    records = bench(
         args.image, args.data_dir, args.task,
+        input_size=args.input_size,
         batch_size=args.batch_size
     )
+    items = (_.as_json for _ in records)
+    lines = format_jl(items)
+    for line in lines:
+        print(line, flush=True)
 
 
 def existing_path(path):
@@ -1560,6 +1676,7 @@ def main(args):
     sub.add_argument('image')
     sub.add_argument('data_dir', type=existing_path)
     sub.add_argument('task', choices=TASKS)
+    sub.add_argument('--input-size', type=int, default=10000)
     sub.add_argument('--batch-size', type=int, default=128)
 
     args = parser.parse_args(args)
