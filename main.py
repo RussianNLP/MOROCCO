@@ -48,7 +48,7 @@ from itertools import (
 )
 from math import ceil
 from random import random
-from statistics import median
+import statistics
 import argparse
 
 from tqdm import tqdm as log_progress
@@ -1068,7 +1068,7 @@ def show_grid_scores(leaderboard, conf_task_scores,
         ax.set_title(task)
 
         scores = task_scores[task]
-        score = median(scores)
+        score = statistics.median(scores)
         window = 0.1
         lower, upper = score - window, score + window
         ticks = [lower, score, upper]
