@@ -1339,6 +1339,7 @@ def ps_stats(pid):
     output = subprocess.run(
         command,
         stdout=subprocess.PIPE,
+        stderr=subprocess.DEVNULL,
         encoding='utf8'
     ).stdout
 
