@@ -109,13 +109,13 @@ TASK_TITLES = {
 HUMAN = 'human'
 TFIDF = 'tfidf'
 
-RUBERT = 'rubert'  # 700MB
+RUBERT = 'rubert'
 RUBERT_CONVERSATIONAL = 'rubert-conversational'
 BERT_MULTILINGUAL = 'bert-multilingual'
 
-RUGPT3_LARGE = 'rugpt3-large'  # 3GB
-RUGPT3_MEDIUM = 'rugpt3-medium'  # 1.7GB
-RUGPT3_SMALL = 'rugpt3-small'  # 700MB
+RUGPT3_LARGE = 'rugpt3-large'
+RUGPT3_MEDIUM = 'rugpt3-medium'
+RUGPT3_SMALL = 'rugpt3-small'
 
 MODELS = [
     RUBERT,
@@ -134,6 +134,20 @@ MODEL_HUB_NAMES = {
     RUGPT3_LARGE: 'sberbank-ai/rugpt3large_based_on_gpt2',
     RUGPT3_MEDIUM: 'sberbank-ai/rugpt3medium_based_on_gpt2',
     RUGPT3_SMALL: 'sberbank-ai/rugpt3small_based_on_gpt2',
+}
+
+KB = 1024
+MB = 1024 * KB
+GB = 1024 * MB
+
+MODEL_HUB_SIZES = {
+    RUBERT: 679 * MB,
+    RUBERT_CONVERSATIONAL: 679 * MB,
+    BERT_MULTILINGUAL: 682 * MB,
+
+    RUGPT3_SMALL: 526 * MB,
+    RUGPT3_MEDIUM: 1.7 * GB,
+    RUGPT3_LARGE: 3.0 * GB,
 }
 
 DATA_DIR = expanduser('~/data')
@@ -171,10 +185,6 @@ DOCKER_KEY = r'''
 }
 '''
 DOCKER_REGISTRY = 'cr.yandex/crpdsbu4ons2b57kp60d'
-
-KB = 1024
-MB = 1024 * KB
-GB = 1024 * MB
 
 
 #########
