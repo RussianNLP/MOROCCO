@@ -1289,6 +1289,37 @@ def retriable(function, *args, timeout=0.2, retries=10):
         sleep(timeout)
 
 
+def show_docker_leaderboard(leaderboard, docker_scores, models=MODELS, tasks=TASKS):
+    leaderboard_index = {
+        (model, task): score
+        for model, task, score in leaderboard
+    }
+    docker_scores_index = {
+        (model, task): score
+        for model, task, score in docker_scores
+    }
+
+    data = []
+    for model in models:
+        for task in tasks:
+            leaderboard_score = leaderboard_index[model, task]
+            docker_score = docker_scores_index.get((model, task))
+            if not docker_score:
+                value = ''
+            else:
+                label = '✅' if docker_score >= leaderboard_score else '❌'
+                value = f'{leaderboard_score:0.2f} / {docker_score:0.2f} {label}'
+            data.append([model, task, value])
+
+    table = pd.DataFrame(data, columns=['model', 'task', 'value'])
+    table = table.pivot(index='model', columns='task', values='value')
+    table = table.reindex(index=models, columns=tasks)
+    table.columns.name = None
+    table.index.name = None
+
+    return table
+
+
 ######
 #
 #   PS
