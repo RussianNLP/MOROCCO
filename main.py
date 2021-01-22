@@ -47,7 +47,11 @@ from itertools import (
     islice
 )
 from math import ceil
-from random import random
+from random import (
+    seed,
+    random,
+    sample,
+)
 import statistics
 import argparse
 
@@ -1602,6 +1606,180 @@ def show_benches(benches, width=8, height=6):
 
 def show_bench(bench, **kwargs):
     show_benches([bench], **kwargs)
+
+
+#######
+#   STATS
+#####
+
+
+class BenchStats(Record):
+    __attributes__ = ['total_time', 'gpu_time', 'max_gpu_ram']
+
+
+def safe_max(values):
+    values = list(values)
+    if values:
+        return max(values)
+
+
+def bench_stats(records, gpu_usage_treshold=0.1):
+    total_time = (
+        records[-1].timestamp
+        - records[0].timestamp
+    )
+    max_gpu_ram = safe_max(
+        _.gpu_ram
+        for _ in records
+        if _.gpu_ram
+    )
+
+    previous = None
+    gpu_time = 0
+    for record in records:
+        if record.gpu_usage and record.gpu_usage >= gpu_usage_treshold and previous:
+            gpu_time += (record.timestamp - previous)
+        previous = record.timestamp
+
+    return BenchStats(total_time, gpu_time, max_gpu_ram)
+
+
+#######
+#   GROUP
+#######
+
+
+class BenchGroup(Record):
+    __attributes__ = [
+        'model', 'task', 'input_size',
+        'gpu_rams', 'init_times', 'total_times', 'gpu_times'
+    ]
+
+
+def load_group_benches(registry, models=MODELS, tasks=TASKS,
+                       input_size=2000, batch_size=32):
+    for model in models:
+        for task in tasks:
+            records = query_bench_registry(
+                registry,
+                input_size=1,
+                batch_size=1,
+                model=model,
+                task=task
+            )
+            benches = (load_bench_registry(_) for _ in records)
+            stats = [bench_stats(_) for _ in benches]
+
+            gpu_rams = [_.max_gpu_ram for _ in stats if _.max_gpu_ram]
+            init_times = [_.total_time for _ in stats]
+
+            records = query_bench_registry(
+                registry,
+                input_size=input_size,
+                batch_size=batch_size,
+                model=model,
+                task=task
+            )
+            benches = (load_bench_registry(_) for _ in records)
+            stats = [bench_stats(_) for _ in benches]
+
+            total_times = [_.total_time for _  in stats]
+            gpu_times = [_.gpu_time for _ in stats]
+
+            yield BenchGroup(
+                model, task, input_size,
+                gpu_rams, init_times, total_times, gpu_times
+            )
+
+
+#######
+#   REPORT
+#######
+
+
+def bench_report_table(data, models=MODELS, tasks=TASKS):
+    table = pd.DataFrame(data, columns=['model', 'task', 'value'])
+    table = table.pivot(index='model', columns='task', values='value')
+    table.columns.name = None
+    table.index.name = None
+    return table.reindex(index=models, columns=tasks)
+
+
+def gpu_ram_bench_report_data(records):
+    for record in records:
+        if record.gpu_rams:
+            value = ' '.join(
+                '{:0.1f}'.format(_ / GB)
+                for _ in record.gpu_rams
+            )
+        else:
+            value = ''
+        yield record.model, record.task, value
+
+
+def show_gpu_ram_bench_report(records):
+    data = gpu_ram_bench_report_data(records)
+    return bench_report_table(data)
+
+
+def show_gpu_ram_hub_size_bench_report(records, models=MODELS):
+    data = []
+    for record in records:
+        if record.gpu_rams:
+            value = statistics.median(record.gpu_rams)
+            data.append([record.model, record.task, value])
+
+    table = pd.DataFrame(data, columns=['model', 'task', 'value'])
+    table = table.pivot(index='model', columns='task', values='value')
+    table = table.mean(axis='columns')
+
+    table = pd.DataFrame({
+        'gpu_ram': table,
+        'hub_size': MODEL_HUB_SIZES
+    })
+    table /= GB
+
+    table['ratio'] = table.gpu_ram / table.hub_size
+    table = table.applymap('{:0.2f}'.format)
+    table = table.reindex(index=models)
+    table.index.name = None
+
+    return table
+
+
+def init_time_bench_report_data(records):
+    for record in records:
+        if record.init_times:
+            value = ' '.join(
+                '{:0.0f}'.format(_)
+                for _ in sorted(record.init_times)
+            )
+        else:
+            value = ''
+        yield record.model, record.task, value
+
+
+def show_init_time_bench_report(records):
+    data = init_time_bench_report_data(records)
+    return bench_report_table(data)
+
+
+def proc_time_bench_report_data(records):
+    for record in records:
+        if record.init_times and record.total_times:
+            init_time = statistics.median(record.init_times)
+            value = ' '.join(
+                '{:0.0f}'.format(_ - init_time)
+                for _ in sorted(record.total_times)
+            )
+        else:
+            value = ''
+        yield record.model, record.task, value
+
+
+def show_proc_time_bench_report(records):
+    data = proc_time_bench_report_data(records)
+    return bench_report_table(data)
 
 
 #######
