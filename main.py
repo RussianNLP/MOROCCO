@@ -1528,6 +1528,21 @@ def list_bench_registry(dir=BENCHES_DIR):
                     )
 
 
+def match_bench_registry_record(record, **kwargs):
+    for key, value in kwargs.items():
+        if not isinstance(value, (tuple, list)):
+            value = [value]
+        if getattr(record, key) not in value:
+            return False
+    return True
+
+
+def query_bench_registry(records, **kwargs):
+    for record in records:
+        if match_bench_registry_record(record, **kwargs):
+            yield record
+
+
 def bench_path(model, task, input_size, batch_size, index=1, dir=BENCHES_DIR):
     return join(dir, model, task, f'{input_size}_{batch_size}_{index:02d}.jl')
 
@@ -1537,6 +1552,11 @@ def load_bench(path):
     items = parse_jl(lines)
     for item in items:
         yield BenchRecord.from_json(item)
+
+
+def load_bench_registry(record):
+    path = bench_path(*record)
+    return list(load_bench(path))
 
 
 ########
