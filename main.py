@@ -655,7 +655,7 @@ def infer_jiant(exp_dir, task, items, batch_size=4):
 ######
 
 
-def load_task(task, access, split, dir=DATA_DIR):
+def task_path(task, access, split, dir=DATA_DIR):
     title = TASK_TITLES[task]
 
     name = split
@@ -665,7 +665,11 @@ def load_task(task, access, split, dir=DATA_DIR):
         elif access == PRIVATE:
             name = 'test_with_answers'
 
-    path = join(dir, access, title, f'{name}.jsonl')
+    return join(dir, access, title, f'{name}.jsonl')
+
+
+def load_task(task, access, split):
+    path = task_path(task, access, split)
     return load_jl(path)
 
 
@@ -1460,11 +1464,7 @@ def short_uid(cap=5):
 
 
 def bench(image, data_dir, task, input_size=10000, batch_size=128, delay=0.3):
-    title = TASK_TITLES[task]
-    filename = 'val.jsonl'
-    if task == LIDIRUS:
-        filename = title + '.jsonl'
-    path = join(data_dir, title, filename)
+    path = task_path(task, PUBLIC, VAL, dir=data_dir)
     lines = load_lines(path)
     lines = islice(cycle(lines), input_size)
 
