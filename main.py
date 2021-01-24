@@ -1322,7 +1322,7 @@ def show_docker_leaderboard(leaderboard, docker_scores, models=MODELS, tasks=TAS
                 value = ''
             else:
                 label = '✅' if docker_score >= leaderboard_score else '❌'
-                value = f'{leaderboard_score:0.2f} / {docker_score:0.2f} {label}'
+                value = f'{label} {leaderboard_score:.3f} {docker_score:.3f}'
             data.append([model, task, value])
 
     table = pd.DataFrame(data, columns=['model', 'task', 'value'])
