@@ -117,6 +117,7 @@ There are 9 tasks and 6 baseline models, so we built 9 * 6 containers: `rubert-d
     </tr>
   </tbody>
 </table>
+
 *Scores on leaderboard versus scores of Docker containters*
 
 ## Performance
@@ -215,6 +216,7 @@ To measure model GPU RAM usage we run a container with a single record as input,
     </tr>
   </tbody>
 </table>
+
 *GPU RAM usage, GB*
 
 ### Inference speed
@@ -311,6 +313,7 @@ To measure inrefence speed we run a container with 2000 records as input, with b
     </tr>
   </tbody>
 </table>
+
 *Inference speed, records per second*
 
 ## Development
