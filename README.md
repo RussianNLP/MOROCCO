@@ -465,6 +465,7 @@ python main.py s3 sync //exps/04/rucos exps/rubert/rucos
 python main.py s3 sync //exps/08/russe exps/rubert/russe
 python main.py s3 sync //exps/04/rwsd exps/rubert/rwsd
 python main.py s3 sync //exps/04/terra exps/rubert/terra
+python main.py s3 sync //exps/04/transformers_cache exps/rubert/transformers_cache
 python main.py s3 sync //exps/03/danetqa exps/rubert-conversational/danetqa
 python main.py s3 sync //exps/13/muserc exps/rubert-conversational/muserc
 python main.py s3 sync //exps/12/parus exps/rubert-conversational/parus
@@ -473,9 +474,40 @@ python main.py s3 sync //exps/01/rucos exps/rubert-conversational/rucos
 python main.py s3 sync //exps/15/russe exps/rubert-conversational/russe
 python main.py s3 sync //exps/14/rwsd exps/rubert-conversational/rwsd
 python main.py s3 sync //exps/13/terra exps/rubert-conversational/terra
-
-python main.py s3 sync //exps/04/transformers_cache exps/rubert/transformers_cache
 python main.py s3 sync //exps/13/transformers_cache exps/rubert-conversational/transformers_cache
+python main.py s3 sync //exps/21/danetqa exps/bert-multilingual/danetqa
+python main.py s3 sync //exps/20/parus exps/bert-multilingual/parus
+python main.py s3 sync //exps/21/rcb exps/bert-multilingual/rcb
+python main.py s3 sync //exps/20/rucos exps/bert-multilingual/rucos
+python main.py s3 sync //exps/20/russe exps/bert-multilingual/russe
+python main.py s3 sync //exps/20/rwsd exps/bert-multilingual/rwsd
+python main.py s3 sync //exps/22/terra exps/bert-multilingual/terra
+python main.py s3 sync //exps/22/transformers_cache exps/bert-multilingual/transformers_cache
+python main.py s3 sync //exps/27/danetqa exps/rugpt3-large/danetqa
+python main.py s3 sync //exps/27/muserc exps/rugpt3-large/muserc
+python main.py s3 sync //exps/27/parus exps/rugpt3-large/parus
+python main.py s3 sync //exps/27/rcb exps/rugpt3-large/rcb
+python main.py s3 sync //exps/27/russe exps/rugpt3-large/russe
+python main.py s3 sync //exps/27/rwsd exps/rugpt3-large/rwsd
+python main.py s3 sync //exps/27/terra exps/rugpt3-large/terra
+python main.py s3 sync //exps/27/transformers_cache exps/rugpt3-large/transformers_cache
+python main.py s3 sync //exps/19/danetqa exps/rugpt3-medium/danetqa
+python main.py s3 sync //exps/24/muserc exps/rugpt3-medium/muserc
+python main.py s3 sync //exps/24/parus exps/rugpt3-medium/parus
+python main.py s3 sync //exps/19/rcb exps/rugpt3-medium/rcb
+python main.py s3 sync //exps/19/russe exps/rugpt3-medium/russe
+python main.py s3 sync //exps/24/rwsd exps/rugpt3-medium/rwsd
+python main.py s3 sync //exps/24/terra exps/rugpt3-medium/terra
+python main.py s3 sync //exps/24/transformers_cache exps/rugpt3-medium/transformers_cache
+python main.py s3 sync //exps/25/danetqa exps/rugpt3-small/danetqa
+python main.py s3 sync //exps/25/muserc exps/rugpt3-small/muserc
+python main.py s3 sync //exps/18/parus exps/rugpt3-small/parus
+python main.py s3 sync //exps/25/rcb exps/rugpt3-small/rcb
+python main.py s3 sync //exps/18/rucos exps/rugpt3-small/rucos
+python main.py s3 sync //exps/25/russe exps/rugpt3-small/russe
+python main.py s3 sync //exps/25/rwsd exps/rugpt3-small/rwsd
+python main.py s3 sync //exps/18/terra exps/rugpt3-small/terra
+python main.py s3 sync //exps/18/transformers_cache exps/rugpt3-small/transformers_cache
 ```
 
 No sudo docker.
