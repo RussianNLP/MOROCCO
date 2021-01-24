@@ -1728,6 +1728,21 @@ def show_gpu_ram_bench_report(records):
     return bench_report_table(data)
 
 
+def gpu_ram_bench_report_data2(records):
+    for record in records:
+        if record.gpu_rams:
+            gpu_ram = statistics.median(record.gpu_rams)
+            value = '{:0.2f}'.format(gpu_ram / GB)
+        else:
+            value = ''
+        yield record.model, record.task, value
+
+
+def show_gpu_ram_bench_report2(records):
+    data = gpu_ram_bench_report_data2(records)
+    return bench_report_table(data)
+
+
 def show_gpu_ram_hub_size_bench_report(records, models=MODELS):
     data = []
     for record in records:
