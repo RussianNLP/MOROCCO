@@ -1803,6 +1803,26 @@ def show_proc_time_bench_report(records):
     return bench_report_table(data)
 
 
+def rps_bench_report_data(records, input_size=2000):
+    for record in records:
+        if record.init_times and record.total_times:
+            init_time = statistics.median(record.init_times)
+            proc_time = statistics.median( 
+                _ - init_time
+                for _ in record.total_times
+            )
+            rps = input_size / proc_time
+            value = '{:0.0f}'.format(rps)
+        else:
+            value = ''
+        yield record.model, record.task, value
+
+
+def show_rps_bench_report(records):
+    data = rps_bench_report_data(records)
+    return bench_report_table(data)
+
+
 #######
 #
 #   CLI
