@@ -1,5 +1,321 @@
 # morocco
 
+Repository to evaluate Russian SuperGLUE models performance: inference speed, GPU RAM usage.
+
+## Docker
+
+We wrap baseline models into Docker containers. Container reads test data from stdin, writes predictions to stdout, has a single optional argument `--batch-size`. 
+
+```bash
+docker run --gpus all --interactive --rm bert-multilingual-parus --batch-size=32 \
+  < ~/data/PARus/test.jsonl \
+  > ~/pred.jsonl
+
+# pred.jsonl
+{"idx": 0, "label": 1}
+{"idx": 1, "label": 1}
+{"idx": 2, "label": 0}
+{"idx": 3, "label": 1}
+{"idx": 4, "label": 0}
+{"idx": 5, "label": 0}
+{"idx": 6, "label": 0}
+{"idx": 7, "label": 0}
+{"idx": 8, "label": 0}
+{"idx": 9, "label": 1}
+...
+```
+
+There are 9 tasks and 6 baseline models, so we built 9 * 6 containers: `rubert-danetqa`, `rubert-lidirus`, `rubert-muserc`, ..., `rugpt3-small-rwsd`, `rugpt3-small-terra`. We were not able to reproduce leaderboard scores exactly. 60% of containers show a bit higher score, 40% a bit lower, for example leaderboard score for `rugpt3-large` on `rcb` is 0.417, out dockerized models gets 0.387.
+
+<table  class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>danetqa</th>
+      <th>muserc</th>
+      <th>parus</th>
+      <th>rcb</th>
+      <th>rucos</th>
+      <th>russe</th>
+      <th>rwsd</th>
+      <th>terra</th>
+      <th>lidirus</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>rubert</th>
+      <td>❌ 0.639 0.635</td>
+      <td>✅ 0.711 0.732</td>
+      <td>✅ 0.574 0.630</td>
+      <td>✅ 0.367 0.417</td>
+      <td>✅ 0.320 0.331</td>
+      <td>✅ 0.726 0.730</td>
+      <td>✅ 0.669 0.714</td>
+      <td>✅ 0.642 0.668</td>
+      <td>✅ 0.191 0.219</td>
+    </tr>
+    <tr>
+      <th>rubert-conversational</th>
+      <td>✅ 0.606 0.634</td>
+      <td>✅ 0.687 0.700</td>
+      <td>✅ 0.508 0.650</td>
+      <td>❌ 0.452 0.446</td>
+      <td>❌ 0.220 0.180</td>
+      <td>✅ 0.729 0.734</td>
+      <td>✅ 0.669 0.675</td>
+      <td>✅ 0.640 0.648</td>
+      <td>✅ 0.178 0.195</td>
+    </tr>
+    <tr>
+      <th>bert-multilingual</th>
+      <td>❌ 0.624 0.606</td>
+      <td></td>
+      <td>✅ 0.528 0.536</td>
+      <td>✅ 0.367 0.374</td>
+      <td>✅ 0.290 0.296</td>
+      <td>❌ 0.690 0.685</td>
+      <td>✅ 0.669 0.675</td>
+      <td>❌ 0.617 0.551</td>
+      <td>❌ 0.189 0.063</td>
+    </tr>
+    <tr>
+      <th>rugpt3-small</th>
+      <td>✅ 0.610 0.627</td>
+      <td>✅ 0.653 0.699</td>
+      <td>✅ 0.562 0.572</td>
+      <td>✅ 0.356 0.431</td>
+      <td></td>
+      <td>✅ 0.570 0.581</td>
+      <td>✅ 0.669 0.688</td>
+      <td>✅ 0.488 0.492</td>
+      <td>✅ -0.013 0.002</td>
+    </tr>
+    <tr>
+      <th>rugpt3-medium</th>
+      <td>❌ 0.634 0.612</td>
+      <td>✅ 0.706 0.717</td>
+      <td>✅ 0.598 0.602</td>
+      <td>✅ 0.372 0.437</td>
+      <td></td>
+      <td>✅ 0.642 0.660</td>
+      <td>❌ 0.669 0.669</td>
+      <td>✅ 0.505 0.524</td>
+      <td>✅ 0.010 0.170</td>
+    </tr>
+    <tr>
+      <th>rugpt3-large</th>
+      <td>❌ 0.604 0.596</td>
+      <td>❌ 0.729 0.728</td>
+      <td>❌ 0.584 0.566</td>
+      <td>❌ 0.417 0.387</td>
+      <td></td>
+      <td>✅ 0.647 0.660</td>
+      <td>✅ 0.636 0.669</td>
+      <td>❌ 0.654 0.546</td>
+      <td>❌ 0.231 0.200</td>
+    </tr>
+  </tbody>
+</table>
+
+*Scores on leaderboard versus scores of Docker containters*
+
+## Performance
+
+### GPU RAM
+
+To measure model GPU RAM usage we run a container with a single record as input, measure maximum GPU RAM consumption, repeat procedure 5 times, take median value. `rubert`, `rubert-conversational`, `bert-multilingual`, `rugpt3-small` have approximately the same GPU RAM usage. `rugpt3-medium` is ~2 times larger than `rugpt3-small`, `rugpt3-large` is ~3 times larger.
+
+<table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>danetqa</th>
+      <th>muserc</th>
+      <th>parus</th>
+      <th>rcb</th>
+      <th>rucos</th>
+      <th>russe</th>
+      <th>rwsd</th>
+      <th>terra</th>
+      <th>lidirus</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>rubert</th>
+      <td>2.40</td>
+      <td>2.40</td>
+      <td>2.39</td>
+      <td>2.39</td>
+      <td>2.40</td>
+      <td>2.39</td>
+      <td>2.39</td>
+      <td>2.39</td>
+      <td>2.39</td>
+    </tr>
+    <tr>
+      <th>rubert-conversational</th>
+      <td>2.40</td>
+      <td>2.40</td>
+      <td>2.39</td>
+      <td>2.39</td>
+      <td>2.40</td>
+      <td>2.39</td>
+      <td>2.39</td>
+      <td>2.39</td>
+      <td>2.39</td>
+    </tr>
+    <tr>
+      <th>bert-multilingual</th>
+      <td>2.40</td>
+      <td></td>
+      <td>2.39</td>
+      <td>2.39</td>
+      <td>2.40</td>
+      <td>2.39</td>
+      <td>2.40</td>
+      <td>2.39</td>
+      <td>2.39</td>
+    </tr>
+    <tr>
+      <th>rugpt3-small</th>
+      <td>2.38</td>
+      <td>2.38</td>
+      <td>2.36</td>
+      <td>2.37</td>
+      <td></td>
+      <td>2.36</td>
+      <td>2.36</td>
+      <td>2.37</td>
+      <td>2.36</td>
+    </tr>
+    <tr>
+      <th>rugpt3-medium</th>
+      <td>4.41</td>
+      <td>4.38</td>
+      <td>4.39</td>
+      <td>4.39</td>
+      <td></td>
+      <td>4.38</td>
+      <td>4.41</td>
+      <td>4.39</td>
+      <td>4.39</td>
+    </tr>
+    <tr>
+      <th>rugpt3-large</th>
+      <td>7.49</td>
+      <td>7.49</td>
+      <td>7.50</td>
+      <td>7.50</td>
+      <td></td>
+      <td>7.49</td>
+      <td>7.51</td>
+      <td>7.50</td>
+      <td>7.50</td>
+    </tr>
+  </tbody>
+</table>
+
+*GPU RAM usage, GB*
+
+### Inference speed
+
+To measure inrefence speed we run a container with 2000 records as input, with batch size 32. On all tasks batch size 32 utilizes GPU almost at 100%. To estimate initialization time we run a container with input of size 1. Inference speed is (input size = 2000) / (total time - initialization time). We repeat procedure 5 times, take median value.
+
+<table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>danetqa</th>
+      <th>muserc</th>
+      <th>parus</th>
+      <th>rcb</th>
+      <th>rucos</th>
+      <th>russe</th>
+      <th>rwsd</th>
+      <th>terra</th>
+      <th>lidirus</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>rubert</th>
+      <td>118</td>
+      <td>4</td>
+      <td>1070</td>
+      <td>295</td>
+      <td>9</td>
+      <td>226</td>
+      <td>102</td>
+      <td>297</td>
+      <td>165</td>
+    </tr>
+    <tr>
+      <th>rubert-conversational</th>
+      <td>103</td>
+      <td>4</td>
+      <td>718</td>
+      <td>289</td>
+      <td>8</td>
+      <td>225</td>
+      <td>101</td>
+      <td>302</td>
+      <td>171</td>
+    </tr>
+    <tr>
+      <th>bert-multilingual</th>
+      <td>90</td>
+      <td></td>
+      <td>451</td>
+      <td>194</td>
+      <td>7</td>
+      <td>164</td>
+      <td>85</td>
+      <td>195</td>
+      <td>136</td>
+    </tr>
+    <tr>
+      <th>rugpt3-small</th>
+      <td>97</td>
+      <td>4</td>
+      <td>872</td>
+      <td>289</td>
+      <td></td>
+      <td>163</td>
+      <td>105</td>
+      <td>319</td>
+      <td>176</td>
+    </tr>
+    <tr>
+      <th>rugpt3-medium</th>
+      <td>45</td>
+      <td>2</td>
+      <td>270</td>
+      <td>102</td>
+      <td></td>
+      <td>106</td>
+      <td>70</td>
+      <td>111</td>
+      <td>106</td>
+    </tr>
+    <tr>
+      <th>rugpt3-large</th>
+      <td>27</td>
+      <td>1</td>
+      <td>137</td>
+      <td>53</td>
+      <td></td>
+      <td>75</td>
+      <td>49</td>
+      <td>61</td>
+      <td>69</td>
+    </tr>
+  </tbody>
+</table>
+
+*Inference speed, records per second*
+
 ## Development
 
 Notes on dev, commands log.
@@ -248,4 +564,25 @@ python main.py eval lidirus preds.jsonl ~/data/private/LiDiRus/test_with_answers
   "all_mcc": 0.21924343661028828,
   "accuracy": 0.5543478260869565
 }
+```
+
+Upload preds.
+
+```bash
+python main.py s3 sync ~/preds //preds
+```
+
+Bench model 5 times. Input size 2000 is optiomal not too short for robust time estimate, not to long to wait for process to finish. Batch size 32 is optimal, not to large fits in GPU RAM for all models, utilizes GPU for ~100% on all tasks.
+
+```bash
+for index in 01 02 03 04 05; \
+  do python main.py bench rubert-rucos ~/data rucos --input-size=2000 --batch-size=32 \
+  > ~/benches/rubert/rwsd/2000_32_$index.jl; \
+done
+```
+
+Upload bench measures.
+
+```bash
+python main.py s3 sync ~/benches //benches
 ```
