@@ -163,7 +163,7 @@ TEST = 'test'
 VAL = 'val'
 
 EXPS_DIR = expanduser('~/exps')
-GRID_PREDS_DIR = expanduser('~/preds')
+GRID_PREDS_DIR = expanduser('~/preds/grid')
 BENCHES_DIR = expanduser('~/benches')
 
 JIANT_DIR = expanduser('~/jiant-v1-legacy')
