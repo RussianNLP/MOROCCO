@@ -159,6 +159,7 @@ DATA_DIR = expanduser('~/data')
 PRIVATE = 'private'
 PUBLIC = 'public'
 
+TRAIN = 'train'
 TEST = 'test'
 VAL = 'val'
 
@@ -1041,7 +1042,7 @@ def load_grid_preds(conf_id, task, dir=GRID_PREDS_DIR):
 #######
 
 
-def show_grid_scores(leaderboard, conf_task_scores,
+def show_grid_scores(leaderboard, conf_task_scores, task_train_sizes,
                      tasks=TASKS, models=MODELS, confs=GRID_CONFS,
                      cols=3, width=2.5, height=2.5):
     rows = ceil(len(tasks) / cols)
@@ -1073,7 +1074,12 @@ def show_grid_scores(leaderboard, conf_task_scores,
         ax.scatter(xs, ys, color=colors, s=20, alpha=0.5)
         ax.set_xticks(range(len(models)))
         ax.set_xticklabels([])
-        ax.set_title(task)
+
+        title = task
+        if task in task_train_sizes:
+            train_size = task_train_sizes[task]
+            title = f'{task}, {train_size}'
+        ax.set_title(title)
 
         scores = task_scores[task]
         score = statistics.median(scores)
