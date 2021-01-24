@@ -46,7 +46,10 @@ from itertools import (
     cycle,
     islice
 )
-from math import ceil
+from math import (
+    ceil,
+    sqrt
+)
 from random import (
     seed,
     random,
@@ -1098,6 +1101,11 @@ def show_grid_scores(leaderboard, conf_task_scores, task_train_sizes,
     fig.tight_layout()
 
 
+####
+#  TOP
+#######
+
+
 def select_top_conf(task, model, conf_task_scores, confs=GRID_CONFS):
     id, max_score = None, None
     id_confs = {_.id: _ for _ in confs}
@@ -1728,13 +1736,18 @@ def show_gpu_ram_bench_report(records):
     return bench_report_table(data)
 
 
+def bench_group_gpu_ram(record):
+    if record.gpu_rams:
+        return statistics.median(record.gpu_rams)
+
+
 def gpu_ram_bench_report_data2(records):
     for record in records:
-        if record.gpu_rams:
-            gpu_ram = statistics.median(record.gpu_rams)
-            value = '{:0.2f}'.format(gpu_ram / GB)
-        else:
+        gpu_ram = bench_group_gpu_ram(record)
+        if gpu_ram is None:
             value = ''
+        else:
+            value = '{:0.2f}'.format(gpu_ram / GB)
         yield record.model, record.task, value
 
 
@@ -1803,24 +1816,138 @@ def show_proc_time_bench_report(records):
     return bench_report_table(data)
 
 
+def bench_group_rps(record, input_size=2000):
+    if not record.init_times or not record.total_times:
+        return
+
+    init_time = statistics.median(record.init_times)
+    proc_time = statistics.median( 
+        _ - init_time
+        for _ in record.total_times
+    )
+    return input_size / proc_time
+
+
 def rps_bench_report_data(records, input_size=2000):
     for record in records:
-        if record.init_times and record.total_times:
-            init_time = statistics.median(record.init_times)
-            proc_time = statistics.median( 
-                _ - init_time
-                for _ in record.total_times
-            )
-            rps = input_size / proc_time
-            value = '{:0.0f}'.format(rps)
-        else:
+        rps = bench_group_rps(record, input_size)
+        if rps is None:
             value = ''
+        else:
+            value = '{:0.0f}'.format(rps)
         yield record.model, record.task, value
 
 
 def show_rps_bench_report(records):
     data = rps_bench_report_data(records)
     return bench_report_table(data)
+
+
+#####
+#
+#   SCORE PERF
+#
+#####
+
+
+def show_score_perf(docker_scores, leaderboard, bench_groups,
+                    models=MODELS, tasks=TASKS,
+                    width=6, height=6):
+    leaderboard_index = {
+        (model, task): score
+        for model, task, score in leaderboard
+    }
+    docker_scores_index = {
+        (model, task): score
+        for model, task, score in docker_scores
+    }
+
+    data = {}
+    for model in models:
+        for task in tasks:
+            # fill in rucos, muserc
+            score = docker_scores_index.get(
+                (model, task),
+                leaderboard_index[model, task]
+            )
+            data[model, task] = score
+
+    table = pd.Series(data)
+    table = table.unstack()
+    model_scores = table.mean(axis='columns')
+
+    gpu_ram_data, rps_data = {}, {}
+    for record in bench_groups:
+        if record.task in (MUSERC, RUCOS):
+            # gpu ram is the same
+            # rps scale is diff + missing values
+            continue
+
+        if record.task == PARUS:
+            # too quick, unstable rps
+            continue
+
+        gpu_ram = bench_group_gpu_ram(record) / GB
+        rps = bench_group_rps(record)
+
+        gpu_ram_data[record.model, record.task] = gpu_ram
+        rps_data[record.model, record.task] = rps
+
+    table = pd.Series(gpu_ram_data)
+    table = table.unstack()
+    model_gpu_rams = table.mean(axis='columns')
+    
+    table = pd.Series(rps_data)
+    table = table.unstack()
+    model_rpses = table.mean(axis='columns')
+
+    table = pd.DataFrame({
+        'score': model_scores,
+        'gpu_ram': model_gpu_rams,
+        'rps': model_rpses
+    })
+
+    sizes, xs, ys, texts = [], [], [], []
+    for record in table.itertuples():
+        x, y = record.rps, record.score
+        size = record.gpu_ram * 200
+        model = record.Index
+
+        sizes.append(size)
+        xs.append(x)
+        ys.append(y)
+
+        text = f'{model}, {record.gpu_ram:0.1f}gb'
+        texts.append(text)
+
+    fig, ax = plt.subplots()
+    ax.scatter(
+        xs, ys,
+        s=sizes,
+        alpha=0.5
+    )
+    for text, x, y, size in zip(texts, xs, ys, sizes):
+        offset = sqrt(size) / 1.7
+        ax.annotate(
+            text,
+            xy=(x, y),
+            xytext=(offset, 0),
+            textcoords='offset points'
+        )
+
+    ax.set_ylabel('avg. score over 9 tasks')
+    ax.set_xlabel('inference speed, records per second')
+
+    min, max = ax.get_xlim()
+    offset = (max - min) / 25
+    ax.set_xlim(min - offset, max + offset)
+
+    min, max = ax.get_ylim()
+    offset = (max - min) / 25
+    ax.set_ylim(min - offset, max + offset)
+
+    fig.set_size_inches(width, height)
+
 
 
 #######
