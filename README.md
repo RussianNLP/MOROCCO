@@ -454,6 +454,36 @@ python main.py s3 sync ~/exps/12/rubert-conversational //exps/12
 ...
 ```
 
+Infer trained model.
+
+```bash
+python main.py infer ~/exps/06/rubert/ parus --batch-size=32 \
+  < ~/data/public/PARus/val.jsonl \
+  > preds.jsonl
+
+[2021-01-26 16:21:46] Reading items from stdin
+[2021-01-26 16:21:46] Read 100 items
+01/26 04:21:46 PM: PyTorch version 1.1.0 available.
+[2021-01-26 16:21:46] Build tasks
+[2021-01-26 16:21:53] Build model, load transformers pretrain
+[2021-01-26 16:22:22] Load state '/home/yc-user/exps/06/rubert/parus/model.th'
+01/26 04:22:31 PM: Loaded model state from /home/yc-user/exps/06/rubert/parus/model.th
+[2021-01-26 16:22:31] Build mock task, infer via eval, batch_size=32
+[2021-01-26 16:22:36] Writing preds to stdout
+
+# preds.jsonl
+{"idx": 0, "label": 1}
+{"idx": 1, "label": 1}
+{"idx": 2, "label": 1}
+{"idx": 3, "label": 0}
+{"idx": 4, "label": 1}
+{"idx": 5, "label": 1}
+{"idx": 6, "label": 0}
+{"idx": 7, "label": 0}
+...
+
+```
+
 Download weights from S3. Fetch models with best scores.
 
 ```bash
@@ -545,7 +575,7 @@ python main.py pull rubert-terra
 python main.py pull rubert-lidirus
 ```
 
-Infer containerized model, provide test data as stdin, optionally define batch size, read preds from stdout.
+Infer containerized model, provide test data as stdin, optionally define batch size, read preds from stdout. Docker container internally calls `main.py infer`.
 
 ```bash
 docker run --gpus all --interactive --rm rubert-terra --batch-size 8 < ~/data/public/TERRa/test.jsonl > preds.jsonl
