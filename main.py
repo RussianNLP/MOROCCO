@@ -7,6 +7,7 @@ from time import (
     sleep
 )
 from os import (
+    stat,
     environ,
     makedirs,
     listdir,
@@ -328,6 +329,11 @@ def rm_any(path):
         rmtree(path)
     else:
         remove(path)
+
+
+def path_modified(path):
+    record = stat(path)
+    return datetime.fromtimestamp(record.st_mtime)
 
 
 ####
@@ -929,12 +935,23 @@ def eval(name, preds, targets):
         return eval_other(name, preds, targets)
 
 
+#######
+#
+#  SCORE
+#
+#####
+
+
+class Score(Record):
+    __attributes__ = ['first', 'second']
+
+
 TASK_METRICS = {
     DANETQA: 'accuracy',
-    MUSERC: 'ans_f1',
+    MUSERC: ('ans_f1', 'em'),
     PARUS: 'accuracy',
-    RCB: 'f1',
-    RUCOS: 'f1',
+    RCB: ('f1', 'accuracy'),
+    RUCOS: ('f1', 'em'),
     RUSSE: 'accuracy',
     RWSD: 'acc',
     TERRA: 'accuracy',
@@ -943,7 +960,31 @@ TASK_METRICS = {
 
 
 def select_score(task, metrics):
-    return metrics[TASK_METRICS[task]]
+    key = TASK_METRICS[task]
+    if isinstance(key, tuple):
+        first, second = key
+        first, second = metrics[first], metrics[second]
+    else:
+        first = metrics[key]
+        second = None
+    return Score(first, second)
+
+
+def score_value(score):
+    if score.second:
+        return (score.first + score.second) / 2
+    return score.first
+
+
+def format_score(score, digits=3, sep=' / '):
+    pattern = '{:.%df}' % digits
+    if score.second:
+        return '{first}{sep}{second}'.format(
+            first=pattern.format(score.first),
+            sep=sep,
+            second=pattern.format(score.second)
+        )
+    return pattern.format(score.first)
 
 
 ######
@@ -1057,6 +1098,7 @@ def show_grid_scores(leaderboard, conf_task_scores, task_train_sizes,
     id_confs = {_.id: _ for _ in confs}
     task_scores = defaultdict(list)
     for model, task, score in leaderboard:
+        score = score_value(score)
         task_scores[task].append(score)
 
     for ax, task in zip(axes.flatten(), tasks):
@@ -1064,6 +1106,7 @@ def show_grid_scores(leaderboard, conf_task_scores, task_train_sizes,
 
         for x, model in enumerate(models):
             for id, grid_task, score in conf_task_scores:
+                score = score_value(score)
                 grid_model = id_confs[id].model
                 if grid_model == model and grid_task == task:
                     jitter = (random() - 0.5) / 4
@@ -1072,6 +1115,7 @@ def show_grid_scores(leaderboard, conf_task_scores, task_train_sizes,
                     colors.append('blue')
 
             for leaderboard_model, leaderboard_task, score in leaderboard:
+                score = score_value(score)
                 if leaderboard_model == model and leaderboard_task == task:
                     xs.append(x)
                     ys.append(score)
@@ -1113,6 +1157,7 @@ def select_top_conf(task, model, conf_task_scores, confs=GRID_CONFS):
     id, max_score = None, None
     id_confs = {_.id: _ for _ in confs}
     for conf_id, conf_task, score in conf_task_scores:
+        score = score_value(score)
         conf = id_confs[conf_id]
         if conf.model == model and conf_task == task and (max_score is None or max_score < score):
             id = conf_id
@@ -1170,9 +1215,11 @@ LEADERBOARD_RENAMES = {
 def parse_leaderboard_score(value, sep=' / '):
     if sep in value:
         # 0.301 / 0.441
-        # yep, drop second
-        value, _ = value.split(sep)
-    return float(value)
+        parts = value.split(sep)
+        first, second = map(float, parts)
+    else:
+        first, second = float(value), None
+    return Score(first, second)
 
 
 def parse_leaderboard(records, name_offset=1, scores_offset=5):
@@ -1324,21 +1371,38 @@ def show_docker_leaderboard(leaderboard, docker_scores, models=MODELS, tasks=TAS
         for model, task, score in docker_scores
     }
 
+    leaderboard_model_scores = Counter()
+    docker_model_scores = Counter()
+    count = len(tasks)
+    for model in MODELS:
+        for task in tasks:
+            value = score_value(leaderboard_index[model, task])
+            leaderboard_model_scores[model] += value / count
+            value = score_value(docker_scores_index[model, task])
+            docker_model_scores[model] += value / count
+
+    SCORE = 'score'
     data = []
     for model in models:
-        for task in tasks:
-            leaderboard_score = leaderboard_index[model, task]
-            docker_score = docker_scores_index.get((model, task))
-            if not docker_score:
-                value = ''
+        for task in [SCORE] + tasks:
+            if task == SCORE:
+                leaderboard_score = Score(leaderboard_model_scores[model])
+                docker_score = Score(docker_model_scores[model])
             else:
-                label = '✅' if docker_score >= leaderboard_score else '❌'
-                value = f'{label} {leaderboard_score:.3f} {docker_score:.3f}'
+                leaderboard_score = leaderboard_index[model, task]
+                docker_score = docker_scores_index[model, task]
+            better = score_value(docker_score) >= score_value(leaderboard_score)
+            parts = [
+                '✅' if better else '❌',
+                format_score(leaderboard_score, sep='/'),
+                format_score(docker_score, sep='/')
+            ]
+            value = ' '.join(parts)
             data.append([model, task, value])
 
     table = pd.DataFrame(data, columns=['model', 'task', 'value'])
     table = table.pivot(index='model', columns='task', values='value')
-    table = table.reindex(index=models, columns=tasks)
+    table = table.reindex(index=models, columns=[SCORE] + tasks)
     table.columns.name = None
     table.index.name = None
 
@@ -1873,7 +1937,7 @@ def show_score_perf(docker_scores, leaderboard, bench_groups,
                 (model, task),
                 leaderboard_index[model, task]
             )
-            data[model, task] = score
+            data[model, task] = score_value(score)
 
     table = pd.Series(data)
     table = table.unstack()
