@@ -2,6 +2,8 @@
 
 Repository to evaluate Russian SuperGLUE models performance: inference speed, GPU RAM usage.
 
+<img src="https://habrastorage.org/webt/wd/um/wt/wdumwtsu7bjxdhe1ot8hfclr3f8.png" />
+
 ## Docker
 
 We wrap baseline models into Docker containers. Container reads test data from stdin, writes predictions to stdout, has a single optional argument `--batch-size`. 
@@ -25,12 +27,13 @@ docker run --gpus all --interactive --rm bert-multilingual-parus --batch-size=32
 ...
 ```
 
-There are 9 tasks and 6 baseline models, so we built 9 * 6 containers: `rubert-danetqa`, `rubert-lidirus`, `rubert-muserc`, ..., `rugpt3-small-rwsd`, `rugpt3-small-terra`. We were not able to reproduce leaderboard scores exactly. 60% of containers show a bit higher score, 40% a bit lower, for example leaderboard score for `rugpt3-large` on `rcb` is 0.417, out dockerized models gets 0.387.
+There are 9 tasks and 6 baseline models, so we built 9 * 6 containers: `rubert-danetqa`, `rubert-lidirus`, `rubert-muserc`, ..., `rugpt3-small-rwsd`, `rugpt3-small-terra`. We were not able to reproduce leaderboard scores exactly. 25% of containers show a bit lower score, for example leaderboard score for `rugpt3-large` on `rcb` is 0.417, out dockerized models gets 0.387.
 
-<table  class="dataframe">
+<table class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>score</th>
       <th>danetqa</th>
       <th>muserc</th>
       <th>parus</th>
@@ -45,11 +48,12 @@ There are 9 tasks and 6 baseline models, so we built 9 * 6 containers: `rubert-d
   <tbody>
     <tr>
       <th>rubert</th>
+      <td>✅ 0.521 0.548</td>
       <td>❌ 0.639 0.635</td>
-      <td>✅ 0.711 0.732</td>
+      <td>✅ 0.711/0.324 0.732/0.361</td>
       <td>✅ 0.574 0.630</td>
-      <td>✅ 0.367 0.417</td>
-      <td>✅ 0.320 0.331</td>
+      <td>✅ 0.367/0.463 0.417/0.495</td>
+      <td>✅ 0.320/0.314 0.331/0.329</td>
       <td>✅ 0.726 0.730</td>
       <td>✅ 0.669 0.714</td>
       <td>✅ 0.642 0.668</td>
@@ -57,11 +61,12 @@ There are 9 tasks and 6 baseline models, so we built 9 * 6 containers: `rubert-d
     </tr>
     <tr>
       <th>rubert-conversational</th>
+      <td>✅ 0.500 0.519</td>
       <td>✅ 0.606 0.634</td>
-      <td>✅ 0.687 0.700</td>
+      <td>✅ 0.687/0.278 0.700/0.290</td>
       <td>✅ 0.508 0.650</td>
-      <td>❌ 0.452 0.446</td>
-      <td>❌ 0.220 0.180</td>
+      <td>❌ 0.452/0.484 0.446/0.479</td>
+      <td>❌ 0.220/0.218 0.180/0.178</td>
       <td>✅ 0.729 0.734</td>
       <td>✅ 0.669 0.675</td>
       <td>✅ 0.640 0.648</td>
@@ -69,11 +74,12 @@ There are 9 tasks and 6 baseline models, so we built 9 * 6 containers: `rubert-d
     </tr>
     <tr>
       <th>bert-multilingual</th>
+      <td>❌ 0.495 0.462</td>
       <td>❌ 0.624 0.606</td>
-      <td></td>
+      <td>❌ 0.639/0.239 0.623/0.037</td>
       <td>✅ 0.528 0.536</td>
-      <td>✅ 0.367 0.374</td>
-      <td>✅ 0.290 0.296</td>
+      <td>✅ 0.367/0.445 0.374/0.459</td>
+      <td>✅ 0.290/0.290 0.296/0.294</td>
       <td>❌ 0.690 0.685</td>
       <td>✅ 0.669 0.675</td>
       <td>❌ 0.617 0.551</td>
@@ -81,35 +87,38 @@ There are 9 tasks and 6 baseline models, so we built 9 * 6 containers: `rubert-d
     </tr>
     <tr>
       <th>rugpt3-small</th>
+      <td>✅ 0.438 0.483</td>
       <td>✅ 0.610 0.627</td>
-      <td>✅ 0.653 0.699</td>
-      <td>✅ 0.562 0.572</td>
-      <td>✅ 0.356 0.431</td>
-      <td></td>
+      <td>✅ 0.653/0.221 0.702/0.292</td>
+      <td>✅ 0.562 0.584</td>
+      <td>✅ 0.356/0.473 0.431/0.479</td>
+      <td>✅ 0.210/0.204 0.227/0.226</td>
       <td>✅ 0.570 0.581</td>
       <td>✅ 0.669 0.688</td>
-      <td>✅ 0.488 0.492</td>
-      <td>✅ -0.013 0.002</td>
+      <td>✅ 0.488 0.563</td>
+      <td>✅ -0.013 0.126</td>
     </tr>
     <tr>
       <th>rugpt3-medium</th>
+      <td>✅ 0.468 0.501</td>
       <td>❌ 0.634 0.612</td>
-      <td>✅ 0.706 0.717</td>
+      <td>✅ 0.706/0.308 0.717/0.315</td>
       <td>✅ 0.598 0.602</td>
-      <td>✅ 0.372 0.437</td>
-      <td></td>
+      <td>✅ 0.372/0.461 0.437/0.502</td>
+      <td>✅ 0.230/0.224 0.242/0.240</td>
       <td>✅ 0.642 0.660</td>
       <td>❌ 0.669 0.669</td>
-      <td>✅ 0.505 0.524</td>
-      <td>✅ 0.010 0.170</td>
+      <td>✅ 0.505 0.606</td>
+      <td>✅ 0.010 0.137</td>
     </tr>
     <tr>
       <th>rugpt3-large</th>
+      <td>❌ 0.505 0.495</td>
       <td>❌ 0.604 0.596</td>
-      <td>❌ 0.729 0.728</td>
+      <td>✅ 0.729/0.333 0.728/0.346</td>
       <td>❌ 0.584 0.566</td>
-      <td>❌ 0.417 0.387</td>
-      <td></td>
+      <td>❌ 0.417/0.484 0.387/0.486</td>
+      <td>✅ 0.210/0.202 0.243/0.241</td>
       <td>✅ 0.647 0.660</td>
       <td>✅ 0.636 0.669</td>
       <td>❌ 0.654 0.546</td>
@@ -169,7 +178,7 @@ To measure model GPU RAM usage we run a container with a single record as input,
     <tr>
       <th>bert-multilingual</th>
       <td>2.40</td>
-      <td></td>
+      <td>2.40</td>
       <td>2.39</td>
       <td>2.39</td>
       <td>2.40</td>
@@ -184,7 +193,7 @@ To measure model GPU RAM usage we run a container with a single record as input,
       <td>2.38</td>
       <td>2.36</td>
       <td>2.37</td>
-      <td></td>
+      <td>2.38</td>
       <td>2.36</td>
       <td>2.36</td>
       <td>2.37</td>
@@ -196,7 +205,7 @@ To measure model GPU RAM usage we run a container with a single record as input,
       <td>4.38</td>
       <td>4.39</td>
       <td>4.39</td>
-      <td></td>
+      <td>4.38</td>
       <td>4.38</td>
       <td>4.41</td>
       <td>4.39</td>
@@ -208,7 +217,7 @@ To measure model GPU RAM usage we run a container with a single record as input,
       <td>7.49</td>
       <td>7.50</td>
       <td>7.50</td>
-      <td></td>
+      <td>7.49</td>
       <td>7.49</td>
       <td>7.51</td>
       <td>7.50</td>
