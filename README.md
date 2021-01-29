@@ -302,7 +302,7 @@ To measure inrefence speed we run a container with 2000 records as input, with b
       <td>2</td>
       <td>270</td>
       <td>102</td>
-      <td>5</td>
+      <td>3</td>
       <td>106</td>
       <td>70</td>
       <td>111</td>
@@ -314,7 +314,7 @@ To measure inrefence speed we run a container with 2000 records as input, with b
       <td>1</td>
       <td>137</td>
       <td>53</td>
-      <td></td>
+      <td>2</td>
       <td>75</td>
       <td>49</td>
       <td>61</td>
