@@ -993,6 +993,9 @@ GRID_CONFS = [
     GridConf('26', RUGPT3_SMALL, seed=3),
 
     GridConf('27', RUGPT3_LARGE, seed=1),
+    GridConf('28', RUGPT3_MEDIUM, seed=4),
+    GridConf('29', RUGPT3_SMALL, seed=4),
+    GridConf('30', RUGPT3_LARGE, seed=2),
 ]
 
 
