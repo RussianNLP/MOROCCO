@@ -232,7 +232,7 @@ To measure model GPU RAM usage we run a container with a single record as input,
 
 To measure inrefence speed we run a container with 2000 records as input, with batch size 32. On all tasks batch size 32 utilizes GPU almost at 100%. To estimate initialization time we run a container with input of size 1. Inference speed is (input size = 2000) / (total time - initialization time). We repeat procedure 5 times, take median value.
 
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -275,7 +275,7 @@ To measure inrefence speed we run a container with 2000 records as input, with b
     <tr>
       <th>bert-multilingual</th>
       <td>90</td>
-      <td></td>
+      <td>4</td>
       <td>451</td>
       <td>194</td>
       <td>7</td>
@@ -290,7 +290,7 @@ To measure inrefence speed we run a container with 2000 records as input, with b
       <td>4</td>
       <td>872</td>
       <td>289</td>
-      <td></td>
+      <td>8</td>
       <td>163</td>
       <td>105</td>
       <td>319</td>
@@ -302,7 +302,7 @@ To measure inrefence speed we run a container with 2000 records as input, with b
       <td>2</td>
       <td>270</td>
       <td>102</td>
-      <td></td>
+      <td>5</td>
       <td>106</td>
       <td>70</td>
       <td>111</td>
