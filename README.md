@@ -1,6 +1,6 @@
-# morocco
+# MOROCCO
 
-Repository to evaluate Russian SuperGLUE models performance: inference speed, GPU RAM usage. Move from static text submissions with predictions to reproducible Docker-containers.
+MOdel ResOurCe COnsumption. Repository to evaluate Russian SuperGLUE models performance: inference speed, GPU RAM usage. Move from static text submissions with predictions to reproducible Docker-containers.
 
 Each disc corresponds to baseline model, disc size is proportional to GPU RAM usage. By X axis there is model inference speed in records per second, by Y axis model score averaged by 9 Russian SuperGLUE tasks.
 
