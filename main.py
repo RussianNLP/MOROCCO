@@ -55,6 +55,7 @@ from random import (
     seed,
     random,
     sample,
+    choice
 )
 import statistics
 import argparse
@@ -1150,6 +1151,50 @@ def show_grid_scores(leaderboard, conf_task_scores, task_train_sizes,
 
     fig.set_size_inches(width * cols, height * rows)
     fig.tight_layout()
+
+
+def show_seed_scores(leaderboard, conf_task_scores,
+                     tasks=TASKS, models=MODELS, confs=GRID_CONFS):
+    id_confs = {_.id: _ for _ in confs}
+    model_task_scores = defaultdict(list)
+    for id, task, score in conf_task_scores:
+        score = score_value(score)
+        model = id_confs[id].model
+        model_task_scores[model, task].append(score)
+
+    leaderboard_model_scores = defaultdict(list)
+    for model, task, score in leaderboard:
+        score = score_value(score)
+        leaderboard_model_scores[model].append(score)
+
+    seed(1)
+    xs, ys, colors = [], [], []
+    samples = 100
+    for y, model in enumerate(models):
+        for _ in range(samples):
+            scores = []
+            for task in tasks:
+                task_scores = model_task_scores[model, task]
+                score = choice(task_scores)
+                scores.append(score)
+            x = statistics.mean(scores)
+            xs.append(x)
+            jitter = (random() - 0.5) / 2
+            ys.append(y + jitter)
+            colors.append('blue')
+
+        scores = leaderboard_model_scores[model]
+        x = statistics.mean(scores)
+        xs.append(x)
+        ys.append(y)
+        colors.append('red')
+
+    fig, ax = plt.subplots()
+    ax.scatter(xs, ys, s=20, c=colors, alpha=0.4)
+    ax.set_yticks(range(len(models)))
+    ax.set_yticklabels(models)
+
+    ax.set_xlabel('avg. score over 9 tasks')
 
 
 ####
