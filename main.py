@@ -1914,6 +1914,66 @@ def show_rps_bench_report(records):
     return bench_report_table(data)
 
 
+def raw_rps_bench_report_data(records, input_size=2000):
+    for record in records:
+        value = bench_group_rps(record, input_size)
+        yield record.model, record.task, value
+
+
+def show_rps_order_bench_report(records):
+    data = raw_rps_bench_report_data(records)
+    table = bench_report_table(data)
+
+    seed(1)
+    samples = []
+    for size in range(1, len(TASKS)):
+        for _ in range(20):
+            columns = sorted(sample(list(table.columns), size))
+            if columns not in samples:
+                if PARUS not in columns:
+                    samples.append(columns)
+
+
+    palette = {
+        RUBERT: 'blue',
+        RUBERT_CONVERSATIONAL: 'blue',
+        BERT_MULTILINGUAL: 'green',
+
+        RUGPT3_SMALL: 'red',
+        RUGPT3_MEDIUM: 'red',
+        RUGPT3_LARGE: 'red',
+    }
+
+    xs, ys, colors = [], [], []
+    for y, columns in enumerate(samples):
+        slice = table[columns]
+        slice = slice.mean(axis='columns')
+        min = slice[slice.idxmin()]
+        max = slice[slice.idxmax()]
+        slice = (slice - min) / (max - min)
+
+        for model, x in slice.items():
+            xs.append(x)
+            ys.append(y)
+            colors.append(palette[model])
+
+    fig, ax = plt.subplots()
+    ax.scatter(xs, ys, c=colors, alpha=0.5)
+
+    labels = [
+        ','.join(_)
+        for _ in samples
+    ]
+    ax.set_yticks(range(len(labels)))
+    ax.set_yticklabels(labels)
+    ax.yaxis.set_ticks_position('right')
+
+    ax.set_xticks([])
+    ax.set_xlabel('(rps - min) / (max - min)')
+
+    fig.set_size_inches(6, 10)
+
+
 #####
 #
 #   SCORE PERF
