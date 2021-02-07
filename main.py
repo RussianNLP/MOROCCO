@@ -61,25 +61,29 @@ import argparse
 
 from tqdm import tqdm as log_progress
 
-import torch
-import pytorch_pretrained_bert
-import transformers
-import allennlp
-
 import pandas as pd
 from matplotlib import pyplot as plt
 
-from jiant.utils.config import (
-    params_from_file,
-    write_params
-)
-from jiant.utils.options import parse_cuda_list_arg
-from jiant.preprocess import build_tasks
-from jiant.models import build_model
-from jiant.utils.utils import load_model_state
-from jiant.tasks import REGISTRY
-from jiant import evaluate
-from jiant.__main__ import main as jiant_main
+try:
+    import torch
+    import pytorch_pretrained_bert
+    import transformers
+    import allennlp
+
+    from jiant.utils.config import (
+        params_from_file,
+        write_params
+    )
+    from jiant.utils.options import parse_cuda_list_arg
+    from jiant.preprocess import build_tasks
+    from jiant.models import build_model
+    from jiant.utils.utils import load_model_state
+    from jiant.tasks import REGISTRY
+    from jiant import evaluate
+    from jiant.__main__ import main as jiant_main
+except ImportError:
+    # just analyse benches locally
+    pass
 
 
 DANETQA = 'danetqa'
