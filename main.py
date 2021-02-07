@@ -163,7 +163,7 @@ MODEL_HUB_SIZES = {
     RUGPT3_LARGE: 3.0 * GB,
 }
 
-DATA_DIR = expanduser('~/data')
+DATA_DIR = join(PROJ_DIR, 'data')
 
 PRIVATE = 'private'
 PUBLIC = 'public'
@@ -172,11 +172,15 @@ TRAIN = 'train'
 TEST = 'test'
 VAL = 'val'
 
-EXPS_DIR = expanduser('~/exps')
-GRID_PREDS_DIR = expanduser('~/preds/grid')
-BENCHES_DIR = expanduser('~/benches')
+PROJ_DIR = expanduser('~')
+PROJ_DIR = '..'
 
-JIANT_DIR = expanduser('~/jiant-v1-legacy')
+EXPS_DIR = join(PROJ_DIR, 'exps')
+GRID_PREDS_DIR = join(PROJ_DIR, 'preds/grid')
+CONF_TASK_METRICS = join(GRID_PREDS_DIR, 'conf_task_metrics.jl')
+BENCHES_DIR = join(PROJ_DIR, 'benches')
+
+JIANT_DIR = join(PROJ_DIR, 'jiant-v1-legacy')
 JIANT_CONF = join(JIANT_DIR, 'jiant/config/superglue_bert.conf')
 
 # bucket is capped by size
