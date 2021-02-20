@@ -2041,15 +2041,16 @@ def show_rps_order_bench_report(records):
                 if PARUS not in columns:
                     samples.append(columns)
 
-
+    # https://material.io/design/color/the-color-system.html
     palette = {
-        RUBERT: 'blue',
-        RUBERT_CONVERSATIONAL: 'blue',
-        BERT_MULTILINGUAL: 'green',
+        RUBERT: '#0288D1',
+        RUBERT_CONVERSATIONAL: '#7B1FA2',
 
-        RUGPT3_SMALL: 'red',
-        RUGPT3_MEDIUM: 'red',
-        RUGPT3_LARGE: 'red',
+        BERT_MULTILINGUAL: '#689F38',
+
+        RUGPT3_SMALL: '#FF8A65',
+        RUGPT3_MEDIUM: '#F4511E',
+        RUGPT3_LARGE: '#BF360C',
     }
 
     xs, ys, colors = [], [], []
@@ -2066,7 +2067,8 @@ def show_rps_order_bench_report(records):
             colors.append(palette[model])
 
     fig, ax = plt.subplots()
-    ax.scatter(xs, ys, c=colors, alpha=0.5)
+    alpha = 0.7
+    ax.scatter(xs, ys, c=colors, alpha=alpha)
 
     labels = [
         ','.join(_)
@@ -2074,10 +2076,22 @@ def show_rps_order_bench_report(records):
     ]
     ax.set_yticks(range(len(labels)))
     ax.set_yticklabels(labels)
-    ax.yaxis.set_ticks_position('right')
+    ax.set_ylim(-1, len(labels))
 
     ax.set_xticks([])
     ax.set_xlabel('(rps - min) / (max - min)')
+
+    # https://matplotlib.org/3.3.3/tutorials/intermediate/legend_guide.html
+    handles = [
+        patches.Patch(color=palette[_], label=_, alpha=alpha)
+        for _ in MODELS
+    ]
+    ax.legend(
+        handles=handles,
+        bbox_to_anchor=(1.02, 1),
+        loc='upper left',
+        borderaxespad=0.,
+    )
 
     fig.set_size_inches(6, 10)
 
