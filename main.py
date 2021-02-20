@@ -63,6 +63,8 @@ import argparse
 from tqdm import tqdm as log_progress
 
 import pandas as pd
+
+from matplotlib import patches
 from matplotlib import pyplot as plt
 
 try:
@@ -1199,6 +1201,63 @@ def show_seed_scores(leaderboard, conf_task_scores,
     ax.set_yticklabels(models)
 
     ax.set_xlabel('avg. score over 9 tasks')
+
+
+def show_seed_scores2(conf_task_scores,
+                      tasks=TASKS, models=MODELS, confs=GRID_CONFS):
+    id_confs = {_.id: _ for _ in confs}
+    model_task_scores = defaultdict(list)
+    for id, task, score in conf_task_scores:
+        score = score_value(score)
+        model = id_confs[id].model
+        model_task_scores[model, task].append(score)
+
+    seed(1)
+    xs, ys, colors = [], [], []
+    samples = 100
+    for y, model in enumerate(models):
+        model_scores = []
+        for _ in range(samples):
+            sample_scores = []
+            for task in tasks:
+                task_scores = model_task_scores[model, task]
+                score = choice(task_scores)
+                sample_scores.append(score)
+            score = statistics.mean(sample_scores)
+            xs.append(score)
+            model_scores.append(score)
+            jitter = (random() - 0.5) / 2
+            ys.append(y + jitter)
+            colors.append('blue')
+
+        xs.extend([
+            statistics.mean(model_scores),
+            max(model_scores)
+        ])
+        ys.extend([y + 0.4, y + 0.4])
+        colors.extend(['purple', 'red'])
+
+
+    fig, ax = plt.subplots()
+    alpha = 0.4
+    ax.scatter(xs, ys, s=20, c=colors, alpha=alpha)
+    ax.set_yticks(range(len(models)))
+    ax.set_yticklabels(models)
+
+    ax.set_xlabel('avg. score over 9 tasks')
+
+    handles = [
+        patches.Patch(color='blue', label='sample', alpha=alpha),
+        patches.Patch(color='purple', label='mean', alpha=alpha),
+        patches.Patch(color='red', label='max', alpha=alpha),
+    ]
+    ax.legend(
+        handles=handles,
+        bbox_to_anchor=(1.02, 1),
+        loc='upper left',
+        borderaxespad=0.,
+    )
+
 
 
 ####
