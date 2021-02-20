@@ -163,6 +163,9 @@ MODEL_HUB_SIZES = {
     RUGPT3_LARGE: 3.0 * GB,
 }
 
+PROJ_DIR = expanduser('~')
+PROJ_DIR = '..'
+
 DATA_DIR = join(PROJ_DIR, 'data')
 
 PRIVATE = 'private'
@@ -171,9 +174,6 @@ PUBLIC = 'public'
 TRAIN = 'train'
 TEST = 'test'
 VAL = 'val'
-
-PROJ_DIR = expanduser('~')
-PROJ_DIR = '..'
 
 EXPS_DIR = join(PROJ_DIR, 'exps')
 GRID_PREDS_DIR = join(PROJ_DIR, 'preds/grid')
