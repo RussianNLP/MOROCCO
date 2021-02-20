@@ -1462,7 +1462,7 @@ def docker_find_pid(name):
     ).stdout
     pid = output.strip()
     if pid:
-        return pid
+        return int(pid)
 
 
 def retriable(function, *args, timeout=0.2, retries=10):
@@ -1604,6 +1604,7 @@ def parse_nvidia_process_stats(record):
     # pid, gpu_uuid, used_gpu_memory [MiB]
     # 10042, GPU-777aa4a9-8dac-a61b-5b5a-118d3e947546, 4435 MiB
     pid, guid, gpu_ram = record
+    pid = int(pid)
     gpu_ram = parse_nvidia_gpu_ram(gpu_ram)
     return NvidiaProcessStatsRecord(pid, guid, gpu_ram)
 
@@ -1660,10 +1661,51 @@ def short_uid(cap=5):
     return str(uuid1())[:cap]
 
 
-def bench(image, data_dir, task, input_size=10000, batch_size=128, delay=0.3):
+def bench_input(data_dir, task, size):
     path = task_path(task, PUBLIC, VAL, dir=data_dir)
     lines = load_lines(path)
-    lines = islice(cycle(lines), input_size)
+    return islice(cycle(lines), size)
+
+
+def probe_pid(pid):
+    record = BenchRecord()
+    stats = nvidia_process_stats(pid)
+    if stats:
+        _, guid, record.gpu_ram = nvidia_process_stats(pid)
+        _, total_gpu_ram, record.gpu_usage, gpu_ram_usage = nvidia_gpu_stats(guid)
+
+    stats = ps_stats(pid)
+    if stats:  # process finished
+        _, record.cpu_usage, record.ram = stats
+
+    record.timestamp = time()
+    return record
+
+
+def bench(exp_dir, data_dir, task, input_size=10000, batch_size=128, delay=0.3):
+    lines = bench_input(data_dir, task, input_size)
+
+    command = [
+        'python', 'main.py', 'infer',
+        exp_dir, task,
+        '--batch-size', str(batch_size)
+    ]
+    process = subprocess.Popen(
+        command,
+        stdin=subprocess.PIPE,
+        stdout=subprocess.DEVNULL,
+        universal_newlines=True
+    )
+    write_lines(lines, process.stdin)
+    process.stdin.close()
+
+    while process.poll() is None:
+        yield probe_pid(process.pid)
+        sleep(delay)
+
+
+def bench_docker(image, data_dir, task, input_size=10000, batch_size=128, delay=0.3):
+    lines = bench_input(data_dir, task, input_size)
 
     name = f'{image}_{short_uid()}'
     command = [
@@ -1687,19 +1729,8 @@ def bench(image, data_dir, task, input_size=10000, batch_size=128, delay=0.3):
     if not pid:
         raise RuntimeError(f'pid not found, container {name!r}')
 
-    record = BenchRecord()
     while process.poll() is None:
-        stats = nvidia_process_stats(pid)
-        if stats:
-            _, guid, record.gpu_ram = nvidia_process_stats(pid)
-            _, total_gpu_ram, record.gpu_usage, gpu_ram_usage = nvidia_gpu_stats(guid)
-
-        stats = ps_stats(pid)
-        if stats:  # process finished
-            _, record.cpu_usage, record.ram = stats
-
-        record.timestamp = time()
-        yield record
+        yield probe_pid(pid)
         sleep(delay)
 
 
@@ -2235,6 +2266,34 @@ def cli_train(args):
     strip_exp(args.exps_dir, args.model, args.task)
 
 
+def cli_eval(args):
+    preds = list(load_jl(args.preds))
+    targets = list(load_jl(args.targets))
+    metrics = eval(args.task, preds, targets)
+    print(json.dumps(metrics, indent=2))
+
+
+def print_jl(items):
+    lines = format_jl(items)
+    for line in lines:
+        print(line, flush=True)
+    
+
+def cli_bench(args):
+    log(
+        f'Bench {args.exp_dir!r}, {args.task!r}, '
+        f'input_size={args.input_size}, '
+        f'batch_size={args.batch_size}'
+    )
+    records = bench(
+        args.exp_dir, args.data_dir, args.task,
+        input_size=args.input_size,
+        batch_size=args.batch_size
+    )
+    items = (_.as_json for _ in records)
+    print_jl(items)
+
+
 def cli_s3(args):
     s3_call(args.args)
 
@@ -2255,27 +2314,18 @@ def cli_docker_pull(args):
     docker_pull(args.image)
 
 
-def cli_eval(args):
-    preds = list(load_jl(args.preds))
-    targets = list(load_jl(args.targets))
-    metrics = eval(args.task, preds, targets)
-    print(json.dumps(metrics, indent=2))
-
-
-def cli_bench(args):
+def cli_docker_bench(args):
     log(
         f'Bench {args.image!r}, input_size={args.input_size}, '
         f'batch_size={args.batch_size}'
     )
-    records = bench(
+    records = bench_docker(
         args.image, args.data_dir, args.task,
         input_size=args.input_size,
         batch_size=args.batch_size
     )
     items = (_.as_json for _ in records)
-    lines = format_jl(items)
-    for line in lines:
-        print(line, flush=True)
+    print_jl(items)
 
 
 def existing_path(path):
@@ -2303,6 +2353,20 @@ def main(args):
     sub.add_argument('data_dir', type=existing_path)
     sub.add_argument('--seed', type=int, default=1)
 
+    sub = subs.add_parser('eval')
+    sub.set_defaults(function=cli_eval)
+    sub.add_argument('task', choices=TASKS)
+    sub.add_argument('preds', type=existing_path)
+    sub.add_argument('targets', type=existing_path)
+
+    sub = subs.add_parser('bench')
+    sub.set_defaults(function=cli_bench)
+    sub.add_argument('exp_dir', type=existing_path)
+    sub.add_argument('data_dir', type=existing_path)
+    sub.add_argument('task', choices=TASKS)
+    sub.add_argument('--input-size', type=int, default=10000)
+    sub.add_argument('--batch-size', type=int, default=128)
+
     sub = subs.add_parser('s3')
     sub.set_defaults(function=cli_s3)
     sub.add_argument('args', nargs=argparse.REMAINDER)
@@ -2326,14 +2390,8 @@ def main(args):
     sub.set_defaults(function=cli_docker_pull)
     sub.add_argument('image')
 
-    sub = subs.add_parser('eval')
-    sub.set_defaults(function=cli_eval)
-    sub.add_argument('task', choices=TASKS)
-    sub.add_argument('preds', type=existing_path)
-    sub.add_argument('targets', type=existing_path)
-
-    sub = subs.add_parser('bench')
-    sub.set_defaults(function=cli_bench)
+    sub = docker.add_parser('bench')
+    sub.set_defaults(function=cli_docker_bench)
     sub.add_argument('image')
     sub.add_argument('data_dir', type=existing_path)
     sub.add_argument('task', choices=TASKS)

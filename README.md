@@ -580,15 +580,15 @@ python main.py docker login
 Push model image. Tags image with cryptic Yandex.Cloud repo id.
 
 ```bash
-python main.py push rubert-terra
-python main.py push rubert-lidirus
+python main.py docker push rubert-terra
+python main.py docker push rubert-lidirus
 ```
 
 Pull model image.
 
 ```bash
-python main.py pull rubert-terra
-python main.py pull rubert-lidirus
+python main.py docker pull rubert-terra
+python main.py docker pull rubert-lidirus
 ```
 
 Infer containerized model, provide test data as stdin, optionally define batch size, read preds from stdout. Docker container internally calls `main.py infer`.
@@ -654,7 +654,7 @@ Bench model 5 times. Input size 2000 is optiomal not too short for robust time e
 
 ```bash
 for index in 01 02 03 04 05; \
-  do python main.py bench rubert-rucos ~/data rucos --input-size=2000 --batch-size=32 \
+  do python main.py docker bench rubert-rucos ~/data rucos --input-size=2000 --batch-size=32 \
   > ~/benches/rubert/rwsd/2000_32_$index.jl; \
 done
 ```
