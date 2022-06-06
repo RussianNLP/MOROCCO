@@ -1,0 +1,1262 @@
+diff --git a/jiant/config/superglue_bert.conf b/jiant/config/superglue_bert.conf
+index 0e8a6d5..7389717 100644
+--- a/jiant/config/superglue_bert.conf
++++ b/jiant/config/superglue_bert.conf
+@@ -2,14 +2,17 @@
+ 
+ // This imports the defaults, which can be overridden below.
+ include "defaults.conf"
+-exp_name = "bert-large-cased"
++
++  
+ 
+ // Data and preprocessing settings
+ max_seq_len = 256 // Mainly needed for MultiRC, to avoid over-truncating
+                   // But not 512 as that is really hard to fit in memory.
+ 
+ // Model settings
+-input_module = "bert-large-cased"
++input_module = "DeepPavlov/rubert-base-cased-conversational"
++exp_name = "rubert-conversational"
++ 
+ transformers_output_mode = "top"
+ pair_attn = 0 // shouldn't be needed but JIC
+ s2s = {
+@@ -29,7 +32,7 @@ lr = .00001
+ min_lr = .0000001
+ lr_patience = 4
+ patience = 20
+-max_vals = 10000
++max_vals = 10
+ 
+ // Control-flow stuff
+ do_pretrain = 1
+diff --git a/jiant/evaluate.py b/jiant/evaluate.py
+index 7932b54..f58ffa6 100644
+--- a/jiant/evaluate.py
++++ b/jiant/evaluate.py
+@@ -13,15 +13,15 @@ from allennlp.nn.util import move_to_device
+ from allennlp.data.iterators import BasicIterator
+ from jiant import tasks as tasks_module
+ from jiant.tasks.tasks import (
+-    BooleanQuestionTask,
+-    CommitmentTask,
+-    COPATask,
+-    RTESuperGLUETask,
+-    WiCTask,
+-    WinogradCoreferenceTask,
++    DaNetQATask,
++    RCBTask,
++    PARusTask,
++    TERRaSuperGLUETask,
++    RUSSETask,
++    RWSDTask,
+     GLUEDiagnosticTask,
+ )
+-from jiant.tasks.qa import MultiRCTask, ReCoRDTask, QASRLTask
++from jiant.tasks.qa import MuSeRCTask, RuCoSTask, QASRLTask
+ from jiant.tasks.edge_probing import EdgeProbingTask
+ from jiant.utils.utils import get_output_attribute
+ 
+@@ -192,36 +192,36 @@ def write_preds(
+         elif isinstance(task, EdgeProbingTask):
+             # Edge probing tasks, have structured output.
+             _write_edge_preds(task, preds_df, pred_dir, split_name)
+-        elif isinstance(task, BooleanQuestionTask):
+-            _write_boolq_preds(
++        elif isinstance(task, DaNetQATask):
++            _write_danetqa_preds(
+                 task, preds_df, pred_dir, split_name, strict_glue_format=strict_glue_format
+             )
+-        elif isinstance(task, CommitmentTask):
+-            _write_commitment_preds(
++        elif isinstance(task, RCBTask):
++            _write_rcb_preds(
+                 task, preds_df, pred_dir, split_name, strict_glue_format=strict_glue_format
+             )
+-        elif isinstance(task, COPATask):
+-            _write_copa_preds(
++        elif isinstance(task, PARusTask):
++            _write_parus_preds(
+                 task, preds_df, pred_dir, split_name, strict_glue_format=strict_glue_format
+             )
+-        elif isinstance(task, MultiRCTask):
+-            _write_multirc_preds(
++        elif isinstance(task, MuSeRCTask):
++            _write_muserc_preds(
+                 task, preds_df, pred_dir, split_name, strict_glue_format=strict_glue_format
+             )
+-        elif isinstance(task, RTESuperGLUETask):
+-            _write_rte_preds(
++        elif isinstance(task, TERRaSuperGLUETask):
++            _write_terra_preds(
+                 task, preds_df, pred_dir, split_name, strict_glue_format=strict_glue_format
+             )
+-        elif isinstance(task, ReCoRDTask):
+-            _write_record_preds(
++        elif isinstance(task, RuCoSTask):
++            _write_rucos_preds(
+                 task, preds_df, pred_dir, split_name, strict_glue_format=strict_glue_format
+             )
+-        elif isinstance(task, WiCTask):
+-            _write_wic_preds(
++        elif isinstance(task, RUSSETask):
++            _write_russe_preds(
+                 task, preds_df, pred_dir, split_name, strict_glue_format=strict_glue_format
+             )
+-        elif isinstance(task, WinogradCoreferenceTask):
+-            _write_winograd_preds(
++        elif isinstance(task, RWSDTask):
++            _write_rwsd_preds(
+                 task, preds_df, pred_dir, split_name, strict_glue_format=strict_glue_format
+             )
+         elif isinstance(task, GLUEDiagnosticTask):
+@@ -240,49 +240,28 @@ def write_preds(
+     return
+ 
+ 
+-# Exact file names per task required by the GLUE evaluation server
+-GLUE_NAME_MAP = {
+-    "cola": "CoLA",
+-    "glue-diagnostic": "AX",
+-    "mnli-mm": "MNLI-mm",
+-    "mnli-m": "MNLI-m",
+-    "mrpc": "MRPC",
+-    "qnli": "QNLI",
+-    "qqp": "QQP",
+-    "rte": "RTE",
+-    "sst": "SST-2",
+-    "sts-b": "STS-B",
+-    "wnli": "WNLI",
+-}
++
+ 
+ # Exact file names per task required by the SuperGLUE evaluation server
+ SUPERGLUE_NAME_MAP = {
+-    "boolq": "BoolQ",
+-    "commitbank": "CB",
+-    "copa": "COPA",
+-    "multirc": "MultiRC",
+-    "record": "ReCoRD",
+-    "rte-superglue": "RTE",
+-    "wic": "WiC",
+-    "winograd-coreference": "WSC",
+-    "broadcoverage-diagnostic": "AX-b",
+-    "winogender-diagnostic": "AX-g",
++    "danetqa": "DaNetQA",
++    "rcb": "RCB",
++    "parus": "PARus",
++    "muserc": "MuSeRC",
++    "rucos": "RuCoS",
++    "terra": "TERRa",
++    "russe": "RUSSE",
++    "rwsd": "RWSD",
++    "lidirus": "LiDiRus",
+ }
+ 
+ 
+ def _get_pred_filename(task_name, pred_dir, split_name, strict_glue_format):
+-    if strict_glue_format and task_name in GLUE_NAME_MAP:
+-        if split_name == "test":
+-            file = "%s.tsv" % (GLUE_NAME_MAP[task_name])
+-        else:
+-            file = "%s_%s.tsv" % (GLUE_NAME_MAP[task_name], split_name)
+-    elif strict_glue_format and task_name in SUPERGLUE_NAME_MAP:
+-        if split_name == "test":
+-            file = "%s.jsonl" % (SUPERGLUE_NAME_MAP[task_name])
+-        else:
+-            file = "%s_%s.jsonl" % (SUPERGLUE_NAME_MAP[task_name], split_name)
++    if split_name == "test":
++        file = "%s.jsonl" % (SUPERGLUE_NAME_MAP[task_name])
+     else:
+-        file = "%s_%s.tsv" % (task_name, split_name)
++        file = "%s_%s.jsonl" % (SUPERGLUE_NAME_MAP[task_name], split_name)
++
+     return os.path.join(pred_dir, file)
+ 
+ 
+@@ -301,6 +280,8 @@ def _write_edge_preds(
+ 
+     Predictions are saved as JSON with one record per line.
+     """
++    log.info('!!!')
++    log.info(task.name)
+     preds_file = os.path.join(pred_dir, f"{task.name}_{split_name}.json")
+     # Each row of 'preds' is a NumPy object, need to convert to list for
+     # serialization.
+@@ -324,14 +305,14 @@ def _write_edge_preds(
+             fd.write("\n")
+ 
+ 
+-def _write_wic_preds(
++def _write_russe_preds(
+     task: str,
+     preds_df: pd.DataFrame,
+     pred_dir: str,
+     split_name: str,
+     strict_glue_format: bool = False,
+ ):
+-    """ Write predictions for WiC task.  """
++    """ Write predictions for RUSSE task.  """
+     pred_map = {0: "false", 1: "true"}
+     preds_file = _get_pred_filename(task.name, pred_dir, split_name, strict_glue_format)
+     with open(preds_file, "w", encoding="utf-8") as preds_fh:
+@@ -343,7 +324,7 @@ def _write_wic_preds(
+             preds_fh.write("{0}\n".format(json.dumps(out_d)))
+ 
+ 
+-def _write_winograd_preds(
++def _write_rwsd_preds(
+     task: str,
+     preds_df: pd.DataFrame,
+     pred_dir: str,
+@@ -362,7 +343,7 @@ def _write_winograd_preds(
+             preds_fh.write("{0}\n".format(json.dumps(out_d)))
+ 
+ 
+-def _write_boolq_preds(
++def _write_danetqa_preds(
+     task: str,
+     preds_df: pd.DataFrame,
+     pred_dir: str,
+@@ -381,7 +362,7 @@ def _write_boolq_preds(
+             preds_fh.write("{0}\n".format(json.dumps(out_d)))
+ 
+ 
+-def _write_commitment_preds(
++def _write_rcb_preds(
+     task: str,
+     preds_df: pd.DataFrame,
+     pred_dir: str,
+@@ -400,10 +381,10 @@ def _write_commitment_preds(
+             preds_fh.write("{0}\n".format(json.dumps(out_d)))
+ 
+ 
+-def _write_copa_preds(
++def _write_parus_preds(
+     task, preds_df: pd.DataFrame, pred_dir: str, split_name: str, strict_glue_format: bool = False
+ ):
+-    """ Write COPA predictions to JSONL """
++    """ Write PARus predictions to JSONL """
+     preds_file = _get_pred_filename(task.name, pred_dir, split_name, strict_glue_format)
+     with open(preds_file, "w", encoding="utf-8") as preds_fh:
+         for row_idx, row in preds_df.iterrows():
+@@ -414,14 +395,13 @@ def _write_copa_preds(
+             preds_fh.write("{0}\n".format(json.dumps(out_d)))
+ 
+ 
+-def _write_multirc_preds(
++def _write_muserc_preds(
+     task: str,
+     preds_df: pd.DataFrame,
+     pred_dir: str,
+     split_name: str,
+     strict_glue_format: bool = False,
+ ):
+-    """ Write predictions for MultiRC task. """
+     preds_file = _get_pred_filename(task.name, pred_dir, split_name, strict_glue_format)
+     with open(preds_file, "w", encoding="utf-8") as preds_fh:
+         if strict_glue_format:
+@@ -442,7 +422,7 @@ def _write_multirc_preds(
+                 preds_fh.write("{0}\n".format(json.dumps(out_d)))
+ 
+ 
+-def _write_record_preds(
++def _write_rucos_preds(
+     task: str,
+     preds_df: pd.DataFrame,
+     pred_dir: str,
+@@ -480,7 +460,7 @@ def _write_record_preds(
+                 preds_fh.write("{0}\n".format(json.dumps(out_d)))
+ 
+ 
+-def _write_rte_preds(
++def _write_terra_preds(
+     task: str,
+     preds_df: pd.DataFrame,
+     pred_dir: str,
+diff --git a/jiant/huggingface_transformers_interface/__init__.py b/jiant/huggingface_transformers_interface/__init__.py
+index 74f2321..4f1a56c 100644
+--- a/jiant/huggingface_transformers_interface/__init__.py
++++ b/jiant/huggingface_transformers_interface/__init__.py
+@@ -14,6 +14,10 @@ to prepare langs input to transformers.XLMModel
+ # All the supported input_module from huggingface transformers
+ # input_modules mapped to the same string share vocabulary
+ transformer_input_module_to_tokenizer_name = {
++    "DeepPavlov/bert-base-multilingual-cased-sentence": "DeepPavlov/bert-base-multilingual-cased-sentence",
++    "DeepPavlov/rubert-base-cased-conversational": "DeepPavlov/rubert-base-cased-conversational",
++    "DeepPavlov/rubert-base-cased-sentence": "DeepPavlov/rubert-base-cased-sentence",
++    "DeepPavlov/rubert-base-cased": "DeepPavlov/rubert-base-cased",
+     "bert-base-uncased": "bert_uncased",
+     "bert-large-uncased": "bert_uncased",
+     "bert-large-uncased-whole-word-masking": "bert_uncased",
+@@ -25,7 +29,9 @@ transformer_input_module_to_tokenizer_name = {
+     "bert-base-cased-finetuned-mrpc": "bert_cased",
+     "bert-base-multilingual-uncased": "bert_multilingual_uncased",
+     "bert-base-multilingual-cased": "bert_multilingual_cased",
++    "xlm-roberta-base":"xlm-roberta-base",
+     "roberta-base": "roberta",
++    "xlm-roberta-base": "xlm-roberta-base",
+     "roberta-large": "roberta",
+     "roberta-large-mnli": "roberta",
+     "xlnet-base-cased": "xlnet_cased",
+@@ -37,6 +43,7 @@ transformer_input_module_to_tokenizer_name = {
+     "gpt2-xl": "gpt2",
+     "transfo-xl-wt103": "transfo_xl",
+     "xlm-mlm-en-2048": "xlm_en",
++    "xlm-mlm-xnli15-1024": "xlm-mlm-xnli15-1024",
+     "albert-base-v1": "albert",
+     "albert-large-v1": "albert",
+     "albert-xlarge-v1": "albert",
+@@ -49,8 +56,12 @@ transformer_input_module_to_tokenizer_name = {
+ 
+ 
+ def input_module_uses_transformers(input_module):
++    if 'gpt' in  input_module:
++        return True
+     return input_module in transformer_input_module_to_tokenizer_name
+ 
+ 
+ def input_module_tokenizer_name(input_module):
++    if not input_module in transformer_input_module_to_tokenizer_name.keys():
++        return input_module
+     return transformer_input_module_to_tokenizer_name[input_module]
+diff --git a/jiant/huggingface_transformers_interface/modules.py b/jiant/huggingface_transformers_interface/modules.py
+index d8957e0..653a802 100644
+--- a/jiant/huggingface_transformers_interface/modules.py
++++ b/jiant/huggingface_transformers_interface/modules.py
+@@ -108,13 +108,25 @@ class HuggingfaceTransformersEmbedderModule(nn.Module):
+         # map AllenNLP @@UNKNOWN@@ to _unk_id in specific transformer vocab
+         valid_mask = (ids > 1).long()
+         # shift ordinary indexes by 2 to match pretrained token embedding indexes
+-        if self._unk_id is not None:
+-            ids = (ids - 2) * valid_mask + self._pad_id * pad_mask + self._unk_id * unk_mask
+-        else:
+-            ids = (ids - 2) * valid_mask + self._pad_id * pad_mask
+-            assert (
+-                unk_mask == 0
+-            ).all(), "out-of-vocabulary token found in the input, but _unk_id of transformers model is not specified"
++        try:
++            if self._unk_id is not None:
++                ids = (ids - 2) * valid_mask + self._pad_id * pad_mask + self._unk_id * unk_mask
++            else:
++                ids = (ids - 2) * valid_mask + self._pad_id * pad_mask
++                assert (
++                    unk_mask == 0
++                ).all(), "out-of-vocabulary token found in the input, but _unk_id of transformers model is not specified"
++        except:
++            self._pad_id = 0
++            self._unk_id = 1
++            if self._unk_id is not None:
++                ids = (ids - 2) * valid_mask + self._pad_id * pad_mask + self._unk_id * unk_mask
++            else:
++                ids = (ids - 2) * valid_mask + self._pad_id * pad_mask
++                assert (
++                    unk_mask == 0
++                ).all(), "out-of-vocabulary token found in the input, but _unk_id of transformers model is not specified"
++            
+         if self.max_pos is not None:
+             assert (
+                 ids.size()[-1] <= self.max_pos
+@@ -361,6 +373,60 @@ class RobertaEmbedderModule(HuggingfaceTransformersEmbedderModule):
+         lm_head.predictions.decoder.weight = self.model.embeddings.word_embeddings.weight
+         return nn.Sequential(lm_head, nn.LogSoftmax(dim=-1))
+ 
++class XLMRobertaEmbedderModule(HuggingfaceTransformersEmbedderModule):
++    """ Wrapper for RoBERTa module to fit into jiant APIs.
++    Check HuggingfaceTransformersEmbedderModule for function definitions """
++
++    def __init__(self, args):
++        super(XLMRobertaEmbedderModule, self).__init__(args)
++
++        self.model = transformers.XLMRobertaModel.from_pretrained(
++            args.input_module, cache_dir=self.cache_dir, output_hidden_states=True
++        )
++        #self.model.cuda()
++        self.max_pos = self.model.config.max_position_embeddings
++
++        self.tokenizer = transformers.XLMRobertaTokenizer.from_pretrained(
++            args.input_module, cache_dir=self.cache_dir
++        )  # TODO: Speed things up slightly by reusing the previously-loaded tokenizer.
++        self._sep_id = self.tokenizer.convert_tokens_to_ids("</s>")
++        self._cls_id = self.tokenizer.convert_tokens_to_ids("<s>")
++        self._pad_id = self.tokenizer.convert_tokens_to_ids("<pad>")
++        self._unk_id = self.tokenizer.convert_tokens_to_ids("<unk>")
++
++        self.parameter_setup(args)
++
++    @staticmethod
++    def apply_boundary_tokens(s1, s2=None, get_offset=False):
++        # RoBERTa-style boundary token padding on string token sequences
++        if s2:
++            s = ["<s>"] + s1 + ["</s>", "</s>"] + s2 + ["</s>"]
++            if get_offset:
++                return s, 1, len(s1) + 3
++        else:
++            s = ["<s>"] + s1 + ["</s>"]
++            if get_offset:
++                return s, 1
++        return s
++
++    def forward(self, sent: Dict[str, torch.LongTensor], task_name: str = "") -> torch.FloatTensor:
++        ids, input_mask = self.correct_sent_indexing(sent)
++        hidden_states, lex_seq = [], None
++        if self.output_mode not in ["none", "top"]:
++            lex_seq = self.model.embeddings.word_embeddings(ids)
++            lex_seq = self.model.embeddings.LayerNorm(lex_seq)
++        if self.output_mode != "only":
++             _, output_pooled_vec, hidden_states = self.model(ids)
++        return self.prepare_output(lex_seq, hidden_states, input_mask)
++
++    def get_pretrained_lm_head(self):
++        model_with_lm_head = transformers.XLMRobertaForMaskedLM.from_pretrained(
++            self.input_module, cache_dir=self.cache_dir
++        )
++        lm_head = model_with_lm_head.pred_layer
++        lm_head.proj.weight = self.model.embeddings.weight
++        return nn.Sequential(lm_head, nn.LogSoftmax(dim=-1))
++
+ 
+ class AlbertEmbedderModule(HuggingfaceTransformersEmbedderModule):
+     """ Wrapper for ALBERT module to fit into jiant APIs.
+@@ -682,7 +748,7 @@ class XLMEmbedderModule(HuggingfaceTransformersEmbedderModule):
+ 
+     def __init__(self, args):
+         super(XLMEmbedderModule, self).__init__(args)
+-
++        #self.model = transformers.XLMWithLMHeadModel.from_pretrained(
+         self.model = transformers.XLMModel.from_pretrained(
+             args.input_module, cache_dir=self.cache_dir, output_hidden_states=True
+         )  # TODO: Speed things up slightly by reusing the previously-loaded tokenizer.
+@@ -714,6 +780,61 @@ class XLMEmbedderModule(HuggingfaceTransformersEmbedderModule):
+         hidden_states, lex_seq = [], None
+         if self.output_mode not in ["none", "top"]:
+             lex_seq = self.model.embeddings(ids)
++            #lex_seq = self.model.embeddings.word_embeddings(ids)
++            #lex_seq = self.model.embeddings.LayerNorm(lex_seq)
++        if self.output_mode != "only":
++            _, hidden_states = self.model(ids)
++        return self.prepare_output(lex_seq, hidden_states, input_mask)
++
++    def get_pretrained_lm_head(self):
++        model_with_lm_head = transformers.XLMWithLMHeadModel.from_pretrained(
++            self.input_module, cache_dir=self.cache_dir
++        )
++        lm_head = model_with_lm_head.pred_layer
++        lm_head.proj.weight = self.model.embeddings.weight
++        return nn.Sequential(lm_head, nn.LogSoftmax(dim=-1))
++
++    
++class XLMMLMEmbedderModule(HuggingfaceTransformersEmbedderModule):
++    """ Wrapper for XLM module to fit into jiant APIs.
++    Check HuggingfaceTransformersEmbedderModule for function definitions """
++
++    def __init__(self, args):
++        super(XLMMLMEmbedderModule, self).__init__(args)
++        self.model = transformers.XLMWithLMHeadModel.from_pretrained(
++        #self.model = transformers.XLMModel.from_pretrained(
++            args.input_module, cache_dir=self.cache_dir, output_hidden_states=True
++        )  # TODO: Speed things up slightly by reusing the previously-loaded tokenizer.
++        self.max_pos = self.model.config.max_position_embeddings
++
++        self.tokenizer = transformers.XLMTokenizer.from_pretrained(
++            args.input_module, cache_dir=self.cache_dir
++        )
++        self._unk_id = self.tokenizer.convert_tokens_to_ids("<unk>")
++        self._pad_id = self.tokenizer.convert_tokens_to_ids("<pad>")
++
++        self.parameter_setup(args)
++
++    @staticmethod
++    def apply_boundary_tokens(s1, s2=None, get_offset=False):
++        # XLM-style boundary token marking on string token sequences
++        if s2:
++            s = ["</s>"] + s1 + ["</s>"] + s2 + ["</s>"]
++            if get_offset:
++                return s, 1, len(s1) + 2
++        else:
++            s = ["</s>"] + s1 + ["</s>"]
++            if get_offset:
++                return s, 1, len(s1) + 1
++        return s
++
++    def forward(self, sent: Dict[str, torch.LongTensor], task_name: str = "") -> torch.FloatTensor:
++        ids, input_mask = self.correct_sent_indexing(sent)
++        hidden_states, lex_seq = [], None
++        if self.output_mode not in ["none", "top"]:
++            lex_seq = self.model.embeddings(ids)
++            #lex_seq = self.model.embeddings.word_embeddings(ids)
++            #lex_seq = self.model.embeddings.LayerNorm(lex_seq)
+         if self.output_mode != "only":
+             _, hidden_states = self.model(ids)
+         return self.prepare_output(lex_seq, hidden_states, input_mask)
+diff --git a/jiant/models.py b/jiant/models.py
+index 53d6e51..1137341 100644
+--- a/jiant/models.py
++++ b/jiant/models.py
+@@ -47,7 +47,7 @@ from jiant.huggingface_transformers_interface import input_module_uses_transform
+ from jiant.tasks.edge_probing import EdgeProbingTask
+ from jiant.tasks.lm import LanguageModelingTask
+ from jiant.tasks.lm_parsing import LanguageModelingParsingTask
+-from jiant.tasks.qa import MultiRCTask, ReCoRDTask
++from jiant.tasks.qa import MuSeRCTask,RuCoSTask
+ from jiant.tasks.seq2seq import Seq2SeqTask
+ from jiant.tasks.tasks import (
+     GLUEDiagnosticTask,
+@@ -62,7 +62,7 @@ from jiant.tasks.tasks import (
+     SpanPredictionTask,
+     STSBTask,
+     TaggingTask,
+-    WiCTask,
++    RUSSETask,
+     MRPCTask,
+     QQPTask,
+ )
+@@ -236,12 +236,18 @@ def build_model(args, vocab, pretrained_embs, tasks, cuda_devices):
+ 
+     # Build embeddings.
+     cove_layer = None
+-    if args.input_module.startswith("bert-"):
++    if args.input_module.startswith("bert-") or 'rubert' in args.input_module or '/bert-' in args.input_module:
+         from jiant.huggingface_transformers_interface.modules import BertEmbedderModule
+ 
+         log.info(f"Using BERT model ({args.input_module}).")
+         embedder = BertEmbedderModule(args)
+         d_emb = embedder.get_output_dim()
++    elif args.input_module.startswith("xlm-roberta-"):
++        from jiant.huggingface_transformers_interface.modules import XLMRobertaEmbedderModule
++
++        log.info(f"Using XLMRoBERTa model ({args.input_module}).")
++        embedder = XLMRobertaEmbedderModule(args)
++        d_emb = embedder.get_output_dim()
+     elif args.input_module.startswith("roberta-"):
+         from jiant.huggingface_transformers_interface.modules import RobertaEmbedderModule
+ 
+@@ -266,7 +272,7 @@ def build_model(args, vocab, pretrained_embs, tasks, cuda_devices):
+         log.info(f"Using OpenAI GPT model ({args.input_module}).")
+         embedder = OpenAIGPTEmbedderModule(args)
+         d_emb = embedder.get_output_dim()
+-    elif args.input_module.startswith("gpt2"):
++    elif args.input_module.startswith("gpt2") or 'gpt' in args.input_module:
+         from jiant.huggingface_transformers_interface.modules import GPT2EmbedderModule
+ 
+         log.info(f"Using GPT-2 model ({args.input_module}).")
+@@ -278,12 +284,24 @@ def build_model(args, vocab, pretrained_embs, tasks, cuda_devices):
+         log.info(f"Using Transformer-XL model ({args.input_module}).")
+         embedder = TransfoXLEmbedderModule(args)
+         d_emb = embedder.get_output_dim()
++    elif args.input_module.startswith("xlm-mlm"):
++        from jiant.huggingface_transformers_interface.modules import XLMMLMEmbedderModule
++
++        log.info(f"Using XLM MLM model ({args.input_module}).")
++        embedder = XLMMLMEmbedderModule(args)
++        d_emb = embedder.get_output_dim()
+     elif args.input_module.startswith("xlm-"):
+         from jiant.huggingface_transformers_interface.modules import XLMEmbedderModule
+ 
+         log.info(f"Using XLM model ({args.input_module}).")
+         embedder = XLMEmbedderModule(args)
+         d_emb = embedder.get_output_dim()
++    elif 'bert' in args.input_module:
++        from jiant.huggingface_transformers_interface.modules import BertEmbedderModule
++
++        log.info(f"Using BERT model ({args.input_module}).")
++        embedder = BertEmbedderModule(args)
++        d_emb = embedder.get_output_dim()
+     else:
+         # Default case, used for ELMo, CoVe, word embeddings, etc.
+         d_emb, embedder, cove_layer = build_embeddings(args, vocab, tasks, pretrained_embs)
+@@ -334,8 +352,11 @@ def build_model(args, vocab, pretrained_embs, tasks, cuda_devices):
+ 
+ def build_embeddings(args, vocab, tasks, pretrained_embs=None):
+     """ Build embeddings according to options in args """
++    log.info('In build Embeddings')
++    log.info(args.d_char)
+     d_emb, d_char = 0, args.d_char
+ 
++
+     token_embedders = {}
+     # Word embeddings
+     n_token_vocab = vocab.get_vocab_size("tokens")
+@@ -367,6 +388,7 @@ def build_embeddings(args, vocab, tasks, pretrained_embs=None):
+         token_embedders["words"] = embeddings
+         d_emb += d_word
+ 
++
+     # Handle cove
+     cove_layer = None
+     if args.cove:
+@@ -408,10 +430,14 @@ def build_embeddings(args, vocab, tasks, pretrained_embs=None):
+     else:
+         log.info("\tNot using character embeddings!")
+ 
++
++    log.info(d_emb)
++    log.info("&*&")
+     # If we want separate ELMo scalar weights (a different ELMo representation for each classifier,
+     # then we need count and reliably map each classifier to an index used by
+     # allennlp internal ELMo.
+     if args.sep_embs_for_skip:
++        log.info('***')
+         # Determine a deterministic list of classifier names to use for each
+         # task.
+         classifiers = sorted(set(map(lambda x: x._classifier_name, tasks)))
+@@ -452,7 +478,10 @@ def build_embeddings(args, vocab, tasks, pretrained_embs=None):
+         # Not used if input_module = elmo-chars-only (i.e. no elmo)
+         loaded_classifiers = {"@pretrain@": 0}
+         num_reps = 1
++    log.info(d_emb)
++    log.info('!*!')
+     if args.input_module.startswith("elmo"):
++        log.info('Elmo is used')
+         log.info("Loading ELMo from files:")
+         log.info("ELMO_OPT_PATH = %s", ELMO_OPT_PATH)
+         if args.input_module == "elmo-chars-only":
+@@ -491,7 +520,7 @@ def build_embeddings(args, vocab, tasks, pretrained_embs=None):
+         elmo_chars_only=args.input_module == "elmo-chars-only",
+         sep_embs_for_skip=args.sep_embs_for_skip,
+     )
+-
++    log.info(d_emb)
+     assert d_emb, "You turned off all the embeddings, ya goof!"
+     return d_emb, embedder, cove_layer
+ 
+@@ -597,7 +626,7 @@ def build_task_specific_modules(task, model, d_sent, d_emb, vocab, embedder, arg
+         decoder, hid2voc = build_decoder(task, d_sent, vocab, embedder, args)
+         setattr(model, "%s_decoder" % task.name, decoder)
+         setattr(model, "%s_hid2voc" % task.name, hid2voc)
+-    elif isinstance(task, (MultiRCTask, ReCoRDTask)):
++    elif isinstance(task, (MuSeRCTask, RuCoSTask)):
+         module = build_qa_module(task, d_sent, model.project_before_pooling, task_params)
+         setattr(model, "%s_mdl" % task.name, module)
+     else:
+@@ -729,12 +758,12 @@ def build_pair_sentence_module(task, d_inp, model, params):
+     if model.uses_pair_embedding:
+         # BERT/XLNet handle pair tasks by concatenating the inputs and classifying the joined
+         # sequence, so we use a single sentence classifier
+-        if isinstance(task, WiCTask):
++        if isinstance(task, RUSSETask):
+             d_out *= 3  # also pass the two contextual word representations
+         classifier = Classifier.from_params(d_out, n_classes, params)
+         module = SingleClassifier(pooler, classifier)
+     else:
+-        d_out = d_out + d_inp if isinstance(task, WiCTask) else d_out
++        d_out = d_out + d_inp if isinstance(task, RUSSETask) else d_out
+         classifier = Classifier.from_params(4 * d_out, n_classes, params)
+         module = PairClassifier(pooler, classifier, pair_attn)
+     return module
+@@ -877,7 +906,7 @@ class MultiTaskModel(nn.Module):
+             )
+         elif isinstance(task, SequenceGenerationTask):
+             out = self._seq_gen_forward(batch, task, predict)
+-        elif isinstance(task, (MultiRCTask, ReCoRDTask)):
++        elif isinstance(task, (MuSeRCTask, RuCoSTask)):
+             out = self._multiple_choice_reading_comprehension_forward(batch, task, predict)
+         elif isinstance(task, SpanClassificationTask):
+             out = self._span_forward(batch, task, predict)
+@@ -895,7 +924,9 @@ class MultiTaskModel(nn.Module):
+         """ Get task-specific classifier, as set in build_module(). """
+         # TODO: replace this logic with task._classifier_name?
+         task_params = self._get_task_params(task.name)
+-        use_clf = task_params["use_classifier"]
++                
++        #use_clf = task_params["use_classifier"]
++        use_clf = task_params["use_classifier"].replace('rte-superglue','terra').replace('lidirus','terra')
+         if use_clf in [None, "", "none"]:
+             use_clf = task.name  # default if not set
+         return getattr(self, "%s_mdl" % use_clf)
+@@ -1006,14 +1037,14 @@ class MultiTaskModel(nn.Module):
+         elif self.uses_pair_embedding:
+             sent, mask = self.sent_encoder(batch["inputs"], task)
+             # special case for WiC b/c we want to add representations of particular tokens
+-            if isinstance(task, WiCTask):
++            if isinstance(task, RUSSETask):
+                 logits = classifier(sent, mask, [batch["idx1"], batch["idx2"]])
+             else:
+                 logits = classifier(sent, mask)
+         else:
+             sent1, mask1 = self.sent_encoder(batch["input1"], task)
+             sent2, mask2 = self.sent_encoder(batch["input2"], task)
+-            if isinstance(task, WiCTask):
++            if isinstance(task, RUSSETask):
+                 logits = classifier(sent1, sent2, mask1, mask2, [batch["idx1"]], [batch["idx2"]])
+             else:
+                 logits = classifier(sent1, sent2, mask1, mask2)
+@@ -1262,7 +1293,7 @@ class MultiTaskModel(nn.Module):
+             out["loss"] = format_output(F.cross_entropy(logits, batch["label"]), self._cuda_device)
+ 
+         if predict:
+-            if isinstance(task, ReCoRDTask):
++            if isinstance(task, RuCoSTask):
+                 # For ReCoRD, we want the logits to make
+                 # predictions across answer choices
+                 # (which are spread across batches)
+diff --git a/jiant/modules/simple_modules.py b/jiant/modules/simple_modules.py
+index 42166af..33b3bc5 100644
+--- a/jiant/modules/simple_modules.py
++++ b/jiant/modules/simple_modules.py
+@@ -80,6 +80,7 @@ class Classifier(nn.Module):
+         self.classifier = classifier
+ 
+     def forward(self, seq_emb):
++        #log.info(seq_emd.size())
+         logits = self.classifier(seq_emb)
+         return logits
+ 
+diff --git a/jiant/preprocess.py b/jiant/preprocess.py
+index 27e3b6e..a92dc1b 100644
+--- a/jiant/preprocess.py
++++ b/jiant/preprocess.py
+@@ -41,6 +41,7 @@ from transformers import (
+     GPT2Tokenizer,
+     TransfoXLTokenizer,
+     XLMTokenizer,
++    XLMRobertaTokenizer
+ )
+ 
+ from jiant.tasks import (
+@@ -268,8 +269,9 @@ def _build_vocab(args: config.Params, tasks: List[Task], vocab_path: str):
+         # Add pre-computed vocabulary of corresponding tokenizer for transformers models.
+         add_transformers_vocab(vocab, args.tokenizer)
+ 
+-    vocab.save_to_files(vocab_path)
+-    log.info("\tSaved vocab to %s", vocab_path)
++    #vocab.save_to_files(vocab_path)
++    return vocab
++    #log.info("\tSaved vocab to %s", vocab_path)
+     #  del word2freq, char2freq, target2freq
+ 
+ 
+@@ -350,12 +352,14 @@ def build_tasks(
+     indexers = build_indexers(args)
+ 
+     vocab_path = os.path.join(args.exp_dir, "vocab")
+-    if args.reload_vocab or not os.path.exists(vocab_path):
+-        _build_vocab(args, tasks, vocab_path)
++    log.info('In building vocab')
++    log.info(args.exp_dir)
++    #if args.reload_vocab or not os.path.exists(vocab_path):
++    vocab = _build_vocab(args, tasks, vocab_path)
+ 
+     # Always load vocab from file.
+-    vocab = Vocabulary.from_files(vocab_path)
+-    log.info("\tLoaded vocab from %s", vocab_path)
++    #vocab = Vocabulary.from_files(vocab_path)
++    #log.info("\tLoaded vocab from %s", vocab_path)
+ 
+     for namespace, mapping in vocab._index_to_token.items():
+         log.info("\tVocab namespace %s: size %d", namespace, len(mapping))
+@@ -676,10 +680,11 @@ def add_transformers_vocab(vocab, tokenizer_name):
+     anything special, so we can just use the standard indexers.
+     """
+     do_lower_case = "uncased" in tokenizer_name
+-
+-    if tokenizer_name.startswith("bert-"):
++    log.info('In add_transformers_vocab')
++    log.info(tokenizer_name)
++    if tokenizer_name.startswith("bert-") or 'rubert' in tokenizer_name or '/bert-' in tokenizer_name:
+         tokenizer = BertTokenizer.from_pretrained(tokenizer_name, do_lower_case=do_lower_case)
+-    elif tokenizer_name.startswith("roberta-"):
++    elif tokenizer_name.startswith("roberta-"):# or 'roberta' in tokenizer_name:
+         tokenizer = RobertaTokenizer.from_pretrained(tokenizer_name)
+     elif tokenizer_name.startswith("albert-"):
+         tokenizer = AlbertTokenizer.from_pretrained(tokenizer_name)
+@@ -687,10 +692,12 @@ def add_transformers_vocab(vocab, tokenizer_name):
+         tokenizer = XLNetTokenizer.from_pretrained(tokenizer_name, do_lower_case=do_lower_case)
+     elif tokenizer_name.startswith("openai-gpt"):
+         tokenizer = OpenAIGPTTokenizer.from_pretrained(tokenizer_name)
+-    elif tokenizer_name.startswith("gpt2"):
++    elif tokenizer_name.startswith("gpt2") or 'gpt' in tokenizer_name:
+         tokenizer = GPT2Tokenizer.from_pretrained(tokenizer_name)
+     elif tokenizer_name.startswith("transfo-xl-"):
+         tokenizer = TransfoXLTokenizer.from_pretrained(tokenizer_name)
++    elif tokenizer_name.startswith("xlm-roberta"):
++        tokenizer = XLMRobertaTokenizer.from_pretrained(tokenizer_name)
+     elif tokenizer_name.startswith("xlm-"):
+         tokenizer = XLMTokenizer.from_pretrained(tokenizer_name)
+ 
+@@ -743,8 +750,8 @@ class ModelPreprocessingInterface(object):
+     def __init__(self, args):
+         boundary_token_fn = None
+         lm_boundary_token_fn = None
+-
+-        if args.input_module.startswith("bert-"):
++        log.info('in mpi')
++        if args.input_module.startswith("bert-") or 'rubert' in args.input_module or '/bert-' in args.input_module:
+             from jiant.huggingface_transformers_interface.modules import BertEmbedderModule
+ 
+             boundary_token_fn = BertEmbedderModule.apply_boundary_tokens
+@@ -765,7 +772,7 @@ class ModelPreprocessingInterface(object):
+ 
+             boundary_token_fn = OpenAIGPTEmbedderModule.apply_boundary_tokens
+             lm_boundary_token_fn = OpenAIGPTEmbedderModule.apply_lm_boundary_tokens
+-        elif args.input_module.startswith("gpt2"):
++        elif args.input_module.startswith("gpt2") or 'gpt' in args.input_module:
+             from jiant.huggingface_transformers_interface.modules import GPT2EmbedderModule
+ 
+             boundary_token_fn = GPT2EmbedderModule.apply_boundary_tokens
+diff --git a/jiant/tasks/qa.py b/jiant/tasks/qa.py
+index f336e2f..517672d 100644
+--- a/jiant/tasks/qa.py
++++ b/jiant/tasks/qa.py
+@@ -30,10 +30,9 @@ from jiant.tasks.registry import register_task
+ from ..utils.retokenize import space_tokenize_with_spans, find_space_token_span, get_aligner_fn
+ 
+ 
+-@register_task("multirc", rel_path="MultiRC/")
+-class MultiRCTask(Task):
+-    """Multi-sentence Reading Comprehension task
+-    See paper at https://cogcomp.org/multirc/ """
++@register_task("muserc", rel_path="MuSeRC/")
++class MuSeRCTask(Task):
++
+ 
+     def __init__(self, path, max_seq_len, name, **kw):
+         super().__init__(name, **kw)
+@@ -69,10 +68,10 @@ class MultiRCTask(Task):
+             for example in data_fh:
+                 ex = json.loads(example)
+ 
+-                assert (
+-                    "version" in ex and ex["version"] == 1.1
+-                ), "MultiRC version is invalid! Example indices are likely incorrect. "
+-                "Please re-download the data from super.gluebenchmark.com ."
++                #assert (
++                #    "version" in ex and ex["version"] == 1.1
++                #), "MultiRC version is invalid! Example indices are likely incorrect. "
++                #"Please re-download the data from super.gluebenchmark.com ."
+ 
+                 # each example has a passage field -> (text, questions)
+                 # text is the passage, which requires some preprocessing
+@@ -198,10 +197,8 @@ class MultiRCTask(Task):
+         return {"ans_f1": ans_f1, "qst_f1": qst_f1, "em": em, "avg": (ans_f1 + em) / 2}
+ 
+ 
+-@register_task("record", rel_path="ReCoRD/")
+-class ReCoRDTask(Task):
+-    """Reading Comprehension with commonsense Reasoning Dataset
+-    See paper at https://sheng-z.github.io/ReCoRD-explorer """
++@register_task("rucos", rel_path="RuCoS/")
++class RuCoSTask(Task):
+ 
+     def __init__(self, path, max_seq_len, name, **kw):
+         super().__init__(name, **kw)
+diff --git a/jiant/tasks/tasks.py b/jiant/tasks/tasks.py
+index 0ea6524..a8e5ce9 100644
+--- a/jiant/tasks/tasks.py
++++ b/jiant/tasks/tasks.py
+@@ -1674,8 +1674,8 @@ class GLUEDiagnosticTask(PairClassificationTask):
+ 
+ 
+ # SuperGLUE diagnostic (2-class NLI), expects JSONL
+-@register_task("broadcoverage-diagnostic", rel_path="RTE/diagnostics")
+-class BroadCoverageDiagnosticTask(GLUEDiagnosticTask):
++@register_task("lidirus", rel_path="LiDiRus")
++class LiDiRusTask(GLUEDiagnosticTask):
+     """ Class for SuperGLUE broad coverage (linguistics, commonsense, world knowledge)
+         diagnostic task """
+ 
+@@ -1724,7 +1724,7 @@ class BroadCoverageDiagnosticTask(GLUEDiagnosticTask):
+                 setattr(self, "scorer__%s__%s" % (tag_group, tag), scorer(arg_to_scorer))
+ 
+         targ_map = {"entailment": 1, "not_entailment": 0}
+-        data = [json.loads(d) for d in open(os.path.join(self.path, "AX-b.jsonl"))]
++        data = [json.loads(d) for d in open(os.path.join(self.path, "LiDiRus.jsonl"))]
+         sent1s = [
+             tokenize_and_truncate(self._tokenizer_name, d["sentence1"], self.max_seq_len)
+             for d in data
+@@ -1774,7 +1774,7 @@ class BroadCoverageDiagnosticTask(GLUEDiagnosticTask):
+         self.val_data_text = self.train_data_text
+         self.test_data_text = self.train_data_text
+         self.sentences = self.train_data_text[0] + self.train_data_text[1]
+-        log.info("\tFinished loading diagnostic data.")
++        log.info("\tFinished loading LiDiRus data.")
+ 
+         # TODO: use FastMatthews instead to save memory.
+         create_score_function(Correlation, "matthews", self.ix_to_lex_sem_dic, "lex_sem")
+@@ -1926,8 +1926,8 @@ class RTETask(PairClassificationTask):
+         log.info("\tFinished loading RTE (from GLUE formatted data).")
+ 
+ 
+-@register_task("rte-superglue", rel_path="RTE/")
+-class RTESuperGLUETask(RTETask):
++@register_task("terra", rel_path="TERRa/")
++class TERRaSuperGLUETask(RTETask):
+     """ Task class for Recognizing Textual Entailment 1, 2, 3, 5
+     Uses JSONL format used by SuperGLUE"""
+ 
+@@ -1964,7 +1964,7 @@ class RTESuperGLUETask(RTETask):
+             + self.val_data_text[0]
+             + self.val_data_text[1]
+         )
+-        log.info("\tFinished loading RTE (from SuperGLUE formatted data).")
++        log.info("\tFinished loading TERRa.")
+ 
+ 
+ @register_task("qnli", rel_path="QNLI/")
+@@ -2612,12 +2612,30 @@ class SpanClassificationTask(Task):
+     def _make_span_field(self, s, text_field, offset=1):
+         # AllenNLP span extractor expects inclusive span indices
+         # so minus 1 at the end index.
+-        return SpanField(s[0] + offset, s[1] - 1 + offset, text_field)
++        try:
++            return SpanField(s[0] + offset, s[1] - 1 + offset, text_field)
++        except:
++            span_end = len(text_field)-1
++            span_start = s[0] + offset
++            if span_start >= span_end:
++                span_start = span_end -1
++            #log.info('!&!&!')
++            #log.info(len(text_field))
++            return SpanField(span_start, span_end, text_field)
+ 
+     def make_instance(self, record, idx, indexers, model_preprocessing_interface) -> Type[Instance]:
+         """Convert a single record to an AllenNLP Instance."""
++        #tokens = record["text"].encode('utf-8').decode('utf-8').split()
+         tokens = record["text"].split()
++        ##Search
++        #ast.literal_eval('ekkjk')
++        #log.info('!!!')
++        #log.info(model_preprocessing_interface.boundary_token_fn(tokens, get_offset=True))
++        #ast.literal_eval('ekkjk')
++        #try:
+         tokens, offset = model_preprocessing_interface.boundary_token_fn(tokens, get_offset=True)
++        #except:
++        #    tokens, offset, _ = model_preprocessing_interface.boundary_token_fn(tokens, get_offset=True)
+         text_field = sentence_to_text_field(tokens, indexers)
+ 
+         example = {}
+@@ -2671,11 +2689,8 @@ class SpanClassificationTask(Task):
+             scorer(logits, labels)
+ 
+ 
+-@register_task("commitbank", rel_path="CB/")
+-class CommitmentTask(PairClassificationTask):
+-    """ NLI-formatted task detecting speaker commitment.
+-    Data and more info at github.com/mcdm/CommitmentBank/
+-    Paper forthcoming. """
++@register_task("rcb", rel_path="RCB/")
++class RCBTask(PairClassificationTask):
+ 
+     def __init__(self, path, max_seq_len, name, **kw):
+         """ We use three F1 trackers, one for each class to compute multi-class F1 """
+@@ -2729,7 +2744,7 @@ class CommitmentTask(PairClassificationTask):
+             + self.val_data_text[1]
+         )
+ 
+-        log.info("\tFinished loading CommitmentBank data.")
++        log.info("\tFinished loading RCB data.")
+ 
+     def get_metrics(self, reset=False):
+         """Get metrics specific to the task.
+@@ -2746,8 +2761,8 @@ class CommitmentTask(PairClassificationTask):
+         return {"accuracy": acc, "f1": f1, "precision": pcs, "recall": rcl}
+ 
+ 
+-@register_task("wic", rel_path="WiC/")
+-class WiCTask(PairClassificationTask):
++@register_task("russe", rel_path="RUSSE/")
++class RUSSETask(PairClassificationTask):
+     """ Task class for Words in Context. """
+ 
+     def __init__(self, path, max_seq_len, name, **kw):
+@@ -2803,11 +2818,6 @@ class WiCTask(PairClassificationTask):
+                     trg = trg_map[row["label"]] if "label" in row else 0
+                     trgs.append(trg)
+                     idxs.append(row["idx"])
+-                    assert (
+-                        "version" in row and row["version"] == 1.1
+-                    ), "WiC version is not v1.1; examples indices are likely incorrect and data "
+-                    "is likely pre-tokenized. Please re-download the data from "
+-                    "super.gluebenchmark.com."
+                 return [sents1, sents2, idxs1, idxs2, trgs, idxs]
+ 
+         self.train_data_text = _load_split(os.path.join(self.path, "train.jsonl"))
+@@ -2819,7 +2829,7 @@ class WiCTask(PairClassificationTask):
+             + self.val_data_text[0]
+             + self.val_data_text[1]
+         )
+-        log.info("\tFinished loading WiC data.")
++        log.info("\tFinished loading RUSSE data.")
+ 
+     def process_split(self, split, indexers, model_preprocessing_interface):
+         """
+@@ -3060,8 +3070,8 @@ class SpanPredictionTask(Task):
+         return preds
+ 
+ 
+-@register_task("copa", rel_path="COPA/")
+-class COPATask(MultipleChoiceTask):
++@register_task("parus", rel_path="PARus/")
++class PARusTask(MultipleChoiceTask):
+     """ Task class for Choice of Plausible Alternatives Task.  """
+ 
+     def __init__(self, path, max_seq_len, name, **kw):
+@@ -3084,16 +3094,16 @@ class COPATask(MultipleChoiceTask):
+ 
+         def _load_split(data_file):
+             contexts, questions, choicess, targs = [], [], [], []
+-            data = [json.loads(l) for l in open(data_file, encoding="utf-8")]
++            data = [json.loads(l) for l in open(data_file, encoding="utf-8-sig")]
+             for example in data:
+                 context = example["premise"]
+                 choice1 = example["choice1"]
+                 choice2 = example["choice2"]
+                 question = example["question"]
+                 question = (
+-                    "What was the cause of this?"
++                    "Что было причиной этого?"#"What was the cause of this?"
+                     if question == "cause"
+-                    else "What happened as a result?"
++                    else "Что произошло в результате?"
+                 )
+                 choices = [
+                     tokenize_and_truncate(self._tokenizer_name, choice, self.max_seq_len)
+@@ -3119,7 +3129,7 @@ class COPATask(MultipleChoiceTask):
+             + [choice for choices in self.train_data_text[1] for choice in choices]
+             + [choice for choices in self.val_data_text[1] for choice in choices]
+         )
+-        log.info("\tFinished loading COPA (as QA) data.")
++        log.info("\tFinished loading PARus (as QA) data.")
+ 
+     def process_split(
+         self, split, indexers, model_preprocessing_interface
+@@ -3332,8 +3342,8 @@ class HellaSwagTask(MultipleChoiceTask):
+         return {"accuracy": acc}
+ 
+ 
+-@register_task("winograd-coreference", rel_path="WSC")
+-class WinogradCoreferenceTask(SpanClassificationTask):
++@register_task("rwsd", rel_path="RWSD")
++class RWSDTask(SpanClassificationTask):
+     def __init__(self, path, **kw):
+         self._files_by_split = {"train": "train.jsonl", "val": "val.jsonl", "test": "test.jsonl"}
+         self.num_spans = 2
+@@ -3374,8 +3384,8 @@ class WinogradCoreferenceTask(SpanClassificationTask):
+         return collected_metrics
+ 
+ 
+-@register_task("boolq", rel_path="BoolQ")
+-class BooleanQuestionTask(PairClassificationTask):
++@register_task("danetqa", rel_path="DaNetQA")
++class DaNetQATask(PairClassificationTask):
+     """Task class for Boolean Questions Task."""
+ 
+     def __init__(self, path, max_seq_len, name, **kw):
+@@ -3418,7 +3428,7 @@ class BooleanQuestionTask(PairClassificationTask):
+         self.sentences = [d["question"] for d in self.train_data_text + self.val_data_text] + [
+             d["passage"] for d in self.train_data_text + self.val_data_text
+         ]
+-        log.info("\tFinished loading BoolQ data.")
++        log.info("\tFinished loading DaNetQA data.")
+ 
+     def process_split(
+         self, split, indexers, model_preprocessing_interface
+diff --git a/jiant/utils/data_loaders.py b/jiant/utils/data_loaders.py
+index acfea49..4ee8e4b 100644
+--- a/jiant/utils/data_loaders.py
++++ b/jiant/utils/data_loaders.py
+@@ -7,6 +7,7 @@ import codecs
+ import csv
+ import json
+ import numpy as np
++import logging as log
+ import pandas as pd
+ from allennlp.data import vocabulary
+ 
+@@ -35,8 +36,10 @@ def load_span_data(tokenizer_name, file_name, label_fn=None, has_labels=True):
+     Returns:
+         List of dictionaries of the aligned spans and tokenized text.
+     """
+-    rows = pd.read_json(file_name, lines=True)
++    rows = pd.read_json(file_name, lines=True, encoding = 'utf-8')
++    #rows.text = rows.text.apply(lambda x: x.encode('utf-8').decode('utf-8'))
+     # realign spans
++    log.info(file_name)
+     rows = rows.apply(lambda x: realign_spans(x, tokenizer_name), axis=1)
+     if has_labels is False:
+         rows["label"] = 0
+diff --git a/jiant/utils/retokenize.py b/jiant/utils/retokenize.py
+index 518d26c..90fbaae 100644
+--- a/jiant/utils/retokenize.py
++++ b/jiant/utils/retokenize.py
+@@ -23,6 +23,7 @@ from jiant.utils.tokenizers import get_tokenizer, Tokenizer
+ from jiant.utils.utils import unescape_moses, transpose_list_of_lists
+ 
+ 
++
+ # Tokenizer instance for internal use.
+ _SIMPLE_TOKENIZER = SpaceTokenizer()
+ _SEP = " "  # should match separator used by _SIMPLE_TOKENIZER
+@@ -391,13 +392,13 @@ def get_aligner_fn(tokenizer_name: Text):
+     """
+     if tokenizer_name == "MosesTokenizer" or tokenizer_name.startswith("transfo-xl-"):
+         return align_moses
+-    elif tokenizer_name.startswith("bert-"):
++    elif tokenizer_name.startswith("bert-") or 'rubert' in tokenizer_name or '/bert-' in tokenizer_name:
+         do_lower_case = tokenizer_name.endswith("uncased")
+         wpm_tokenizer = get_tokenizer(tokenizer_name)
+         return functools.partial(
+             align_wpm, wpm_tokenizer=wpm_tokenizer, do_lower_case=do_lower_case
+         )
+-    elif tokenizer_name.startswith("openai-gpt") or tokenizer_name.startswith("xlm-mlm-en-"):
++    elif tokenizer_name.startswith("openai-gpt") or tokenizer_name.startswith("xlm-"):
+         bpe_tokenizer = get_tokenizer(tokenizer_name)
+         return functools.partial(align_bpe, bpe_tokenizer=bpe_tokenizer)
+     elif tokenizer_name.startswith("xlnet-") or tokenizer_name.startswith("albert-"):
+@@ -405,7 +406,10 @@ def get_aligner_fn(tokenizer_name: Text):
+         return functools.partial(
+             align_sentencepiece, sentencepiece_tokenizer=sentencepiece_tokenizer
+         )
+-    elif tokenizer_name.startswith("roberta-") or tokenizer_name.startswith("gpt2"):
++    #elif tokenizer_name.startswith("xlm-roberta-"):
++    #    bytebpe_tokenizer = get_tokenizer(tokenizer_name)
++    #    return functools.partial(align_bytebpe, bytebpe_tokenizer=bytebpe_tokenizer)
++    elif tokenizer_name.startswith("roberta-") or 'gpt' in tokenizer_name or tokenizer_name.startswith("xlm-"):
+         bytebpe_tokenizer = get_tokenizer(tokenizer_name)
+         return functools.partial(align_bytebpe, bytebpe_tokenizer=bytebpe_tokenizer)
+     else:
+diff --git a/jiant/utils/tokenizers.py b/jiant/utils/tokenizers.py
+index 4a071d0..cfee392 100644
+--- a/jiant/utils/tokenizers.py
++++ b/jiant/utils/tokenizers.py
+@@ -20,6 +20,7 @@ from transformers import (
+     GPT2Tokenizer,
+     TransfoXLTokenizer,
+     XLMTokenizer,
++    XLMRobertaTokenizer,
+ )
+ 
+ 
+@@ -33,12 +34,14 @@ def select_tokenizer(args):
+         Select a sane default tokenizer.
+     """
+     if args.tokenizer == "auto":
++        log.info('Selecting tokenizer')
+         if input_module_uses_transformers(args.input_module):
+             tokenizer_name = args.input_module
+         else:
+             tokenizer_name = "MosesTokenizer"
+     else:
+         tokenizer_name = args.tokenizer
++    log.info(tokenizer_name)
+     return tokenizer_name
+ 
+ 
+@@ -93,9 +96,12 @@ class MosesTokenizer(Tokenizer):
+ @functools.lru_cache(maxsize=8, typed=False)
+ def get_tokenizer(tokenizer_name):
+     log.info(f"\tLoading Tokenizer {tokenizer_name}")
+-    if tokenizer_name.startswith("bert-"):
++    if tokenizer_name.startswith("bert-") or 'rubert' in tokenizer_name or '/bert-' in tokenizer_name:
+         do_lower_case = tokenizer_name.endswith("uncased")
+         tokenizer = BertTokenizer.from_pretrained(tokenizer_name, do_lower_case=do_lower_case)
++        log.info('Rubert tokenizer has been chosen.')
++    elif tokenizer_name.startswith("xlm-roberta"):
++        tokenizer = XLMRobertaTokenizer.from_pretrained(tokenizer_name)        
+     elif tokenizer_name.startswith("roberta-"):
+         tokenizer = RobertaTokenizer.from_pretrained(tokenizer_name)
+     elif tokenizer_name.startswith("albert-"):
+@@ -105,7 +111,7 @@ def get_tokenizer(tokenizer_name):
+         tokenizer = XLNetTokenizer.from_pretrained(tokenizer_name, do_lower_case=do_lower_case)
+     elif tokenizer_name.startswith("openai-gpt"):
+         tokenizer = OpenAIGPTTokenizer.from_pretrained(tokenizer_name)
+-    elif tokenizer_name.startswith("gpt2"):
++    elif tokenizer_name.startswith("gpt2") or 'gpt' in tokenizer_name:
+         tokenizer = GPT2Tokenizer.from_pretrained(tokenizer_name)
+     elif tokenizer_name.startswith("transfo-xl-"):
+         # TransformerXL is trained on data pretokenized with MosesTokenizer
+diff --git a/jiant/utils/utils.py b/jiant/utils/utils.py
+index 3dca117..1fdd527 100644
+--- a/jiant/utils/utils.py
++++ b/jiant/utils/utils.py
+@@ -457,7 +457,7 @@ def unescape_moses(moses_tokens):
+ 
+ def load_json_data(filename: str) -> Iterable:
+     """ Load JSON records, one per line. """
+-    with open(filename, "r") as fd:
++    with open(filename, "r", encoding = 'utf-8') as fd:
+         for line in fd:
+             yield json.loads(line)
+ 
+diff --git a/scripts/russian-superglue-baselines.sh b/scripts/russian-superglue-baselines.sh
+new file mode 100755
+index 0000000..9b1b6a3
+--- /dev/null
++++ b/scripts/russian-superglue-baselines.sh
+@@ -0,0 +1,75 @@
++#!/bin/bash
++# Functions to run Russian-SuperGLUE BERT baselines.
++# Usage: ./scripts/superglue-baselines.sh ${TASK} ${GPU_ID} ${SEED}
++#   - TASK: one of {"danetqa", "rcb", "parus", "muserc", "rucos", "terra", "russe", "rwsd", "all"},
++
++#   - GPU_ID: GPU to use, or -1 for CPU. Defaults to 0.
++#   - SEED: random seed. Defaults to 111.
++
++source user_config.sh
++seed=${3:-111}
++gpuid=${2:-0}
++
++function danetqa() {
++    python main.py --config jiant/config/superglue_bert.conf --overrides "random_seed = ${seed}, cuda = ${gpuid}, run_name = danetqa, pretrain_tasks = \"danetqa\", target_tasks = \"danetqa\", do_pretrain = 1, do_target_task_training = 0, do_full_eval = 1, batch_size = 4, val_interval = 1000"
++}
++
++function rcb() {
++    python main.py --config jiant/config/superglue_bert.conf --overrides "random_seed = ${seed}, cuda = ${gpuid}, run_name = rcb, pretrain_tasks = \"rcb\", target_tasks = \"rcb\", do_pretrain = 1, do_target_task_training = 0, do_full_eval = 1, batch_size = 4, val_interval = 60"
++}
++
++function parus() {
++    python main.py --config jiant/config/superglue_bert.conf --overrides "random_seed = ${seed}, cuda = ${gpuid}, run_name = parus, pretrain_tasks = \"parus\", target_tasks = \"parus\", do_pretrain = 1, do_target_task_training = 0, do_full_eval = 1, batch_size = 4, val_interval = 100"
++}
++
++function muserc() {
++    python main.py --config jiant/config/superglue_bert.conf --overrides "random_seed = ${seed}, cuda = ${gpuid}, run_name = muserc, pretrain_tasks = \"muserc\", target_tasks = \"muserc\", do_pretrain = 1, do_target_task_training = 0, do_full_eval = 1, batch_size = 4, val_interval = 1000, val_data_limit = -1"
++}
++
++function rucos() {
++    python main.py --config jiant/config/superglue_bert.conf --overrides "random_seed = ${seed}, cuda = ${gpuid}, run_name = rucos, pretrain_tasks = \"rucos\", target_tasks = \"rucos\", do_pretrain = 1, do_target_task_training = 0, do_full_eval = 1, batch_size = 8, val_interval = 10000, val_data_limit = -1"
++}
++
++function terra() {
++    python main.py --config jiant/config/superglue_bert.conf --overrides "random_seed = ${seed}, cuda = ${gpuid}, run_name = terra, pretrain_tasks = \"terra\", target_tasks = \"terra,lidirus\", do_pretrain = 1, do_target_task_training = 0, do_full_eval = 1, batch_size = 4, val_interval = 625"
++}
++
++function russe() {
++    python main.py --config jiant/config/superglue_bert.conf --overrides "random_seed = ${seed}, cuda = ${gpuid}, run_name = russe, pretrain_tasks = \"russe\", target_tasks = \"russe\", do_pretrain = 1, do_target_task_training = 0, do_full_eval = 1, batch_size = 4, val_interval = 1000"
++}
++
++function rwsd() {
++
++    python main.py --config jiant/config/superglue_bert.conf --overrides "random_seed = ${seed}, cuda = ${gpuid}, run_name = rwsd, pretrain_tasks = \"rwsd\", target_tasks = \"rwsd\", do_pretrain = 1, do_target_task_training = 0, do_full_eval = 1, batch_size = 4, val_interval = 139, optimizer = adam"
++}
++
++
++
++if [ $1 == "danetqa" ]; then
++    danetqa
++elif [ $1 == "rcb" ]; then
++    rcb
++elif [ $1 == "parus" ]; then
++    parus
++elif [ $1 == "muserc" ]; then
++    muserc
++elif [ $1 == "rucos" ]; then
++    rucos
++elif [ $1 == "terra" ]; then
++    terra
++elif [ $1 == "russe" ]; then
++    russe
++elif [ $1 == "rwsd" ]; then
++    rwsd
++elif [ $1 == "all" ]; then
++    rwsd
++    russe
++    terra
++    rucos
++    muserc
++    parus
++    rcb
++    danetqa
++
++
++fi
