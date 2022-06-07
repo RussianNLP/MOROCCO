@@ -12,32 +12,11 @@ Each disc corresponds to baseline model, disc size is proportional to GPU RAM us
 
 <img src="https://habrastorage.org/webt/wd/um/wt/wdumwtsu7bjxdhe1ot8hfclr3f8.png" />
 
-## How to measure my model performance using MOROCCO, submit to Russian SuperGLUE leaderboard
-
-We wrap baseline models into Docker containers. Container reads test data from stdin, writes predictions to stdout, has a single optional argument `--batch-size`. 
-
-```bash
-docker run --gpus all --interactive --rm bert-multilingual-parus --batch-size=32 \
-  < ~/data/PARus/test.jsonl \
-  > ~/pred.jsonl
-
-# pred.jsonl
-{"idx": 0, "label": 1}
-{"idx": 1, "label": 1}
-{"idx": 2, "label": 0}
-{"idx": 3, "label": 1}
-{"idx": 4, "label": 0}
-{"idx": 5, "label": 0}
-{"idx": 6, "label": 0}
-{"idx": 7, "label": 0}
-{"idx": 8, "label": 0}
-{"idx": 9, "label": 1}
-...
-```
-
-There are 9 tasks and 6 baseline models, so we built 9 * 6 containers: `rubert-danetqa`, `rubert-lidirus`, `rubert-muserc`, ..., `rugpt3-small-rwsd`, `rugpt3-small-terra`.
-
 ## Papers
 
 * <a href="https://arxiv.org/abs/2104.14314">MOROCCO: Model Resource Comparison Framework</a>
 * <a href="https://arxiv.org/abs/2010.15925">RussianSuperGLUE: A Russian Language Understanding Evaluation Benchmark</a>
+
+## How to measure my model performance using MOROCCO and submit it to Russian SuperGLUE leaderboard
+
+## How to process user submission, add performance measurements to site
