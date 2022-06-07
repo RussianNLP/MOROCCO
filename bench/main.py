@@ -96,7 +96,6 @@ VAL = 'val'
 
 EXPS_DIR = join(PROJ_DIR, 'exps')
 GRID_PREDS_DIR = join(PROJ_DIR, 'preds/grid')
-CONF_TASK_METRICS = join(GRID_PREDS_DIR, 'conf_task_metrics.jl')
 BENCHES_DIR = join(PROJ_DIR, 'benches')
 
 
