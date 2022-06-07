@@ -94,10 +94,10 @@ docker pull russiannlp/rubert-parus
 Estimate init time and model size. Run bench with 1 input record. Repeat 5 times for robust measure.
 
 ```bash
-mkdir -p data/bench/rubert/parus
+mkdir -p data/rubert/parus
 for index in 01 02 03 04 05
 do
-  python main.py bench russiannlp/rubert-parus data/public parus --input-size=1 --batch-size=1 > data/bench/rubert/parus/1_1_$index.jsonl
+  python main.py bench russiannlp/rubert-parus data/public parus --input-size=1 --batch-size=1 > data/rubert/parus/1_1_$index.jsonl
 done
 ```
 
@@ -110,13 +110,24 @@ for model in rubert rubert-conversational bert-multilingual rugpt3-large rugpt3-
   for task in rwsd parus rcb danetqa muserc russe rucos terra lidirus
   do
     docker pull russiannlp/$model-$task
-    mkdir -p data/bench/$model/$task
+    mkdir -p data/$model/$task
     for index in 01 02 03 04 05
 	do
 	  python main.py bench russiannlp/$model-$task data/public $task \
         --input-size=$input_size --batch-size=$batch_size \
-        > data/bench/$model/$task/${input_size}_${batch_size}_${index}.jsonl
+        > data/$model/$task/${input_size}_${batch_size}_${index}.jsonl
     done
   done
 done
+```
+
+Plot bench logs for all tasks.
+
+```bash
+mkdir plots
+for task in rwsd parus rcb danetqa muserc russe rucos terra lidirus
+do
+  python main.py plot data/jiant/rubert/$task/*.jsonl plots/$task.png
+done
+
 ```

@@ -1,4 +1,5 @@
 
+import re
 import sys
 from dataclasses import (
     dataclass,
@@ -37,6 +38,7 @@ import argparse
 
 import pandas as pd
 
+from matplotlib import patches
 from matplotlib import pyplot as plt
 
 
@@ -491,31 +493,67 @@ def bench_docker(
 #####
 
 
+@dataclass
+class Bench:
+    path: str
+    task: str
+    input_size: int
+    batch_size: int
+    records: [BenchRecord]
+
+
+def parse_bench_path(path):
+    match = re.search(r'([^/]+)/(\d+)_(\d+)_\d+\.jsonl$', path)
+    if match:
+        task, input_size, batch_size = match.groups()
+        return task, int(input_size), int(batch_size)
+
+    raise ValueError(f'bad path {path!r}')
+
+
 def load_bench(path):
+    task, input_size, batch_size = parse_bench_path(path)
+
     items = load_jsonl(path)
-    for item in items:
-        yield BenchRecord(**item)
+    records = [
+        BenchRecord(**_)
+        for _ in items
+    ]
+
+    return Bench(
+        path,
+        task, input_size, batch_size,
+        records
+    )
 
 
-def plot_benches(benches, width=8, height=6):
-    tables = []
+def plot_benches(benches, width=8, height=7):
+    group_tables = []
     for bench in benches:
-        table = pd.DataFrame(bench)
-        tables.append(table)
+        table = pd.DataFrame(bench.records)
+        group = f'{bench.input_size}_{bench.batch_size}_*.jsonl'
+        group_tables.append([group, table])
 
     keys = ['cpu_usage', 'ram', 'gpu_usage', 'gpu_ram']
     lims = {
-        key: max(table[key].max() for table in tables)
+        key: max(table[key].max() for _, table in group_tables)
         for key in keys
     }
+    groups = sorted({group for group, _ in group_tables})
 
     fig, axes = plt.subplots(len(keys), 1, sharex=True)
     axes = axes.flatten()
 
+    get_color = plt.cm.get_cmap('rainbow', len(groups))
+    group_colors = {
+        group: get_color(index)
+        for index, group in enumerate(groups)
+    }
+
     for key, ax in zip(keys, axes):
-        for table in tables:
+        for group, table in group_tables:
             x = table.timestamp - table.timestamp.min()
-            ax.plot(x, table[key], color='blue', alpha=0.3)
+            ax.plot(x, table[key], color=group_colors[group], alpha=0.3)
 
         lim = lims[key]
         ax.set_yticks([lim])
@@ -527,6 +565,22 @@ def plot_benches(benches, width=8, height=6):
         ax.set_ylabel(key)
         ax.yaxis.set_label_position('left')
         ax.yaxis.set_ticks_position('right')
+
+    handles = [
+        patches.Patch(
+            color=group_colors[_], label=_, alpha=0.3
+        )
+        for _ in groups
+    ]
+    ax = axes[0]
+    ax.legend(
+        handles=handles,
+        bbox_to_anchor=(1, 1.1),
+        loc='lower right',
+        borderaxespad=0.,
+        ncol=3
+    )
+
 
     fig.set_size_inches(width, height)
     fig.tight_layout()
@@ -608,7 +662,7 @@ def main(args):
 
     sub = subs.add_parser('report')
     sub.set_defaults(function=cli_report)
-    sub.add_argument('dir', type=existing_path)
+    sub.add_argument('bench_paths', nargs='+', type=existing_path)
 
     args = parser.parse_args(args)
     if not args.function:
