@@ -36,11 +36,6 @@ from itertools import (
 
 import argparse
 
-import pandas as pd
-
-from matplotlib import patches
-from matplotlib import pyplot as plt
-
 
 DANETQA = 'danetqa'
 LIDIRUS = 'lidirus'
@@ -528,6 +523,13 @@ def load_bench(path):
 
 
 def plot_benches(benches, width=8, height=7):
+
+    # speed up main.py launch
+    import pandas as pd
+
+    from matplotlib import patches
+    from matplotlib import pyplot as plt
+
     group_tables = []
     for bench in benches:
         table = pd.DataFrame(bench.records)
