@@ -373,8 +373,8 @@ do
   mkdir -p preds/best/$model eval/best/$model
   for task in rwsd parus rcb danetqa muserc russe terra lidirus
   do
-    docker run --gpus all --interactive --rm $model-$task --batch-size 8 < data/private/${titles[$task]}/test_with_answers.jsonl > preds/best/$model/$task.jl
-    python main.py eval $task preds/best/$model/$task.jl data/private/${titles[$task]}/test_with_answers.jsonl > eval/best/$model/$task.json
+    docker run --gpus all --interactive --rm $model-$task --batch-size 8 < data/private/${titles[$task]}/test_with_answers.jsonl > preds/best/$model/$task.jsonl
+    python main.py eval $task preds/best/$model/$task.jsonl data/private/${titles[$task]}/test_with_answers.jsonl > eval/best/$model/$task.json
   done
 done
 ```

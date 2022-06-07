@@ -179,23 +179,23 @@ def dump_lines(lines, path):
             file.write(line + '\n')
 
 
-def parse_jl(lines):
+def parse_jsonl(lines):
     for line in lines:
         yield json.loads(line)
 
 
-def format_jl(items):
+def format_jsonl(items):
     for item in items:
         yield json.dumps(item, ensure_ascii=False)
 
 
-def load_jl(path):
+def load_jsonl(path):
     lines = load_lines(path)
-    return parse_jl(lines)
+    return parse_jsonl(lines)
 
 
-def dump_jl(items, path):
-    lines = format_jl(items)
+def dump_jsonl(items, path):
+    lines = format_jsonl(items)
     dump_lines(lines, path)
 
 
@@ -364,11 +364,11 @@ def dump_task(data_dir, task, items):
 
     if task == LIDIRUS:
         path = join(dir, title + '.jsonl')
-        dump_jl(items, path)
+        dump_jsonl(items, path)
 
     else:
         path = join(dir, 'test.jsonl')
-        dump_jl(items, path)
+        dump_jsonl(items, path)
 
         for filename in ['train.jsonl', 'val.jsonl']:
             data = []
@@ -377,14 +377,14 @@ def dump_task(data_dir, task, items):
                 data = [RWSD_ITEM]
 
             path = join(dir, filename)
-            dump_jl(data, path)
+            dump_jsonl(data, path)
 
     return dir
 
 
 def load_preds(dir, task):
     path = join(dir, TASK_TITLES[task] + '.jsonl')
-    return load_jl(path)
+    return load_jsonl(path)
 
 
 def infer_jiant(exp_dir, task, items, batch_size=4):
@@ -797,7 +797,7 @@ def cli_train(args):
 
 def cli_infer(args):
     log('Reading items from stdin')
-    items = list(parse_jl(sys.stdin))
+    items = list(parse_jsonl(sys.stdin))
     log(f'Read {len(items)} items')
 
     preds = infer_jiant(
@@ -806,14 +806,14 @@ def cli_infer(args):
     )
 
     log('Writing preds to stdout')
-    lines = format_jl(preds)
+    lines = format_jsonl(preds)
     for line in lines:
         print(line)
 
 
 def cli_eval(args):
-    preds = list(load_jl(args.preds))
-    targets = list(load_jl(args.targets))
+    preds = list(load_jsonl(args.preds))
+    targets = list(load_jsonl(args.targets))
     metrics = eval(args.task, preds, targets)
     print(json.dumps(metrics, indent=2))
 
@@ -822,8 +822,8 @@ def cli_docker_build(args):
     docker_build(args.exp_dir, args.task, args.name)
 
 
-def print_jl(items):
-    lines = format_jl(items)
+def print_jsonl(items):
+    lines = format_jsonl(items)
     for line in lines:
         print(line, flush=True)
 

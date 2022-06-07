@@ -97,7 +97,7 @@ Estimate init time and model size. Run bench with 1 input record. Repeat 5 times
 mkdir -p data/bench/rubert/parus
 for index in 01 02 03 04 05
 do
-  python main.py bench russiannlp/rubert-parus data/public parus --input-size=1 --batch-size=1 > data/bench/rubert/parus/1_1_$index.jl
+  python main.py bench russiannlp/rubert-parus data/public parus --input-size=1 --batch-size=1 > data/bench/rubert/parus/1_1_$index.jsonl
 done
 ```
 
@@ -115,7 +115,7 @@ for model in rubert rubert-conversational bert-multilingual rugpt3-large rugpt3-
 	do
 	  python main.py bench russiannlp/$model-$task data/public $task \
         --input-size=$input_size --batch-size=$batch_size \
-        > data/bench/$model/$task/${input_size}_${batch_size}_${index}.jl
+        > data/bench/$model/$task/${input_size}_${batch_size}_${index}.jsonl
     done
   done
 done

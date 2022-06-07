@@ -139,14 +139,14 @@ def load_lines(path):
             yield line.rstrip('\n')
 
 
-def parse_jl(lines):
+def parse_jsonl(lines):
     for line in lines:
         yield json.loads(line)
 
 
-def load_jl(path):
+def load_jsonl(path):
     lines = load_lines(path)
-    return parse_jl(lines)
+    return parse_jsonl(lines)
 
 
 def parse_tsv(lines, sep='\t'):
@@ -310,7 +310,7 @@ def task_path(task, access, split, dir=DATA_DIR):
 
 def load_task(task, access, split):
     path = task_path(task, access, split)
-    return load_jl(path)
+    return load_jsonl(path)
 
 
 ######
@@ -396,15 +396,18 @@ def find_grid_score(id, task, grid_task_scores):
 
 @dataclass
 class BenchRecord:
+    task: str
+    input_size: int
+    batch_size: int
     timestamp: float
-    cpu_usage: float = None
-    ram: int = None
-    gpu_usage: float = None
-    gpu_ram: int = None
+    cpu_usage: float
+    ram: int
+    gpu_usage: float
+    gpu_ram: int
 
 
 def load_bench(path):
-    items = load_jl(path)
+    items = load_jsonl(path)
     for item in items:
         yield BenchRecord(**item)
 
@@ -428,7 +431,7 @@ def list_bench_registry(dir):
     for model in listdir(dir):
         for task in listdir(join(dir, model)):
             for filename in listdir(join(dir, model, task)):
-                match = re.match(r'(\d+)_(\d+)_(\d+)\.jl', filename)
+                match = re.match(r'(\d+)_(\d+)_(\d+)\.jsonl', filename)
                 if match:
                     input_size, batch_size, index = map(int, match.groups())
                     yield BenchRegistryRecord(
@@ -453,7 +456,7 @@ def query_bench_registry(records, **kwargs):
 
 
 def registry_bench_path(dir, model, task, input_size, batch_size, index=1):
-    return join(dir, model, task, f'{input_size}_{batch_size}_{index:02d}.jl')
+    return join(dir, model, task, f'{input_size}_{batch_size}_{index:02d}.jsonl')
 
 
 def load_registry_bench(record):

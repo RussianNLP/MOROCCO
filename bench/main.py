@@ -143,23 +143,23 @@ def dump_lines(lines, path):
         write_lines(lines, file)
 
 
-def parse_jl(lines):
+def parse_jsonl(lines):
     for line in lines:
         yield json.loads(line)
 
 
-def format_jl(items):
+def format_jsonl(items):
     for item in items:
         yield json.dumps(item, ensure_ascii=False)
 
 
-def load_jl(path):
+def load_jsonl(path):
     lines = load_lines(path)
-    return parse_jl(lines)
+    return parse_jsonl(lines)
 
 
-def dump_jl(items, path):
-    lines = format_jl(items)
+def dump_jsonl(items, path):
+    lines = format_jsonl(items)
     dump_lines(lines, path)
 
 
@@ -382,11 +382,14 @@ def nvidia_process_stats(pid):
 
 @dataclass
 class BenchRecord:
+    task: str
+    input_size: int
+    batch_size: int
     timestamp: datetime
-    cpu_usage: float = None
-    ram: int = None
-    gpu_usage: float = None
-    gpu_ram: int = None
+    cpu_usage: float
+    ram: int
+    gpu_usage: float
+    gpu_ram: int
 
 
 def task_path(dir, task, split):
@@ -407,25 +410,24 @@ def bench_input(dir, task, size):
 
 
 def probe_pid(pid):
-    record = BenchRecord(
-        timestamp=time()
-    )
+    cpu_usage, ram = None, None
+    gpu_usage, gpu_ram = None, None
+
+    stats = ps_stats(pid)
+    if stats:
+        cpu_usage = stats.cpu_usage
+        ram = stats.ram
 
     stats = nvidia_process_stats(pid)
     if stats:
-        record.gpu_ram = stats.gpu_ram
+        gpu_ram = stats.gpu_ram
 
         # via nvidia-smi can not get both gpu ram and usage in one
         # call
         stats = nvidia_gpu_stats(stats.guid)
-        record.gpu_usage = stats.gpu_usage
+        gpu_usage = stats.gpu_usage
 
-    stats = ps_stats(pid)
-    if stats:
-        record.cpu_usage = stats.cpu_usage
-        record.ram = stats.ram
-
-    return record
+    return cpu_usage, ram, gpu_usage, gpu_ram
 
 
 def short_uid(cap=5):
@@ -472,7 +474,19 @@ def bench_docker(
         raise RuntimeError(f'pid not found, container {name!r}')
 
     while process.poll() is None:
-        yield probe_pid(pid)
+        cpu_usage, ram, gpu_usage, gpu_ram = probe_pid(pid)
+        timestamp = time()
+
+        yield BenchRecord(
+            task=task,
+            input_size=input_size,
+            batch_size=batch_size,
+            timestamp=timestamp,
+            cpu_usage=cpu_usage,
+            ram=ram,
+            gpu_usage=gpu_usage,
+            gpu_ram=gpu_ram
+        )
         sleep(delay)
 
 
@@ -551,7 +565,7 @@ def cli_bench(args):
         batch_size=args.batch_size
     )
     items = (asdict(_) for _ in records)
-    print_jl(items)
+    print_jsonl(items)
 
 
 def cli_plot(args):
@@ -568,6 +582,8 @@ def cli_report(args):
     print(args)
 
 
+def print_jsonl(items):
+    lines = format_jsonl(items)
     for line in lines:
         print(line, flush=True)
 
