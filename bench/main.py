@@ -493,8 +493,6 @@ def cli_bench(args):
     print_jl(items)
 
 
-def print_jl(items):
-    lines = format_jl(items)
     for line in lines:
         print(line, flush=True)
 

@@ -68,6 +68,13 @@ Go to instance.
 ssh morocco
 ```
 
+Setup reqs.
+
+```bash
+pip install pandas matplotlib
+```
+
+
 Fetch public Russian SuperGLUE data.
 
 ```bash
