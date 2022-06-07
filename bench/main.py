@@ -35,6 +35,10 @@ from itertools import (
 
 import argparse
 
+import pandas as pd
+
+from matplotlib import pyplot as plt
+
 
 DANETQA = 'danetqa'
 LIDIRUS = 'lidirus'
@@ -472,6 +476,63 @@ def bench_docker(
         sleep(delay)
 
 
+########
+#
+#   PLOT
+#
+#####
+
+
+def load_bench(path):
+    items = load_jsonl(path)
+    for item in items:
+        yield BenchRecord(**item)
+
+
+def plot_benches(benches, width=8, height=6):
+    tables = []
+    for bench in benches:
+        table = pd.DataFrame(bench)
+        tables.append(table)
+
+    keys = ['cpu_usage', 'ram', 'gpu_usage', 'gpu_ram']
+    lims = {
+        key: max(table[key].max() for table in tables)
+        for key in keys
+    }
+
+    fig, axes = plt.subplots(len(keys), 1, sharex=True)
+    axes = axes.flatten()
+
+    for key, ax in zip(keys, axes):
+        for table in tables:
+            x = table.timestamp - table.timestamp.min()
+            ax.plot(x, table[key], color='blue', alpha=0.3)
+
+        lim = lims[key]
+        ax.set_yticks([lim])
+        if key in ['ram', 'gpu_ram']:
+            label = '{} mb'.format(int(lim / MB))
+        else:
+            label = '{}%'.format(int(lim * 100))
+        ax.set_yticklabels([label])
+        ax.set_ylabel(key)
+        ax.yaxis.set_label_position('left')
+        ax.yaxis.set_ticks_position('right')
+
+    fig.set_size_inches(width, height)
+    fig.tight_layout()
+
+    return fig
+
+
+######
+#
+#   REPORT
+#
+######
+
+
 #######
 #
 #   CLI
@@ -491,6 +552,20 @@ def cli_bench(args):
     )
     items = (asdict(_) for _ in records)
     print_jl(items)
+
+
+def cli_plot(args):
+    log(f'Plot {args.bench_paths!r} -> {args.image_path!r}')
+    benches = [
+        load_bench(_)
+        for _ in args.bench_paths
+    ]
+    fig = plot_benches(benches)
+    fig.savefig(args.image_path)
+
+
+def cli_report(args):
+    print(args)
 
 
     for line in lines:
@@ -515,6 +590,15 @@ def main(args):
     sub.add_argument('task', choices=TASKS)
     sub.add_argument('--input-size', type=int, default=10000)
     sub.add_argument('--batch-size', type=int, default=128)
+
+    sub = subs.add_parser('plot')
+    sub.set_defaults(function=cli_plot)
+    sub.add_argument('bench_paths', nargs='+', type=existing_path)
+    sub.add_argument('image_path')
+
+    sub = subs.add_parser('report')
+    sub.set_defaults(function=cli_report)
+    sub.add_argument('dir', type=existing_path)
 
     args = parser.parse_args(args)
     if not args.function:
