@@ -1,662 +1,662 @@
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246660.7226655, "cpu_usage": 0.852, "ram": 318496768, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246661.058283, "cpu_usage": 0.935, "ram": 324530176, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246661.392106, "cpu_usage": 0.75, "ram": 325427200, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246661.731995, "cpu_usage": 0.78, "ram": 360198144, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246662.065874, "cpu_usage": 0.846, "ram": 372649984, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246662.3980088, "cpu_usage": 0.735, "ram": 365326336, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246662.7284281, "cpu_usage": 0.736, "ram": 365326336, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246663.0600736, "cpu_usage": 0.74, "ram": 365326336, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246663.3929286, "cpu_usage": 0.644, "ram": 390770688, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246663.7260728, "cpu_usage": 0.691, "ram": 513503232, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246664.0595179, "cpu_usage": 0.74, "ram": 634613760, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246664.395787, "cpu_usage": 0.688, "ram": 733556736, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246664.7284386, "cpu_usage": 0.731, "ram": 801517568, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246665.0614612, "cpu_usage": 0.772, "ram": 922087424, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246665.3951993, "cpu_usage": 0.723, "ram": 1040494592, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246665.7287288, "cpu_usage": 0.76, "ram": 1072111616, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246666.063279, "cpu_usage": 0.797, "ram": 1072111616, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246666.400384, "cpu_usage": 0.751, "ram": 1072111616, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246666.7352347, "cpu_usage": 0.785, "ram": 1072111616, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246667.069633, "cpu_usage": 0.818, "ram": 1072111616, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246667.4047797, "cpu_usage": 0.774, "ram": 1072111616, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246667.7444725, "cpu_usage": 0.805, "ram": 1529593856, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246668.0831304, "cpu_usage": 0.874, "ram": 1784250368, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246668.4138036, "cpu_usage": 0.824, "ram": 1785151488, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246668.7521007, "cpu_usage": 0.842, "ram": 1225023488, "gpu_usage": null, "gpu_ram": null}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246669.135235, "cpu_usage": 0.806, "ram": 1397305344, "gpu_usage": 0.09, "gpu_ram": 401604608}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246669.507735, "cpu_usage": 0.835, "ram": 1575370752, "gpu_usage": 0.03, "gpu_ram": 470810624}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246669.8873792, "cpu_usage": 0.864, "ram": 1819123712, "gpu_usage": 0.03, "gpu_ram": 556793856}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246670.261538, "cpu_usage": 0.829, "ram": 2034757632, "gpu_usage": 0.03, "gpu_ram": 630194176}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246670.6374469, "cpu_usage": 0.856, "ram": 2270281728, "gpu_usage": 0.03, "gpu_ram": 705691648}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246671.0088332, "cpu_usage": 0.882, "ram": 2490519552, "gpu_usage": 0.02, "gpu_ram": 785383424}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246671.3824542, "cpu_usage": 0.849, "ram": 2681659392, "gpu_usage": 0.03, "gpu_ram": 854589440}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246671.7566936, "cpu_usage": 0.874, "ram": 2906951680, "gpu_usage": 0.08, "gpu_ram": 980418560}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246672.1410153, "cpu_usage": 0.843, "ram": 2611507200, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246672.5133798, "cpu_usage": 0.866, "ram": 2332856320, "gpu_usage": 0.16, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246672.8812745, "cpu_usage": 0.871, "ram": 2332856320, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246673.2542481, "cpu_usage": 0.825, "ram": 2352709632, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246673.6227777, "cpu_usage": 0.847, "ram": 2363375616, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246673.9902277, "cpu_usage": 0.857, "ram": 2371006464, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246674.3620877, "cpu_usage": 0.813, "ram": 2382897152, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246674.7309308, "cpu_usage": 0.833, "ram": 2391818240, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246675.1017246, "cpu_usage": 0.855, "ram": 2391818240, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246675.4685705, "cpu_usage": 0.828, "ram": 2391818240, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246675.8442204, "cpu_usage": 0.848, "ram": 2391818240, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246676.2131124, "cpu_usage": 0.825, "ram": 2391818240, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246676.5802667, "cpu_usage": 0.843, "ram": 2391818240, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246676.9485166, "cpu_usage": 0.861, "ram": 2392080384, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246677.319127, "cpu_usage": 0.838, "ram": 2393288704, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246677.690717, "cpu_usage": 0.855, "ram": 2394599424, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246678.064108, "cpu_usage": 0.873, "ram": 2395648000, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246678.4356794, "cpu_usage": 0.85, "ram": 2396696576, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246678.8048604, "cpu_usage": 0.867, "ram": 2398007296, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246679.1886356, "cpu_usage": 0.846, "ram": 2399318016, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246679.5597951, "cpu_usage": 0.862, "ram": 2400366592, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246679.9277976, "cpu_usage": 0.879, "ram": 2401677312, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246680.2948952, "cpu_usage": 0.857, "ram": 2402725888, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246680.6624315, "cpu_usage": 0.872, "ram": 2404036608, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246681.0320637, "cpu_usage": 0.888, "ram": 2405085184, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246681.4155326, "cpu_usage": 0.868, "ram": 2405871616, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246681.7836263, "cpu_usage": 0.882, "ram": 2406658048, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246682.15263, "cpu_usage": 0.863, "ram": 2407968768, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246682.5178711, "cpu_usage": 0.877, "ram": 2409017344, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246682.8829224, "cpu_usage": 0.891, "ram": 2410328064, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246683.2524967, "cpu_usage": 0.871, "ram": 2411376640, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246683.620383, "cpu_usage": 0.885, "ram": 2412425216, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246683.9853609, "cpu_usage": 0.898, "ram": 2413735936, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246684.3556664, "cpu_usage": 0.88, "ram": 2414784512, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246684.723808, "cpu_usage": 0.893, "ram": 2416095232, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246685.0961661, "cpu_usage": 0.906, "ram": 2417405952, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246685.4681232, "cpu_usage": 0.888, "ram": 2418454528, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246685.8386853, "cpu_usage": 0.9, "ram": 2419503104, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246686.2075133, "cpu_usage": 0.883, "ram": 2420813824, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246686.5748436, "cpu_usage": 0.895, "ram": 2422124544, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246686.9421644, "cpu_usage": 0.907, "ram": 2423173120, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246687.3089178, "cpu_usage": 0.89, "ram": 2424221696, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246687.673749, "cpu_usage": 0.901, "ram": 2425532416, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246688.042467, "cpu_usage": 0.913, "ram": 2426843136, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246688.4087138, "cpu_usage": 0.896, "ram": 2427891712, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246688.773473, "cpu_usage": 0.908, "ram": 2428940288, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246689.1406124, "cpu_usage": 0.891, "ram": 2429984768, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246689.508143, "cpu_usage": 0.903, "ram": 2429988864, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246689.8826094, "cpu_usage": 0.914, "ram": 2429988864, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246690.2612195, "cpu_usage": 0.898, "ram": 2429988864, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246690.6437798, "cpu_usage": 0.909, "ram": 2429988864, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246691.0138555, "cpu_usage": 0.92, "ram": 2430251008, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246691.385, "cpu_usage": 0.904, "ram": 2430251008, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246691.7549882, "cpu_usage": 0.915, "ram": 2430251008, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246692.1397662, "cpu_usage": 0.9, "ram": 2430251008, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246692.508206, "cpu_usage": 0.91, "ram": 2430251008, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246692.87627, "cpu_usage": 0.921, "ram": 2430513152, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246693.2567554, "cpu_usage": 0.906, "ram": 2430513152, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246693.6294644, "cpu_usage": 0.916, "ram": 2430513152, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246693.9982455, "cpu_usage": 0.926, "ram": 2430513152, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246694.3663943, "cpu_usage": 0.911, "ram": 2430513152, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246694.7337968, "cpu_usage": 0.921, "ram": 2430775296, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246695.1026773, "cpu_usage": 0.931, "ram": 2430775296, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246695.4737515, "cpu_usage": 0.916, "ram": 2430775296, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246695.8419263, "cpu_usage": 0.926, "ram": 2430775296, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246696.2148206, "cpu_usage": 0.912, "ram": 2430775296, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246696.5826132, "cpu_usage": 0.921, "ram": 2431037440, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246696.9506998, "cpu_usage": 0.931, "ram": 2431037440, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246697.3310573, "cpu_usage": 0.917, "ram": 2431037440, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246697.6975908, "cpu_usage": 0.926, "ram": 2431037440, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246698.0641882, "cpu_usage": 0.935, "ram": 2431037440, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246698.4517403, "cpu_usage": 0.922, "ram": 2431299584, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246698.8422132, "cpu_usage": 0.928, "ram": 2431299584, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246699.2170918, "cpu_usage": 0.915, "ram": 2431299584, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246699.585097, "cpu_usage": 0.924, "ram": 2431299584, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246699.9528506, "cpu_usage": 0.932, "ram": 2431299584, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246700.3230443, "cpu_usage": 0.92, "ram": 2431561728, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246700.69042, "cpu_usage": 0.928, "ram": 2431561728, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246701.056857, "cpu_usage": 0.936, "ram": 2431561728, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246701.4259691, "cpu_usage": 0.924, "ram": 2431561728, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246701.792634, "cpu_usage": 0.932, "ram": 2431561728, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246702.1562445, "cpu_usage": 0.919, "ram": 2431823872, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246702.5222735, "cpu_usage": 0.927, "ram": 2431823872, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246702.8885362, "cpu_usage": 0.935, "ram": 2431823872, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246703.254167, "cpu_usage": 0.923, "ram": 2431823872, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246703.6200874, "cpu_usage": 0.931, "ram": 2431823872, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246703.984863, "cpu_usage": 0.939, "ram": 2432086016, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246704.348401, "cpu_usage": 0.927, "ram": 2432086016, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246704.7161493, "cpu_usage": 0.934, "ram": 2432086016, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246705.0847652, "cpu_usage": 0.942, "ram": 2432086016, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246705.4504786, "cpu_usage": 0.93, "ram": 2432086016, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246705.8150177, "cpu_usage": 0.938, "ram": 2432348160, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246706.1791644, "cpu_usage": 0.926, "ram": 2432348160, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246706.559441, "cpu_usage": 0.934, "ram": 2432348160, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246706.9276872, "cpu_usage": 0.941, "ram": 2432348160, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246707.294168, "cpu_usage": 0.93, "ram": 2432348160, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246707.6588323, "cpu_usage": 0.937, "ram": 2432610304, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246708.0246387, "cpu_usage": 0.944, "ram": 2432610304, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246708.393437, "cpu_usage": 0.933, "ram": 2432610304, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246708.7588444, "cpu_usage": 0.94, "ram": 2432610304, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246709.1319637, "cpu_usage": 0.93, "ram": 2432610304, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246709.50272, "cpu_usage": 0.936, "ram": 2432872448, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246709.8687143, "cpu_usage": 0.943, "ram": 2432872448, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246710.238539, "cpu_usage": 0.933, "ram": 2432872448, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246710.6033823, "cpu_usage": 0.94, "ram": 2432872448, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246710.968104, "cpu_usage": 0.946, "ram": 2433134592, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246711.3381197, "cpu_usage": 0.936, "ram": 2433134592, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246711.7059853, "cpu_usage": 0.942, "ram": 2433134592, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246712.0723727, "cpu_usage": 0.949, "ram": 2433134592, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246712.4409366, "cpu_usage": 0.939, "ram": 2433134592, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246712.8077946, "cpu_usage": 0.945, "ram": 2433396736, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246713.1743102, "cpu_usage": 0.935, "ram": 2433396736, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246713.54242, "cpu_usage": 0.942, "ram": 2433396736, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246713.9095283, "cpu_usage": 0.948, "ram": 2433396736, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246714.2771342, "cpu_usage": 0.938, "ram": 2433396736, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246714.6459265, "cpu_usage": 0.945, "ram": 2433658880, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246715.0124593, "cpu_usage": 0.951, "ram": 2433658880, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246715.3798764, "cpu_usage": 0.941, "ram": 2433658880, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246715.745726, "cpu_usage": 0.947, "ram": 2433658880, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246716.1118648, "cpu_usage": 0.937, "ram": 2433658880, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246716.4775274, "cpu_usage": 0.944, "ram": 2433921024, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246716.8429554, "cpu_usage": 0.95, "ram": 2433921024, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246717.2067277, "cpu_usage": 0.94, "ram": 2433921024, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246717.5729196, "cpu_usage": 0.946, "ram": 2433921024, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246717.9378014, "cpu_usage": 0.952, "ram": 2433921024, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246718.3066754, "cpu_usage": 0.942, "ram": 2434183168, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246718.6705987, "cpu_usage": 0.948, "ram": 2434183168, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246719.036654, "cpu_usage": 0.954, "ram": 2434183168, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246719.4022853, "cpu_usage": 0.945, "ram": 2434183168, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246719.7704575, "cpu_usage": 0.951, "ram": 2434183168, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246720.141492, "cpu_usage": 0.942, "ram": 2434445312, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246720.5185945, "cpu_usage": 0.948, "ram": 2434445312, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246720.8903847, "cpu_usage": 0.953, "ram": 2434445312, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246721.25983, "cpu_usage": 0.945, "ram": 2434445312, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246721.628537, "cpu_usage": 0.95, "ram": 2434707456, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246721.9991367, "cpu_usage": 0.956, "ram": 2434707456, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246722.3684113, "cpu_usage": 0.947, "ram": 2434707456, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246722.734244, "cpu_usage": 0.952, "ram": 2434707456, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246723.1003382, "cpu_usage": 0.958, "ram": 2434707456, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246723.4665499, "cpu_usage": 0.949, "ram": 2434969600, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246723.8312051, "cpu_usage": 0.955, "ram": 2434969600, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246724.196515, "cpu_usage": 0.946, "ram": 2434969600, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246724.5640893, "cpu_usage": 0.951, "ram": 2434969600, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246724.9324906, "cpu_usage": 0.957, "ram": 2434969600, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246725.3015447, "cpu_usage": 0.948, "ram": 2435231744, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246725.6678157, "cpu_usage": 0.954, "ram": 2435231744, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246726.0383897, "cpu_usage": 0.959, "ram": 2435231744, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246726.4078887, "cpu_usage": 0.951, "ram": 2435231744, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246726.7788796, "cpu_usage": 0.956, "ram": 2435231744, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246727.1544404, "cpu_usage": 0.948, "ram": 2381230080, "gpu_usage": 0.0, "gpu_ram": 2507145216}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246727.5282412, "cpu_usage": 0.954, "ram": 2470494208, "gpu_usage": 0.34, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246727.9125705, "cpu_usage": 0.975, "ram": 2470494208, "gpu_usage": 0.82, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246728.3011632, "cpu_usage": 0.984, "ram": 2470801408, "gpu_usage": 0.76, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246728.6908073, "cpu_usage": 1.0, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246729.1065252, "cpu_usage": 1.02, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246729.4934099, "cpu_usage": 1.03, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246729.9087453, "cpu_usage": 1.05, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246730.3191144, "cpu_usage": 1.06, "ram": 2470801408, "gpu_usage": 0.83, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246730.7259097, "cpu_usage": 1.08, "ram": 2470801408, "gpu_usage": 0.79, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246731.122356, "cpu_usage": 1.09, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246731.5402238, "cpu_usage": 1.11, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246731.9580173, "cpu_usage": 1.13, "ram": 2470801408, "gpu_usage": 0.61, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246732.3549848, "cpu_usage": 1.14, "ram": 2470801408, "gpu_usage": 0.87, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246732.7495465, "cpu_usage": 1.16, "ram": 2470801408, "gpu_usage": 0.79, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246733.141556, "cpu_usage": 1.16, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246733.54055, "cpu_usage": 1.18, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246733.9434965, "cpu_usage": 1.2, "ram": 2470801408, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246734.3510249, "cpu_usage": 1.21, "ram": 2470801408, "gpu_usage": 0.88, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246734.7509604, "cpu_usage": 1.23, "ram": 2470801408, "gpu_usage": 0.75, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246735.1590023, "cpu_usage": 1.23, "ram": 2470801408, "gpu_usage": 0.84, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246735.5558586, "cpu_usage": 1.25, "ram": 2470801408, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246735.9487832, "cpu_usage": 1.27, "ram": 2470801408, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246736.3323534, "cpu_usage": 1.28, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246736.7142732, "cpu_usage": 1.3, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246737.0972214, "cpu_usage": 1.31, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246737.4781199, "cpu_usage": 1.32, "ram": 2470801408, "gpu_usage": 0.28, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246737.864347, "cpu_usage": 1.34, "ram": 2470801408, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246738.2524042, "cpu_usage": 1.34, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246738.635074, "cpu_usage": 1.36, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246739.016444, "cpu_usage": 1.38, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246739.400327, "cpu_usage": 1.38, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246739.7839088, "cpu_usage": 1.4, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246740.1617932, "cpu_usage": 1.4, "ram": 2470801408, "gpu_usage": 0.43, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246740.5555894, "cpu_usage": 1.41, "ram": 2470801408, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246740.9415107, "cpu_usage": 1.43, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246741.3276124, "cpu_usage": 1.43, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246741.7148533, "cpu_usage": 1.45, "ram": 2470801408, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246742.0978646, "cpu_usage": 1.47, "ram": 2470801408, "gpu_usage": 0.83, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246742.4816194, "cpu_usage": 1.47, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246742.8625038, "cpu_usage": 1.49, "ram": 2470801408, "gpu_usage": 0.37, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246743.2449968, "cpu_usage": 1.49, "ram": 2470801408, "gpu_usage": 0.82, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246743.6276999, "cpu_usage": 1.51, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246744.0117152, "cpu_usage": 1.52, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246744.397606, "cpu_usage": 1.52, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246744.7824285, "cpu_usage": 1.54, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246745.1683698, "cpu_usage": 1.54, "ram": 2470801408, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246745.5547261, "cpu_usage": 1.56, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246745.9387455, "cpu_usage": 1.58, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246746.3234131, "cpu_usage": 1.57, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246746.7072456, "cpu_usage": 1.59, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246747.091976, "cpu_usage": 1.61, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246747.4778223, "cpu_usage": 1.61, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246747.861872, "cpu_usage": 1.63, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246748.2425892, "cpu_usage": 1.62, "ram": 2470801408, "gpu_usage": 0.63, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246748.6246731, "cpu_usage": 1.64, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246749.0049057, "cpu_usage": 1.66, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246749.3882844, "cpu_usage": 1.65, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246749.7715597, "cpu_usage": 1.67, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246750.1578476, "cpu_usage": 1.67, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246750.5540917, "cpu_usage": 1.69, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246750.9334035, "cpu_usage": 1.7, "ram": 2470801408, "gpu_usage": 0.56, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246751.3200002, "cpu_usage": 1.7, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246751.7057831, "cpu_usage": 1.72, "ram": 2470801408, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246752.1040773, "cpu_usage": 1.73, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246752.4897943, "cpu_usage": 1.73, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246752.8720584, "cpu_usage": 1.75, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246753.2561288, "cpu_usage": 1.74, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246753.6355717, "cpu_usage": 1.76, "ram": 2470801408, "gpu_usage": 0.37, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246754.0196338, "cpu_usage": 1.78, "ram": 2470801408, "gpu_usage": 0.82, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246754.4020984, "cpu_usage": 1.77, "ram": 2470801408, "gpu_usage": 0.88, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246754.7873638, "cpu_usage": 1.79, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246755.173561, "cpu_usage": 1.79, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246755.5585113, "cpu_usage": 1.8, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246755.942527, "cpu_usage": 1.82, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246756.3253293, "cpu_usage": 1.81, "ram": 2470801408, "gpu_usage": 0.27, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246756.7102764, "cpu_usage": 1.83, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246757.0916684, "cpu_usage": 1.84, "ram": 2470801408, "gpu_usage": 0.88, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246757.4740763, "cpu_usage": 1.84, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246757.8550453, "cpu_usage": 1.86, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246758.2387288, "cpu_usage": 1.85, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246758.6239843, "cpu_usage": 1.87, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246759.0007336, "cpu_usage": 1.88, "ram": 2470600704, "gpu_usage": 0.59, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246759.382853, "cpu_usage": 1.88, "ram": 2470600704, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246759.7680583, "cpu_usage": 1.89, "ram": 2470600704, "gpu_usage": 0.84, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246760.1538699, "cpu_usage": 1.89, "ram": 2470600704, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246760.5374587, "cpu_usage": 1.9, "ram": 2470600704, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246760.91996, "cpu_usage": 1.92, "ram": 2470600704, "gpu_usage": 0.82, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246761.3033993, "cpu_usage": 1.92, "ram": 2470600704, "gpu_usage": 0.82, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246761.6853392, "cpu_usage": 1.93, "ram": 2470600704, "gpu_usage": 0.34, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246762.0705047, "cpu_usage": 1.94, "ram": 2470600704, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246762.4540944, "cpu_usage": 1.94, "ram": 2470600704, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246762.837939, "cpu_usage": 1.96, "ram": 2470600704, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246763.220985, "cpu_usage": 1.95, "ram": 2470600704, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246763.6039672, "cpu_usage": 1.97, "ram": 2470600704, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246763.9860175, "cpu_usage": 1.98, "ram": 2470600704, "gpu_usage": 0.82, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246764.3630285, "cpu_usage": 1.97, "ram": 2470600704, "gpu_usage": 0.28, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246764.7477062, "cpu_usage": 1.99, "ram": 2470600704, "gpu_usage": 0.82, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246765.1339004, "cpu_usage": 1.98, "ram": 2470600704, "gpu_usage": 0.88, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246765.5175185, "cpu_usage": 2.0, "ram": 2470600704, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246765.9011, "cpu_usage": 2.01, "ram": 2470600704, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246766.2857213, "cpu_usage": 2.01, "ram": 2470600704, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246766.6711125, "cpu_usage": 2.02, "ram": 2470600704, "gpu_usage": 0.86, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246767.0576468, "cpu_usage": 2.04, "ram": 2470600704, "gpu_usage": 0.79, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246767.4425538, "cpu_usage": 2.03, "ram": 2470600704, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246767.8242736, "cpu_usage": 2.04, "ram": 2470600704, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246768.2099607, "cpu_usage": 2.04, "ram": 2470866944, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246768.5938334, "cpu_usage": 2.05, "ram": 2470866944, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246768.9797647, "cpu_usage": 2.07, "ram": 2470866944, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246769.368171, "cpu_usage": 2.06, "ram": 2471137280, "gpu_usage": 0.79, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246769.758651, "cpu_usage": 2.08, "ram": 2471137280, "gpu_usage": 0.23, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246770.144115, "cpu_usage": 2.07, "ram": 2471137280, "gpu_usage": 0.82, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246770.52855, "cpu_usage": 2.08, "ram": 2471407616, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246770.9178288, "cpu_usage": 2.1, "ram": 2471407616, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246771.3037536, "cpu_usage": 2.09, "ram": 2471407616, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246771.6935763, "cpu_usage": 2.11, "ram": 2471407616, "gpu_usage": 0.83, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246772.0785997, "cpu_usage": 2.12, "ram": 2471677952, "gpu_usage": 0.85, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246772.4665773, "cpu_usage": 2.12, "ram": 2471677952, "gpu_usage": 0.22, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246772.8497465, "cpu_usage": 2.13, "ram": 2471677952, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246773.2339964, "cpu_usage": 2.12, "ram": 2471948288, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246773.618522, "cpu_usage": 2.14, "ram": 2471948288, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246774.0013518, "cpu_usage": 2.15, "ram": 2471948288, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246774.384375, "cpu_usage": 2.14, "ram": 2472218624, "gpu_usage": 0.85, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246774.773628, "cpu_usage": 2.16, "ram": 2472218624, "gpu_usage": 0.77, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246775.1653168, "cpu_usage": 2.15, "ram": 2472218624, "gpu_usage": 0.34, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246775.5514128, "cpu_usage": 2.16, "ram": 2472488960, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246775.9371946, "cpu_usage": 2.18, "ram": 2472488960, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246776.3212733, "cpu_usage": 2.17, "ram": 2472488960, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246776.7056816, "cpu_usage": 2.18, "ram": 2472759296, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246777.093329, "cpu_usage": 2.2, "ram": 2472759296, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246777.4797125, "cpu_usage": 2.19, "ram": 2472759296, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246777.8815038, "cpu_usage": 2.2, "ram": 2472759296, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246778.2678525, "cpu_usage": 2.2, "ram": 2472759296, "gpu_usage": 0.79, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246778.65094, "cpu_usage": 2.21, "ram": 2472759296, "gpu_usage": 0.85, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246779.0325751, "cpu_usage": 2.22, "ram": 2472759296, "gpu_usage": 0.82, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246779.416524, "cpu_usage": 2.22, "ram": 2472759296, "gpu_usage": 0.85, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246779.8020809, "cpu_usage": 2.23, "ram": 2472759296, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246780.1908772, "cpu_usage": 2.22, "ram": 2472759296, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246780.6073828, "cpu_usage": 2.24, "ram": 2472759296, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246780.9933758, "cpu_usage": 2.25, "ram": 2472759296, "gpu_usage": 0.83, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246781.3813112, "cpu_usage": 2.24, "ram": 2472759296, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246781.7685444, "cpu_usage": 2.26, "ram": 2472759296, "gpu_usage": 0.87, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246782.1548014, "cpu_usage": 2.25, "ram": 2472759296, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246782.5409582, "cpu_usage": 2.26, "ram": 2472759296, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246782.9274554, "cpu_usage": 2.27, "ram": 2472759296, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246783.3144798, "cpu_usage": 2.27, "ram": 2472759296, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246783.7010586, "cpu_usage": 2.28, "ram": 2472759296, "gpu_usage": 0.68, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246784.0815997, "cpu_usage": 2.29, "ram": 2472759296, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246784.4647992, "cpu_usage": 2.29, "ram": 2472759296, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246784.849909, "cpu_usage": 2.3, "ram": 2472759296, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246785.2352583, "cpu_usage": 2.29, "ram": 2472759296, "gpu_usage": 0.88, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246785.621304, "cpu_usage": 2.3, "ram": 2472759296, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246786.0097067, "cpu_usage": 2.32, "ram": 2472759296, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246786.3911555, "cpu_usage": 2.31, "ram": 2472759296, "gpu_usage": 0.38, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246786.7800853, "cpu_usage": 2.32, "ram": 2472759296, "gpu_usage": 0.84, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246787.1654263, "cpu_usage": 2.31, "ram": 2472759296, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246787.5488834, "cpu_usage": 2.33, "ram": 2472759296, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246787.929792, "cpu_usage": 2.34, "ram": 2472759296, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246788.313129, "cpu_usage": 2.33, "ram": 2472759296, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246788.6983032, "cpu_usage": 2.34, "ram": 2472759296, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246789.0833235, "cpu_usage": 2.35, "ram": 2472759296, "gpu_usage": 0.33, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246789.47087, "cpu_usage": 2.35, "ram": 2472759296, "gpu_usage": 0.79, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246789.8568199, "cpu_usage": 2.36, "ram": 2472759296, "gpu_usage": 0.77, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246790.2430263, "cpu_usage": 2.35, "ram": 2472759296, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246790.629194, "cpu_usage": 2.37, "ram": 2472759296, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246791.0132134, "cpu_usage": 2.38, "ram": 2472759296, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246791.400592, "cpu_usage": 2.37, "ram": 2473029632, "gpu_usage": 0.86, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246791.7813141, "cpu_usage": 2.38, "ram": 2473029632, "gpu_usage": 0.44, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246792.1672626, "cpu_usage": 2.38, "ram": 2473029632, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246792.558693, "cpu_usage": 2.39, "ram": 2473299968, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246792.943591, "cpu_usage": 2.4, "ram": 2473299968, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246793.328031, "cpu_usage": 2.39, "ram": 2473299968, "gpu_usage": 0.82, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246793.711722, "cpu_usage": 2.4, "ram": 2473299968, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246794.0995998, "cpu_usage": 2.41, "ram": 2473570304, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246794.4768035, "cpu_usage": 2.41, "ram": 2473570304, "gpu_usage": 0.48, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246794.8613136, "cpu_usage": 2.42, "ram": 2473840640, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246795.247152, "cpu_usage": 2.41, "ram": 2473840640, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246795.6440213, "cpu_usage": 2.42, "ram": 2473840640, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246796.0315278, "cpu_usage": 2.43, "ram": 2474110976, "gpu_usage": 0.77, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246796.4132276, "cpu_usage": 2.43, "ram": 2474110976, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246796.7968407, "cpu_usage": 2.44, "ram": 2474110976, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246797.1991968, "cpu_usage": 2.43, "ram": 2474381312, "gpu_usage": 0.3, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246797.5854373, "cpu_usage": 2.44, "ram": 2474381312, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246797.980522, "cpu_usage": 2.45, "ram": 2474381312, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246798.371178, "cpu_usage": 2.45, "ram": 2474651648, "gpu_usage": 0.86, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246798.7562733, "cpu_usage": 2.46, "ram": 2474651648, "gpu_usage": 0.84, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246799.1471348, "cpu_usage": 2.45, "ram": 2474651648, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246799.5324872, "cpu_usage": 2.46, "ram": 2474651648, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246799.928337, "cpu_usage": 2.47, "ram": 2474921984, "gpu_usage": 0.47, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246800.3246775, "cpu_usage": 2.47, "ram": 2474921984, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246800.7132032, "cpu_usage": 2.48, "ram": 2474921984, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246801.1000154, "cpu_usage": 2.49, "ram": 2475192320, "gpu_usage": 0.79, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246801.4852643, "cpu_usage": 2.48, "ram": 2475192320, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246801.870042, "cpu_usage": 2.49, "ram": 2475192320, "gpu_usage": 0.88, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246802.2543094, "cpu_usage": 2.49, "ram": 2475462656, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246802.6485515, "cpu_usage": 2.5, "ram": 2475462656, "gpu_usage": 0.66, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246803.031914, "cpu_usage": 2.51, "ram": 2475462656, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246803.4164786, "cpu_usage": 2.5, "ram": 2475462656, "gpu_usage": 0.79, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246803.8014266, "cpu_usage": 2.51, "ram": 2475732992, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246804.189548, "cpu_usage": 2.5, "ram": 2475732992, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246804.5767605, "cpu_usage": 2.51, "ram": 2475732992, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246804.962682, "cpu_usage": 2.52, "ram": 2476003328, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246805.3669357, "cpu_usage": 2.52, "ram": 2476003328, "gpu_usage": 0.87, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246805.7538342, "cpu_usage": 2.53, "ram": 2476003328, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246806.1441371, "cpu_usage": 2.52, "ram": 2476273664, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246806.5316358, "cpu_usage": 2.53, "ram": 2476273664, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246806.928541, "cpu_usage": 2.54, "ram": 2476273664, "gpu_usage": 0.79, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246807.316141, "cpu_usage": 2.54, "ram": 2476544000, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246807.701734, "cpu_usage": 2.55, "ram": 2476544000, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246808.1052592, "cpu_usage": 2.56, "ram": 2476814336, "gpu_usage": 0.45, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246808.4896545, "cpu_usage": 2.55, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246808.8765054, "cpu_usage": 2.56, "ram": 2476814336, "gpu_usage": 0.87, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246809.2635448, "cpu_usage": 2.55, "ram": 2476814336, "gpu_usage": 0.83, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246809.6481204, "cpu_usage": 2.56, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246810.0357327, "cpu_usage": 2.57, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246810.4394357, "cpu_usage": 2.57, "ram": 2476814336, "gpu_usage": 0.78, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246810.849977, "cpu_usage": 2.58, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246811.2357273, "cpu_usage": 2.57, "ram": 2476814336, "gpu_usage": 0.87, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246811.6250293, "cpu_usage": 2.58, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246812.0113764, "cpu_usage": 2.59, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246812.3975272, "cpu_usage": 2.58, "ram": 2476814336, "gpu_usage": 0.79, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246812.781238, "cpu_usage": 2.59, "ram": 2476814336, "gpu_usage": 0.79, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246813.165262, "cpu_usage": 2.58, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246813.5744898, "cpu_usage": 2.6, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246813.9596372, "cpu_usage": 2.6, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246814.345912, "cpu_usage": 2.6, "ram": 2476814336, "gpu_usage": 0.83, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246814.7307, "cpu_usage": 2.61, "ram": 2476814336, "gpu_usage": 0.88, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246815.1171722, "cpu_usage": 2.6, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246815.5035083, "cpu_usage": 2.61, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246815.889877, "cpu_usage": 2.62, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246816.2913797, "cpu_usage": 2.61, "ram": 2476814336, "gpu_usage": 0.35, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246816.6767967, "cpu_usage": 2.62, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246817.0643206, "cpu_usage": 2.63, "ram": 2476814336, "gpu_usage": 0.79, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246817.4513505, "cpu_usage": 2.63, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246817.8351943, "cpu_usage": 2.63, "ram": 2476814336, "gpu_usage": 0.82, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246818.221195, "cpu_usage": 2.63, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246818.6051462, "cpu_usage": 2.64, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246819.0028772, "cpu_usage": 2.65, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246819.38876, "cpu_usage": 2.64, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246819.7739825, "cpu_usage": 2.65, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246820.1603637, "cpu_usage": 2.64, "ram": 2476814336, "gpu_usage": 0.79, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246820.5431292, "cpu_usage": 2.65, "ram": 2476814336, "gpu_usage": 0.87, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246820.927532, "cpu_usage": 2.66, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246821.3115735, "cpu_usage": 2.65, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246821.7019413, "cpu_usage": 2.66, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246822.0872605, "cpu_usage": 2.67, "ram": 2476814336, "gpu_usage": 0.85, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246822.4699283, "cpu_usage": 2.66, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246822.8542602, "cpu_usage": 2.67, "ram": 2476814336, "gpu_usage": 0.82, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246823.2368665, "cpu_usage": 2.67, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246823.6183398, "cpu_usage": 2.68, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246824.0008845, "cpu_usage": 2.69, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246824.3846114, "cpu_usage": 2.68, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246824.7702954, "cpu_usage": 2.69, "ram": 2476814336, "gpu_usage": 0.83, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246825.158291, "cpu_usage": 2.68, "ram": 2476814336, "gpu_usage": 0.82, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246825.5447686, "cpu_usage": 2.69, "ram": 2476814336, "gpu_usage": 0.79, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246825.932253, "cpu_usage": 2.7, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246826.3157177, "cpu_usage": 2.69, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246826.7012599, "cpu_usage": 2.7, "ram": 2476814336, "gpu_usage": 0.85, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246827.0881732, "cpu_usage": 2.71, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246827.474752, "cpu_usage": 2.7, "ram": 2476814336, "gpu_usage": 0.87, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246827.8588972, "cpu_usage": 2.71, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246828.2423995, "cpu_usage": 2.7, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246828.6265955, "cpu_usage": 2.71, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246829.0127938, "cpu_usage": 2.72, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246829.3986022, "cpu_usage": 2.72, "ram": 2476814336, "gpu_usage": 0.85, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246829.7854037, "cpu_usage": 2.72, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246830.1694844, "cpu_usage": 2.72, "ram": 2476814336, "gpu_usage": 0.66, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246830.552805, "cpu_usage": 2.73, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246830.9392679, "cpu_usage": 2.73, "ram": 2476814336, "gpu_usage": 0.78, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246831.325072, "cpu_usage": 2.73, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246831.710148, "cpu_usage": 2.74, "ram": 2476814336, "gpu_usage": 0.84, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246832.0978086, "cpu_usage": 2.75, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246832.4810488, "cpu_usage": 2.74, "ram": 2476814336, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246832.866763, "cpu_usage": 2.75, "ram": 2476814336, "gpu_usage": 0.63, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246833.2519772, "cpu_usage": 2.74, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246833.6364632, "cpu_usage": 2.75, "ram": 2476814336, "gpu_usage": 0.82, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246834.0205948, "cpu_usage": 2.76, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246834.405033, "cpu_usage": 2.75, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246834.788379, "cpu_usage": 2.76, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246835.1722836, "cpu_usage": 2.75, "ram": 2476814336, "gpu_usage": 0.86, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246835.5497952, "cpu_usage": 2.76, "ram": 2476814336, "gpu_usage": 0.18, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246835.935477, "cpu_usage": 2.77, "ram": 2476814336, "gpu_usage": 0.82, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246836.3212245, "cpu_usage": 2.76, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246836.706103, "cpu_usage": 2.77, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246837.0898557, "cpu_usage": 2.78, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246837.4730291, "cpu_usage": 2.77, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246837.8568885, "cpu_usage": 2.78, "ram": 2476814336, "gpu_usage": 0.85, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246838.229693, "cpu_usage": 2.77, "ram": 2476814336, "gpu_usage": 0.18, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246838.6145294, "cpu_usage": 2.78, "ram": 2476814336, "gpu_usage": 0.88, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246838.997687, "cpu_usage": 2.79, "ram": 2476814336, "gpu_usage": 0.85, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246839.3809958, "cpu_usage": 2.78, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246839.763313, "cpu_usage": 2.79, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246840.1566358, "cpu_usage": 2.78, "ram": 2476814336, "gpu_usage": 0.79, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246840.5594988, "cpu_usage": 2.79, "ram": 2476814336, "gpu_usage": 0.86, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246840.9418788, "cpu_usage": 2.8, "ram": 2476814336, "gpu_usage": 0.44, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246841.3272712, "cpu_usage": 2.79, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246841.7140107, "cpu_usage": 2.8, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246842.1103582, "cpu_usage": 2.8, "ram": 2476814336, "gpu_usage": 0.82, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246842.4965029, "cpu_usage": 2.8, "ram": 2476814336, "gpu_usage": 0.79, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246842.8805494, "cpu_usage": 2.81, "ram": 2476814336, "gpu_usage": 0.86, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246843.266585, "cpu_usage": 2.8, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246843.671341, "cpu_usage": 2.81, "ram": 2476814336, "gpu_usage": 0.4, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246844.0559862, "cpu_usage": 2.82, "ram": 2476814336, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246844.4386876, "cpu_usage": 2.81, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246844.823276, "cpu_usage": 2.82, "ram": 2476814336, "gpu_usage": 0.87, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246845.208345, "cpu_usage": 2.82, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246845.594281, "cpu_usage": 2.82, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246845.9800677, "cpu_usage": 2.83, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246846.3788354, "cpu_usage": 2.82, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246846.7653022, "cpu_usage": 2.83, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246847.150759, "cpu_usage": 2.83, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246847.53423, "cpu_usage": 2.83, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246847.9201493, "cpu_usage": 2.84, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246848.3071954, "cpu_usage": 2.83, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246848.6950052, "cpu_usage": 2.84, "ram": 2476814336, "gpu_usage": 0.84, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246849.1086922, "cpu_usage": 2.84, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246849.4932797, "cpu_usage": 2.84, "ram": 2476814336, "gpu_usage": 0.84, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246849.8778176, "cpu_usage": 2.85, "ram": 2476814336, "gpu_usage": 0.84, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246850.2624607, "cpu_usage": 2.84, "ram": 2476814336, "gpu_usage": 0.79, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246850.6520813, "cpu_usage": 2.85, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246851.062111, "cpu_usage": 2.86, "ram": 2476814336, "gpu_usage": 0.82, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246851.4553928, "cpu_usage": 2.85, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246851.851416, "cpu_usage": 2.86, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246852.2684343, "cpu_usage": 2.86, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246852.6732862, "cpu_usage": 2.86, "ram": 2476814336, "gpu_usage": 0.78, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246853.0594761, "cpu_usage": 2.87, "ram": 2476814336, "gpu_usage": 0.78, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246853.4465196, "cpu_usage": 2.87, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246853.8355346, "cpu_usage": 2.87, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246854.22858, "cpu_usage": 2.87, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246854.6261122, "cpu_usage": 2.87, "ram": 2476814336, "gpu_usage": 0.88, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246855.020569, "cpu_usage": 2.88, "ram": 2476814336, "gpu_usage": 0.87, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246855.4087148, "cpu_usage": 2.88, "ram": 2476814336, "gpu_usage": 0.86, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246855.8052619, "cpu_usage": 2.88, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246856.1912236, "cpu_usage": 2.88, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246856.5820117, "cpu_usage": 2.88, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246856.9973595, "cpu_usage": 2.89, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246857.4121866, "cpu_usage": 2.89, "ram": 2476814336, "gpu_usage": 0.65, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246857.8084834, "cpu_usage": 2.89, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246858.224468, "cpu_usage": 2.89, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246858.6296237, "cpu_usage": 2.89, "ram": 2476814336, "gpu_usage": 0.78, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246859.018199, "cpu_usage": 2.9, "ram": 2476814336, "gpu_usage": 0.83, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246859.4037368, "cpu_usage": 2.9, "ram": 2476814336, "gpu_usage": 0.83, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246859.7897916, "cpu_usage": 2.9, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246860.199653, "cpu_usage": 2.9, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246860.5855408, "cpu_usage": 2.9, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246860.9713628, "cpu_usage": 2.91, "ram": 2476814336, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246861.356662, "cpu_usage": 2.91, "ram": 2476814336, "gpu_usage": 0.88, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246861.746425, "cpu_usage": 2.91, "ram": 2476814336, "gpu_usage": 0.84, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246862.1330554, "cpu_usage": 2.91, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246862.5154686, "cpu_usage": 2.91, "ram": 2476814336, "gpu_usage": 0.87, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246862.9255934, "cpu_usage": 2.92, "ram": 2476814336, "gpu_usage": 0.61, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246863.3093195, "cpu_usage": 2.91, "ram": 2476814336, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246863.6942322, "cpu_usage": 2.92, "ram": 2477084672, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246864.0789146, "cpu_usage": 2.93, "ram": 2477084672, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246864.4674191, "cpu_usage": 2.92, "ram": 2477084672, "gpu_usage": 0.88, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246864.8524735, "cpu_usage": 2.93, "ram": 2477084672, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246865.2369452, "cpu_usage": 2.92, "ram": 2477084672, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246865.6209364, "cpu_usage": 2.93, "ram": 2477084672, "gpu_usage": 0.85, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246866.0018623, "cpu_usage": 2.94, "ram": 2477084672, "gpu_usage": 0.46, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246866.3851342, "cpu_usage": 2.93, "ram": 2477084672, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246866.7689939, "cpu_usage": 2.94, "ram": 2477084672, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246867.1516566, "cpu_usage": 2.93, "ram": 2477084672, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246867.5377462, "cpu_usage": 2.94, "ram": 2477084672, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246867.9212549, "cpu_usage": 2.95, "ram": 2477084672, "gpu_usage": 0.82, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246868.3048453, "cpu_usage": 2.94, "ram": 2477355008, "gpu_usage": 0.86, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246868.7146437, "cpu_usage": 2.95, "ram": 2477355008, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246869.1000063, "cpu_usage": 2.95, "ram": 2477355008, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246869.4845061, "cpu_usage": 2.95, "ram": 2477355008, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246869.867737, "cpu_usage": 2.95, "ram": 2477355008, "gpu_usage": 0.82, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246870.2623215, "cpu_usage": 2.95, "ram": 2477355008, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246870.6598785, "cpu_usage": 2.95, "ram": 2477355008, "gpu_usage": 0.78, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246871.045781, "cpu_usage": 2.96, "ram": 2477355008, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246871.445417, "cpu_usage": 2.96, "ram": 2477355008, "gpu_usage": 0.27, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246871.8305378, "cpu_usage": 2.96, "ram": 2477355008, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246872.2322838, "cpu_usage": 2.96, "ram": 2477355008, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246872.6186283, "cpu_usage": 2.96, "ram": 2477625344, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246873.00162, "cpu_usage": 2.97, "ram": 2477625344, "gpu_usage": 0.83, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246873.3868163, "cpu_usage": 2.96, "ram": 2477625344, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246873.7714303, "cpu_usage": 2.97, "ram": 2477625344, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246874.1685333, "cpu_usage": 2.96, "ram": 2477625344, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246874.5534458, "cpu_usage": 2.97, "ram": 2477625344, "gpu_usage": 0.88, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246874.9360342, "cpu_usage": 2.98, "ram": 2477625344, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246875.3207521, "cpu_usage": 2.97, "ram": 2477625344, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246875.706504, "cpu_usage": 2.98, "ram": 2477867008, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246876.0937533, "cpu_usage": 2.98, "ram": 2477867008, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246876.4798744, "cpu_usage": 2.98, "ram": 2478133248, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246876.87493, "cpu_usage": 2.99, "ram": 2478133248, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246877.2607348, "cpu_usage": 2.98, "ram": 2478133248, "gpu_usage": 0.64, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246877.6445549, "cpu_usage": 2.99, "ram": 2478403584, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246878.0290606, "cpu_usage": 2.99, "ram": 2478403584, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246878.4146788, "cpu_usage": 2.99, "ram": 2478403584, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246878.7975714, "cpu_usage": 2.99, "ram": 2478673920, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246879.1823902, "cpu_usage": 2.99, "ram": 2478944256, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246879.5742404, "cpu_usage": 2.99, "ram": 2478944256, "gpu_usage": 0.82, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246879.9581585, "cpu_usage": 3.0, "ram": 2478944256, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246880.3441322, "cpu_usage": 2.99, "ram": 2479214592, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246880.7391775, "cpu_usage": 3.0, "ram": 2479214592, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246881.123675, "cpu_usage": 2.99, "ram": 2479214592, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246881.5064678, "cpu_usage": 3.0, "ram": 2479484928, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246881.888391, "cpu_usage": 3.01, "ram": 2479484928, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246882.2734523, "cpu_usage": 3.0, "ram": 2479755264, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246882.6581392, "cpu_usage": 3.01, "ram": 2479755264, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246883.0453541, "cpu_usage": 3.01, "ram": 2479755264, "gpu_usage": 0.87, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246883.4300172, "cpu_usage": 3.01, "ram": 2480025600, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246883.8121326, "cpu_usage": 3.01, "ram": 2480025600, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246884.1948643, "cpu_usage": 3.01, "ram": 2480160768, "gpu_usage": 0.87, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246884.5773418, "cpu_usage": 3.01, "ram": 2480427008, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246884.9627213, "cpu_usage": 3.02, "ram": 2480427008, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246885.3468192, "cpu_usage": 3.01, "ram": 2480427008, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246885.7289903, "cpu_usage": 3.02, "ram": 2480697344, "gpu_usage": 0.86, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246886.1130755, "cpu_usage": 3.01, "ram": 2480697344, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246886.4974978, "cpu_usage": 3.02, "ram": 2480967680, "gpu_usage": 0.83, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246886.8861876, "cpu_usage": 3.03, "ram": 2480967680, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246887.2718594, "cpu_usage": 3.02, "ram": 2481238016, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246887.6635087, "cpu_usage": 3.03, "ram": 2481238016, "gpu_usage": 0.76, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246888.0508344, "cpu_usage": 3.03, "ram": 2481238016, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246888.4355085, "cpu_usage": 3.03, "ram": 2481508352, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246888.8198276, "cpu_usage": 3.03, "ram": 2481508352, "gpu_usage": 0.85, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246889.2093763, "cpu_usage": 3.03, "ram": 2481778688, "gpu_usage": 0.85, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246889.5960128, "cpu_usage": 3.03, "ram": 2481778688, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246889.9835246, "cpu_usage": 3.04, "ram": 2481778688, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246890.3847718, "cpu_usage": 3.03, "ram": 2482049024, "gpu_usage": 0.73, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246890.7758386, "cpu_usage": 3.04, "ram": 2482049024, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246891.161963, "cpu_usage": 3.03, "ram": 2482319360, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246891.546466, "cpu_usage": 3.04, "ram": 2482319360, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246891.9360464, "cpu_usage": 3.05, "ram": 2482589696, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246892.3233516, "cpu_usage": 3.04, "ram": 2482860032, "gpu_usage": 0.85, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246892.709931, "cpu_usage": 3.05, "ram": 2482860032, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246893.115579, "cpu_usage": 3.04, "ram": 2482860032, "gpu_usage": 0.66, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246893.5032032, "cpu_usage": 3.05, "ram": 2482860032, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246893.8876116, "cpu_usage": 3.05, "ram": 2482860032, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246894.2703428, "cpu_usage": 3.05, "ram": 2483130368, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246894.6562026, "cpu_usage": 3.05, "ram": 2483130368, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246895.0463367, "cpu_usage": 3.06, "ram": 2483400704, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246895.4342058, "cpu_usage": 3.05, "ram": 2483400704, "gpu_usage": 0.85, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246895.8329349, "cpu_usage": 3.06, "ram": 2483671040, "gpu_usage": 0.85, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246896.218335, "cpu_usage": 3.05, "ram": 2483671040, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246896.602511, "cpu_usage": 3.06, "ram": 2483671040, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246896.987773, "cpu_usage": 3.07, "ram": 2483941376, "gpu_usage": 0.85, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246897.3722456, "cpu_usage": 3.06, "ram": 2483941376, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246897.7609878, "cpu_usage": 3.07, "ram": 2484211712, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246898.1495476, "cpu_usage": 3.06, "ram": 2484211712, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246898.5428634, "cpu_usage": 3.07, "ram": 2484211712, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246898.9281657, "cpu_usage": 3.07, "ram": 2484473856, "gpu_usage": 0.73, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246899.3156872, "cpu_usage": 3.07, "ram": 2484473856, "gpu_usage": 0.8, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246899.7003233, "cpu_usage": 3.07, "ram": 2484740096, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246900.0999668, "cpu_usage": 3.08, "ram": 2484740096, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246900.494764, "cpu_usage": 3.07, "ram": 2485010432, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246900.8914168, "cpu_usage": 3.08, "ram": 2485010432, "gpu_usage": 0.79, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246901.2853603, "cpu_usage": 3.07, "ram": 2485280768, "gpu_usage": 0.83, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246901.669072, "cpu_usage": 3.08, "ram": 2485280768, "gpu_usage": 0.64, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246902.052911, "cpu_usage": 3.08, "ram": 2485280768, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246902.4383175, "cpu_usage": 3.08, "ram": 2485280768, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246902.8231573, "cpu_usage": 3.08, "ram": 2485551104, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246903.2070124, "cpu_usage": 3.08, "ram": 2485551104, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246903.591167, "cpu_usage": 3.08, "ram": 2485821440, "gpu_usage": 0.81, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246903.9729395, "cpu_usage": 3.09, "ram": 2485821440, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246904.3523736, "cpu_usage": 3.08, "ram": 2485821440, "gpu_usage": 0.64, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246904.7346702, "cpu_usage": 3.09, "ram": 2486091776, "gpu_usage": 0.91, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246905.1224582, "cpu_usage": 3.08, "ram": 2486091776, "gpu_usage": 0.88, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246905.50539, "cpu_usage": 3.09, "ram": 2486362112, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246905.8975103, "cpu_usage": 3.1, "ram": 2486362112, "gpu_usage": 0.88, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246906.2854202, "cpu_usage": 3.09, "ram": 2486632448, "gpu_usage": 0.79, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246906.6770167, "cpu_usage": 3.1, "ram": 2486632448, "gpu_usage": 0.79, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246907.0842474, "cpu_usage": 3.1, "ram": 2486632448, "gpu_usage": 0.9, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246907.4688184, "cpu_usage": 3.1, "ram": 2486902784, "gpu_usage": 0.89, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246907.8537006, "cpu_usage": 3.1, "ram": 2486902784, "gpu_usage": 0.0, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246908.2219126, "cpu_usage": 3.09, "ram": 2491392000, "gpu_usage": 0.0, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246908.587186, "cpu_usage": 3.09, "ram": 2491392000, "gpu_usage": 0.0, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246908.9564347, "cpu_usage": 3.1, "ram": 2491392000, "gpu_usage": 0.0, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246909.3409882, "cpu_usage": 3.09, "ram": 2491392000, "gpu_usage": 0.0, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246909.7081645, "cpu_usage": 3.09, "ram": 2491392000, "gpu_usage": 0.0, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246910.0781987, "cpu_usage": 3.09, "ram": 2491392000, "gpu_usage": 0.0, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246910.443372, "cpu_usage": 3.08, "ram": 2491392000, "gpu_usage": 0.0, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246910.8164384, "cpu_usage": 3.08, "ram": 2491392000, "gpu_usage": 0.0, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246911.1828423, "cpu_usage": 3.07, "ram": 2491662336, "gpu_usage": 0.0, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246911.5654013, "cpu_usage": 3.07, "ram": 2491236352, "gpu_usage": 0.0, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246911.9361897, "cpu_usage": 3.07, "ram": 0, "gpu_usage": 0.0, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246912.2705116, "cpu_usage": 3.07, "ram": 0, "gpu_usage": 0.0, "gpu_ram": 2561671168}
-{"task": "muserc", "input_size": 1000, "batch_size": 16, "timestamp": 1611246912.6091015, "cpu_usage": 3.07, "ram": 0, "gpu_usage": 0.0, "gpu_ram": 2561671168}
+{"timestamp": 1611246660.7226655, "cpu_usage": 0.852, "ram": 318496768, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246661.058283, "cpu_usage": 0.935, "ram": 324530176, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246661.392106, "cpu_usage": 0.75, "ram": 325427200, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246661.731995, "cpu_usage": 0.78, "ram": 360198144, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246662.065874, "cpu_usage": 0.846, "ram": 372649984, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246662.3980088, "cpu_usage": 0.735, "ram": 365326336, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246662.7284281, "cpu_usage": 0.736, "ram": 365326336, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246663.0600736, "cpu_usage": 0.74, "ram": 365326336, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246663.3929286, "cpu_usage": 0.644, "ram": 390770688, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246663.7260728, "cpu_usage": 0.691, "ram": 513503232, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246664.0595179, "cpu_usage": 0.74, "ram": 634613760, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246664.395787, "cpu_usage": 0.688, "ram": 733556736, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246664.7284386, "cpu_usage": 0.731, "ram": 801517568, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246665.0614612, "cpu_usage": 0.772, "ram": 922087424, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246665.3951993, "cpu_usage": 0.723, "ram": 1040494592, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246665.7287288, "cpu_usage": 0.76, "ram": 1072111616, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246666.063279, "cpu_usage": 0.797, "ram": 1072111616, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246666.400384, "cpu_usage": 0.751, "ram": 1072111616, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246666.7352347, "cpu_usage": 0.785, "ram": 1072111616, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246667.069633, "cpu_usage": 0.818, "ram": 1072111616, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246667.4047797, "cpu_usage": 0.774, "ram": 1072111616, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246667.7444725, "cpu_usage": 0.805, "ram": 1529593856, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246668.0831304, "cpu_usage": 0.874, "ram": 1784250368, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246668.4138036, "cpu_usage": 0.824, "ram": 1785151488, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246668.7521007, "cpu_usage": 0.842, "ram": 1225023488, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1611246669.135235, "cpu_usage": 0.806, "ram": 1397305344, "gpu_usage": 0.09, "gpu_ram": 401604608}
+{"timestamp": 1611246669.507735, "cpu_usage": 0.835, "ram": 1575370752, "gpu_usage": 0.03, "gpu_ram": 470810624}
+{"timestamp": 1611246669.8873792, "cpu_usage": 0.864, "ram": 1819123712, "gpu_usage": 0.03, "gpu_ram": 556793856}
+{"timestamp": 1611246670.261538, "cpu_usage": 0.829, "ram": 2034757632, "gpu_usage": 0.03, "gpu_ram": 630194176}
+{"timestamp": 1611246670.6374469, "cpu_usage": 0.856, "ram": 2270281728, "gpu_usage": 0.03, "gpu_ram": 705691648}
+{"timestamp": 1611246671.0088332, "cpu_usage": 0.882, "ram": 2490519552, "gpu_usage": 0.02, "gpu_ram": 785383424}
+{"timestamp": 1611246671.3824542, "cpu_usage": 0.849, "ram": 2681659392, "gpu_usage": 0.03, "gpu_ram": 854589440}
+{"timestamp": 1611246671.7566936, "cpu_usage": 0.874, "ram": 2906951680, "gpu_usage": 0.08, "gpu_ram": 980418560}
+{"timestamp": 1611246672.1410153, "cpu_usage": 0.843, "ram": 2611507200, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246672.5133798, "cpu_usage": 0.866, "ram": 2332856320, "gpu_usage": 0.16, "gpu_ram": 2507145216}
+{"timestamp": 1611246672.8812745, "cpu_usage": 0.871, "ram": 2332856320, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246673.2542481, "cpu_usage": 0.825, "ram": 2352709632, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246673.6227777, "cpu_usage": 0.847, "ram": 2363375616, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246673.9902277, "cpu_usage": 0.857, "ram": 2371006464, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246674.3620877, "cpu_usage": 0.813, "ram": 2382897152, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246674.7309308, "cpu_usage": 0.833, "ram": 2391818240, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246675.1017246, "cpu_usage": 0.855, "ram": 2391818240, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246675.4685705, "cpu_usage": 0.828, "ram": 2391818240, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246675.8442204, "cpu_usage": 0.848, "ram": 2391818240, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246676.2131124, "cpu_usage": 0.825, "ram": 2391818240, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246676.5802667, "cpu_usage": 0.843, "ram": 2391818240, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246676.9485166, "cpu_usage": 0.861, "ram": 2392080384, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246677.319127, "cpu_usage": 0.838, "ram": 2393288704, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246677.690717, "cpu_usage": 0.855, "ram": 2394599424, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246678.064108, "cpu_usage": 0.873, "ram": 2395648000, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246678.4356794, "cpu_usage": 0.85, "ram": 2396696576, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246678.8048604, "cpu_usage": 0.867, "ram": 2398007296, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246679.1886356, "cpu_usage": 0.846, "ram": 2399318016, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246679.5597951, "cpu_usage": 0.862, "ram": 2400366592, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246679.9277976, "cpu_usage": 0.879, "ram": 2401677312, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246680.2948952, "cpu_usage": 0.857, "ram": 2402725888, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246680.6624315, "cpu_usage": 0.872, "ram": 2404036608, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246681.0320637, "cpu_usage": 0.888, "ram": 2405085184, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246681.4155326, "cpu_usage": 0.868, "ram": 2405871616, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246681.7836263, "cpu_usage": 0.882, "ram": 2406658048, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246682.15263, "cpu_usage": 0.863, "ram": 2407968768, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246682.5178711, "cpu_usage": 0.877, "ram": 2409017344, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246682.8829224, "cpu_usage": 0.891, "ram": 2410328064, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246683.2524967, "cpu_usage": 0.871, "ram": 2411376640, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246683.620383, "cpu_usage": 0.885, "ram": 2412425216, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246683.9853609, "cpu_usage": 0.898, "ram": 2413735936, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246684.3556664, "cpu_usage": 0.88, "ram": 2414784512, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246684.723808, "cpu_usage": 0.893, "ram": 2416095232, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246685.0961661, "cpu_usage": 0.906, "ram": 2417405952, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246685.4681232, "cpu_usage": 0.888, "ram": 2418454528, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246685.8386853, "cpu_usage": 0.9, "ram": 2419503104, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246686.2075133, "cpu_usage": 0.883, "ram": 2420813824, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246686.5748436, "cpu_usage": 0.895, "ram": 2422124544, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246686.9421644, "cpu_usage": 0.907, "ram": 2423173120, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246687.3089178, "cpu_usage": 0.89, "ram": 2424221696, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246687.673749, "cpu_usage": 0.901, "ram": 2425532416, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246688.042467, "cpu_usage": 0.913, "ram": 2426843136, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246688.4087138, "cpu_usage": 0.896, "ram": 2427891712, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246688.773473, "cpu_usage": 0.908, "ram": 2428940288, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246689.1406124, "cpu_usage": 0.891, "ram": 2429984768, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246689.508143, "cpu_usage": 0.903, "ram": 2429988864, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246689.8826094, "cpu_usage": 0.914, "ram": 2429988864, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246690.2612195, "cpu_usage": 0.898, "ram": 2429988864, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246690.6437798, "cpu_usage": 0.909, "ram": 2429988864, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246691.0138555, "cpu_usage": 0.92, "ram": 2430251008, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246691.385, "cpu_usage": 0.904, "ram": 2430251008, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246691.7549882, "cpu_usage": 0.915, "ram": 2430251008, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246692.1397662, "cpu_usage": 0.9, "ram": 2430251008, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246692.508206, "cpu_usage": 0.91, "ram": 2430251008, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246692.87627, "cpu_usage": 0.921, "ram": 2430513152, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246693.2567554, "cpu_usage": 0.906, "ram": 2430513152, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246693.6294644, "cpu_usage": 0.916, "ram": 2430513152, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246693.9982455, "cpu_usage": 0.926, "ram": 2430513152, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246694.3663943, "cpu_usage": 0.911, "ram": 2430513152, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246694.7337968, "cpu_usage": 0.921, "ram": 2430775296, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246695.1026773, "cpu_usage": 0.931, "ram": 2430775296, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246695.4737515, "cpu_usage": 0.916, "ram": 2430775296, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246695.8419263, "cpu_usage": 0.926, "ram": 2430775296, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246696.2148206, "cpu_usage": 0.912, "ram": 2430775296, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246696.5826132, "cpu_usage": 0.921, "ram": 2431037440, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246696.9506998, "cpu_usage": 0.931, "ram": 2431037440, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246697.3310573, "cpu_usage": 0.917, "ram": 2431037440, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246697.6975908, "cpu_usage": 0.926, "ram": 2431037440, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246698.0641882, "cpu_usage": 0.935, "ram": 2431037440, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246698.4517403, "cpu_usage": 0.922, "ram": 2431299584, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246698.8422132, "cpu_usage": 0.928, "ram": 2431299584, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246699.2170918, "cpu_usage": 0.915, "ram": 2431299584, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246699.585097, "cpu_usage": 0.924, "ram": 2431299584, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246699.9528506, "cpu_usage": 0.932, "ram": 2431299584, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246700.3230443, "cpu_usage": 0.92, "ram": 2431561728, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246700.69042, "cpu_usage": 0.928, "ram": 2431561728, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246701.056857, "cpu_usage": 0.936, "ram": 2431561728, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246701.4259691, "cpu_usage": 0.924, "ram": 2431561728, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246701.792634, "cpu_usage": 0.932, "ram": 2431561728, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246702.1562445, "cpu_usage": 0.919, "ram": 2431823872, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246702.5222735, "cpu_usage": 0.927, "ram": 2431823872, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246702.8885362, "cpu_usage": 0.935, "ram": 2431823872, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246703.254167, "cpu_usage": 0.923, "ram": 2431823872, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246703.6200874, "cpu_usage": 0.931, "ram": 2431823872, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246703.984863, "cpu_usage": 0.939, "ram": 2432086016, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246704.348401, "cpu_usage": 0.927, "ram": 2432086016, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246704.7161493, "cpu_usage": 0.934, "ram": 2432086016, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246705.0847652, "cpu_usage": 0.942, "ram": 2432086016, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246705.4504786, "cpu_usage": 0.93, "ram": 2432086016, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246705.8150177, "cpu_usage": 0.938, "ram": 2432348160, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246706.1791644, "cpu_usage": 0.926, "ram": 2432348160, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246706.559441, "cpu_usage": 0.934, "ram": 2432348160, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246706.9276872, "cpu_usage": 0.941, "ram": 2432348160, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246707.294168, "cpu_usage": 0.93, "ram": 2432348160, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246707.6588323, "cpu_usage": 0.937, "ram": 2432610304, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246708.0246387, "cpu_usage": 0.944, "ram": 2432610304, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246708.393437, "cpu_usage": 0.933, "ram": 2432610304, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246708.7588444, "cpu_usage": 0.94, "ram": 2432610304, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246709.1319637, "cpu_usage": 0.93, "ram": 2432610304, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246709.50272, "cpu_usage": 0.936, "ram": 2432872448, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246709.8687143, "cpu_usage": 0.943, "ram": 2432872448, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246710.238539, "cpu_usage": 0.933, "ram": 2432872448, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246710.6033823, "cpu_usage": 0.94, "ram": 2432872448, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246710.968104, "cpu_usage": 0.946, "ram": 2433134592, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246711.3381197, "cpu_usage": 0.936, "ram": 2433134592, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246711.7059853, "cpu_usage": 0.942, "ram": 2433134592, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246712.0723727, "cpu_usage": 0.949, "ram": 2433134592, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246712.4409366, "cpu_usage": 0.939, "ram": 2433134592, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246712.8077946, "cpu_usage": 0.945, "ram": 2433396736, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246713.1743102, "cpu_usage": 0.935, "ram": 2433396736, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246713.54242, "cpu_usage": 0.942, "ram": 2433396736, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246713.9095283, "cpu_usage": 0.948, "ram": 2433396736, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246714.2771342, "cpu_usage": 0.938, "ram": 2433396736, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246714.6459265, "cpu_usage": 0.945, "ram": 2433658880, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246715.0124593, "cpu_usage": 0.951, "ram": 2433658880, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246715.3798764, "cpu_usage": 0.941, "ram": 2433658880, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246715.745726, "cpu_usage": 0.947, "ram": 2433658880, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246716.1118648, "cpu_usage": 0.937, "ram": 2433658880, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246716.4775274, "cpu_usage": 0.944, "ram": 2433921024, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246716.8429554, "cpu_usage": 0.95, "ram": 2433921024, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246717.2067277, "cpu_usage": 0.94, "ram": 2433921024, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246717.5729196, "cpu_usage": 0.946, "ram": 2433921024, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246717.9378014, "cpu_usage": 0.952, "ram": 2433921024, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246718.3066754, "cpu_usage": 0.942, "ram": 2434183168, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246718.6705987, "cpu_usage": 0.948, "ram": 2434183168, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246719.036654, "cpu_usage": 0.954, "ram": 2434183168, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246719.4022853, "cpu_usage": 0.945, "ram": 2434183168, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246719.7704575, "cpu_usage": 0.951, "ram": 2434183168, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246720.141492, "cpu_usage": 0.942, "ram": 2434445312, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246720.5185945, "cpu_usage": 0.948, "ram": 2434445312, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246720.8903847, "cpu_usage": 0.953, "ram": 2434445312, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246721.25983, "cpu_usage": 0.945, "ram": 2434445312, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246721.628537, "cpu_usage": 0.95, "ram": 2434707456, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246721.9991367, "cpu_usage": 0.956, "ram": 2434707456, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246722.3684113, "cpu_usage": 0.947, "ram": 2434707456, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246722.734244, "cpu_usage": 0.952, "ram": 2434707456, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246723.1003382, "cpu_usage": 0.958, "ram": 2434707456, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246723.4665499, "cpu_usage": 0.949, "ram": 2434969600, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246723.8312051, "cpu_usage": 0.955, "ram": 2434969600, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246724.196515, "cpu_usage": 0.946, "ram": 2434969600, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246724.5640893, "cpu_usage": 0.951, "ram": 2434969600, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246724.9324906, "cpu_usage": 0.957, "ram": 2434969600, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246725.3015447, "cpu_usage": 0.948, "ram": 2435231744, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246725.6678157, "cpu_usage": 0.954, "ram": 2435231744, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246726.0383897, "cpu_usage": 0.959, "ram": 2435231744, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246726.4078887, "cpu_usage": 0.951, "ram": 2435231744, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246726.7788796, "cpu_usage": 0.956, "ram": 2435231744, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246727.1544404, "cpu_usage": 0.948, "ram": 2381230080, "gpu_usage": 0.0, "gpu_ram": 2507145216}
+{"timestamp": 1611246727.5282412, "cpu_usage": 0.954, "ram": 2470494208, "gpu_usage": 0.34, "gpu_ram": 2561671168}
+{"timestamp": 1611246727.9125705, "cpu_usage": 0.975, "ram": 2470494208, "gpu_usage": 0.82, "gpu_ram": 2561671168}
+{"timestamp": 1611246728.3011632, "cpu_usage": 0.984, "ram": 2470801408, "gpu_usage": 0.76, "gpu_ram": 2561671168}
+{"timestamp": 1611246728.6908073, "cpu_usage": 1.0, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246729.1065252, "cpu_usage": 1.02, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246729.4934099, "cpu_usage": 1.03, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246729.9087453, "cpu_usage": 1.05, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246730.3191144, "cpu_usage": 1.06, "ram": 2470801408, "gpu_usage": 0.83, "gpu_ram": 2561671168}
+{"timestamp": 1611246730.7259097, "cpu_usage": 1.08, "ram": 2470801408, "gpu_usage": 0.79, "gpu_ram": 2561671168}
+{"timestamp": 1611246731.122356, "cpu_usage": 1.09, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246731.5402238, "cpu_usage": 1.11, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246731.9580173, "cpu_usage": 1.13, "ram": 2470801408, "gpu_usage": 0.61, "gpu_ram": 2561671168}
+{"timestamp": 1611246732.3549848, "cpu_usage": 1.14, "ram": 2470801408, "gpu_usage": 0.87, "gpu_ram": 2561671168}
+{"timestamp": 1611246732.7495465, "cpu_usage": 1.16, "ram": 2470801408, "gpu_usage": 0.79, "gpu_ram": 2561671168}
+{"timestamp": 1611246733.141556, "cpu_usage": 1.16, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246733.54055, "cpu_usage": 1.18, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246733.9434965, "cpu_usage": 1.2, "ram": 2470801408, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246734.3510249, "cpu_usage": 1.21, "ram": 2470801408, "gpu_usage": 0.88, "gpu_ram": 2561671168}
+{"timestamp": 1611246734.7509604, "cpu_usage": 1.23, "ram": 2470801408, "gpu_usage": 0.75, "gpu_ram": 2561671168}
+{"timestamp": 1611246735.1590023, "cpu_usage": 1.23, "ram": 2470801408, "gpu_usage": 0.84, "gpu_ram": 2561671168}
+{"timestamp": 1611246735.5558586, "cpu_usage": 1.25, "ram": 2470801408, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246735.9487832, "cpu_usage": 1.27, "ram": 2470801408, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246736.3323534, "cpu_usage": 1.28, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246736.7142732, "cpu_usage": 1.3, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246737.0972214, "cpu_usage": 1.31, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246737.4781199, "cpu_usage": 1.32, "ram": 2470801408, "gpu_usage": 0.28, "gpu_ram": 2561671168}
+{"timestamp": 1611246737.864347, "cpu_usage": 1.34, "ram": 2470801408, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246738.2524042, "cpu_usage": 1.34, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246738.635074, "cpu_usage": 1.36, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246739.016444, "cpu_usage": 1.38, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246739.400327, "cpu_usage": 1.38, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246739.7839088, "cpu_usage": 1.4, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246740.1617932, "cpu_usage": 1.4, "ram": 2470801408, "gpu_usage": 0.43, "gpu_ram": 2561671168}
+{"timestamp": 1611246740.5555894, "cpu_usage": 1.41, "ram": 2470801408, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246740.9415107, "cpu_usage": 1.43, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246741.3276124, "cpu_usage": 1.43, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246741.7148533, "cpu_usage": 1.45, "ram": 2470801408, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246742.0978646, "cpu_usage": 1.47, "ram": 2470801408, "gpu_usage": 0.83, "gpu_ram": 2561671168}
+{"timestamp": 1611246742.4816194, "cpu_usage": 1.47, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246742.8625038, "cpu_usage": 1.49, "ram": 2470801408, "gpu_usage": 0.37, "gpu_ram": 2561671168}
+{"timestamp": 1611246743.2449968, "cpu_usage": 1.49, "ram": 2470801408, "gpu_usage": 0.82, "gpu_ram": 2561671168}
+{"timestamp": 1611246743.6276999, "cpu_usage": 1.51, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246744.0117152, "cpu_usage": 1.52, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246744.397606, "cpu_usage": 1.52, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246744.7824285, "cpu_usage": 1.54, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246745.1683698, "cpu_usage": 1.54, "ram": 2470801408, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246745.5547261, "cpu_usage": 1.56, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246745.9387455, "cpu_usage": 1.58, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246746.3234131, "cpu_usage": 1.57, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246746.7072456, "cpu_usage": 1.59, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246747.091976, "cpu_usage": 1.61, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246747.4778223, "cpu_usage": 1.61, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246747.861872, "cpu_usage": 1.63, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246748.2425892, "cpu_usage": 1.62, "ram": 2470801408, "gpu_usage": 0.63, "gpu_ram": 2561671168}
+{"timestamp": 1611246748.6246731, "cpu_usage": 1.64, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246749.0049057, "cpu_usage": 1.66, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246749.3882844, "cpu_usage": 1.65, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246749.7715597, "cpu_usage": 1.67, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246750.1578476, "cpu_usage": 1.67, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246750.5540917, "cpu_usage": 1.69, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246750.9334035, "cpu_usage": 1.7, "ram": 2470801408, "gpu_usage": 0.56, "gpu_ram": 2561671168}
+{"timestamp": 1611246751.3200002, "cpu_usage": 1.7, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246751.7057831, "cpu_usage": 1.72, "ram": 2470801408, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246752.1040773, "cpu_usage": 1.73, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246752.4897943, "cpu_usage": 1.73, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246752.8720584, "cpu_usage": 1.75, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246753.2561288, "cpu_usage": 1.74, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246753.6355717, "cpu_usage": 1.76, "ram": 2470801408, "gpu_usage": 0.37, "gpu_ram": 2561671168}
+{"timestamp": 1611246754.0196338, "cpu_usage": 1.78, "ram": 2470801408, "gpu_usage": 0.82, "gpu_ram": 2561671168}
+{"timestamp": 1611246754.4020984, "cpu_usage": 1.77, "ram": 2470801408, "gpu_usage": 0.88, "gpu_ram": 2561671168}
+{"timestamp": 1611246754.7873638, "cpu_usage": 1.79, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246755.173561, "cpu_usage": 1.79, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246755.5585113, "cpu_usage": 1.8, "ram": 2470801408, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246755.942527, "cpu_usage": 1.82, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246756.3253293, "cpu_usage": 1.81, "ram": 2470801408, "gpu_usage": 0.27, "gpu_ram": 2561671168}
+{"timestamp": 1611246756.7102764, "cpu_usage": 1.83, "ram": 2470801408, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246757.0916684, "cpu_usage": 1.84, "ram": 2470801408, "gpu_usage": 0.88, "gpu_ram": 2561671168}
+{"timestamp": 1611246757.4740763, "cpu_usage": 1.84, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246757.8550453, "cpu_usage": 1.86, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246758.2387288, "cpu_usage": 1.85, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246758.6239843, "cpu_usage": 1.87, "ram": 2470801408, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246759.0007336, "cpu_usage": 1.88, "ram": 2470600704, "gpu_usage": 0.59, "gpu_ram": 2561671168}
+{"timestamp": 1611246759.382853, "cpu_usage": 1.88, "ram": 2470600704, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246759.7680583, "cpu_usage": 1.89, "ram": 2470600704, "gpu_usage": 0.84, "gpu_ram": 2561671168}
+{"timestamp": 1611246760.1538699, "cpu_usage": 1.89, "ram": 2470600704, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246760.5374587, "cpu_usage": 1.9, "ram": 2470600704, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246760.91996, "cpu_usage": 1.92, "ram": 2470600704, "gpu_usage": 0.82, "gpu_ram": 2561671168}
+{"timestamp": 1611246761.3033993, "cpu_usage": 1.92, "ram": 2470600704, "gpu_usage": 0.82, "gpu_ram": 2561671168}
+{"timestamp": 1611246761.6853392, "cpu_usage": 1.93, "ram": 2470600704, "gpu_usage": 0.34, "gpu_ram": 2561671168}
+{"timestamp": 1611246762.0705047, "cpu_usage": 1.94, "ram": 2470600704, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246762.4540944, "cpu_usage": 1.94, "ram": 2470600704, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246762.837939, "cpu_usage": 1.96, "ram": 2470600704, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246763.220985, "cpu_usage": 1.95, "ram": 2470600704, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246763.6039672, "cpu_usage": 1.97, "ram": 2470600704, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246763.9860175, "cpu_usage": 1.98, "ram": 2470600704, "gpu_usage": 0.82, "gpu_ram": 2561671168}
+{"timestamp": 1611246764.3630285, "cpu_usage": 1.97, "ram": 2470600704, "gpu_usage": 0.28, "gpu_ram": 2561671168}
+{"timestamp": 1611246764.7477062, "cpu_usage": 1.99, "ram": 2470600704, "gpu_usage": 0.82, "gpu_ram": 2561671168}
+{"timestamp": 1611246765.1339004, "cpu_usage": 1.98, "ram": 2470600704, "gpu_usage": 0.88, "gpu_ram": 2561671168}
+{"timestamp": 1611246765.5175185, "cpu_usage": 2.0, "ram": 2470600704, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246765.9011, "cpu_usage": 2.01, "ram": 2470600704, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246766.2857213, "cpu_usage": 2.01, "ram": 2470600704, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246766.6711125, "cpu_usage": 2.02, "ram": 2470600704, "gpu_usage": 0.86, "gpu_ram": 2561671168}
+{"timestamp": 1611246767.0576468, "cpu_usage": 2.04, "ram": 2470600704, "gpu_usage": 0.79, "gpu_ram": 2561671168}
+{"timestamp": 1611246767.4425538, "cpu_usage": 2.03, "ram": 2470600704, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246767.8242736, "cpu_usage": 2.04, "ram": 2470600704, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246768.2099607, "cpu_usage": 2.04, "ram": 2470866944, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246768.5938334, "cpu_usage": 2.05, "ram": 2470866944, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246768.9797647, "cpu_usage": 2.07, "ram": 2470866944, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246769.368171, "cpu_usage": 2.06, "ram": 2471137280, "gpu_usage": 0.79, "gpu_ram": 2561671168}
+{"timestamp": 1611246769.758651, "cpu_usage": 2.08, "ram": 2471137280, "gpu_usage": 0.23, "gpu_ram": 2561671168}
+{"timestamp": 1611246770.144115, "cpu_usage": 2.07, "ram": 2471137280, "gpu_usage": 0.82, "gpu_ram": 2561671168}
+{"timestamp": 1611246770.52855, "cpu_usage": 2.08, "ram": 2471407616, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246770.9178288, "cpu_usage": 2.1, "ram": 2471407616, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246771.3037536, "cpu_usage": 2.09, "ram": 2471407616, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246771.6935763, "cpu_usage": 2.11, "ram": 2471407616, "gpu_usage": 0.83, "gpu_ram": 2561671168}
+{"timestamp": 1611246772.0785997, "cpu_usage": 2.12, "ram": 2471677952, "gpu_usage": 0.85, "gpu_ram": 2561671168}
+{"timestamp": 1611246772.4665773, "cpu_usage": 2.12, "ram": 2471677952, "gpu_usage": 0.22, "gpu_ram": 2561671168}
+{"timestamp": 1611246772.8497465, "cpu_usage": 2.13, "ram": 2471677952, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246773.2339964, "cpu_usage": 2.12, "ram": 2471948288, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246773.618522, "cpu_usage": 2.14, "ram": 2471948288, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246774.0013518, "cpu_usage": 2.15, "ram": 2471948288, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246774.384375, "cpu_usage": 2.14, "ram": 2472218624, "gpu_usage": 0.85, "gpu_ram": 2561671168}
+{"timestamp": 1611246774.773628, "cpu_usage": 2.16, "ram": 2472218624, "gpu_usage": 0.77, "gpu_ram": 2561671168}
+{"timestamp": 1611246775.1653168, "cpu_usage": 2.15, "ram": 2472218624, "gpu_usage": 0.34, "gpu_ram": 2561671168}
+{"timestamp": 1611246775.5514128, "cpu_usage": 2.16, "ram": 2472488960, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246775.9371946, "cpu_usage": 2.18, "ram": 2472488960, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246776.3212733, "cpu_usage": 2.17, "ram": 2472488960, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246776.7056816, "cpu_usage": 2.18, "ram": 2472759296, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246777.093329, "cpu_usage": 2.2, "ram": 2472759296, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246777.4797125, "cpu_usage": 2.19, "ram": 2472759296, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246777.8815038, "cpu_usage": 2.2, "ram": 2472759296, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246778.2678525, "cpu_usage": 2.2, "ram": 2472759296, "gpu_usage": 0.79, "gpu_ram": 2561671168}
+{"timestamp": 1611246778.65094, "cpu_usage": 2.21, "ram": 2472759296, "gpu_usage": 0.85, "gpu_ram": 2561671168}
+{"timestamp": 1611246779.0325751, "cpu_usage": 2.22, "ram": 2472759296, "gpu_usage": 0.82, "gpu_ram": 2561671168}
+{"timestamp": 1611246779.416524, "cpu_usage": 2.22, "ram": 2472759296, "gpu_usage": 0.85, "gpu_ram": 2561671168}
+{"timestamp": 1611246779.8020809, "cpu_usage": 2.23, "ram": 2472759296, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246780.1908772, "cpu_usage": 2.22, "ram": 2472759296, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246780.6073828, "cpu_usage": 2.24, "ram": 2472759296, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246780.9933758, "cpu_usage": 2.25, "ram": 2472759296, "gpu_usage": 0.83, "gpu_ram": 2561671168}
+{"timestamp": 1611246781.3813112, "cpu_usage": 2.24, "ram": 2472759296, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246781.7685444, "cpu_usage": 2.26, "ram": 2472759296, "gpu_usage": 0.87, "gpu_ram": 2561671168}
+{"timestamp": 1611246782.1548014, "cpu_usage": 2.25, "ram": 2472759296, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246782.5409582, "cpu_usage": 2.26, "ram": 2472759296, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246782.9274554, "cpu_usage": 2.27, "ram": 2472759296, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246783.3144798, "cpu_usage": 2.27, "ram": 2472759296, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246783.7010586, "cpu_usage": 2.28, "ram": 2472759296, "gpu_usage": 0.68, "gpu_ram": 2561671168}
+{"timestamp": 1611246784.0815997, "cpu_usage": 2.29, "ram": 2472759296, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246784.4647992, "cpu_usage": 2.29, "ram": 2472759296, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246784.849909, "cpu_usage": 2.3, "ram": 2472759296, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246785.2352583, "cpu_usage": 2.29, "ram": 2472759296, "gpu_usage": 0.88, "gpu_ram": 2561671168}
+{"timestamp": 1611246785.621304, "cpu_usage": 2.3, "ram": 2472759296, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246786.0097067, "cpu_usage": 2.32, "ram": 2472759296, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246786.3911555, "cpu_usage": 2.31, "ram": 2472759296, "gpu_usage": 0.38, "gpu_ram": 2561671168}
+{"timestamp": 1611246786.7800853, "cpu_usage": 2.32, "ram": 2472759296, "gpu_usage": 0.84, "gpu_ram": 2561671168}
+{"timestamp": 1611246787.1654263, "cpu_usage": 2.31, "ram": 2472759296, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246787.5488834, "cpu_usage": 2.33, "ram": 2472759296, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246787.929792, "cpu_usage": 2.34, "ram": 2472759296, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246788.313129, "cpu_usage": 2.33, "ram": 2472759296, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246788.6983032, "cpu_usage": 2.34, "ram": 2472759296, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246789.0833235, "cpu_usage": 2.35, "ram": 2472759296, "gpu_usage": 0.33, "gpu_ram": 2561671168}
+{"timestamp": 1611246789.47087, "cpu_usage": 2.35, "ram": 2472759296, "gpu_usage": 0.79, "gpu_ram": 2561671168}
+{"timestamp": 1611246789.8568199, "cpu_usage": 2.36, "ram": 2472759296, "gpu_usage": 0.77, "gpu_ram": 2561671168}
+{"timestamp": 1611246790.2430263, "cpu_usage": 2.35, "ram": 2472759296, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246790.629194, "cpu_usage": 2.37, "ram": 2472759296, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246791.0132134, "cpu_usage": 2.38, "ram": 2472759296, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246791.400592, "cpu_usage": 2.37, "ram": 2473029632, "gpu_usage": 0.86, "gpu_ram": 2561671168}
+{"timestamp": 1611246791.7813141, "cpu_usage": 2.38, "ram": 2473029632, "gpu_usage": 0.44, "gpu_ram": 2561671168}
+{"timestamp": 1611246792.1672626, "cpu_usage": 2.38, "ram": 2473029632, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246792.558693, "cpu_usage": 2.39, "ram": 2473299968, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246792.943591, "cpu_usage": 2.4, "ram": 2473299968, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246793.328031, "cpu_usage": 2.39, "ram": 2473299968, "gpu_usage": 0.82, "gpu_ram": 2561671168}
+{"timestamp": 1611246793.711722, "cpu_usage": 2.4, "ram": 2473299968, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246794.0995998, "cpu_usage": 2.41, "ram": 2473570304, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246794.4768035, "cpu_usage": 2.41, "ram": 2473570304, "gpu_usage": 0.48, "gpu_ram": 2561671168}
+{"timestamp": 1611246794.8613136, "cpu_usage": 2.42, "ram": 2473840640, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246795.247152, "cpu_usage": 2.41, "ram": 2473840640, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246795.6440213, "cpu_usage": 2.42, "ram": 2473840640, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246796.0315278, "cpu_usage": 2.43, "ram": 2474110976, "gpu_usage": 0.77, "gpu_ram": 2561671168}
+{"timestamp": 1611246796.4132276, "cpu_usage": 2.43, "ram": 2474110976, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246796.7968407, "cpu_usage": 2.44, "ram": 2474110976, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246797.1991968, "cpu_usage": 2.43, "ram": 2474381312, "gpu_usage": 0.3, "gpu_ram": 2561671168}
+{"timestamp": 1611246797.5854373, "cpu_usage": 2.44, "ram": 2474381312, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246797.980522, "cpu_usage": 2.45, "ram": 2474381312, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246798.371178, "cpu_usage": 2.45, "ram": 2474651648, "gpu_usage": 0.86, "gpu_ram": 2561671168}
+{"timestamp": 1611246798.7562733, "cpu_usage": 2.46, "ram": 2474651648, "gpu_usage": 0.84, "gpu_ram": 2561671168}
+{"timestamp": 1611246799.1471348, "cpu_usage": 2.45, "ram": 2474651648, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246799.5324872, "cpu_usage": 2.46, "ram": 2474651648, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246799.928337, "cpu_usage": 2.47, "ram": 2474921984, "gpu_usage": 0.47, "gpu_ram": 2561671168}
+{"timestamp": 1611246800.3246775, "cpu_usage": 2.47, "ram": 2474921984, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246800.7132032, "cpu_usage": 2.48, "ram": 2474921984, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246801.1000154, "cpu_usage": 2.49, "ram": 2475192320, "gpu_usage": 0.79, "gpu_ram": 2561671168}
+{"timestamp": 1611246801.4852643, "cpu_usage": 2.48, "ram": 2475192320, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246801.870042, "cpu_usage": 2.49, "ram": 2475192320, "gpu_usage": 0.88, "gpu_ram": 2561671168}
+{"timestamp": 1611246802.2543094, "cpu_usage": 2.49, "ram": 2475462656, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246802.6485515, "cpu_usage": 2.5, "ram": 2475462656, "gpu_usage": 0.66, "gpu_ram": 2561671168}
+{"timestamp": 1611246803.031914, "cpu_usage": 2.51, "ram": 2475462656, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246803.4164786, "cpu_usage": 2.5, "ram": 2475462656, "gpu_usage": 0.79, "gpu_ram": 2561671168}
+{"timestamp": 1611246803.8014266, "cpu_usage": 2.51, "ram": 2475732992, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246804.189548, "cpu_usage": 2.5, "ram": 2475732992, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246804.5767605, "cpu_usage": 2.51, "ram": 2475732992, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246804.962682, "cpu_usage": 2.52, "ram": 2476003328, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246805.3669357, "cpu_usage": 2.52, "ram": 2476003328, "gpu_usage": 0.87, "gpu_ram": 2561671168}
+{"timestamp": 1611246805.7538342, "cpu_usage": 2.53, "ram": 2476003328, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246806.1441371, "cpu_usage": 2.52, "ram": 2476273664, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246806.5316358, "cpu_usage": 2.53, "ram": 2476273664, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246806.928541, "cpu_usage": 2.54, "ram": 2476273664, "gpu_usage": 0.79, "gpu_ram": 2561671168}
+{"timestamp": 1611246807.316141, "cpu_usage": 2.54, "ram": 2476544000, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246807.701734, "cpu_usage": 2.55, "ram": 2476544000, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246808.1052592, "cpu_usage": 2.56, "ram": 2476814336, "gpu_usage": 0.45, "gpu_ram": 2561671168}
+{"timestamp": 1611246808.4896545, "cpu_usage": 2.55, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246808.8765054, "cpu_usage": 2.56, "ram": 2476814336, "gpu_usage": 0.87, "gpu_ram": 2561671168}
+{"timestamp": 1611246809.2635448, "cpu_usage": 2.55, "ram": 2476814336, "gpu_usage": 0.83, "gpu_ram": 2561671168}
+{"timestamp": 1611246809.6481204, "cpu_usage": 2.56, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246810.0357327, "cpu_usage": 2.57, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246810.4394357, "cpu_usage": 2.57, "ram": 2476814336, "gpu_usage": 0.78, "gpu_ram": 2561671168}
+{"timestamp": 1611246810.849977, "cpu_usage": 2.58, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246811.2357273, "cpu_usage": 2.57, "ram": 2476814336, "gpu_usage": 0.87, "gpu_ram": 2561671168}
+{"timestamp": 1611246811.6250293, "cpu_usage": 2.58, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246812.0113764, "cpu_usage": 2.59, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246812.3975272, "cpu_usage": 2.58, "ram": 2476814336, "gpu_usage": 0.79, "gpu_ram": 2561671168}
+{"timestamp": 1611246812.781238, "cpu_usage": 2.59, "ram": 2476814336, "gpu_usage": 0.79, "gpu_ram": 2561671168}
+{"timestamp": 1611246813.165262, "cpu_usage": 2.58, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246813.5744898, "cpu_usage": 2.6, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246813.9596372, "cpu_usage": 2.6, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246814.345912, "cpu_usage": 2.6, "ram": 2476814336, "gpu_usage": 0.83, "gpu_ram": 2561671168}
+{"timestamp": 1611246814.7307, "cpu_usage": 2.61, "ram": 2476814336, "gpu_usage": 0.88, "gpu_ram": 2561671168}
+{"timestamp": 1611246815.1171722, "cpu_usage": 2.6, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246815.5035083, "cpu_usage": 2.61, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246815.889877, "cpu_usage": 2.62, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246816.2913797, "cpu_usage": 2.61, "ram": 2476814336, "gpu_usage": 0.35, "gpu_ram": 2561671168}
+{"timestamp": 1611246816.6767967, "cpu_usage": 2.62, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246817.0643206, "cpu_usage": 2.63, "ram": 2476814336, "gpu_usage": 0.79, "gpu_ram": 2561671168}
+{"timestamp": 1611246817.4513505, "cpu_usage": 2.63, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246817.8351943, "cpu_usage": 2.63, "ram": 2476814336, "gpu_usage": 0.82, "gpu_ram": 2561671168}
+{"timestamp": 1611246818.221195, "cpu_usage": 2.63, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246818.6051462, "cpu_usage": 2.64, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246819.0028772, "cpu_usage": 2.65, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246819.38876, "cpu_usage": 2.64, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246819.7739825, "cpu_usage": 2.65, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246820.1603637, "cpu_usage": 2.64, "ram": 2476814336, "gpu_usage": 0.79, "gpu_ram": 2561671168}
+{"timestamp": 1611246820.5431292, "cpu_usage": 2.65, "ram": 2476814336, "gpu_usage": 0.87, "gpu_ram": 2561671168}
+{"timestamp": 1611246820.927532, "cpu_usage": 2.66, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246821.3115735, "cpu_usage": 2.65, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246821.7019413, "cpu_usage": 2.66, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246822.0872605, "cpu_usage": 2.67, "ram": 2476814336, "gpu_usage": 0.85, "gpu_ram": 2561671168}
+{"timestamp": 1611246822.4699283, "cpu_usage": 2.66, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246822.8542602, "cpu_usage": 2.67, "ram": 2476814336, "gpu_usage": 0.82, "gpu_ram": 2561671168}
+{"timestamp": 1611246823.2368665, "cpu_usage": 2.67, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246823.6183398, "cpu_usage": 2.68, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246824.0008845, "cpu_usage": 2.69, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246824.3846114, "cpu_usage": 2.68, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246824.7702954, "cpu_usage": 2.69, "ram": 2476814336, "gpu_usage": 0.83, "gpu_ram": 2561671168}
+{"timestamp": 1611246825.158291, "cpu_usage": 2.68, "ram": 2476814336, "gpu_usage": 0.82, "gpu_ram": 2561671168}
+{"timestamp": 1611246825.5447686, "cpu_usage": 2.69, "ram": 2476814336, "gpu_usage": 0.79, "gpu_ram": 2561671168}
+{"timestamp": 1611246825.932253, "cpu_usage": 2.7, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246826.3157177, "cpu_usage": 2.69, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246826.7012599, "cpu_usage": 2.7, "ram": 2476814336, "gpu_usage": 0.85, "gpu_ram": 2561671168}
+{"timestamp": 1611246827.0881732, "cpu_usage": 2.71, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246827.474752, "cpu_usage": 2.7, "ram": 2476814336, "gpu_usage": 0.87, "gpu_ram": 2561671168}
+{"timestamp": 1611246827.8588972, "cpu_usage": 2.71, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246828.2423995, "cpu_usage": 2.7, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246828.6265955, "cpu_usage": 2.71, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246829.0127938, "cpu_usage": 2.72, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246829.3986022, "cpu_usage": 2.72, "ram": 2476814336, "gpu_usage": 0.85, "gpu_ram": 2561671168}
+{"timestamp": 1611246829.7854037, "cpu_usage": 2.72, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246830.1694844, "cpu_usage": 2.72, "ram": 2476814336, "gpu_usage": 0.66, "gpu_ram": 2561671168}
+{"timestamp": 1611246830.552805, "cpu_usage": 2.73, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246830.9392679, "cpu_usage": 2.73, "ram": 2476814336, "gpu_usage": 0.78, "gpu_ram": 2561671168}
+{"timestamp": 1611246831.325072, "cpu_usage": 2.73, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246831.710148, "cpu_usage": 2.74, "ram": 2476814336, "gpu_usage": 0.84, "gpu_ram": 2561671168}
+{"timestamp": 1611246832.0978086, "cpu_usage": 2.75, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246832.4810488, "cpu_usage": 2.74, "ram": 2476814336, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246832.866763, "cpu_usage": 2.75, "ram": 2476814336, "gpu_usage": 0.63, "gpu_ram": 2561671168}
+{"timestamp": 1611246833.2519772, "cpu_usage": 2.74, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246833.6364632, "cpu_usage": 2.75, "ram": 2476814336, "gpu_usage": 0.82, "gpu_ram": 2561671168}
+{"timestamp": 1611246834.0205948, "cpu_usage": 2.76, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246834.405033, "cpu_usage": 2.75, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246834.788379, "cpu_usage": 2.76, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246835.1722836, "cpu_usage": 2.75, "ram": 2476814336, "gpu_usage": 0.86, "gpu_ram": 2561671168}
+{"timestamp": 1611246835.5497952, "cpu_usage": 2.76, "ram": 2476814336, "gpu_usage": 0.18, "gpu_ram": 2561671168}
+{"timestamp": 1611246835.935477, "cpu_usage": 2.77, "ram": 2476814336, "gpu_usage": 0.82, "gpu_ram": 2561671168}
+{"timestamp": 1611246836.3212245, "cpu_usage": 2.76, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246836.706103, "cpu_usage": 2.77, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246837.0898557, "cpu_usage": 2.78, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246837.4730291, "cpu_usage": 2.77, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246837.8568885, "cpu_usage": 2.78, "ram": 2476814336, "gpu_usage": 0.85, "gpu_ram": 2561671168}
+{"timestamp": 1611246838.229693, "cpu_usage": 2.77, "ram": 2476814336, "gpu_usage": 0.18, "gpu_ram": 2561671168}
+{"timestamp": 1611246838.6145294, "cpu_usage": 2.78, "ram": 2476814336, "gpu_usage": 0.88, "gpu_ram": 2561671168}
+{"timestamp": 1611246838.997687, "cpu_usage": 2.79, "ram": 2476814336, "gpu_usage": 0.85, "gpu_ram": 2561671168}
+{"timestamp": 1611246839.3809958, "cpu_usage": 2.78, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246839.763313, "cpu_usage": 2.79, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246840.1566358, "cpu_usage": 2.78, "ram": 2476814336, "gpu_usage": 0.79, "gpu_ram": 2561671168}
+{"timestamp": 1611246840.5594988, "cpu_usage": 2.79, "ram": 2476814336, "gpu_usage": 0.86, "gpu_ram": 2561671168}
+{"timestamp": 1611246840.9418788, "cpu_usage": 2.8, "ram": 2476814336, "gpu_usage": 0.44, "gpu_ram": 2561671168}
+{"timestamp": 1611246841.3272712, "cpu_usage": 2.79, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246841.7140107, "cpu_usage": 2.8, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246842.1103582, "cpu_usage": 2.8, "ram": 2476814336, "gpu_usage": 0.82, "gpu_ram": 2561671168}
+{"timestamp": 1611246842.4965029, "cpu_usage": 2.8, "ram": 2476814336, "gpu_usage": 0.79, "gpu_ram": 2561671168}
+{"timestamp": 1611246842.8805494, "cpu_usage": 2.81, "ram": 2476814336, "gpu_usage": 0.86, "gpu_ram": 2561671168}
+{"timestamp": 1611246843.266585, "cpu_usage": 2.8, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246843.671341, "cpu_usage": 2.81, "ram": 2476814336, "gpu_usage": 0.4, "gpu_ram": 2561671168}
+{"timestamp": 1611246844.0559862, "cpu_usage": 2.82, "ram": 2476814336, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246844.4386876, "cpu_usage": 2.81, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246844.823276, "cpu_usage": 2.82, "ram": 2476814336, "gpu_usage": 0.87, "gpu_ram": 2561671168}
+{"timestamp": 1611246845.208345, "cpu_usage": 2.82, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246845.594281, "cpu_usage": 2.82, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246845.9800677, "cpu_usage": 2.83, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246846.3788354, "cpu_usage": 2.82, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246846.7653022, "cpu_usage": 2.83, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246847.150759, "cpu_usage": 2.83, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246847.53423, "cpu_usage": 2.83, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246847.9201493, "cpu_usage": 2.84, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246848.3071954, "cpu_usage": 2.83, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246848.6950052, "cpu_usage": 2.84, "ram": 2476814336, "gpu_usage": 0.84, "gpu_ram": 2561671168}
+{"timestamp": 1611246849.1086922, "cpu_usage": 2.84, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246849.4932797, "cpu_usage": 2.84, "ram": 2476814336, "gpu_usage": 0.84, "gpu_ram": 2561671168}
+{"timestamp": 1611246849.8778176, "cpu_usage": 2.85, "ram": 2476814336, "gpu_usage": 0.84, "gpu_ram": 2561671168}
+{"timestamp": 1611246850.2624607, "cpu_usage": 2.84, "ram": 2476814336, "gpu_usage": 0.79, "gpu_ram": 2561671168}
+{"timestamp": 1611246850.6520813, "cpu_usage": 2.85, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246851.062111, "cpu_usage": 2.86, "ram": 2476814336, "gpu_usage": 0.82, "gpu_ram": 2561671168}
+{"timestamp": 1611246851.4553928, "cpu_usage": 2.85, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246851.851416, "cpu_usage": 2.86, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246852.2684343, "cpu_usage": 2.86, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246852.6732862, "cpu_usage": 2.86, "ram": 2476814336, "gpu_usage": 0.78, "gpu_ram": 2561671168}
+{"timestamp": 1611246853.0594761, "cpu_usage": 2.87, "ram": 2476814336, "gpu_usage": 0.78, "gpu_ram": 2561671168}
+{"timestamp": 1611246853.4465196, "cpu_usage": 2.87, "ram": 2476814336, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246853.8355346, "cpu_usage": 2.87, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246854.22858, "cpu_usage": 2.87, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246854.6261122, "cpu_usage": 2.87, "ram": 2476814336, "gpu_usage": 0.88, "gpu_ram": 2561671168}
+{"timestamp": 1611246855.020569, "cpu_usage": 2.88, "ram": 2476814336, "gpu_usage": 0.87, "gpu_ram": 2561671168}
+{"timestamp": 1611246855.4087148, "cpu_usage": 2.88, "ram": 2476814336, "gpu_usage": 0.86, "gpu_ram": 2561671168}
+{"timestamp": 1611246855.8052619, "cpu_usage": 2.88, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246856.1912236, "cpu_usage": 2.88, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246856.5820117, "cpu_usage": 2.88, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246856.9973595, "cpu_usage": 2.89, "ram": 2476814336, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246857.4121866, "cpu_usage": 2.89, "ram": 2476814336, "gpu_usage": 0.65, "gpu_ram": 2561671168}
+{"timestamp": 1611246857.8084834, "cpu_usage": 2.89, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246858.224468, "cpu_usage": 2.89, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246858.6296237, "cpu_usage": 2.89, "ram": 2476814336, "gpu_usage": 0.78, "gpu_ram": 2561671168}
+{"timestamp": 1611246859.018199, "cpu_usage": 2.9, "ram": 2476814336, "gpu_usage": 0.83, "gpu_ram": 2561671168}
+{"timestamp": 1611246859.4037368, "cpu_usage": 2.9, "ram": 2476814336, "gpu_usage": 0.83, "gpu_ram": 2561671168}
+{"timestamp": 1611246859.7897916, "cpu_usage": 2.9, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246860.199653, "cpu_usage": 2.9, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246860.5855408, "cpu_usage": 2.9, "ram": 2476814336, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246860.9713628, "cpu_usage": 2.91, "ram": 2476814336, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246861.356662, "cpu_usage": 2.91, "ram": 2476814336, "gpu_usage": 0.88, "gpu_ram": 2561671168}
+{"timestamp": 1611246861.746425, "cpu_usage": 2.91, "ram": 2476814336, "gpu_usage": 0.84, "gpu_ram": 2561671168}
+{"timestamp": 1611246862.1330554, "cpu_usage": 2.91, "ram": 2476814336, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246862.5154686, "cpu_usage": 2.91, "ram": 2476814336, "gpu_usage": 0.87, "gpu_ram": 2561671168}
+{"timestamp": 1611246862.9255934, "cpu_usage": 2.92, "ram": 2476814336, "gpu_usage": 0.61, "gpu_ram": 2561671168}
+{"timestamp": 1611246863.3093195, "cpu_usage": 2.91, "ram": 2476814336, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246863.6942322, "cpu_usage": 2.92, "ram": 2477084672, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246864.0789146, "cpu_usage": 2.93, "ram": 2477084672, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246864.4674191, "cpu_usage": 2.92, "ram": 2477084672, "gpu_usage": 0.88, "gpu_ram": 2561671168}
+{"timestamp": 1611246864.8524735, "cpu_usage": 2.93, "ram": 2477084672, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246865.2369452, "cpu_usage": 2.92, "ram": 2477084672, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246865.6209364, "cpu_usage": 2.93, "ram": 2477084672, "gpu_usage": 0.85, "gpu_ram": 2561671168}
+{"timestamp": 1611246866.0018623, "cpu_usage": 2.94, "ram": 2477084672, "gpu_usage": 0.46, "gpu_ram": 2561671168}
+{"timestamp": 1611246866.3851342, "cpu_usage": 2.93, "ram": 2477084672, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246866.7689939, "cpu_usage": 2.94, "ram": 2477084672, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246867.1516566, "cpu_usage": 2.93, "ram": 2477084672, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246867.5377462, "cpu_usage": 2.94, "ram": 2477084672, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246867.9212549, "cpu_usage": 2.95, "ram": 2477084672, "gpu_usage": 0.82, "gpu_ram": 2561671168}
+{"timestamp": 1611246868.3048453, "cpu_usage": 2.94, "ram": 2477355008, "gpu_usage": 0.86, "gpu_ram": 2561671168}
+{"timestamp": 1611246868.7146437, "cpu_usage": 2.95, "ram": 2477355008, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246869.1000063, "cpu_usage": 2.95, "ram": 2477355008, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246869.4845061, "cpu_usage": 2.95, "ram": 2477355008, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246869.867737, "cpu_usage": 2.95, "ram": 2477355008, "gpu_usage": 0.82, "gpu_ram": 2561671168}
+{"timestamp": 1611246870.2623215, "cpu_usage": 2.95, "ram": 2477355008, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246870.6598785, "cpu_usage": 2.95, "ram": 2477355008, "gpu_usage": 0.78, "gpu_ram": 2561671168}
+{"timestamp": 1611246871.045781, "cpu_usage": 2.96, "ram": 2477355008, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246871.445417, "cpu_usage": 2.96, "ram": 2477355008, "gpu_usage": 0.27, "gpu_ram": 2561671168}
+{"timestamp": 1611246871.8305378, "cpu_usage": 2.96, "ram": 2477355008, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246872.2322838, "cpu_usage": 2.96, "ram": 2477355008, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246872.6186283, "cpu_usage": 2.96, "ram": 2477625344, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246873.00162, "cpu_usage": 2.97, "ram": 2477625344, "gpu_usage": 0.83, "gpu_ram": 2561671168}
+{"timestamp": 1611246873.3868163, "cpu_usage": 2.96, "ram": 2477625344, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246873.7714303, "cpu_usage": 2.97, "ram": 2477625344, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246874.1685333, "cpu_usage": 2.96, "ram": 2477625344, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246874.5534458, "cpu_usage": 2.97, "ram": 2477625344, "gpu_usage": 0.88, "gpu_ram": 2561671168}
+{"timestamp": 1611246874.9360342, "cpu_usage": 2.98, "ram": 2477625344, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246875.3207521, "cpu_usage": 2.97, "ram": 2477625344, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246875.706504, "cpu_usage": 2.98, "ram": 2477867008, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246876.0937533, "cpu_usage": 2.98, "ram": 2477867008, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246876.4798744, "cpu_usage": 2.98, "ram": 2478133248, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246876.87493, "cpu_usage": 2.99, "ram": 2478133248, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246877.2607348, "cpu_usage": 2.98, "ram": 2478133248, "gpu_usage": 0.64, "gpu_ram": 2561671168}
+{"timestamp": 1611246877.6445549, "cpu_usage": 2.99, "ram": 2478403584, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246878.0290606, "cpu_usage": 2.99, "ram": 2478403584, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246878.4146788, "cpu_usage": 2.99, "ram": 2478403584, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246878.7975714, "cpu_usage": 2.99, "ram": 2478673920, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246879.1823902, "cpu_usage": 2.99, "ram": 2478944256, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246879.5742404, "cpu_usage": 2.99, "ram": 2478944256, "gpu_usage": 0.82, "gpu_ram": 2561671168}
+{"timestamp": 1611246879.9581585, "cpu_usage": 3.0, "ram": 2478944256, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246880.3441322, "cpu_usage": 2.99, "ram": 2479214592, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246880.7391775, "cpu_usage": 3.0, "ram": 2479214592, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246881.123675, "cpu_usage": 2.99, "ram": 2479214592, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246881.5064678, "cpu_usage": 3.0, "ram": 2479484928, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246881.888391, "cpu_usage": 3.01, "ram": 2479484928, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246882.2734523, "cpu_usage": 3.0, "ram": 2479755264, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246882.6581392, "cpu_usage": 3.01, "ram": 2479755264, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246883.0453541, "cpu_usage": 3.01, "ram": 2479755264, "gpu_usage": 0.87, "gpu_ram": 2561671168}
+{"timestamp": 1611246883.4300172, "cpu_usage": 3.01, "ram": 2480025600, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246883.8121326, "cpu_usage": 3.01, "ram": 2480025600, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246884.1948643, "cpu_usage": 3.01, "ram": 2480160768, "gpu_usage": 0.87, "gpu_ram": 2561671168}
+{"timestamp": 1611246884.5773418, "cpu_usage": 3.01, "ram": 2480427008, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246884.9627213, "cpu_usage": 3.02, "ram": 2480427008, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246885.3468192, "cpu_usage": 3.01, "ram": 2480427008, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246885.7289903, "cpu_usage": 3.02, "ram": 2480697344, "gpu_usage": 0.86, "gpu_ram": 2561671168}
+{"timestamp": 1611246886.1130755, "cpu_usage": 3.01, "ram": 2480697344, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246886.4974978, "cpu_usage": 3.02, "ram": 2480967680, "gpu_usage": 0.83, "gpu_ram": 2561671168}
+{"timestamp": 1611246886.8861876, "cpu_usage": 3.03, "ram": 2480967680, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246887.2718594, "cpu_usage": 3.02, "ram": 2481238016, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246887.6635087, "cpu_usage": 3.03, "ram": 2481238016, "gpu_usage": 0.76, "gpu_ram": 2561671168}
+{"timestamp": 1611246888.0508344, "cpu_usage": 3.03, "ram": 2481238016, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246888.4355085, "cpu_usage": 3.03, "ram": 2481508352, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246888.8198276, "cpu_usage": 3.03, "ram": 2481508352, "gpu_usage": 0.85, "gpu_ram": 2561671168}
+{"timestamp": 1611246889.2093763, "cpu_usage": 3.03, "ram": 2481778688, "gpu_usage": 0.85, "gpu_ram": 2561671168}
+{"timestamp": 1611246889.5960128, "cpu_usage": 3.03, "ram": 2481778688, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246889.9835246, "cpu_usage": 3.04, "ram": 2481778688, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246890.3847718, "cpu_usage": 3.03, "ram": 2482049024, "gpu_usage": 0.73, "gpu_ram": 2561671168}
+{"timestamp": 1611246890.7758386, "cpu_usage": 3.04, "ram": 2482049024, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246891.161963, "cpu_usage": 3.03, "ram": 2482319360, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246891.546466, "cpu_usage": 3.04, "ram": 2482319360, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246891.9360464, "cpu_usage": 3.05, "ram": 2482589696, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246892.3233516, "cpu_usage": 3.04, "ram": 2482860032, "gpu_usage": 0.85, "gpu_ram": 2561671168}
+{"timestamp": 1611246892.709931, "cpu_usage": 3.05, "ram": 2482860032, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246893.115579, "cpu_usage": 3.04, "ram": 2482860032, "gpu_usage": 0.66, "gpu_ram": 2561671168}
+{"timestamp": 1611246893.5032032, "cpu_usage": 3.05, "ram": 2482860032, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246893.8876116, "cpu_usage": 3.05, "ram": 2482860032, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246894.2703428, "cpu_usage": 3.05, "ram": 2483130368, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246894.6562026, "cpu_usage": 3.05, "ram": 2483130368, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246895.0463367, "cpu_usage": 3.06, "ram": 2483400704, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246895.4342058, "cpu_usage": 3.05, "ram": 2483400704, "gpu_usage": 0.85, "gpu_ram": 2561671168}
+{"timestamp": 1611246895.8329349, "cpu_usage": 3.06, "ram": 2483671040, "gpu_usage": 0.85, "gpu_ram": 2561671168}
+{"timestamp": 1611246896.218335, "cpu_usage": 3.05, "ram": 2483671040, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246896.602511, "cpu_usage": 3.06, "ram": 2483671040, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246896.987773, "cpu_usage": 3.07, "ram": 2483941376, "gpu_usage": 0.85, "gpu_ram": 2561671168}
+{"timestamp": 1611246897.3722456, "cpu_usage": 3.06, "ram": 2483941376, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246897.7609878, "cpu_usage": 3.07, "ram": 2484211712, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246898.1495476, "cpu_usage": 3.06, "ram": 2484211712, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246898.5428634, "cpu_usage": 3.07, "ram": 2484211712, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246898.9281657, "cpu_usage": 3.07, "ram": 2484473856, "gpu_usage": 0.73, "gpu_ram": 2561671168}
+{"timestamp": 1611246899.3156872, "cpu_usage": 3.07, "ram": 2484473856, "gpu_usage": 0.8, "gpu_ram": 2561671168}
+{"timestamp": 1611246899.7003233, "cpu_usage": 3.07, "ram": 2484740096, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246900.0999668, "cpu_usage": 3.08, "ram": 2484740096, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246900.494764, "cpu_usage": 3.07, "ram": 2485010432, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246900.8914168, "cpu_usage": 3.08, "ram": 2485010432, "gpu_usage": 0.79, "gpu_ram": 2561671168}
+{"timestamp": 1611246901.2853603, "cpu_usage": 3.07, "ram": 2485280768, "gpu_usage": 0.83, "gpu_ram": 2561671168}
+{"timestamp": 1611246901.669072, "cpu_usage": 3.08, "ram": 2485280768, "gpu_usage": 0.64, "gpu_ram": 2561671168}
+{"timestamp": 1611246902.052911, "cpu_usage": 3.08, "ram": 2485280768, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246902.4383175, "cpu_usage": 3.08, "ram": 2485280768, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246902.8231573, "cpu_usage": 3.08, "ram": 2485551104, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246903.2070124, "cpu_usage": 3.08, "ram": 2485551104, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246903.591167, "cpu_usage": 3.08, "ram": 2485821440, "gpu_usage": 0.81, "gpu_ram": 2561671168}
+{"timestamp": 1611246903.9729395, "cpu_usage": 3.09, "ram": 2485821440, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246904.3523736, "cpu_usage": 3.08, "ram": 2485821440, "gpu_usage": 0.64, "gpu_ram": 2561671168}
+{"timestamp": 1611246904.7346702, "cpu_usage": 3.09, "ram": 2486091776, "gpu_usage": 0.91, "gpu_ram": 2561671168}
+{"timestamp": 1611246905.1224582, "cpu_usage": 3.08, "ram": 2486091776, "gpu_usage": 0.88, "gpu_ram": 2561671168}
+{"timestamp": 1611246905.50539, "cpu_usage": 3.09, "ram": 2486362112, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246905.8975103, "cpu_usage": 3.1, "ram": 2486362112, "gpu_usage": 0.88, "gpu_ram": 2561671168}
+{"timestamp": 1611246906.2854202, "cpu_usage": 3.09, "ram": 2486632448, "gpu_usage": 0.79, "gpu_ram": 2561671168}
+{"timestamp": 1611246906.6770167, "cpu_usage": 3.1, "ram": 2486632448, "gpu_usage": 0.79, "gpu_ram": 2561671168}
+{"timestamp": 1611246907.0842474, "cpu_usage": 3.1, "ram": 2486632448, "gpu_usage": 0.9, "gpu_ram": 2561671168}
+{"timestamp": 1611246907.4688184, "cpu_usage": 3.1, "ram": 2486902784, "gpu_usage": 0.89, "gpu_ram": 2561671168}
+{"timestamp": 1611246907.8537006, "cpu_usage": 3.1, "ram": 2486902784, "gpu_usage": 0.0, "gpu_ram": 2561671168}
+{"timestamp": 1611246908.2219126, "cpu_usage": 3.09, "ram": 2491392000, "gpu_usage": 0.0, "gpu_ram": 2561671168}
+{"timestamp": 1611246908.587186, "cpu_usage": 3.09, "ram": 2491392000, "gpu_usage": 0.0, "gpu_ram": 2561671168}
+{"timestamp": 1611246908.9564347, "cpu_usage": 3.1, "ram": 2491392000, "gpu_usage": 0.0, "gpu_ram": 2561671168}
+{"timestamp": 1611246909.3409882, "cpu_usage": 3.09, "ram": 2491392000, "gpu_usage": 0.0, "gpu_ram": 2561671168}
+{"timestamp": 1611246909.7081645, "cpu_usage": 3.09, "ram": 2491392000, "gpu_usage": 0.0, "gpu_ram": 2561671168}
+{"timestamp": 1611246910.0781987, "cpu_usage": 3.09, "ram": 2491392000, "gpu_usage": 0.0, "gpu_ram": 2561671168}
+{"timestamp": 1611246910.443372, "cpu_usage": 3.08, "ram": 2491392000, "gpu_usage": 0.0, "gpu_ram": 2561671168}
+{"timestamp": 1611246910.8164384, "cpu_usage": 3.08, "ram": 2491392000, "gpu_usage": 0.0, "gpu_ram": 2561671168}
+{"timestamp": 1611246911.1828423, "cpu_usage": 3.07, "ram": 2491662336, "gpu_usage": 0.0, "gpu_ram": 2561671168}
+{"timestamp": 1611246911.5654013, "cpu_usage": 3.07, "ram": 2491236352, "gpu_usage": 0.0, "gpu_ram": 2561671168}
+{"timestamp": 1611246911.9361897, "cpu_usage": 3.07, "ram": 0, "gpu_usage": 0.0, "gpu_ram": 2561671168}
+{"timestamp": 1611246912.2705116, "cpu_usage": 3.07, "ram": 0, "gpu_usage": 0.0, "gpu_ram": 2561671168}
+{"timestamp": 1611246912.6091015, "cpu_usage": 3.07, "ram": 0, "gpu_usage": 0.0, "gpu_ram": 2561671168}

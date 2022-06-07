@@ -382,9 +382,6 @@ def nvidia_process_stats(pid):
 
 @dataclass
 class BenchRecord:
-    task: str
-    input_size: int
-    batch_size: int
     timestamp: datetime
     cpu_usage: float
     ram: int
@@ -478,9 +475,6 @@ def bench_docker(
         timestamp = time()
 
         yield BenchRecord(
-            task=task,
-            input_size=input_size,
-            batch_size=batch_size,
             timestamp=timestamp,
             cpu_usage=cpu_usage,
             ram=ram,

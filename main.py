@@ -396,9 +396,6 @@ def find_grid_score(id, task, grid_task_scores):
 
 @dataclass
 class BenchRecord:
-    task: str
-    input_size: int
-    batch_size: int
     timestamp: float
     cpu_usage: float
     ram: int
