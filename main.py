@@ -483,10 +483,13 @@ def safe_max(values):
 
 
 def bench_stats(records, gpu_usage_treshold=0.1):
-    total_time = (
-        records[-1].timestamp
-        - records[0].timestamp
-    )
+    total_time = None
+    if records:
+        total_time = (
+            records[-1].timestamp
+            - records[0].timestamp
+        )
+
     max_gpu_ram = safe_max(
         _.gpu_ram
         for _ in records
@@ -540,7 +543,7 @@ def load_group_benches(
             stats = [bench_stats(_) for _ in benches]
 
             gpu_rams = [_.max_gpu_ram for _ in stats if _.max_gpu_ram]
-            init_times = [_.total_time for _ in stats]
+            init_times = [_.total_time for _ in stats if _.total_time]
 
             records = query_bench_registry(
                 registry,
