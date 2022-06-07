@@ -28,6 +28,7 @@ from shutil import (
 from uuid import uuid1
 import json
 import subprocess
+import statistics
 
 from itertools import (
     cycle,
@@ -145,9 +146,13 @@ def parse_jsonl(lines):
         yield json.loads(line)
 
 
+def format_json(item):
+    return json.dumps(item, ensure_ascii=False)
+
+
 def format_jsonl(items):
     for item in items:
-        yield json.dumps(item, ensure_ascii=False)
+        yield format_json(item)
 
 
 def load_jsonl(path):
@@ -583,7 +588,6 @@ def plot_benches(benches, width=8, height=7):
         ncol=3
     )
 
-
     fig.set_size_inches(width, height)
     fig.tight_layout()
 
@@ -592,9 +596,73 @@ def plot_benches(benches, width=8, height=7):
 
 ######
 #
-#   REPORT
+#   STATS
 #
 ######
+
+
+@dataclass
+class BenchStats:
+    input_size: int
+    total_time: int
+    max_gpu_ram: int
+
+
+@dataclass
+class TaskStats:
+    task: str
+    gpu_ram: int
+    rps: int
+
+
+def bench_stats(bench, gpu_usage_treshold=0.1):
+    if not bench.records:
+        raise ValueError(f'no bench records {bench.path}')
+
+    total_time = (
+        bench.records[-1].timestamp
+        - bench.records[0].timestamp
+    )
+    max_gpu_ram = max(
+        _.gpu_ram or 0
+        for _ in bench.records
+    )
+    return BenchStats(
+        bench.input_size,
+        total_time,
+        max_gpu_ram
+    )
+
+
+def task_stats(benches):
+    tasks = {_.task for _ in benches}
+    if len(tasks) > 1:
+        raise ValueError('multiple tasks {sorted(tasks)}')
+
+    if not any(_.input_size == 1 for _ in benches):
+        raise ValueError('no input_size == 1 benches')
+
+    if not any(_.input_size > 1 for _ in benches):
+        raise ValueError('not input_size > 1 benches')
+
+    stats = [
+        bench_stats(_) for _ in benches
+        if _.input_size == 1
+    ]
+    gpu_ram = statistics.median(_.max_gpu_ram for _ in stats)
+    init_time = statistics.median(_.total_time for _ in stats)
+
+    stats = [
+        bench_stats(_) for _ in benches
+        if _.input_size > 1
+    ]
+    rps = statistics.median(
+        _.input_size / (_.total_time - init_time)
+        for _ in stats
+    )
+
+    task = benches[0].task
+    return TaskStats(task, gpu_ram / GB, rps)
 
 
 #######
@@ -628,8 +696,15 @@ def cli_plot(args):
     fig.savefig(args.image_path)
 
 
-def cli_report(args):
-    print(args)
+def cli_stats(args):
+    log(f'Stats {args.bench_paths!r}')
+    benches = [
+        load_bench(_)
+        for _ in args.bench_paths
+    ]
+    stats = task_stats(benches)
+    item = asdict(stats)
+    print(format_json(item))
 
 
 def print_jsonl(items):
@@ -662,8 +737,8 @@ def main(args):
     sub.add_argument('bench_paths', nargs='+', type=existing_path)
     sub.add_argument('image_path')
 
-    sub = subs.add_parser('report')
-    sub.set_defaults(function=cli_report)
+    sub = subs.add_parser('stats')
+    sub.set_defaults(function=cli_stats)
     sub.add_argument('bench_paths', nargs='+', type=existing_path)
 
     args = parser.parse_args(args)
