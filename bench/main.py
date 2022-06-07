@@ -382,7 +382,7 @@ def nvidia_process_stats(pid):
 
 @dataclass
 class BenchRecord:
-    timestamp: datetime
+    timestamp: float
     cpu_usage: float
     ram: int
     gpu_usage: float
