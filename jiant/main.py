@@ -109,16 +109,6 @@ MODEL_HUB_NAMES = {
 JIANT_DIR = 'jiant-v1-legacy'
 JIANT_CONF = join(JIANT_DIR, 'jiant/config/superglue_bert.conf')
 
-DATA_DIR = 'data'
-GRID_PREDS_DIR = 'preds'
-
-PRIVATE = 'private'
-PUBLIC = 'public'
-
-TRAIN = 'train'
-TEST = 'test'
-VAL = 'val'
-
 
 ######
 #
