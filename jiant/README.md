@@ -11,19 +11,6 @@ Make Jiant baseline models reproducible:
 
 ## Development
 
-Notes on dev, commands log.
-
-Lint.
-
-```bash
-pip install \
-  pytest \
-  pytest-flakes \
-  pytest-pycodestyle
-
-pytest -vv --pycodestyle --flakes main.py
-```
-
 Create GPU instance at Yandex.Cloud. 500GB HDD to train multiple models, Jiant dumps number of checkpoints, uses lots of storage.
 
 ```bash
