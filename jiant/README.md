@@ -1,5 +1,5 @@
 
-# Russian SuperGLUE Jiant baseline models inside Docker containers
+# Jiant baseline models. Train, infer, eval, build Docker container
 
 Make Jiant baseline models reproducible:
 
