@@ -528,7 +528,6 @@ def load_bench(path):
 
 
 def plot_benches(benches, width=8, height=7):
-
     # speed up main.py launch
     import pandas as pd
 
