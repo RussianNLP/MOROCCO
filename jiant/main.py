@@ -174,9 +174,13 @@ def parse_jsonl(lines):
         yield json.loads(line)
 
 
+def format_json(item):
+    return json.dumps(item, ensure_ascii=False)
+
+
 def format_jsonl(items):
     for item in items:
-        yield json.dumps(item, ensure_ascii=False)
+        yield format_json(item)
 
 
 def load_jsonl(path):
@@ -796,16 +800,14 @@ def cli_infer(args):
     )
 
     log('Writing preds to stdout')
-    lines = format_jsonl(preds)
-    for line in lines:
-        print(line)
+    print_jsonl(preds)
 
 
 def cli_eval(args):
     preds = list(load_jsonl(args.preds))
     targets = list(load_jsonl(args.targets))
     metrics = eval(args.task, preds, targets)
-    print(json.dumps(metrics, indent=2))
+    print(format_json(metrics))
 
 
 def cli_docker_build(args):
