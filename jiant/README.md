@@ -345,15 +345,15 @@ Infer and eval all.
 
 ```bash
 declare -A titles
-titles["danetqa"]="DaNetQA"
-titles["lidirus"]="LiDiRus"
-titles["muserc"]="MuSeRC"
-titles["parus"]="PARus"
-titles["rcb"]="RCB"
-titles["rucos"]="RuCoS"
-titles["russe"]="RUSSE"
-titles["rwsd"]="RWSD"
-titles["terra"]="TERRa"
+titles[danetqa]=DaNetQA
+titles[lidirus]=LiDiRus
+titles[muserc]=MuSeRC
+titles[parus]=PARus
+titles[rcb]=RCB
+titles[rucos]=RuCoS
+titles[russe]=RUSSE
+titles[rwsd]=RWSD
+titles[terra]=TERRa
 
 for model in rubert-conversational rugpt3-medium rugpt3-small
 do 
