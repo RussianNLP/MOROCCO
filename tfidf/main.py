@@ -208,8 +208,10 @@ def infer(ids, X, classifier):
 
 
 ######
+#########
 #
 #  SCORE
+#   RUCOS
 #
 #######
 
@@ -219,7 +221,77 @@ def id_labels(items):
         _['idx']: _['label']
         for _ in items
     }
+def infer_rucos(items, tfidf_vectorizer):
+    # {
+    #   "idx": 1,
+    #   "passage": {
+    #     "text": "Израильская авиация реагирует на ракетный и минометный обстрел, устроенный боевиками ХАМАС. В ночь на среду воздушные удары нанесены по 25 военным объектам палестинского радикального движения. Израильская авиация в ответ на ракетный и минометный обстрел с территории сектора Газа, в ночь на среду, Мир в дыму и огне. Это не просто кадры новостной хроники о ситуации в секторе Газа.\n@highlight\nВ Швеции задержаны двое граждан РФ в связи с нападением на чеченского блогера\n@highlight\nТуризм в эпоху коронавируса: куда поехать? И ехать ли вообще?\n@highlight\nКомментарий: Россия накануне эпидемии - виноватые назначены заранее",
+    #     "entities": [
+    #       {
+    #         "start": 85,
+    #         "end": 90
+    #       },
+    #       {
+    #         "start": 275,
+    #         "end": 279
+    #       },
+    #       {
+    #         "start": 397,
+    #         "end": 404
+    #       },
+    #     ]
+    #   },
+    #   "qas": [
+    #     {
+    #       "query": "Однако @placeholder и Израиль никак не прокомментировали это сообщение.",
+    #       "answers": [
+    #         {
+    #           "start": 85,
+    #           "end": 90,
+    #           "text": "ХАМАС"
+    #         },
+    #         {
+    #           "start": 488,
+    #           "end": 493,
+    #           "text": "ХАМАС"
+    #         }
+    #       ],
+    #       "idx": 1
+    #     }
+    #   ]
+    # }
 
+    for item in items:
+        passage = item['passage']
+        text = passage['text']
+
+        entities = [
+            text[_['start']:_['end']]
+            for _ in passage['entities']
+        ]
+
+        text = text.replace('\n@highlight\n', ' ')
+        text_emb = tfidf_vectorizer.transform([text])
+
+        parts = []
+        for query in item['qas']:
+            query_text = query['query']
+            options = [
+                query_text.replace('@placeholder', _)
+                for _ in entities
+            ]
+            options_emb = tfidf_vectorizer.transform(options)
+            similarities = cosine_similarity(text_emb, options_emb)
+
+            index = similarities.argmax()
+            part = entities[index]
+            parts.append(part)
+
+        label = ' '.join(parts)
+        yield {
+            'idx': item['idx'],
+            'label': label
+        }
 
 def score(task, preds, targets):
     pred_id_labels = id_labels(preds)
@@ -230,11 +302,132 @@ def score(task, preds, targets):
     for id in pred_id_labels.keys() & target_id_labels.keys():
         pred_labels.append(pred_id_labels[id])
         target_labels.append(target_id_labels[id])
+######
+#
+#   MUSERC
+#
+####
 
-    accuracy = accuracy_score(target_labels, pred_labels)
-    return {
-        'accuracy': accuracy
-    }
+
+def infer_muserc(items, tfidf_vectorizer):
+    # {
+    #   "idx": 0,
+    #   "passage": {
+    #     "text": "(1) Самый первый «остров» Архипелага возник в 1923 году на месте Соловецкого монастыря. (2) Затем появились ТОНы — тюрьмы особого назначения и этапы. (3) Люди попадали на Архипелаг разными сп особами: в вагон-заках, на баржах, пароходах и пешими этапами. (4) В тюрьмы арестованных доставляли в «воронках» — фургончиках чёрного цвета. (5) Роль портов Архипелага играли пересылки, временные лагеря, состоящие из палаток, землянок, бараков или участков земли под открытым небом. (6) На всех пересылках держать «политических» в узде помогали специально отобранные урки, или «социально близкие». (7) Солже ницын побывал на пересылке Красная Пресня в 1945 году. (8) Эмигранты, крестьяне и «малые народы» перевозили красными эшелонами. (9) Чаще всего такие эшелоны останав­ливались на пустом месте, посреди степи ли тайги, и осуждённые сами строили лагерь. (10) Особо важные заключённые, в основном учёные, перевозились спецконвоем. (11) Так перевозили и Солженицына. (12) Он назвался ядерным физиком, и после Красной Пресни его перевезли в Бутырки.",
+    #     "questions": [
+    #       {
+    #         "question": "Почему Солженицына перевозили спецконвоем?",
+    #         "answers": [
+    #           {
+    #             "idx": 0,
+    #             "text": "Так перевозили особо важных заключенных.",
+    #             "label": 1
+    #           },
+    #           {
+    #             "idx": 1,
+    #             "text": "Потому, что был эмигрантом.",
+    #             "label": 0
+    #           },
+    #           ...
+    #         ],
+    #         "idx": 0
+    #       },
+    #       {
+    #         "question": "Как люди попадали в тюрьмы особого типа на Соловках?",
+    #         "answers": [
+    #           {
+    #             "idx": 5,
+    #             "text": "Люди попадали на архипелаг с помощью дрезин и вертолётов.",
+    #             "label": 0
+    #           },
+    #           {
+    #             "idx": 6,
+    #             "text": "Люди попадали на Архипелаг разными способами: в вагон-заках, на баржах, пароходах, пешими этапами, а также спецконвоем.",
+    #             "label": 1
+    #           },
+    #           ...
+    #         ],
+    #         "idx": 1
+    #       }
+    #     ]
+    #   }
+    # }
+
+    for item in items:
+        passage = item['passage']
+        text = passage['text']
+        text_emb = tfidf_vectorizer.transform([text])
+
+        question_preds = []
+        for question in passage['questions']:
+            question_text = question['question']
+            answers = question['answers']
+
+            options = []
+            for answer in answers:
+                answer_text = answer['text']
+                option = f'{question_text} {answer_text}'
+                options.append(option)
+
+            options_emb = tfidf_vectorizer.transform(options)
+            similarity = cosine_similarity(text_emb, options_emb)
+
+            top = similarity.argsort().flatten()[-2:]
+            answer_preds = []
+            for index, answer in enumerate(answers):
+                label = int(index in top)
+                pred = {
+                    'idx': answer['idx'],
+                    'label': label
+                }
+                answer_preds.append(pred)
+
+            pred = {
+                'idx': question['idx'],
+                'answers': answer_preds
+            }
+            question_preds.append(pred)
+
+        # {
+        #   "idx": 0,
+        #   "passage": {
+        #     "questions": [
+        #       {
+        #         "idx": 0,
+        #         "answers": [
+        #           {
+        #             "idx": 0,
+        #             "label": 0
+        #           },
+        #           {
+        #             "idx": 1,
+        #             "label": 0
+        #           },
+        #           ...
+        #         ]
+        #       },
+        #       {
+        #         "idx": 1,
+        #         "answers": [
+        #           {
+        #             "idx": 4,
+        #             "label": 0
+        #           },
+        #           {
+        #             "idx": 5,
+        #             "label": 1
+        #           },
+        #           ...
+        #         ]
+        #       },
+        #       ...
+
+        yield {
+            'idx': item['idx'],
+            'passage': {
+                'questions': question_preds
+            }
+        }
 
 
 #######
@@ -281,21 +474,24 @@ def cli_infer(args):
     encode_item = TASK_ENCODERS[args.task]
     ids, X, _ = encode(items, encode_item, tfidf_vectorizer)
 
-    log('Run classifier')
-    preds = infer(ids, X, classifier)
+    if args.task == MUSERC:
+        preds = infer_muserc(items, tfidf_vectorizer)
+
+    elif args.task == RUCOS:
+        preds = infer_rucos(items, tfidf_vectorizer)
+
+    else:
+        log(f'Load classifier {args.classifier_path}')
+        classifier = load_pickle(args.classifier_path)
+
+        encode_item = TASK_ENCODERS[args.task]
+        ids, X, _ = encode(items, encode_item, tfidf_vectorizer)
+
+        log('Run classifier')
+        preds = infer(ids, X, classifier)
+
     for line in format_jsonl(preds):
         print(line)
-
-
-def cli_score(args):
-    log(f'Load preds {args.preds_path!r}')
-    preds = load_jsonl(args.preds_path)
-
-    log(f'Load targets {args.targets_path!r}')
-    targets = load_jsonl(args.targets_path)
-
-    metrics = score(args.task, preds, targets)
-    print(format_json(metrics))
 
 
 def existing_path(path):
@@ -331,6 +527,7 @@ def main(args):
     sub.add_argument('task', choices=TASKS)
     sub.add_argument('preds_path', type=existing_path)
     sub.add_argument('targets_path', type=existing_path)
+    sub.add_argument('classifier_path', type=existing_parent, nargs='?')
 
     args = parser.parse_args(args)
     if not args.function:
