@@ -11,6 +11,7 @@ from os.path import (
 
 import joblib
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics.pairwise import cosine_similarity
 
 
 DANETQA = 'danetqa'
@@ -81,7 +82,7 @@ def load_jsonl(path):
 def load_pickle(path):
     with warnings.catch_warnings():
         # Trying to unpickle estimator TfidfTransformer from version
-        # 0.21.3 when using version 1.1.1
+        # 0.21.3 when using version 1.1.1 I taaaak soidet
         warnings.simplefilter('ignore')
 
         return joblib.load(path)
@@ -99,7 +100,14 @@ def dump_pickle(object, path):
 
 
 def terra_encode(item):
-    premise = str(item['premise']).strip()
+    # {
+    #   "premise": "\"Кто-то нарисовал на снегу контур человеческого тела, как делают на месте убийств в сериалах о полиции, и подписал \"\"Осторожно!\"\"\"",
+    #   "hypothesis": "Кто-то изобразил на снегу контур человеческого тела.",
+    #   "label": "entailment",
+    #   "idx": 3
+    # }
+
+    premise = item['premise']
     hypothesis = item['hypothesis']
     label = item.get('label')
     text = f'{premise} {hypothesis}'
@@ -107,12 +115,27 @@ def terra_encode(item):
 
 
 def danetqa_encode(item):
-    text = str(item['question']).strip()
+    # {
+    #   "question": "Были ли римские торговые суда более вытянутыми, чем военные?",
+    #   "passage": "Ри́мский торго́вый кора́бль — парусное судно в Древнем Риме. Римские торговые и транспортные суда собирательно именовались лат. naves rotundae в отличие от лат. naves longae, как назывались корабли военно-морского флота. У первых соотношение максимальной длины и ширины обычно составляло 4:1, у вторых — 6:1 и более.",
+    #   "label": false,
+    #   "idx": 32
+    # }
+
+    text = item['question']
     label = item.get('label')
     return text, label
 
 
 def lidirus_encode(item):
+    # {
+    #   "idx": "0",
+    #   "label": "not_entailment",
+    #   "sentence1": "Кошка сидела на коврике.",
+    #   "sentence2": "Кошка не сидела на коврике.",
+    #   "logic": "Negation"
+    # }
+
     premise = str(item['sentence1']).strip()
     hypothesis = item['sentence2']
     label = item.get('label')
@@ -121,7 +144,16 @@ def lidirus_encode(item):
 
 
 def parus_encode(item):
-    premise = str(item['premise']).strip()
+    # {
+    #     "premise": "Мужчина открыл вентиль.",
+    #     "choice1": "Унитаз переполнился водой.",
+    #     "choice2": "Вода потекла из крана.",
+    #     "question": "effect",
+    #     "label": 1,
+    #     "idx": 0
+    # }
+
+    premise = item['premise']
     choice1 = item['choice1']
     choice2 = item['choice2']
     label = item.get('label')
@@ -135,7 +167,17 @@ def parus_encode(item):
 
 
 def rcb_encode(item):
-    premise = str(item['premise']).strip()
+    # {
+    #   "premise": "Его подозревают в причинении смерти по неосторожности и незаконном хранении и ношении огнестрельного оружия.",
+    #   "label": "neutral",
+    #   "hypothesis": "Он по неосторожности убил кого-то.",
+    #   "verb": "подозревать",
+    #   "negation": "no_negation",
+    #   "genre": "kp",
+    #   "idx": 0
+    # }
+
+    premise = item['premise']
     hypothesis = item['hypothesis']
     label = item.get('label')
     text = f'{premise} {hypothesis}'
@@ -143,16 +185,42 @@ def rcb_encode(item):
 
 
 def russe_encode(item):
-    sentence1 = item['sentence1'].strip()
-    sentence2 = item['sentence2'].strip()
-    word = item['word'].strip()
+    # {
+    #   "idx": 0,
+    #   "word": "здоровье",
+    #   "sentence1": "На здоровье не жалуюсь",
+    #   "sentence2": "Как здоровье?",
+    #   "start1": 3,
+    #   "end1": 12,
+    #   "start2": 4,
+    #   "end2": 13,
+    #   "label": true,
+    #   "gold_sense1": 1,
+    #   "gold_sense2": 1
+    # }
+
+    sentence1 = item['sentence1']
+    sentence2 = item['sentence2']
+    word = item['word']
     label = item.get('label')
     text = f'{sentence1} {sentence2} {word}'
     return text, label
 
 
 def rwsd_encode(item):
-    premise = str(item['text']).strip()
+    # {
+    #   "text": "Между тем, в лесу слоны зовут Артура и Селесту и ищут повсюду, а их матери очень волнуются. К счастью, пролетая над городом, старая птица марабу их увидела и быстро полетела назад, чтобы сообщить новости.",
+    #   "target": {
+    #     "span2_index": 13,
+    #     "span1_index": 4,
+    #     "span1_text": "слоны",
+    #     "span2_text": "их матери"
+    #   },
+    #   "idx": 0,
+    #   "label": false
+    # }
+
+    premise = item['text']
     span1 = item['target']['span1_text']
     span2 = item['target']['span2_text']
     label = item.get('label')
