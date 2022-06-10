@@ -11,7 +11,6 @@ from os.path import (
 
 import joblib
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score
 
 
 DANETQA = 'danetqa'
@@ -207,20 +206,13 @@ def infer(ids, X, classifier):
         }
 
 
-######
 #########
 #
-#  SCORE
 #   RUCOS
 #
 #######
 
 
-def id_labels(items):
-    return {
-        _['idx']: _['label']
-        for _ in items
-    }
 def infer_rucos(items, tfidf_vectorizer):
     # {
     #   "idx": 1,
@@ -293,15 +285,7 @@ def infer_rucos(items, tfidf_vectorizer):
             'label': label
         }
 
-def score(task, preds, targets):
-    pred_id_labels = id_labels(preds)
-    target_id_labels = id_labels(targets)
 
-    pred_labels = []
-    target_labels = []
-    for id in pred_id_labels.keys() & target_id_labels.keys():
-        pred_labels.append(pred_id_labels[id])
-        target_labels.append(target_id_labels[id])
 ######
 #
 #   MUSERC
@@ -515,12 +499,6 @@ def main(args):
     sub.set_defaults(function=cli_infer)
     sub.add_argument('task', choices=TASKS)
     sub.add_argument('tfidf_vectorizer_path', type=existing_path)
-
-    sub = subs.add_parser('score')
-    sub.set_defaults(function=cli_score)
-    sub.add_argument('task', choices=TASKS)
-    sub.add_argument('preds_path', type=existing_path)
-    sub.add_argument('targets_path', type=existing_path)
     sub.add_argument('classifier_path', type=existing_parent, nargs='?')
 
     args = parser.parse_args(args)
