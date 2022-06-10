@@ -548,7 +548,7 @@ def existing_path(path):
 
 
 def existing_parent(path):
-    existing_path(dirname(path))
+    existing_path(dirname(path) or '.')
     return path
 
 

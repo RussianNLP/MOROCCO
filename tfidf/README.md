@@ -1,5 +1,5 @@
 
-# Minimal TF-IDF baseline models. Train, infer, eval, build Docker container
+# Minimal TF-IDF baseline models. Train, infer, build Docker container
 
 ## Development
 
@@ -74,4 +74,34 @@ python main.py infer rucos data/tfidf.pkl \
 python main.py infer muserc data/tfidf.pkl \
   < data/tasks/MuSeRC/val.jsonl \
   > data/infer/muserc.jsonl
+```
+
+Build Docker containers.
+
+```bash
+# make process generic
+# duplicate terra model weights
+cp data/classifiers/{terra,lidirus}.pkl
+
+# fake rucos and muserc model weights
+touch data/classifiers/{rucos,muserc}.pkl
+
+for task in rwsd parus rcb danetqa muserc russe rucos terra lidirus
+do
+  docker build --build-arg task=$task -t tfidf-$task .
+done
+```
+
+Infer containers.
+
+```bash
+# to iterate generic
+cp data/tasks/LiDiRus/{LiDiRus,val}.jsonl
+
+for task in rwsd parus rcb danetqa muserc russe rucos terra lidirus
+do
+  docker run --interactive --rm tfidf-$task \
+    < data/tasks/${titles[$task]}/val.jsonl \
+    > data/infer/$task.jsonl
+done
 ```
