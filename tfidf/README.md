@@ -30,7 +30,7 @@ pip install \
   joblib
 ```
 
-Train classifiers. No pretrain for MuSeRC and RuCos. 
+Train classifiers. No pretrain for MuSeRC and RuCos.
 
 ```bash
 declare -A titles
@@ -52,7 +52,7 @@ do
 done
 ```
 
-Infer. Use TERRa classifiers for LiDiRus.
+Infer. Use TERRa classifiers for LiDiRus. Omit classifier weights for MuSeRC and RuCos.
 
 ```bash
 mkdir -p data/infer
@@ -64,18 +64,14 @@ do
 done
 
 python main.py infer lidirus data/tfidf.pkl data/classifiers/terra.pkl \
-    < data/tasks/LiDiRus/LiDiRus.jsonl \
-    > data/infer/lidirus.jsonl
-```
+  < data/tasks/LiDiRus/LiDiRus.jsonl \
+  > data/infer/lidirus.jsonl
 
-```bash
-mkdir -p data/scores
-for task in danetqa parus rcb russe rwsd terra
-do
-  python main.py score $task data/infer/$task.jsonl data/tasks/${titles[$task]}/val.jsonl \
-    > data/scores/$task.json
-done
+python main.py infer rucos data/tfidf.pkl \
+  < data/tasks/RuCoS/val.jsonl \
+  > data/infer/rucos.jsonl
 
-python main.py score lidirus data/infer/lidirus.jsonl data/tasks/LiDiRus/LiDiRus.jsonl \
-  > data/scores/lidirus.json
+python main.py infer muserc data/tfidf.pkl \
+  < data/tasks/MuSeRC/val.jsonl \
+  > data/infer/muserc.jsonl
 ```
