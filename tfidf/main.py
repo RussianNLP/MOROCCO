@@ -466,13 +466,8 @@ def cli_infer(args):
     log(f'Load TF-IDF vectorizer {args.tfidf_vectorizer_path!r}')
     tfidf_vectorizer = load_pickle(args.tfidf_vectorizer_path)
 
-    log(f'Load classifier {args.classifier_path}')
-    classifier = load_pickle(args.classifier_path)
-
     log('Reading test from stdin')
     items = parse_jsonl(sys.stdin)
-    encode_item = TASK_ENCODERS[args.task]
-    ids, X, _ = encode(items, encode_item, tfidf_vectorizer)
 
     if args.task == MUSERC:
         preds = infer_muserc(items, tfidf_vectorizer)
@@ -520,7 +515,6 @@ def main(args):
     sub.set_defaults(function=cli_infer)
     sub.add_argument('task', choices=TASKS)
     sub.add_argument('tfidf_vectorizer_path', type=existing_path)
-    sub.add_argument('classifier_path', type=existing_parent)
 
     sub = subs.add_parser('score')
     sub.set_defaults(function=cli_score)
