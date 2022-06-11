@@ -1,8 +1,6 @@
 
 # Minimal TF-IDF baseline models. Train, infer, build Docker container
 
-## Development
-
 Fetch public Russian SuperGLUE data.
 
 ```bash

@@ -9,7 +9,7 @@ Make Jiant baseline models reproducible:
 - Find optimal seeds. Original seeds <a href="https://russiansuperglue.com/leaderboard/2">used on leaderboard</a> were lost, try 5-10 random seeds for each model, use one with highest score on test;
 - For each model for each task build Docker container, upload weights to Docker Hub.
 
-## Development
+## Dev notes, commands log
 
 Create GPU instance at Yandex.Cloud. 500GB HDD to train multiple models, Jiant dumps number of checkpoints, uses lots of storage.
 
