@@ -4,8 +4,8 @@
 Make Jiant baseline models reproducible:
 
 - Use legacy <a href="https://github.com/nyu-mll/jiant-v1-legacy">Jiant 1.0</a>;
-- Apply patch to support Russian SuperGLUE tasks `russian-superglue.patch`;
-- Wrap Jiant into convenient `python main.py train|infer|eval`;
+- Apply <a href="russian-superglue.patch">patch to support Russian SuperGLUE tasks</a>;
+- Wrap Jiant into convenient `python main.py train|infer|eval` CLI;
 - Find optimal seeds. Original seeds <a href="https://russiansuperglue.com/leaderboard/2">used on leaderboard</a> were lost, try 5-10 random seeds for each model, use one with highest score on test;
 - For each model for each task build Docker container, upload weights to Docker Hub.
 
