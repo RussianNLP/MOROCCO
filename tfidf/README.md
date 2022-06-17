@@ -1,5 +1,5 @@
 
-# Minimal TF-IDF baseline models. Train, infer, build Docker container
+# Minimal TF-IDF baseline models. Train, infer, build Docker containers
 
 Fetch public Russian SuperGLUE data.
 
@@ -77,11 +77,10 @@ python main.py infer muserc data/tfidf.pkl \
 Build Docker containers.
 
 ```bash
-# make process generic
-# duplicate terra model weights
+# Make build generic, prevent "cp file not found"
+# 1. Duplicate terra model weights terra.pkl -> lidirus.pkl
+# 2. Create empty rucos and muserc model weights
 cp data/classifiers/{terra,lidirus}.pkl
-
-# fake rucos and muserc model weights
 touch data/classifiers/{rucos,muserc}.pkl
 
 for task in rwsd parus rcb danetqa muserc russe rucos terra lidirus
@@ -93,7 +92,7 @@ done
 Infer containers.
 
 ```bash
-# to iterate generic
+# Make loop generic LiDiRus.jsonl -> val.jsonl
 cp data/tasks/LiDiRus/{LiDiRus,val}.jsonl
 
 for task in rwsd parus rcb danetqa muserc russe rucos terra lidirus
