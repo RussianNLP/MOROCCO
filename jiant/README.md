@@ -1,5 +1,5 @@
 
-# Jiant baseline models. Train, infer, eval, build Docker container
+# Jiant baseline models. Train, infer, eval, build Docker containers
 
 Make Jiant baseline models reproducible:
 
@@ -105,7 +105,7 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
 Init conda env with Russian fork of Jiant. Takes ~10 minutes.
 
 ```bash
-# patch to support russian tasks
+# Patch to support russian tasks
 git clone https://github.com/nyu-mll/jiant-v1-legacy.git
 cd jiant-v1-legacy
 git checkout 61440732f4df2c54e68e59ead34b8656bf52af3b
@@ -115,7 +115,7 @@ git apply ../russian-superglue.patch
 conda env create -f environment.yml -n main
 conda activate main
 
-# already installed deps via environment.yml
+# Already installed deps via environment.yml
 pip install --no-dependencies -e .
 
 # https://github.com/allenai/specter/issues/27
@@ -146,7 +146,7 @@ do
   python main.py train rubert $task exps/06 data/public --seed=3
 done
 
-# striped, keep only best snapshot weights
+# Striped, keep only best snapshot weights
 rubert/transformers_cache
 rubert/transformers_cache/77e55469ea144f5cb185f025d9b21928dd446fc13e29a6bd19776059738229dd.71d8ad10edfcd7c68264ea03bc1b14e1f7b9c67affdfe8d6f96e1a6ce2c136ee.json
 rubert/transformers_cache/3e164bb7396e401202e250721569fb407583681bb6ea0c34f431af622435a3
@@ -201,7 +201,7 @@ sudo usermod -aG docker $USER
 newgrp docker
 ```
 
-Build docker container. First call takes long time, ~15 minutes. Docker caches build steps, icluding heavy `COPY transformers_cache exp/transformers_cache`. Second call take ~2 minutes, shares transformers_cache direcotry. Still takes time to copy build context, ~1.5GB per task.
+Build docker container. First call takes long time, ~15 minutes. Docker caches build steps, including heavy `COPY transformers_cache exp/transformers_cache`. Second call take ~2 minutes, shares `transformers_cache` directory. Still takes time to copy build context, ~1.5GB per task.
 
 ```bash
 python main.py docker-build exps/06/rubert terra rubert-terra
@@ -259,59 +259,6 @@ python main.py eval lidirus preds.jsonl data/private/LiDiRus/test_with_answers.j
   "all_mcc": 0.21924343661028828,
   "accuracy": 0.5543478260869565
 }
-```
-
-Select best performing. "!" - score < leaderboard score.
-
-```
-! exps/05/danetqa -> exps/rubert/danetqa
-  exps/09/muserc -> exps/rubert/muserc
-  exps/06/parus -> exps/rubert/parus
-  exps/04/rcb -> exps/rubert/rcb
-  exps/04/rucos -> exps/rubert/rucos
-  exps/08/russe -> exps/rubert/russe
-  exps/04/rwsd -> exps/rubert/rwsd
-  exps/04/terra -> exps/rubert/terra
-  exps/03/danetqa -> exps/rubert-conversational/danetqa
-  exps/13/muserc -> exps/rubert-conversational/muserc
-  exps/12/parus -> exps/rubert-conversational/parus
-! exps/01/rcb -> exps/rubert-conversational/rcb
-! exps/01/rucos -> exps/rubert-conversational/rucos
-  exps/15/russe -> exps/rubert-conversational/russe
-  exps/14/rwsd -> exps/rubert-conversational/rwsd
-  exps/13/terra -> exps/rubert-conversational/terra
-! exps/21/danetqa -> exps/bert-multilingual/danetqa
-! exps/20/muserc -> exps/bert-multilingual/muserc
-  exps/20/parus -> exps/bert-multilingual/parus
-  exps/21/rcb -> exps/bert-multilingual/rcb
-  exps/20/rucos -> exps/bert-multilingual/rucos
-! exps/20/russe -> exps/bert-multilingual/russe
-  exps/20/rwsd -> exps/bert-multilingual/rwsd
-! exps/22/terra -> exps/bert-multilingual/terra
-  exps/25/danetqa -> exps/rugpt3-small/danetqa
-  exps/29/muserc -> exps/rugpt3-small/muserc
-  exps/29/parus -> exps/rugpt3-small/parus
-  exps/25/rcb -> exps/rugpt3-small/rcb
-  exps/29/rucos -> exps/rugpt3-small/rucos
-  exps/25/russe -> exps/rugpt3-small/russe
-  exps/25/rwsd -> exps/rugpt3-small/rwsd
-  exps/29/terra -> exps/rugpt3-small/terra
-! exps/19/danetqa -> exps/rugpt3-medium/danetqa
-  exps/24/muserc -> exps/rugpt3-medium/muserc
-  exps/24/parus -> exps/rugpt3-medium/parus
-  exps/19/rcb -> exps/rugpt3-medium/rcb
-  exps/28/rucos -> exps/rugpt3-medium/rucos
-  exps/19/russe -> exps/rugpt3-medium/russe
-! exps/24/rwsd -> exps/rugpt3-medium/rwsd
-  exps/28/terra -> exps/rugpt3-medium/terra
-! exps/27/danetqa -> exps/rugpt3-large/danetqa
-  exps/27/muserc -> exps/rugpt3-large/muserc
-! exps/27/parus -> exps/rugpt3-large/parus
-! exps/27/rcb -> exps/rugpt3-large/rcb
-  exps/30/rucos -> exps/rugpt3-large/rucos
-  exps/27/russe -> exps/rugpt3-large/russe
-  exps/27/rwsd -> exps/rugpt3-large/rwsd
-! exps/27/terra -> exps/rugpt3-large/terra
 ```
 
 Generate token, login to Docker Hub.
