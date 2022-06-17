@@ -1,10 +1,6 @@
 
 # Measure dockerized model performance: GPU RAM usage, inference speed
 
-## Development
-
-Notes on dev, commands log
-
 Create GPU instance at Yandex.Cloud.
 
 ```bash
@@ -74,7 +70,6 @@ Setup reqs.
 pip install pandas matplotlib
 ```
 
-
 Fetch public Russian SuperGLUE data.
 
 ```bash
@@ -101,7 +96,7 @@ do
 done
 ```
 
-Bench all Jiant baseline models 5 times. Input size 2000 is optiomal not too short for robust time estimate, not to long to wait for process to finish. Batch size 32 is optimal, not to large fits in GPU RAM for all models, utilizes GPU for ~100% on all tasks.
+Bench all Jiant baseline models 5 times. Input size 2000 is optimal not too short for robust time estimate, not to long to wait for process to finish. Batch size 32 is optimal, not to large fits in GPU RAM for all models, utilizes GPU for ~100% on all tasks.
 
 ```bash
 input_size=1
