@@ -568,6 +568,8 @@ def main(args):
     sub.add_argument('task', choices=TASKS)
     sub.add_argument('tfidf_vectorizer_path', type=existing_path)
     sub.add_argument('classifier_path', type=existing_parent, nargs='?')
+    # Ignore, TF-IDF models run on CPU, all input is processing in one go
+    sub.add_argument('--batch-size')
 
     args = parser.parse_args(args)
     if not args.function:
