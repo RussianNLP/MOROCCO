@@ -122,7 +122,7 @@ Plot bench logs for all tasks.
 mkdir plots
 for task in rwsd parus rcb danetqa muserc russe rucos terra lidirus
 do
-  python main.py plot data/jiant/rubert/$task/*.jsonl plots/$task.png
+  python main.py plot data/rubert/$task/*.jsonl plots/$task.png
 done
 ```
 
@@ -132,6 +132,6 @@ Bench stats.
 rm -f stats.jsonl
 for task in rwsd parus rcb danetqa muserc russe rucos terra lidirus
 do
-  python main.py stats data/jiant/rubert/$task/* >> stats.jsonl
+  python main.py stats data/rubert/$task/*.jsonl >> stats.jsonl
 done
 ```
