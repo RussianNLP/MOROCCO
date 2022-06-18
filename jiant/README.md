@@ -111,7 +111,6 @@ cd jiant-v1-legacy
 git checkout 61440732f4df2c54e68e59ead34b8656bf52af3b
 git apply ../russian-superglue.patch
 
-
 conda env create -f environment.yml -n main
 conda activate main
 
