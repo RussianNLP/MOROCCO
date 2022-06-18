@@ -126,9 +126,9 @@ yc resource-manager folder delete --name russian-superglue
 
 Use <a href="bench/main.py">`bench/main.py`</a> to collect CPU and GPU usage during container inference:
 
-- Download <a href="https://russiansuperglue.com/tasks/">tasks data from Russian SuperGLUE site</a>, extract it to `data/public/`;
+- Download <a href="https://russiansuperglue.com/tasks/">tasks data from Russian SuperGLUE site</a>, extract archive to `data/public/`;
 - Increase/decrease `--input-size=2000` for optimal runtime. RuBERT processes 2000 PARus records in ~5 seconds, long enough to estimate inference speed;
-- Increase/decrease `--batch-size=32` to max GPU RAM usage. RuBERT uses 100% GPU RAM on PARus if batch size is 32;
+- Increase/decrease `--batch-size=32` to max GPU RAM usage. RuBERT uses 100% GPU RAM on PARus with batch size 32;
 - `main.py` calls `ps` and `nvidia-smi`, parses output, writes CPU and GPU usage to stdout, repeats 3 times per second.
 
 ```bash
