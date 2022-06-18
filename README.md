@@ -177,7 +177,7 @@ Produce benchmark logs for each task:
 - Benchmark with `--input-size=1`, `--batch-size=1`. This way MOROCCO estimates model init time and model size in GPU RAM. We assume that 1 record takes almost no time to process and almost no space in GPU RAM. So all run time is init time and max GPU RAM usage is model size;
 - Benchmark with `--input-size=X`, `--batch-size=Y` where `X > 1`. Choose such `X` so that model takes at least several seconds to process input. Otherwise the inference speed estimate is not robust. Choose such `Y` so that model still fits in GPU RAM, maximize GPU utilization, inferefence speed;
 - Repeat every measurement 5 times for better estimate;
-- Save logs to `logs/$task/${input_size}_${batch_size}_${index}.jsonl` files.
+- Save logs to `logs/$task/${input_size}_${batch_size}_${index}.jsonl` files. Do not change path pattern, `main.py plot|stats` parse file path to get task, input and batch sizes.
 
 ```bash
 input_size=2000
