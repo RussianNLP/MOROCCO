@@ -308,3 +308,31 @@ https://hub.docker.com/r/russiannlp/rubert-rwsd
 https://hub.docker.com/r/russiannlp/rubert-parus
 ...
 ```
+
+### Q&A
+
+#### `main.py bench` raises `pid not found` error
+
+Just relaunch `main.py`, have no idea why error happens.
+
+#### What if I use the same base model for all tasks, why duplicate it in 9 containers?
+
+Imagine two Dockerfiles:
+
+```dockerfile
+# Dockerfile.parus
+ADD model.th .
+ADD infer.py .
+
+RUN python infer.py model.th parus
+```
+
+```dockerfile
+# Dockerfile.terra
+ADD model.th .
+ADD infer.py .
+
+RUN python infer.py model.th terra
+```
+
+Docker shares `model.th` and `infer.py` between `terra` and `parus` containers. Learn more about <a href="https://dockerlabs.collabnix.com/beginners/dockerfile/Layering-Dockerfile.html">Layering in Docker</a>. So even if `model.th` is a large file, only first container build is slow.
