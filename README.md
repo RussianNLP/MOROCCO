@@ -176,7 +176,7 @@ Produce benchmark logs for each task:
 
 - Benchmark with `--input-size=1`, `--batch-size=1`. This way MOROCCO estimates model init time and model size in GPU RAM. We assume that 1 record takes almost no time to process and almost no space in GPU RAM. So all run time is init time and max GPU RAM usage is model size;
 - Benchmark with `--input-size=X`, `--batch-size=Y` where `X > 1`. Choose such `X` so that model takes at least several seconds to process input. Otherwise the inference speed estimate is not robust. Choose such `Y` so that model still fits in GPU RAM, maximize GPU utilization, inferefence speed;
-- Repeat every measurement 5 times for better estimate;
+- Repeat every measurement 5 times for better median estimates;
 - Save logs to `logs/$task/${input_size}_${batch_size}_${index}.jsonl` files. Do not change path pattern, `main.py plot|stats` parse file path to get task, input and batch sizes.
 
 ```bash
@@ -222,7 +222,7 @@ logs/lidirus/1_1_03.jsonl
 ...
 ```
 
-### Use logs to estimate RAM usage and inference speed, make sure benchmark logs are correct
+### Use logs to estimate model RAM usage and inference speed, make sure benchmark logs are correct
 
 Use `main.py plot` to plot log records:
 
@@ -276,7 +276,7 @@ zip logs.zip -r logs
 
 Submit `logs.zip` to Russian SuperGLUE site. *WARN* Submission form is not yet implemented
 
-Notice `stats.jsonl` is not in archive. Russian SuperGLUE organizers use submitted logs, compute stats internally.
+Notice `stats.jsonl` is not submitted. Russian SuperGLUE organizers use logs, compute stats internally.
 
 ### Optionally upload Docker containers with your model to Docker Hub, sent links to Russian SuperGLUE site
 
