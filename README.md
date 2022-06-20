@@ -420,5 +420,5 @@ done
 ...
 ```
 
-See <a href="#use-logs-to-estimate-ram-usage-and-inference-speed-make-sure-benchmark-logs-are-correct">user instructions on how to validate logs</a>. It explains how MOROCCO computes `gpu_ram` and `rps` estimates.
+See <a href="#use-logs-to-estimate-model-ram-usage-and-inference-speed-make-sure-benchmark-logs-are-correct">user instructions on how to validate logs</a>. It explains how MOROCCO computes `gpu_ram` and `rps` estimates.
 
