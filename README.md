@@ -336,3 +336,89 @@ RUN python infer.py model.th terra
 ```
 
 Docker shares `model.th` and `infer.py` between `terra` and `parus` containers. Learn more about <a href="https://dockerlabs.collabnix.com/beginners/dockerfile/Layering-Dockerfile.html">Layering in Docker</a>. So even if `model.th` is a large file, only first container build is slow.
+
+## How to process user submission, add performance measurements to site
+
+### User submission format
+
+User submits `logs.zip` archive with benchmark logs:
+
+```bash
+unzip logs.zip
+
+# logs
+logs/danetqa
+logs/danetqa/1_1_01.jsonl
+logs/danetqa/1_1_02.jsonl
+logs/danetqa/1_1_03.jsonl
+logs/danetqa/1_1_04.jsonl
+logs/danetqa/1_1_05.jsonl
+logs/danetqa/2000_32_01.jsonl
+logs/danetqa/2000_32_02.jsonl
+logs/danetqa/2000_32_03.jsonl
+logs/danetqa/2000_32_04.jsonl
+logs/danetqa/2000_32_05.jsonl
+logs/lidirus
+logs/lidirus/1_1_01.jsonl
+logs/lidirus/1_1_02.jsonl
+logs/lidirus/1_1_03.jsonl
+...
+```
+
+Filename encodes input size, batch size and repeat number. Log is a list of snapshots with CPU and GPU utilization, RAM and GPU RAM usage in GB:
+
+```bash
+head -100 logs/danetqa/2000_32_01.jsonl
+#                      |    |  |
+#                      |    |   - repeat number
+#                      |     - batch size
+#                       - input size
+
+{"timestamp": 1655489163.5244198, "cpu_usage": 0.792, "ram": 1324347392, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1655489163.8504698, "cpu_usage": 0.846, "ram": 1756614656, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1655489164.1887505, "cpu_usage": 0.824, "ram": 1757798400, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1655489164.5127172, "cpu_usage": 0.836, "ram": 1788252160, "gpu_usage": null, "gpu_ram": null}
+{"timestamp": 1655489164.8368814, "cpu_usage": 0.868, "ram": 1312509952, "gpu_usage": 0.0, "gpu_ram": 12582912}
+{"timestamp": 1655489165.1853693, "cpu_usage": 0.825, "ram": 1455849472, "gpu_usage": 0.03, "gpu_ram": 447741952}
+{"timestamp": 1655489165.5276613, "cpu_usage": 0.852, "ram": 1662029824, "gpu_usage": 0.02, "gpu_ram": 516947968}
+{"timestamp": 1655489165.8732562, "cpu_usage": 0.881, "ram": 1856204800, "gpu_usage": 0.04, "gpu_ram": 581959680}
+{"timestamp": 1655489166.2159047, "cpu_usage": 0.84, "ram": 2079133696, "gpu_usage": 0.03, "gpu_ram": 655360000}
+{"timestamp": 1655489166.5602977, "cpu_usage": 0.866, "ram": 2272530432, "gpu_usage": 0.04, "gpu_ram": 726663168}
+...
+```
+
+See <a href="#produce-benchmark-logs">user instruction on how to produce benchmark logs</a> for more:
+
+- What input size = 1 logs are for?
+- How input size = 2000 and batch size = 32 are chosen?
+- What is repeat number?
+- How `cpu|gpu_usage`, `ram|gpu_ram` are collected?
+
+### Use logs to compute model inference speed and GPU RAM usage on each task
+
+Download and run <a href="bench/main.py">`bench/main.py`</a> to estimate model RAM usage and inference speed:
+
+- `gpu_ram` is model RAM usage on a given task;
+- `rps` is inference speed on a given task.
+
+```bash
+rm -f stats.jsonl
+for task in rwsd parus rcb danetqa muserc russe rucos terra lidirus
+do
+  python main.py stats logs/$task/*.jsonl >> stats.jsonl
+done
+
+# stats.jsonl
+{"task": "rwsd", "gpu_ram": 2.3759765625, "rps": 98.63280478384755}
+{"task": "parus", "gpu_ram": 2.3701171875, "rps": 604.8896607058683}
+{"task": "rcb", "gpu_ram": 2.3701171875, "rps": 259.2194937718749}
+{"task": "danetqa", "gpu_ram": 2.3779296875, "rps": 113.01682267125594}
+{"task": "russe", "gpu_ram": 2.3681640625, "rps": 209.67562896692323}
+{"task": "rucos", "gpu_ram": 2.3837890625, "rps": 8.943314668687039}
+{"task": "terra", "gpu_ram": 2.3701171875, "rps": 276.5012222788721}
+{"task": "lidirus", "gpu_ram": 2.3701171875, "rps": 171.50838790651727}
+...
+```
+
+See <a href="#use-logs-to-estimate-ram-usage-and-inference-speed-make-sure-benchmark-logs-are-correct">user instructions on how to validate logs</a>. It explains how MOROCCO computes `gpu_ram` and `rps` estimates.
+
