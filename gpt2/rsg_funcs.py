@@ -1,6 +1,7 @@
-import copy
 import torch
 import re
+from copy import deepcopy
+from torch.nn import CrossEntropyLoss
 
 def calc_ppl_batch(phrases,
                    tokenizer,
@@ -11,8 +12,15 @@ def calc_ppl_batch(phrases,
     padded_batch["attention_mask"] = torch.tensor(padded_batch["attention_mask"], device=device)
     
     with torch.no_grad():
-        loss = model(input_ids=padded_batch["input_ids"],
-                     labels=padded_batch["input_ids"])
+        lm_logits = model(input_ids=padded_batch["input_ids"], return_dict=True).logits
+        labels = padded_batch["input_ids"]
+
+        shift_logits = lm_logits[..., :-1, :].contiguous()
+        shift_labels = labels[..., 1:].contiguous()
+        
+        loss_fct = CrossEntropyLoss(reduction='none')
+        loss = loss_fct(shift_logits.view(-1, shift_logits.size(-1)), shift_labels.view(-1))
+        loss = loss.view(shift_logits.size(0), -1)
 
     corrected_loss = padded_batch["attention_mask"][:,1:]*loss[0]
     corrected_loss = corrected_loss.sum(dim=1) / padded_batch["attention_mask"][:,1:].sum(dim=1)
@@ -37,7 +45,7 @@ def muserc_decide_batch(q_ans):
 
 
 def muserc_process_item(item, text_batches, dict_perplexity, tokenizer, model, device):
-    new_item = copy.deepcopy(item)
+    new_item = deepcopy(item)
     
     for batch in text_batches:
         perp_arr = calc_ppl_batch(batch['query_batch'], tokenizer, model, device)
@@ -81,7 +89,7 @@ def muserc_get_item(item, batch_size):
 
 
 def muserc_get_answer(data, batch_size, tokenizer, model, device):
-    new_data = copy.deepcopy(data)
+    new_data = deepcopy(data)
     for i in range(len(new_data)):
         batches, perp_dict = muserc_get_item(new_data[i], batch_size)
         new_data[i] = muserc_process_item(new_data[i], batches, perp_dict, tokenizer, model, device)
@@ -91,7 +99,7 @@ def muserc_get_answer(data, batch_size, tokenizer, model, device):
 
 
 def rcb_process_items(items, text_batches, tokenizer, model, device):
-    new_items = copy.deepcopy(items)
+    new_items = deepcopy(items)
     
     for batch in text_batches:
         perp_arr = calc_ppl_batch(batch['query_batch'], tokenizer, model, device)
@@ -109,7 +117,7 @@ def rcb_get_items(items, batch_size):
     text_batches = [{"query_batch":[], "rcb_id":[]}] 
     
     for rcb_id, item in enumerate(items):
-        new_item = copy.deepcopy(item)
+        new_item = deepcopy(item)
         text = clean(new_item['premise'])
         question = new_item['hypothesis']
         X = text+' Из этого следует, что '+question[0].lower()+question[1:]
@@ -122,14 +130,14 @@ def rcb_get_items(items, batch_size):
 
 
 def rcb_get_answer(data, batch_size, tokenizer, model, device):
-    new_data = copy.deepcopy(data)
+    new_data = deepcopy(data)
     text_batches = rcb_get_items(new_data, batch_size)
     new_data = rcb_process_items(new_data, text_batches, tokenizer, model, device)
     return new_data
 
 
 def danetqa_process_items(items, text_batches, tokenizer, model, device):
-    new_items = copy.deepcopy(items)
+    new_items = deepcopy(items)
     
     for batch in text_batches:
         yes_batch = [x + ' Да' for x in batch['query_batch']]
@@ -150,7 +158,7 @@ def danetqa_get_items(items, batch_size):
     text_batches = [{"query_batch":[], "danetqa_id":[]}]
 
     for danetqa_id, item in enumerate(items):
-        new_item = copy.deepcopy(item)
+        new_item = deepcopy(item)
         question = new_item['question']
         if len(text_batches[-1]['query_batch']) >= batch_size:
             text_batches.append({"query_batch":[], "danetqa_id":[]})
@@ -161,7 +169,7 @@ def danetqa_get_items(items, batch_size):
 
 
 def danetqa_get_answer(data, batch_size, tokenizer, model, device):
-    new_data = copy.deepcopy(data)
+    new_data = deepcopy(data)
     text_batches = danetqa_get_items(new_data, batch_size)
     new_data = danetqa_process_items(new_data, text_batches, tokenizer, model, device)
     return new_data
@@ -169,7 +177,7 @@ def danetqa_get_answer(data, batch_size, tokenizer, model, device):
 
 def parus_process_items(items, text_batches, tokenizer, model, device):
     question_conv = {'effect': ' Из-за этого ', 'cause': ' Потому что '}
-    new_items = copy.deepcopy(items)
+    new_items = deepcopy(items)
     
     for batch in text_batches:
         choice1_batch = [clean(batch['premise_batch'][idx])+\
@@ -196,7 +204,7 @@ def parus_get_items(items, batch_size):
                      "choice1":[], "choice2":[], "parus_id":[]}]
     
     for parus_id, item in enumerate(items):
-        new_item = copy.deepcopy(item)
+        new_item = deepcopy(item)
         question = new_item['question']
         premise = new_item['premise']
         choice1 = new_item['choice1']
@@ -214,7 +222,7 @@ def parus_get_items(items, batch_size):
 
 
 def parus_get_answer(data, batch_size, tokenizer, model, device):
-    new_data = copy.deepcopy(data)
+    new_data = deepcopy(data)
     text_batches = parus_get_items(new_data, batch_size)
     new_item = parus_process_items(new_data, text_batches, tokenizer, model, device)
     return new_item
@@ -225,7 +233,7 @@ def rucos_get_items(items, batch_size):
     dict_perplexity = {}
     
     for p in range(len(items)):
-        new_item = copy.deepcopy(items[p])
+        new_item = deepcopy(items[p])
         passage_id = new_item["idx"]
         dict_perplexity[passage_id] = {} 
         text = new_item['passage']['text']
@@ -253,7 +261,7 @@ def rucos_decide_batch(q_ans):
 
 
 def rucos_process_items(items, text_batches, dict_perplexity, tokenizer, model, device):
-    new_items = copy.deepcopy(items)
+    new_items = deepcopy(items)
     
     for batch in text_batches:
         perp_arr = calc_ppl_batch(batch['query_batch'], tokenizer, model, device)
@@ -270,14 +278,14 @@ def rucos_process_items(items, text_batches, dict_perplexity, tokenizer, model, 
 
 
 def rucos_get_answer(data, batch_size, tokenizer, model, device):
-    new_data = copy.deepcopy(data)
+    new_data = deepcopy(data)
     text_batches, dict_perp = rucos_get_items(new_data, batch_size)
     new_data = rucos_process_items(new_data, text_batches, dict_perp, tokenizer, model, device)
     return new_data
 
 
 def russe_process_items(items, text_batches, tokenizer, model, device):
-    new_items = copy.deepcopy(items)
+    new_items = deepcopy(items)
     
     for batch in text_batches:
         perp_arr_choice1 = calc_ppl_batch([x[0] for x in batch["choices"]], tokenizer, model, device)
@@ -292,7 +300,7 @@ def russe_get_items(items, batch_size):
     text_batches = [{"choices":[], "russe_id":[]}]
     
     for russe_id, item in enumerate(items):
-        new_item = copy.deepcopy(item)
+        new_item = deepcopy(item)
         choices = []
         choices.append(clean('Слово ' + new_item['word'] +\
                              ' значит одно и то же в предложениях: Предложение 1: ' +\
@@ -311,7 +319,7 @@ def russe_get_items(items, batch_size):
 
 
 def russe_get_answer(data, batch_size, tokenizer, model, device):
-    new_data = copy.deepcopy(data)
+    new_data = deepcopy(data)
     text_batches = russe_get_items(new_data, batch_size)
     new_data = russe_process_items(new_data, text_batches, tokenizer, model, device)
     return new_data
@@ -321,7 +329,7 @@ def rwsd_get_items(items, batch_size):
     text_batches = [{"query_batch":[], "item_idx":[], "span":[]}]
     
     for item_idx in range(len(items)):
-        new_item = copy.deepcopy(items[item_idx])
+        new_item = deepcopy(items[item_idx])
         span = new_item['text']
         target1 = new_item['target']['span1_text']
         target2 = new_item['target']['span2_text'] 
@@ -342,7 +350,7 @@ def rwsd_decide_batch(q_ans):
 
 
 def rwsd_process_items(items, text_batches, tokenizer, model, device):
-    new_items = copy.deepcopy(items)
+    new_items = deepcopy(items)
     
     spans = {}
     
@@ -362,16 +370,16 @@ def rwsd_process_items(items, text_batches, tokenizer, model, device):
 
 
 def rwsd_get_answer(data, batch_size, tokenizer, model, device):    
-    new_data = copy.deepcopy(data)
+    new_data = deepcopy(data)
     text_batches = rwsd_get_items(new_data, batch_size)
     new_data = rwsd_process_items(new_data, text_batches, tokenizer, model, device)
     return new_data
 
 
 def terra_process_items(items, text_batches, tokenizer, model, device):
-    new_items = copy.deepcopy(items)
+    new_items = deepcopy(items)
     
-    for batch_idx, batch in enumerate(text_batches):
+    for batch in text_batches:
         perp_arr = calc_ppl_batch(batch['query_batch'], tokenizer, model, device)
         for perp_idx in range(len(perp_arr)): 
             if perp_arr[perp_idx]<22:
@@ -386,7 +394,7 @@ def terra_get_items(items, batch_size):
     text_batches = [{"query_batch":[], "terra_id":[]}]
     
     for terra_id, item in enumerate(items):
-        new_item = copy.deepcopy(item)
+        new_item = deepcopy(item)
         text = clean(new_item['premise'])
         question = new_item['hypothesis']
         X = text+' '+question
@@ -399,14 +407,14 @@ def terra_get_items(items, batch_size):
 
 
 def terra_get_answer(data, batch_size, tokenizer, model, device):
-    new_data = copy.deepcopy(data)
+    new_data = deepcopy(data)
     text_batches = terra_get_items(new_data, batch_size)
     new_data = terra_process_items(new_data, text_batches, tokenizer, model, device)
     return new_data
 
 
 def lidirus_process_items(items, text_batches, tokenizer, model, args):
-    new_items = copy.deepcopy(items)
+    new_items = deepcopy(items)
     
     for batch in text_batches:
         perp_arr_choice1 = calc_ppl_batch([x[0] for x in batch["choices"]], tokenizer, model, args)
@@ -423,7 +431,7 @@ def lidirus_get_items(items, batch_size):
     text_batches = [{"choices":[], "lidirus_id":[]}]
     
     for russe_id, item in enumerate(items):
-        new_item = copy.deepcopy(item)
+        new_item = deepcopy(item)
         choices = []
         choices.append(new_item['sentence1']+' Из этого следует, что '+new_item['sentence2'])
         choices.append(new_item['sentence1']+' Из этого не следует, что '+new_item['sentence2'])
@@ -436,7 +444,7 @@ def lidirus_get_items(items, batch_size):
 
 
 def lidirus_get_answer(data, batch_size, tokenizer, model, device):
-    new_data = copy.deepcopy(data)
+    new_data = deepcopy(data)
     text_batches = lidirus_get_items(new_data, batch_size)
     new_data = lidirus_process_items(new_data, text_batches, tokenizer, model, device)
     return new_data
