@@ -447,18 +447,26 @@ def bench_docker(
         image, data_dir, task,
         input_size=10000,
         batch_size=128,
-        delay=0.3
+        delay=0.3,
+        device='cpu',
+        model_path=None,
+        volume_path=None
 ):
     lines = bench_input(data_dir, task, input_size)
     name = gen_name(image)
     command = [
         'docker', 'run',
-        '--gpus', 'all',
+        '--volume', volume_path+':/workspace',
         '--interactive', '--rm',
+        '--runtime', 'nvidia', 
         '--name', name,
         image,
-        '--batch-size', str(batch_size)
-    ]
+        '--batch-size', str(batch_size),
+        '--task', task,
+        '--model-path', model_path,
+        '--device', device
+    ] # '--gpus', 'all',
+    log(' '.join(command))
     process = subprocess.Popen(
         command,
         stdin=subprocess.PIPE,
@@ -679,7 +687,10 @@ def cli_bench(args):
     records = bench_docker(
         args.image, args.data_dir, args.task,
         input_size=args.input_size,
-        batch_size=args.batch_size
+        batch_size=args.batch_size,
+        device=args.device,
+        model_path=args.model_path,
+        volume_path=args.volume_path
     )
     items = (asdict(_) for _ in records)
     print_jsonl(items)
@@ -730,6 +741,9 @@ def main(args):
     sub.add_argument('task', choices=TASKS)
     sub.add_argument('--input-size', type=int, default=10000)
     sub.add_argument('--batch-size', type=int, default=128)
+    sub.add_argument('--device', type=str, default='cuda')
+    sub.add_argument('--model-path', type=str, default=None)
+    sub.add_argument('--volume-path', type=str, default=None)
 
     sub = subs.add_parser('plot')
     sub.set_defaults(function=cli_plot)
